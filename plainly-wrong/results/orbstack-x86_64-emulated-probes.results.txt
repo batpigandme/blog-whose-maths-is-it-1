@@ -1,0 +1,178 @@
+# engines:  Nova d85a2f8d243441f4917f80b38e683d501aa62e72 (javascript-zoo 20260303 build); Kiesel 20deb11f17569844c869b267d300d77cbc3414a1 (same);
+#           Rhino 2.0.0-SNAPSHOT 7386aa037d9a8020e4e69cc0af11eb73fe59d09d (same, JDK 25.0.2 and 21.0.10); goja 622d10077b6c154d9dc0897878aa1b4a674d7c9b;
+#           otto v0.5.1; Go go1.24.7 and go1.26.10; Quanta 767a49f40a7a974e081bd87840793cd188a135bf (same); Porffor 0.0.0-alpha.19 (segfaults here);
+#           Hermes 0.13.0 (hermes-cli-linux.tar.gz); Node.js v24.19.0 (V8 13.6.233.17-node.51) as the reference; glibc 2.39
+# platform: OrbStack, aarch64 Linux VM on macOS, x86_64 container under emulation; Ubuntu 24.04.5, x86_64, glibc 2.39-0ubuntu8.9
+# obtained: javascript-zoo release 20260303 binaries; goja and otto with go install; Porffor from npm; Hermes from its GitHub release; Node.js, Go, GCC, and OpenJDK from conda-forge through pixi; see orbstack-setup-x86_64-emulated.results.txt
+# date:     2026-11-03T14:40:07Z (UTC)
+# script:   not in this repository yet (results only for now)
+# captured: 2026-11-19, copied from the run of 2026-11-03, not regenerated; paths, script names, finding labels, and host strings stripped
+# image:    ubuntu:24.04@sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852
+# note:     the Porffor lines marked DIFFERS are two segfaults whose process IDs differ; the same failure both times.
+
+# ubuntu:24.04@sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852 on linux/amd64
+# run started 2026-11-03T14:40:07+0000; Linux x86_64; arch amd64; run run2
+# translator: /mnt/rv/[rosetta]; glibc 2.39-0ubuntu8.9; gcc (conda-forge gcc 13.3.0-2) 13.3.0; go go1.24.7 linux/amd64; node v24.19.0
+
+## Nova: atan2 on six inputs
+print([Math.atan2(-3.2637896500529635, 0.07873802091397586), Math.atan2(-1, 1), Math.atan2(-1, 0.5), Math.atan2(-2, 0.1), Math.atan2(1, 0.1), Math.atan2(-0.5, 1)].join(" "));
+-- nova-atan2, run 1 [exit 0]
+0 0 0 0 1.4711276743037347 0
+   (run 2 [exit 0] identical)
+-- node-atan2, run 1 [exit 0]
+-1.546676282474831 -0.7853981633974483 -1.1071487177940904 -1.5208379310729538 1.4711276743037347 -0.4636476090008061
+   (run 2 [exit 0] identical)
+
+## Kiesel: log1p and expm1
+console.log([Math.log1p(1e-300), Math.expm1(1e-300), Math.log1p(1e-20), Math.expm1(1e-20), Math.log1p(5e-324), Math.expm1(1e-10)].join(" "));
+kiesel --version: Kiesel 0.1.0-dev+20deb11f1
+-- kiesel-log1p, run 1 [exit 0]
+0 0 0 0 0 1.000000082740371e-10
+   (run 2 [exit 0] identical)
+-- node-log1p, run 1 [exit 0]
+1e-300 1e-300 1e-20 1e-20 5e-324 1.00000000005e-10
+   (run 2 [exit 0] identical)
+
+## Rhino at 7386aa0: asinh, acosh, and atanh, on a terminal, JVM lines dropped
+print([Math.asinh(5e-324), Math.asinh(1e-300), Math.asinh(1e-10), Math.asinh(1e300), Math.asinh(-0.5), Math.acosh(1e300), Math.atanh(1e-10), Math.atanh(0.5)].join(" "));
+jar sha256 9b216713807c5089
+-- rhino-asinh-jdk25, run 1 [exit 0]
+0 0 1.000000082690371e-10 Infinity -0.48121182505960336 Infinity 1.000000082640371e-10 0.5493061443340549
+   (run 2 [exit 0] identical)
+-- rhino-asinh-jdk21, run 1 [exit 0]
+0 0 1.000000082690371e-10 Infinity -0.48121182505960336 Infinity 1.000000082640371e-10 0.5493061443340549
+   (run 2 [exit 0] identical)
+-- node-asinh, run 1 [exit 0]
+5e-324 1e-300 1e-10 691.4686750787736 -0.48121182505960347 691.4686750787736 1e-10 0.5493061443340548
+   (run 2 [exit 0] identical)
+
+## Go's log on subnormals: goja, otto, and Go itself
+console.log([Math.log(5e-324), Math.log10(5e-324), Math.log(1e-310), Math.log2(5e-324), Math.log(2.2250738585072014e-308)].join(" "));
+-- goja-log, run 1 [exit 0]
+-709.0895657128241 -307.9536855642528 -709.0850815488945 -1074 -708.3964185322641
+   (run 2 [exit 0] identical)
+-- otto-log, run 1 [exit 0]
+-709.0895657128241 -307.9536855642528 -709.0850815488945 -1074 -708.3964185322641
+   (run 2 [exit 0] identical)
+-- node-log, run 1 [exit 0]
+-744.4400719213812 -323.3062153431158 -713.8013788281542 -1074 -708.3964185322641
+   (run 2 [exit 0] identical)
+package main
+import ("fmt"; "math"; "runtime")
+func main() { fmt.Println(runtime.Version(), runtime.GOARCH, math.Log(5e-324), math.Log10(5e-324), math.Log(1e-310), math.Log2(5e-324), math.Log(2.2250738585072014e-308)) }
+-- go-go1.24.7-amd64, run 1 [exit 0]
+go1.24.7 amd64 -709.0895657128241 -307.9536855642528 -709.0850815488945 -1074 -708.3964185322641
+   (run 2 [exit 0] identical)
+-- go-go1.24.7-386, run 1 [exit 0]
+go1.24.7 386 -744.4400719213812 -323.30621534311575 -713.8013788281542 -1074 -708.3964185322641
+   (run 2 [exit 0] identical)
+-- go1.24.7, src/math: log files: log.go log10.go log10_s390x.s log1p.go log1p_s390x.s log_amd64.s log_asm.go log_s390x.s log_stub.go logb.go
+   log_asm.go: //go:build amd64 || s390x; log_stub.go: //go:build !amd64 && !s390x; log_amd64.s sha256 5764160fdc45d72c
+-- go-go1.26.10-amd64, run 1 [exit 0]
+go1.26.10 amd64 -709.0895657128241 -307.9536855642528 -709.0850815488945 -1074 -708.3964185322641
+   (run 2 [exit 0] identical)
+-- go-go1.26.10-386, run 1 [exit 0]
+go1.26.10 386 -744.4400719213812 -323.30621534311575 -713.8013788281542 -1074 -708.3964185322641
+   (run 2 [exit 0] identical)
+-- go1.26.10, src/math: log files: log.go log10.go log10_s390x.s log1p.go log1p_s390x.s log_amd64.s log_asm.go log_s390x.s log_stub.go logb.go
+   log_asm.go: //go:build amd64 || s390x; log_stub.go: //go:build !amd64 && !s390x; log_amd64.s sha256 5764160fdc45d72c
+
+## Quanta: storing NaN into a Float64Array
+-- quanta-nan, run 1 [exit 0]
+store NaN: read 0, words 0 0
+store sin(Inf): read 0
+store 0/0: read 0
+isNaN(Math.sin(NaN)) true, isNaN(Math.sin(Infinity)) true, Math.sin(NaN) NaN
+new Float64Array([NaN])[0] 0
+plain array NaN NaN
+   (run 2 [exit 0] identical)
+-- node-nan, run 1 [exit 0]
+store NaN: read NaN, words 2146959360 0
+store sin(Inf): read NaN
+store 0/0: read NaN
+isNaN(Math.sin(NaN)) true, isNaN(Math.sin(Infinity)) true, Math.sin(NaN) NaN
+new Float64Array([NaN])[0] NaN
+plain array NaN NaN
+   (run 2 [exit 0] identical)
+
+## Kiesel: toString(radix)
+-- kiesel-radix, run 1 [exit 0]
+7fffffff 2147483648 2576980378 4294967295 4294967296 255.5 -1 -ff -7fffffff -2147483648 -2147483649 40000000 11111111 10 2576980378
+   (run 2 [exit 0] identical)
+-- node-radix, run 1 [exit 0]
+7fffffff 80000000 9999999a ffffffff 100000000 ff.8 -1 -ff -7fffffff -80000000 -80000001 40000000 11111111 32 16m9msa
+   (run 2 [exit 0] identical)
+
+## Quanta: number printing
+-- quanta-print, run 1 [exit 0]
+0.3 false 0.3333333333333333 0.3 0.30000000000000004 123456789.1234568 4.94066e-324 1.79769e+308 0.6666666666666666
+   (run 2 [exit 0] identical)
+-- node-print, run 1 [exit 0]
+0.30000000000000004 false 0.3333333333333333 0.30000000000000004 0.30000000000000004 123456789.12345678 5e-324 1.7976931348623157e+308 0.6666666666666666
+   (run 2 [exit 0] identical)
+
+## Porffor: the two-line UINT32_MAX program, compiled with `porf native`
+porf sha256 6a9194963da90cec, cc is <env>/bin/cc
+   var UINT32_MAX = 4294967295;
+   console.log(UINT32_MAX);
+-- porffor-uint32, run 1 [exit 1]
+<script>: line 120:   919 Segmentation fault      ( cd "$TMP" && "$PORF" native "$1" -o "$n.bin" ) > "$TMP/$n.log" 2>&1
+[compile exit 139]
+-- porffor-uint32, run 2 [exit 1], DIFFERS
+<script>: line 120:   924 Segmentation fault      ( cd "$TMP" && "$PORF" native "$1" -o "$n.bin" ) > "$TMP/$n.log" 2>&1
+[compile exit 139]
+diagnostic: renamed UINT32_MAXX
+-- porffor-renamed, run 1 [exit 1]
+<script>: line 120:   932 Segmentation fault      ( cd "$TMP" && "$PORF" native "$1" -o "$n.bin" ) > "$TMP/$n.log" 2>&1
+[compile exit 139]
+-- porffor-renamed, run 2 [exit 1], DIFFERS
+<script>: line 120:   937 Segmentation fault      ( cd "$TMP" && "$PORF" native "$1" -o "$n.bin" ) > "$TMP/$n.log" 2>&1
+[compile exit 139]
+the macro, on this architecture's headers: cc -E of <stdint.h> and UINT32_MAX gives (4294967295U); sysroot/usr/include/stdint.h: 118:# define UINT32_MAX		(4294967295U)
+porffor-u.c, generated on arm64 by porf c, sha256 746e9456c1df68b7, compiled here by this architecture's cc:
+-- porffor-cc-u, run 1 [exit 0]
+porffor-u.c:2993:14: error: expected identifier or '(' before numeric constant
+porffor-u.c:3031:29: error: request for member 'val' in something not a structure or union
+porffor-u.c:3031:45: error: request for member 'type' in something not a structure or union
+porffor-u.c:7799:20: error: lvalue required as left operand of assignment
+porffor-u.c:7800:42: error: incompatible type for argument 1 of 'p_builtins___Porffor_print'
+[cc exit 1]
+   (run 2 [exit 0] identical)
+porffor-ux.c, generated on arm64 by porf c, sha256 48d757c02fd5fcb5, compiled here by this architecture's cc:
+-- porffor-cc-ux, run 1 [exit 0]
+[cc exit 0]
+   (run 2 [exit 0] identical)
+a JavaScript bundle of stdlib, as in the Claude Code Cloud x86_64 VM run (the file is not in this repository)
+-- porffor-bundle, run 1 [exit 0]
+[compile exit 139]
+   (run 2 [exit 0] identical)
+
+## Hermes: the version string (the features half isn't probed here)
+-- hermes-version, run 1 [exit 0]
+LLVM (http://llvm.org/):
+  LLVH version 8.0.0svn
+  Optimized build
+
+Hermes JavaScript compiler and Virtual Machine.
+  Hermes release version: 0.12.0
+  HBC bytecode version: 96
+
+  Features:
+    Contiguous Heap
+    Unicode RegExp Property Escapes
+    Zip file input
+   (run 2 [exit 0] identical)
+
+## A check on the Chromium sin input: Node.js's V8 (not the build the bug names) beside glibc
+before:  Properties: x86 ISA needed: x86-64-baseline, x86-64-v2, x86-64-v3; x86 ISA used: x86-64-baseline
+removed .note.gnu.property from glibc-control. ld.so's x86 features: 232 diagnostic lines; cpuinfo has fma
+libm: /usr/lib/x86_64-linux-gnu/libm.so.6, sha256 fce00b6f25f459cf
+-- node-sin-bug, run 1 [exit 0]
+sin 5c99c487f2337e3a 3cbb779ceaa3c069
+3.811845021115953e-16
+   (run 2 [exit 0] identical)
+-- glibc-sin-bug, run 1 [exit 0]
+sin 5c99c487f2337e3a 3cbb779ceaa3bc42
+   (run 2 [exit 0] identical)
+
+# done 2026-11-03T14:50:17+0000

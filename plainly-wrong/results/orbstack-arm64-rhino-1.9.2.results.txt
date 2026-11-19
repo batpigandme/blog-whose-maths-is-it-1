@@ -1,0 +1,57 @@
+# engines:  Rhino 1.9.2 (rhino-all-1.9.2.jar from Maven Central, commit b3d405fe2ef4948929629b23d85ba7eef76a2c2a) beside Rhino 2.0.0-SNAPSHOT 7386aa037d9a8020e4e69cc0af11eb73fe59d09d
+#           (javascript-zoo 20260303 build), each on OpenJDK 25.0.2 and 21.0.10; Node.js v24.19.0 as the reference
+# platform: OrbStack, aarch64 Linux VM on macOS; Ubuntu 24.04.5 container, aarch64, glibc 2.39-0ubuntu8.9
+# obtained: rhino-all-1.9.2.jar from repo1.maven.org with its published sha1 and md5 checked (the .asc signature was not checked); the 7386aa0 jar from the javascript-zoo release; OpenJDK and Node.js from conda-forge through pixi
+# date:     2026-11-03T14:40:07Z (UTC)
+# script:   not in this repository yet (results only for now)
+# captured: 2026-11-19, copied from the run of 2026-11-03, not regenerated; paths, script names, finding labels, and host strings stripped
+# image:    ubuntu:24.04@sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852
+
+# run started 2026-11-03T14:40:07+0000; Linux aarch64; arch arm64; run run2
+
+## the 1.9.2 jar
+$ curl -fsSL -o rhino-all-1.9.2.jar https://repo1.maven.org/maven2/org/mozilla/rhino-all/1.9.2/rhino-all-1.9.2.jar
+$ curl -fsSL -o rhino-all-1.9.2.jar.sha1 https://repo1.maven.org/maven2/org/mozilla/rhino-all/1.9.2/rhino-all-1.9.2.jar.sha1
+$ curl -fsSL -o rhino-all-1.9.2.jar.md5 https://repo1.maven.org/maven2/org/mozilla/rhino-all/1.9.2/rhino-all-1.9.2.jar.md5
+$ curl -fsSL -o rhino-all-1.9.2.jar.asc https://repo1.maven.org/maven2/org/mozilla/rhino-all/1.9.2/rhino-all-1.9.2.jar.asc
+sha1 58b19fc7d72261f74666405c2f3e3b96ed6bfd57, Maven's .sha1 58b19fc7d72261f74666405c2f3e3b96ed6bfd57: MATCH
+md5 46e64f6df094c7e0fef2f24b97b21a78, Maven's .md5 46e64f6df094c7e0fef2f24b97b21a78: MATCH
+sha256 9b4fc23fdd7902beabd542099b6f590f05638dbbb054e9784f444982a6296493, 1952141 bytes
+signature: rhino-all-1.9.2.jar.asc is present and was not checked, so the signer is UNVERIFIED
+manifest: Implementation-Version: 1.9.2;Main-Class: org.mozilla.javascript.tools.shell.Main
+javascript-zoo build, Rhino 7386aa0, jar: sha256 9b216713807c5089159d1e3fad1fed0639168e81ee923ced4993b25eee2806f9
+manifest: Implementation-Version: 2.0.0-SNAPSHOT;Main-Class: org.mozilla.javascript.tools.shell.Main
+
+## asinh, acosh and atanh as decimals, on a terminal
+print([Math.asinh(5e-324), Math.asinh(1e-300), Math.asinh(1e-10), Math.asinh(1e300), Math.asinh(-0.5), Math.acosh(1e300), Math.atanh(1e-10), Math.atanh(0.5)].join(" "));
+-- rhino-7386aa0-jdk25, run 1 [exit 0]
+0 0 1.000000082690371e-10 Infinity -0.48121182505960336 Infinity 1.000000082640371e-10 0.5493061443340548
+   (run 2 [exit 0] identical)
+-- rhino-1.9.2-jdk25, run 1 [exit 0]
+4.9e-324 1e-300 1e-10 691.4686750787736 -0.48121182505960347 691.4686750787736 1e-10 0.5493061443340548
+   (run 2 [exit 0] identical)
+-- rhino-7386aa0-jdk21, run 1 [exit 0]
+0 0 1.000000082690371e-10 Infinity -0.48121182505960336 Infinity 1.000000082640371e-10 0.5493061443340548
+   (run 2 [exit 0] identical)
+-- rhino-1.9.2-jdk21, run 1 [exit 0]
+4.9e-324 1e-300 1e-10 691.4686750787736 -0.48121182505960347 691.4686750787736 1e-10 0.5493061443340548
+   (run 2 [exit 0] identical)
+-- node, run 1 [exit 0]
+5e-324 1e-300 1e-10 691.4686750787736 -0.48121182505960347 691.4686750787736 1e-10 0.5493061443340548
+   (run 2 [exit 0] identical)
+
+## the 7,820-case Math.* control, on a terminal, JDK 25 (the case list is not in this repository yet)
+  rhino-7386aa0  digest 857ec12f2b607d60, 7821 lines, exits 0 0, repeat identical
+  rhino-1.9.2    digest 1cdbd31a94558901, 7821 lines, exits 0 0, repeat identical
+  node           digest 29e5cea63f90a65c, 7821 lines, exits 0 0, repeat identical
+Rhino 7386aa0 jar, here, against the same jar on the Claude Code Cloud x86_64 VM: DIFFERS
+
+-- the Rhino 7386aa0 jar against Node v24.19.0 (the Claude Code Cloud run's Node.js output)
+compared 7820, bit-identical 7153, NaN payload only 68, value differs 599, unmatched lines 0
+value differences by function: sin:19(max 1 ulp) cos:17(max 1 ulp) cosh:2(max 1 ulp) asinh:162(max 4569574998620488125 ulp) acosh:26(max 4569574998620488125 ulp) atanh:82(max 118622047889322841 ulp) exp:1(max 1 ulp) log2:83(max 1 ulp) cbrt:36(max 1 ulp) pow:45(max 1 ulp) hypot:126(max 2 ulp)
+
+-- Rhino 1.9.2 against Node v24.19.0 (the Claude Code Cloud run's Node.js output)
+compared 7820, bit-identical 7632, NaN payload only 68, value differs 120, unmatched lines 0
+value differences by function: sin:19(max 1 ulp) cos:17(max 1 ulp) cosh:2(max 1 ulp) exp:1(max 1 ulp) cbrt:36(max 1 ulp) pow:45(max 1 ulp)
+
+# done 2026-11-03T14:40:15+0000

@@ -1,0 +1,117 @@
+# engine:   fetch and hash checks for the arm64 runs: javascript-zoo 20260303 builds of Kiesel, Nova, Quanta, and Rhino; goja at 622d10077b6c154d9dc0897878aa1b4a674d7c9b; otto v0.5.1; Porffor 0.0.0-alpha.19
+# platform: OrbStack, aarch64 Linux VM on macOS; Ubuntu 24.04.5 container, aarch64, glibc 2.39-0ubuntu8.9
+# obtained: as each section shows (curl from the javascript-zoo release, go install, npm install)
+# date:     2026-11-03T14:22:54Z (UTC)
+# script:   not in this repository yet (results only for now)
+# captured: 2026-11-19, copied from the run of 2026-11-03, not regenerated; paths, script names, finding labels, and host strings stripped
+# image:    ubuntu:24.04@sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852
+
+# run started 2026-11-03T14:22:54+0000; Linux aarch64; arch arm64
+
+== the second environment (the first is the one this script runs in)
+$ pixi install --frozen -e jdk21 --manifest-path <work>/env/pixi.toml
+The jdk21 environment has been installed.
+[exit 0]
+
+== fingerprint
+os: Ubuntu 24.04.5 LTS
+glibc: 2.39-0ubuntu8.9; ldd (Ubuntu GLIBC 2.39-0ubuntu8.9) 2.39
+cpu: CPU implementer : 0x61; ; 10 CPUs
+cpu flags of interest: asimd fphp
+translator: none mapped
+pixi env: <env> (default)
+cc: <env>/bin/cc; gcc: <env>/bin/gcc; gcc (conda-forge gcc 13.3.0-2) 13.3.0
+CC=<unset>
+sysroot stdint.h: aarch64-conda-linux-gnu/sysroot/usr/include/stdint.h
+go: go version go1.24.7 linux/arm64; GOTOOLCHAIN=local GOPROXY=https://proxy.golang.org,direct GOSUMDB=sum.golang.org CGO_ENABLED=1
+node: v24.19.0, V8 13.6.233.17-node.51, at <env>/bin/node, sha256 f0277e7f6e146c82
+java -version, default environment:
+   openjdk version "25.0.2-internal" 2026-01-20
+   OpenJDK Runtime Environment (build 25.0.2-internal-adhoc.rattler.src)
+   OpenJDK 64-Bit Server VM (build 25.0.2-internal-adhoc.rattler.src, mixed mode)
+java -version, jdk21 environment:
+   openjdk version "21.0.10-internal" 2026-01-20
+   OpenJDK Runtime Environment (build 21.0.10-internal-adhoc.rattler.src)
+   OpenJDK 64-Bit Server VM (build 21.0.10-internal-adhoc.rattler.src, mixed mode)
+script: /usr/bin/script; curl: curl 8.23.0; zstd: *** Zstandard CLI (64-bit) v1.5.7, by Yann Collet ***
+
+
+== javascript-zoo release 20260303: kiesel (arm64)
+$ curl -fsSL -o kiesel.arm64.tar.zst https://github.com/ivankra/javascript-zoo/releases/download/20260303/kiesel.arm64.tar.zst
+tarball sha256 40e7c155f54c7d330bb7e9421d558244302470b64f9ba1e59deb931c15becf01, 5033716 bytes
+$ tar --zstd -xf <work>/javascript-zoo/kiesel.arm64.tar.zst -C <work>/javascript-zoo/kiesel
+[exit 0]
+   total 13160
+   -r-xr-xr-x 1 root root 13464416 Mar  3  2026 kiesel
+   -r--r--r-- 1 root root     1072 Mar  3  2026 kiesel.LICENSE
+   -r--r--r-- 1 root root      447 Mar  3  2026 kiesel.json
+release data: binary_sha256 983e33623cd216022fc6658ed97b55a37501c4e7c850b40fdc42de7da6923ada, revision 7a082e2af389ca9b8f4f08d563a016ede9c8d18a, version 0.1.0-dev+7a082e2af
+binary sha256 983e33623cd216022fc6658ed97b55a37501c4e7c850b40fdc42de7da6923ada
+ok HASH MATCH
+
+== javascript-zoo release 20260303: nova (arm64)
+$ curl -fsSL -o nova.arm64.tar.zst https://github.com/ivankra/javascript-zoo/releases/download/20260303/nova.arm64.tar.zst
+tarball sha256 16f150aa3a9c5d98cb04c49835ddbe4d68601addc13560addd05454395a0b078, 2637782 bytes
+$ tar --zstd -xf <work>/javascript-zoo/nova.arm64.tar.zst -C <work>/javascript-zoo/nova
+[exit 0]
+   total 9180
+   -r-xr-xr-x 1 root root 9379056 Mar  3  2026 nova
+   -r--r--r-- 1 root root   15182 Mar  3  2026 nova.LICENSE
+   -r--r--r-- 1 root root     475 Mar  3  2026 nova.json
+release data: binary_sha256 38d2d8e191af6ce7633bc2c667baea7111392c3d4159d05a38193b770d6dd1e1, revision d85a2f8d243441f4917f80b38e683d501aa62e72, version latest-93-gd85a2f8d
+binary sha256 38d2d8e191af6ce7633bc2c667baea7111392c3d4159d05a38193b770d6dd1e1
+ok HASH MATCH
+
+== javascript-zoo release 20260303: quanta (arm64)
+$ curl -fsSL -o quanta.arm64.tar.zst https://github.com/ivankra/javascript-zoo/releases/download/20260303/quanta.arm64.tar.zst
+tarball sha256 6eda5d4f765ad957c282fb725c83665b123e2ded8a191c38727df1fd4e085ee8, 732940 bytes
+$ tar --zstd -xf <work>/javascript-zoo/quanta.arm64.tar.zst -C <work>/javascript-zoo/quanta
+[exit 0]
+   total 2396
+   -r-xr-xr-x 1 root root 2428888 Mar  3  2026 quanta
+   -r--r--r-- 1 root root   16726 Mar  3  2026 quanta.LICENSE
+   -r--r--r-- 1 root root     467 Mar  3  2026 quanta.json
+release data: binary_sha256 ca29acd291703bae0fc6b11c978576544a016297b60b63479245e2d2b21f4753, revision 767a49f40a7a974e081bd87840793cd188a135bf, version 0.4.0.45722226-10-g767a49f
+binary sha256 ca29acd291703bae0fc6b11c978576544a016297b60b63479245e2d2b21f4753
+ok HASH MATCH
+
+== javascript-zoo release 20260303: rhino (arm64)
+$ curl -fsSL -o rhino.arm64.tar.zst https://github.com/ivankra/javascript-zoo/releases/download/20260303/rhino.arm64.tar.zst
+tarball sha256 ff5a1cf27da06272656aa5d25afb509417988da87d1a402552ae03d0c5da0568, 2542385 bytes
+$ tar --zstd -xf <work>/javascript-zoo/rhino.arm64.tar.zst -C <work>/javascript-zoo/rhino
+[exit 0]
+   total 2708
+   -r-xr-xr-x 1 root root     115 Mar  3  2026 rhino
+   -r--r--r-- 1 root root   21696 Mar  3  2026 rhino.LICENSE
+   -r--r--r-- 1 root root 2737096 Mar  3  2026 rhino.jar
+   -r--r--r-- 1 root root     314 Mar  3  2026 rhino.json
+release data: binary_sha256 none, revision 7386aa037d9a8020e4e69cc0af11eb73fe59d09d, version none
+binary sha256 25c78c831c624d23948394196b86558733c32f5b97713b15c1bc084edc52320e
+-- HASH UNVERIFIABLE: the release's data has no binary_sha256 for rhino on arm64
+jar sha256 9b216713807c5089159d1e3fad1fed0639168e81ee923ced4993b25eee2806f9
+
+== Go engines, GOTOOLCHAIN=auto as on the Claude Code Cloud x86_64 VM
+
+== goja at 622d10077b6c154d9dc0897878aa1b4a674d7c9b (no tags upstream)
+$ go install github.com/dop251/goja/goja@622d10077b6c154d9dc0897878aa1b4a674d7c9b
+go: github.com/dop251/goja@v0.0.0-20261102140139-622d10077b6c requires go >= 1.26.0; switching to go1.26.10
+[exit 0]
+
+== otto at v0.5.1
+$ go install github.com/robertkrimen/otto/otto@v0.5.1
+[exit 0]
+goja: sha256 a2585f5c8e4fd514ee6dd8b1366edd3132dbe71faf0121f0c28c8aa6cf6fe7e2; <work>/go/bin/goja: go1.26.10; path github.com/dop251/goja/goja; mod github.com/dop251/goja v0.0.0-20261102140139-622d10077b6c h1:UaENlR4asLCILzrmI/aGbG1OmRJLsYYpEMCfsaM1YVM=; dep github.com/dlclark/regexp2/v2 v2.11.0 h1:z5uRPHav+eTVpoffDSuUP2KPS4f1ONZaPDK73S8HA0w=
+otto: sha256 d229b5b424b38442b66c5795520bf3039d4ad8287acbbd4ec1aecd38f1690e87; <work>/go/bin/otto: go1.24.7; path github.com/robertkrimen/otto/otto; mod github.com/robertkrimen/otto v0.5.1 h1:avDI4ToRk8k1hppLdYFTuuzND41n37vPGJU7547dGf0=; dep golang.org/x/text v0.4.0 h1:BrVqGRd7+k1DiOgtnFvAkoQEWQvBc25ouMJM6429SFg=
+
+== porffor@0.0.0-alpha.19
+$ npm install --prefix <work>/porffor --no-audit --no-fund porffor@0.0.0-alpha.19
+
+up to date in 268ms
+[exit 0]
+lockfile integrity sha512-GLEMY3MhzUhboJ+UMNJAINaw6qGo6L33vEvBtdn5Q2OcbvC+lNcPm4dvOjQMlPVSQsy2cRpZ64AuBMCxLNaqFQ==: MATCH with the npm registry record
+porf: sha256 4b36c2ea1df5b789b6ef8293f07059cd2db016ac2211b455aa1fb8a8777743c8; banner: Porffor is a JavaScript/TypeScript engine/compiler/runtime. (alpha 19 (0c135ce 2026-10-21))
+
+== hermes 0.13.0
+-- no arm64 Linux build: the v0.13.0 release's assets are hermes-cli-darwin, hermes-cli-linux and hermes-cli-windows, and the Linux one's ELF machine is in the amd64 transcript. Runs on amd64 only
+
+== done 2026-11-03T14:23:12+0000

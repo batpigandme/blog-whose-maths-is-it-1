@@ -1,0 +1,49 @@
+# platform: the Mac that hosts the OrbStack VM used for every OrbStack output in this folder (macOS arm64)
+# obtained: n/a (host fingerprint and environment lock lines)
+# date:     2026-11-03 (UTC 14:22)
+# script:   not in this repository yet (results only for now)
+# captured: 2026-11-19, copied from the run of 2026-11-03, not regenerated; paths, script names, finding labels, and host strings stripped
+# left out: a line naming the working tree, and a line naming a private data file
+
+# run started 2026-11-03T14:22:42Z (UTC)
+ProductName:		macOS
+ProductVersion:		26.6.2
+BuildVersion:		25G83
+chip: Apple M1 Pro, 32 GiB
+orb: Version: 2.2.5 (2020500) Commit: bf842321f95fc3ca7cda3227bf0cd41cb188c471 (v2.2.5) 
+orb config: rosetta=true cpu=10 memory_mib=16384
+docker: client 29.8.2, server 29.8.2 linux/arm64
+
+## base image ubuntu:24.04@sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852
+linux/amd64 sha256:78d4744ead1f5b19b04d0df558ab182a5300903900755e515b2ca4d10eb2044d
+linux/arm64/v8 sha256:19cad59657037cffa0ac9a48107019b768900ff1071140965827513ac866bd5e
+
+## pixi on the Mac solves the lock, and installs nothing
+pixi 0.83.0
+pixi.toml sha256 7511354e28a522d7; pixi.lock sha256 f2f40011c4487dca
+linux-64 default: ca-certificates            2026.10.23    hbd8a1cb_0            127.01 KiB  conda  https://conda.anaconda.org/conda-forge
+linux-64 default: curl                       8.23.0        ha042cf0_0            193.02 KiB  conda  https://conda.anaconda.org/conda-forge
+linux-64 default: gcc                        13.3.0        h9576a4e_2             53.95 KiB  conda  https://conda.anaconda.org/conda-forge
+linux-64 default: go                         1.24.7        h282a287_0             60.94 MiB  conda  https://conda.anaconda.org/conda-forge
+linux-64 default: nodejs                     24.19.0       h50021de_1             17.36 MiB  conda  https://conda.anaconda.org/conda-forge
+linux-64 default: openjdk                    25.0.2        h1602c4f_26           116.89 MiB  conda  https://conda.anaconda.org/conda-forge
+linux-64 default: sysroot_linux-64           2.39          he3f20f0_6             40.10 MiB  conda  https://conda.anaconda.org/conda-forge
+linux-64 default: xz                         5.8.3         ha02ee65_1             23.06 KiB  conda  https://conda.anaconda.org/conda-forge
+linux-64 default: zstd                       1.5.7         hb78ec9c_7            587.21 KiB  conda  https://conda.anaconda.org/conda-forge
+linux-aarch64 default: ca-certificates               2026.10.23    hbd8a1cb_0            127.01 KiB  conda  https://conda.anaconda.org/conda-forge
+linux-aarch64 default: curl                          8.23.0        h86273da_0            198.00 KiB  conda  https://conda.anaconda.org/conda-forge
+linux-aarch64 default: gcc                           13.3.0        h8a56e6e_2             54.12 KiB  conda  https://conda.anaconda.org/conda-forge
+linux-aarch64 default: go                            1.24.7        h569907c_0             92.83 MiB  conda  https://conda.anaconda.org/conda-forge
+linux-aarch64 default: nodejs                        24.19.0       hf4ab16c_1             23.07 MiB  conda  https://conda.anaconda.org/conda-forge
+linux-aarch64 default: openjdk                       25.0.2        hd4191a3_26           102.28 MiB  conda  https://conda.anaconda.org/conda-forge
+linux-aarch64 default: sysroot_linux-aarch64         2.39          ha02d93b_6             39.28 MiB  conda  https://conda.anaconda.org/conda-forge
+linux-aarch64 default: xz                            5.8.3         hd704e39_1             22.91 KiB  conda  https://conda.anaconda.org/conda-forge
+linux-aarch64 default: zstd                          1.5.7         h9d15635_7            601.05 KiB  conda  https://conda.anaconda.org/conda-forge
+linux-64 jdk21: openjdk                    21.0.10       h1602c4f_22       177.78 MiB  conda  https://conda.anaconda.org/conda-forge
+linux-aarch64 jdk21: openjdk                    21.0.10       hd4191a3_22       171.37 MiB  conda  https://conda.anaconda.org/conda-forge
+
+## pixi for the containers, v0.83.0 from its own release, checked against its published sums
+$ curl pixi-x86_64-unknown-linux-musl.tar.gz (v0.83.0)
+pixi-x86_64-unknown-linux-musl.tar.gz sha256 064f371e692aaa3400ac581c89da2843c91437f20c2d9155395a5d0037f33551, published 064f371e692aaa3400ac581c89da2843c91437f20c2d9155395a5d0037f33551: MATCH
+$ curl pixi-aarch64-unknown-linux-musl.tar.gz (v0.83.0)
+pixi-aarch64-unknown-linux-musl.tar.gz sha256 d08403d8f048626ec93ba7b7c56e3b747a5f3a95c4e6e0c815ceb264f5f0b9ce, published d08403d8f048626ec93ba7b7c56e3b747a5f3a95c4e6e0c815ceb264f5f0b9ce: MATCH

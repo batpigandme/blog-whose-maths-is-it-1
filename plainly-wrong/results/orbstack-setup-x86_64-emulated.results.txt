@@ -1,0 +1,129 @@
+# engine:   fetch and hash checks for the x86_64 runs: javascript-zoo 20260303 builds of Kiesel, Nova, Quanta, and Rhino; goja at 622d10077b6c154d9dc0897878aa1b4a674d7c9b; otto v0.5.1; Porffor 0.0.0-alpha.19; Hermes 0.13.0
+# platform: OrbStack, aarch64 Linux VM on macOS, x86_64 container under emulation; Ubuntu 24.04.5, x86_64, glibc 2.39-0ubuntu8.9
+# obtained: as each section shows (curl from the javascript-zoo and Hermes releases, go install, npm install)
+# date:     2026-11-03T14:25:59Z (UTC)
+# script:   not in this repository yet (results only for now)
+# captured: 2026-11-19, copied from the run of 2026-11-03, not regenerated; paths, script names, finding labels, and host strings stripped
+# image:    ubuntu:24.04@sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852
+
+# run started 2026-11-03T14:25:59+0000; Linux x86_64; arch amd64
+
+== the second environment (the first is the one this script runs in)
+$ pixi install --frozen -e jdk21 --manifest-path <work>/env/pixi.toml
+The jdk21 environment has been installed.
+[exit 0]
+
+== fingerprint
+os: Ubuntu 24.04.5 LTS
+glibc: 2.39-0ubuntu8.9; ldd (Ubuntu GLIBC 2.39-0ubuntu8.9) 2.39
+cpu: vendor_id : VirtualApple; model name : VirtualApple @ 2.50GHz; 10 CPUs
+cpu flags of interest: fma sse4_2
+translator: /mnt/rv/[rosetta]
+pixi env: <env> (default)
+cc: <env>/bin/cc; gcc: <env>/bin/gcc; gcc (conda-forge gcc 13.3.0-2) 13.3.0
+CC=<unset>
+sysroot stdint.h: x86_64-conda-linux-gnu/sysroot/usr/include/stdint.h
+go: go version go1.24.7 linux/amd64; GOTOOLCHAIN=local GOPROXY=https://proxy.golang.org,direct GOSUMDB=sum.golang.org CGO_ENABLED=1
+node: v24.19.0, V8 13.6.233.17-node.51, at <env>/bin/node, sha256 0b1f75449159b492
+java -version, default environment:
+   openjdk version "25.0.2-internal" 2026-01-20
+   OpenJDK Runtime Environment (build 25.0.2-internal-adhoc.rattler.src)
+   OpenJDK 64-Bit Server VM (build 25.0.2-internal-adhoc.rattler.src, mixed mode, sharing)
+java -version, jdk21 environment:
+   openjdk version "21.0.10-internal" 2026-01-20
+   OpenJDK Runtime Environment (build 21.0.10-internal-adhoc.rattler.src)
+   OpenJDK 64-Bit Server VM (build 21.0.10-internal-adhoc.rattler.src, mixed mode, sharing)
+script: /usr/bin/script; curl: curl 8.23.0; zstd: *** Zstandard CLI (64-bit) v1.5.7, by Yann Collet ***
+
+
+== javascript-zoo release 20260303: kiesel (amd64)
+$ curl -fsSL -o kiesel.amd64.tar.zst https://github.com/ivankra/javascript-zoo/releases/download/20260303/kiesel.amd64.tar.zst
+tarball sha256 387227d3aeb93fc04f7e848e1c5b9178dd0b5b3b352e4018650fef50da62a71a, 5203359 bytes
+$ tar --zstd -xf <work>/javascript-zoo/kiesel.amd64.tar.zst -C <work>/javascript-zoo/kiesel
+[exit 0]
+   total 14020
+   -r-xr-xr-x 1 root root 14345288 Mar  3  2026 kiesel
+   -r--r--r-- 1 root root     1072 Mar  3  2026 kiesel.LICENSE
+   -r--r--r-- 1 root root      447 Mar  3  2026 kiesel.json
+release data: binary_sha256 14f6b4bc8e685dffc86652bfaa50557fdf3adef3b74af94bddf998db5674485f, revision 20deb11f17569844c869b267d300d77cbc3414a1, version 0.1.0-dev+20deb11f1
+binary sha256 14f6b4bc8e685dffc86652bfaa50557fdf3adef3b74af94bddf998db5674485f
+ok HASH MATCH
+
+== javascript-zoo release 20260303: nova (amd64)
+$ curl -fsSL -o nova.amd64.tar.zst https://github.com/ivankra/javascript-zoo/releases/download/20260303/nova.amd64.tar.zst
+tarball sha256 6b0293bda8febf1ed780f20323e5e8b41f8c0cc78348fd516e8dc884db0f7da7, 2906612 bytes
+$ tar --zstd -xf <work>/javascript-zoo/nova.amd64.tar.zst -C <work>/javascript-zoo/nova
+[exit 0]
+   total 10100
+   -r-xr-xr-x 1 root root 10318768 Mar  3  2026 nova
+   -r--r--r-- 1 root root    15182 Mar  3  2026 nova.LICENSE
+   -r--r--r-- 1 root root      476 Mar  3  2026 nova.json
+release data: binary_sha256 b9520c1a48820cf9881128ac642e8fb0c538980d8e23bc01b2400fcc1d99ac11, revision d85a2f8d243441f4917f80b38e683d501aa62e72, version latest-93-gd85a2f8d
+binary sha256 b9520c1a48820cf9881128ac642e8fb0c538980d8e23bc01b2400fcc1d99ac11
+ok HASH MATCH
+
+== javascript-zoo release 20260303: quanta (amd64)
+$ curl -fsSL -o quanta.amd64.tar.zst https://github.com/ivankra/javascript-zoo/releases/download/20260303/quanta.amd64.tar.zst
+tarball sha256 747d61ec60bc879a32b79d2b112c75f69b65ea1ff1bac1c4f285168dc1723130, 798145 bytes
+$ tar --zstd -xf <work>/javascript-zoo/quanta.amd64.tar.zst -C <work>/javascript-zoo/quanta
+[exit 0]
+   total 2556
+   -r-xr-xr-x 1 root root 2592720 Mar  3  2026 quanta
+   -r--r--r-- 1 root root   16726 Mar  3  2026 quanta.LICENSE
+   -r--r--r-- 1 root root     467 Mar  3  2026 quanta.json
+release data: binary_sha256 ce1227d831e336317fcd3809721b56dc5646da93d29a352e98b2a16728968368, revision 767a49f40a7a974e081bd87840793cd188a135bf, version 0.4.0.45722226-10-g767a49f
+binary sha256 ce1227d831e336317fcd3809721b56dc5646da93d29a352e98b2a16728968368
+ok HASH MATCH
+
+== javascript-zoo release 20260303: rhino (amd64)
+$ curl -fsSL -o rhino.amd64.tar.zst https://github.com/ivankra/javascript-zoo/releases/download/20260303/rhino.amd64.tar.zst
+tarball sha256 f44a1238f75357e2dbbf2cc2be8c50b3175aab7f8cec41c00646ba326382c0c1, 2542351 bytes
+$ tar --zstd -xf <work>/javascript-zoo/rhino.amd64.tar.zst -C <work>/javascript-zoo/rhino
+[exit 0]
+   total 2708
+   -r-xr-xr-x 1 root root     115 Mar  3  2026 rhino
+   -r--r--r-- 1 root root   21696 Mar  3  2026 rhino.LICENSE
+   -r--r--r-- 1 root root 2737096 Mar  3  2026 rhino.jar
+   -r--r--r-- 1 root root     314 Mar  3  2026 rhino.json
+release data: binary_sha256 none, revision 7386aa037d9a8020e4e69cc0af11eb73fe59d09d, version none
+binary sha256 25c78c831c624d23948394196b86558733c32f5b97713b15c1bc084edc52320e
+-- HASH UNVERIFIABLE: the release's data has no binary_sha256 for rhino on amd64
+jar sha256 9b216713807c5089159d1e3fad1fed0639168e81ee923ced4993b25eee2806f9
+
+== Go engines, GOTOOLCHAIN=auto as on the Claude Code Cloud x86_64 VM
+
+== goja at 622d10077b6c154d9dc0897878aa1b4a674d7c9b (no tags upstream)
+$ go install github.com/dop251/goja/goja@622d10077b6c154d9dc0897878aa1b4a674d7c9b
+go: github.com/dop251/goja@v0.0.0-20261102140139-622d10077b6c requires go >= 1.26.0; switching to go1.26.10
+[exit 0]
+
+== otto at v0.5.1
+$ go install github.com/robertkrimen/otto/otto@v0.5.1
+[exit 0]
+goja: sha256 b58f1bdf319c8513dda85e5b21f9ba54bd741ffa2e68b3385c1792045b329964; <work>/go/bin/goja: go1.26.10; path github.com/dop251/goja/goja; mod github.com/dop251/goja v0.0.0-20261102140139-622d10077b6c h1:UaENlR4asLCILzrmI/aGbG1OmRJLsYYpEMCfsaM1YVM=; dep github.com/dlclark/regexp2/v2 v2.11.0 h1:z5uRPHav+eTVpoffDSuUP2KPS4f1ONZaPDK73S8HA0w=
+otto: sha256 a026257771eea2ab9c45d137c9cbdd2d09c444bd4ee5e9436186275e4a5ebd54; <work>/go/bin/otto: go1.24.7; path github.com/robertkrimen/otto/otto; mod github.com/robertkrimen/otto v0.5.1 h1:avDI4ToRk8k1hppLdYFTuuzND41n37vPGJU7547dGf0=; dep golang.org/x/text v0.4.0 h1:BrVqGRd7+k1DiOgtnFvAkoQEWQvBc25ouMJM6429SFg=
+
+== porffor@0.0.0-alpha.19
+$ npm install --prefix <work>/porffor --no-audit --no-fund porffor@0.0.0-alpha.19
+
+up to date in 687ms
+[exit 0]
+lockfile integrity sha512-GLEMY3MhzUhboJ+UMNJAINaw6qGo6L33vEvBtdn5Q2OcbvC+lNcPm4dvOjQMlPVSQsy2cRpZ64AuBMCxLNaqFQ==: MATCH with the npm registry record
+<script>: line 115:   525 Segmentation fault      "$PORF" --help > "$U/porffor/help.txt" 2>&1
+porf: sha256 6a9194963da90cec46391ef05bf68f63ee6e5dba9bdd7208130bd65ee519999b; porf --help exit 139; banner: 
+
+== hermes 0.13.0
+$ curl -fsSL -o hermes-cli-linux.tar.gz https://github.com/meta/hermes/releases/download/v0.13.0/hermes-cli-linux.tar.gz
+tarball sha256 aead6eb0b8f563bb022354352eae32dad96c933330b6c1941b6db17674ca68ae, an earlier download recorded aead6eb0b8f563bb022354352eae32dad96c933330b6c1941b6db17674ca68ae: MATCH
+$ tar -xzf <work>/hermes/hermes-cli-linux.tar.gz -C <work>/hermes
+[exit 0]
+   total 162716
+   -rwxr-xr-x 1 root root  2053952 Aug 16  2024 hbcdump
+   -rwxr-xr-x 1 root root 36781920 Aug 16  2024 hdb
+   -rwxr-xr-x 1 root root 37727296 Aug 16  2024 hermes
+   -rw-r--r-- 1 root root 48369832 Nov  3 14:26 hermes-cli-linux.tar.gz
+   -rwxr-xr-x 1 root root  4057600 Aug 16  2024 hermesc
+   -rwxr-xr-x 1 root root 36643360 Aug 16  2024 hvm
+hermes: sha256 ae13b09993b46ae44d85880cc2adebf76290adb52ee0f7fad9f0dde270a2eb08; ELF e_machine 62 (62 is x86-64)
+
+== done 2026-11-03T14:26:18+0000

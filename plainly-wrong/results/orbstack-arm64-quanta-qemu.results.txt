@@ -1,0 +1,48 @@
+# engine:   Quanta 767a49f40a7a974e081bd87840793cd188a135bf (javascript-zoo 20260303 arm64 build, sha256 ca29acd291703bae...), natively and under qemu-aarch64 8.2.2
+# platform: OrbStack, aarch64 Linux VM on macOS; Ubuntu 24.04.5 container, aarch64, glibc 2.39-0ubuntu8.9; the gdb step runs in a container with ptrace added
+# obtained: javascript-zoo release 20260303 binary; qemu-user from Ubuntu's apt inside the container; gdb from conda-forge through pixi
+# date:     2026-11-03T14:39:36Z (UTC)
+# script:   not in this repository yet (results only for now)
+# captured: 2026-11-19, copied from the run of 2026-11-03, not regenerated; paths, script names, finding labels, and host strings stripped
+# image:    ubuntu:24.04@sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852
+
+# run started 2026-11-03T14:39:36+0000; Linux aarch64; run run2
+quanta sha256 ca29acd291703bae
+cpu Features:  fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb dcpodp flagm2 frint
+sve in Features: 0
+
+## where it stops: gdb, from conda-forge through pixi exec
+<script>: line 32:    41 Illegal instruction     "$Q" "$TMP/a.js"
+[quanta, no gdb: exit 132]
+Program received signal SIGILL, Illegal instruction.
+0x0000aaaaaaab8c40 in ?? ()
+=> 0xaaaaaaab8c40:	index	z0.d, #8, x12
+#0  0x0000aaaaaaab8c40 in ?? ()
+#1  0x0000fffff7aa8614 in __libc_start_main () from /lib/aarch64-linux-gnu/libc.so.6
+#2  0x0000aaaaaaab9cb0 in ?? ()
+
+## qemu-user, from the image's apt, in this container only
+apt-get exit 0
+qemu-aarch64 version 8.2.2 (Debian 1:8.2.2+ds-0ubuntu1.18)
+
+## the two probes, through qemu-aarch64 (the same lines the Claude Code Cloud x86_64 VM run used), twice
+-- quanta-nan, run 1 [exit 0]
+store NaN: read 0, words 0 0
+store sin(Inf): read 0
+store 0/0: read 0
+isNaN(Math.sin(NaN)) true, isNaN(Math.sin(Infinity)) true, Math.sin(NaN) NaN
+new Float64Array([NaN])[0] 0
+plain array NaN NaN
+-- quanta-print, run 1 [exit 0]
+0.3 false 0.3333333333333333 0.3 0.30000000000000004 123456789.1234568 4.94066e-324 1.79769e+308 0.6666666666666666
+-- quanta-nan, run 2 [exit 0]
+store NaN: read 0, words 0 0
+store sin(Inf): read 0
+store 0/0: read 0
+isNaN(Math.sin(NaN)) true, isNaN(Math.sin(Infinity)) true, Math.sin(NaN) NaN
+new Float64Array([NaN])[0] 0
+plain array NaN NaN
+-- quanta-print, run 2 [exit 0]
+0.3 false 0.3333333333333333 0.3 0.30000000000000004 123456789.1234568 4.94066e-324 1.79769e+308 0.6666666666666666
+
+# done 2026-11-03T14:39:47+0000

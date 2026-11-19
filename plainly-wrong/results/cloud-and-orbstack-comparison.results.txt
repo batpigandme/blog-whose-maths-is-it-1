@@ -1,0 +1,195 @@
+# engines:  the same builds as the two probe files in this folder (Nova, Kiesel, Rhino 7386aa0, goja, otto, Go, Quanta, Porffor, Hermes 0.13.0, Node.js v24.19.0)
+# platforms: "cloud" lines are quoted from earlier runs on Claude Code Cloud, x86_64 VM (2026-10-21 and 2026-11-02; Ubuntu 24.04, glibc 2.39);
+#            "arm64" lines are OrbStack, aarch64 Linux VM on macOS; "amd64" lines are OrbStack, aarch64 Linux VM on macOS, x86_64 container under emulation
+# obtained: see the two probe files and the two setup files
+# date:     2026-11-03T14:50:25Z (UTC) for the comparison; the cloud runs are earlier
+# script:   not in this repository yet (results only for now)
+# captured: 2026-11-19, copied from the run of 2026-11-03, not regenerated; paths, script names, finding labels, and host strings stripped
+# left out: the section that compared the 7,820-case Math.* control, row by row, against the cloud host
+
+# run started 2026-11-03T14:50:25+0000; run run2
+
+## Probes: each line says what the Claude Code Cloud x86_64 VM printed, then what the OrbStack arm64 and x86_64-emulated runs printed
+
+### Nova atan2 (nova-atan2)
+   cloud:
+   0 0 0 0 1.4711276743037347 0
+arm64  run 1: exact
+arm64  run 2: exact
+amd64  run 1: exact
+amd64  run 2: exact
+
+### Kiesel log1p and expm1 (kiesel-log1p)
+   cloud:
+   0 0 0 0 0 1.000000082740371e-10
+arm64  run 1: exact
+arm64  run 2: exact
+amd64  run 1: exact
+amd64  run 2: exact
+
+### Rhino 7386aa0, JDK 25 (rhino-asinh-jdk25)
+   cloud:
+   0 0 1.000000082690371e-10 Infinity -0.48121182505960336 Infinity 1.000000082640371e-10 0.5493061443340549
+arm64  run 1: DIFFERS
+   0 0 1.000000082690371e-10 Infinity -0.48121182505960336 Infinity 1.000000082640371e-10 0.5493061443340548
+arm64  run 2: DIFFERS
+   0 0 1.000000082690371e-10 Infinity -0.48121182505960336 Infinity 1.000000082640371e-10 0.5493061443340548
+amd64  run 1: exact
+amd64  run 2: exact
+
+### Rhino 7386aa0, JDK 21 (rhino-asinh-jdk21)
+   cloud:
+   0 0 1.000000082690371e-10 Infinity -0.48121182505960336 Infinity 1.000000082640371e-10 0.5493061443340549
+arm64  run 1: DIFFERS
+   0 0 1.000000082690371e-10 Infinity -0.48121182505960336 Infinity 1.000000082640371e-10 0.5493061443340548
+arm64  run 2: DIFFERS
+   0 0 1.000000082690371e-10 Infinity -0.48121182505960336 Infinity 1.000000082640371e-10 0.5493061443340548
+amd64  run 1: exact
+amd64  run 2: exact
+
+### goja (goja-log)
+   cloud:
+   -709.0895657128241 -307.9536855642528 -709.0850815488945 -1074 -708.3964185322641
+arm64  run 1: DIFFERS
+   -744.4400719213812 -323.30621534311575 -713.8013788281542 -1074 -708.3964185322641
+arm64  run 2: DIFFERS
+   -744.4400719213812 -323.30621534311575 -713.8013788281542 -1074 -708.3964185322641
+amd64  run 1: exact
+amd64  run 2: exact
+
+### otto (otto-log)
+   cloud:
+   -709.0895657128241 -307.9536855642528 -709.0850815488945 -1074 -708.3964185322641
+arm64  run 1: DIFFERS
+   -744.4400719213812 -323.30621534311575 -713.8013788281542 -1074 -708.3964185322641
+arm64  run 2: DIFFERS
+   -744.4400719213812 -323.30621534311575 -713.8013788281542 -1074 -708.3964185322641
+amd64  run 1: exact
+amd64  run 2: exact
+
+### Go itself, numbers only
+cloud amd64: -709.0895657128241 -307.9536855642528 -709.0850815488945 -1074 -708.3964185322641
+cloud 386:   -744.4400719213812 -323.30621534311575 -713.8013788281542 -1074 -708.3964185322641
+amd64/go-go1.24.7-386-1.txt                  the cloud's 386 numbers, exact
+   go1.24.7 386 -744.4400719213812 -323.30621534311575 -713.8013788281542 -1074 -708.3964185322641
+amd64/go-go1.24.7-amd64-1.txt                the cloud's amd64 numbers, exact
+   go1.24.7 amd64 -709.0895657128241 -307.9536855642528 -709.0850815488945 -1074 -708.3964185322641
+amd64/go-go1.26.10-386-1.txt                 the cloud's 386 numbers, exact
+   go1.26.10 386 -744.4400719213812 -323.30621534311575 -713.8013788281542 -1074 -708.3964185322641
+amd64/go-go1.26.10-amd64-1.txt               the cloud's amd64 numbers, exact
+   go1.26.10 amd64 -709.0895657128241 -307.9536855642528 -709.0850815488945 -1074 -708.3964185322641
+arm64/go-go1.24.7-arm64-1.txt                the cloud's 386 numbers, exact
+   go1.24.7 arm64 -744.4400719213812 -323.30621534311575 -713.8013788281542 -1074 -708.3964185322641
+arm64/go-go1.26.10-arm64-1.txt               the cloud's 386 numbers, exact
+   go1.26.10 arm64 -744.4400719213812 -323.30621534311575 -713.8013788281542 -1074 -708.3964185322641
+
+### Quanta NaN store (quanta-nan)
+   cloud:
+   store NaN: read 0, words 0 0
+   store sin(Inf): read 0
+   store 0/0: read 0
+   isNaN(Math.sin(NaN)) true, isNaN(Math.sin(Infinity)) true, Math.sin(NaN) NaN
+   new Float64Array([NaN])[0] 0
+   plain array NaN NaN
+arm64  run 1: no output (the probes transcript has the exit status)
+arm64  run 2: no output (the probes transcript has the exit status)
+amd64  run 1: exact
+amd64  run 2: exact
+
+### Kiesel toString(radix) (kiesel-radix)
+   cloud:
+   7fffffff 2147483648 2576980378 4294967295 4294967296 255.5 -1 -ff -7fffffff -2147483648 -2147483649 40000000 11111111 10 2576980378
+arm64  run 1: exact
+arm64  run 2: exact
+amd64  run 1: exact
+amd64  run 2: exact
+
+### Quanta number printing (quanta-print)
+   cloud:
+   0.3 false 0.3333333333333333 0.3 0.30000000000000004 123456789.1234568 4.94066e-324 1.79769e+308 0.6666666666666666
+arm64  run 1: no output (the probes transcript has the exit status)
+arm64  run 2: no output (the probes transcript has the exit status)
+amd64  run 1: exact
+amd64  run 2: exact
+
+### Porffor UINT32_MAX
+cloud, GCC on a JavaScript bundle of stdlib (the file is not in this repository):
+   <stdin>:36867:7: error: expected identifier or '(' before numeric constant
+   <stdin>:36870:13: error: lvalue required as left operand of assignment
+   <stdin>:36916:9: error: expected identifier or '(' before numeric constant
+   <stdin>:73:38: error: expected statement before ')' token
+   <stdin>:36943:13: error: lvalue required as left operand of assignment
+   <stdin>:36944:66: error: request for member 'val' in something not a structure or union
+arm64 porffor-uint32:
+   <stdin>:2993:14: error: expected identifier or '(' before numeric constant
+   <stdin>:3031:29: error: request for member 'val' in something not a structure or union
+   <stdin>:3031:45: error: request for member 'type' in something not a structure or union
+   <stdin>:7799:13: error: lvalue required as left operand of assignment
+   <stdin>:7800:35: error: incompatible type for argument 1 of 'p_builtins___Porffor_print'
+   [compile exit 1]
+   (run 2 identical)
+arm64 porffor-renamed:
+   [compile exit 0]
+   4294967295
+   (run 2 identical)
+arm64 porffor-bundle (the stdlib bundle):
+   <stdin>:36867:7: error: expected identifier or '(' before numeric constant
+   <stdin>:36870:13: error: lvalue required as left operand of assignment
+   <stdin>:36916:9: error: expected identifier or '(' before numeric constant
+   <stdin>:73:38: error: expected statement before ')' token
+   <stdin>:36943:13: error: lvalue required as left operand of assignment
+   <stdin>:36944:66: error: request for member 'val' in something not a structure or union
+   [compile exit 1]
+   (run 2 identical)
+arm64 porffor-cc-u:
+   porffor-u.c:2993:14: error: expected identifier or '(' before numeric constant
+   porffor-u.c:3031:29: error: request for member 'val' in something not a structure or union
+   porffor-u.c:3031:45: error: request for member 'type' in something not a structure or union
+   porffor-u.c:7799:20: error: lvalue required as left operand of assignment
+   porffor-u.c:7800:42: error: incompatible type for argument 1 of 'p_builtins___Porffor_print'
+   [cc exit 1]
+   (run 2 identical)
+arm64 porffor-cc-ux:
+   [cc exit 0]
+   (run 2 identical)
+amd64 porffor-uint32:
+   <script>: line 120:   919 Segmentation fault      ( cd "$TMP" && "$PORF" native "$1" -o "$n.bin" ) > "$TMP/$n.log" 2>&1
+   [compile exit 139]
+   (run 2 differs)
+amd64 porffor-renamed:
+   <script>: line 120:   932 Segmentation fault      ( cd "$TMP" && "$PORF" native "$1" -o "$n.bin" ) > "$TMP/$n.log" 2>&1
+   [compile exit 139]
+   (run 2 differs)
+amd64 porffor-bundle:
+   [compile exit 139]
+   (run 2 identical)
+amd64 porffor-cc-u:
+   porffor-u.c:2993:14: error: expected identifier or '(' before numeric constant
+   porffor-u.c:3031:29: error: request for member 'val' in something not a structure or union
+   porffor-u.c:3031:45: error: request for member 'type' in something not a structure or union
+   porffor-u.c:7799:20: error: lvalue required as left operand of assignment
+   porffor-u.c:7800:42: error: incompatible type for argument 1 of 'p_builtins___Porffor_print'
+   [cc exit 1]
+   (run 2 identical)
+amd64 porffor-cc-ux:
+   [cc exit 0]
+   (run 2 identical)
+
+### Hermes version string
+cloud: Hermes release version: 0.12.0
+arm64: no output (no build for this architecture)
+amd64: Hermes release version: 0.12.0; run 2 identical
+
+### A check on the Chromium sin input: Node.js against glibc (no Claude Code Cloud output exists for this one)
+arm64 node:  sin 5c99c487f2337e3a 3cbb779ceaa3c069 3.811845021115953e-16
+arm64 glibc: sin 5c99c487f2337e3a 3cbb779ceaa3bc42
+amd64 node:  sin 5c99c487f2337e3a 3cbb779ceaa3c069 3.811845021115953e-16
+amd64 glibc: sin 5c99c487f2337e3a 3cbb779ceaa3bc42
+
+### Quanta on arm64 through qemu-aarch64
+NaN store, run 1: exact against the cloud
+number printing, run 1: exact against the cloud
+NaN store, run 2: exact against the cloud
+number printing, run 2: exact against the cloud
+
+# done 2026-11-03T14:50:26+0000

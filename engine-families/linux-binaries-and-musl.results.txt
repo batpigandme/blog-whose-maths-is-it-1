@@ -1,0 +1,31 @@
+# engine:   jsvu Linux binaries (QuickJS-ng 0.17.0, Hermes 0.13.0, XS 10.0.2) and a C program built against musl
+# platform: Linux x86_64, glibc 2.39-0ubuntu8.9 (Ubuntu 24.04); musl 1.2.4-2 (Ubuntu) for the C program
+# obtained: jsvu Linux binaries; musl from Ubuntu's package
+# date:     2026-10-22T12:11:42Z (the original gives 06:11:42-06:00)
+# script:   not in this repository yet (results only for now)
+# captured: copied from an earlier run, not regenerated; section 2 of a longer output, as the only part that bears on this folder; the host's compiler line and the other sections are left out
+
+## 2. What jsvu's Linux binaries link, and QuickJS-ng against musl
+quickjs-0.17.0/qjs: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), static-pie linked
+hermes-0.13.0/hermes-0.13.0: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked
+xs-10.0.2/xs-10.0.2: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked
+quickjs-0.17.0 musl source path in the binary: /home/buildozer/aports/main/musl/src/musl-1.2.6
+xs-10.0.2 maths imports from libm: log2@GLIBC_2.29 
+musl: 1.2.4-2 (Ubuntu), platform.c built with musl-gcc -static
+function     musl = quickjs-ng?     musl = hermes?         musl = glibc?
+Math.acos    yes                    no                     no                    
+Math.asin    yes                    no                     no                    
+Math.atan    yes                    no                     no                    
+Math.atan2   yes                    no                     no                    
+Math.cos     yes                    no                     no                    
+Math.exp     yes                    no                     no                    
+Math.log     yes                    yes                    yes                   
+Math.log10   yes                    no                     no                    
+Math.log2    yes                    yes                    no                    
+Math.pow     yes                    no                     no                    
+Math.sin     yes                    no                     no                    
+Math.tan     yes                    no                     no                    
+
+real	1m22.563s
+user	1m9.750s
+sys	0m11.086s

@@ -1,0 +1,553 @@
+# engine:   25 binaries (the engines and versions named in each row), plus a C program calling the system maths library (macos-libm-c)
+# platform: macOS on a Mac (arm64); the original output does not record the OS version
+# obtained: jsvu, nvm, and builds; see the README
+# date:     2026-10-22T02:05:42Z
+# script:   not in this repository yet (results only for now)
+# captured: copied from an earlier run, not regenerated; a 17-function run against MPFR references; no edits to the table body
+
+# 25 binaries x 17 functions against MPFR; 2026-10-22T02:05:42.682Z
+# per cell: cases exact / at 1 ULP / at 2+ (max), then anything a ULP count would misstate
+
+## Math.acos (6009 cases)
+bare-1.36.0                5850 /   159 /     0 (1)   [18903f7b41ec]
+boa-0.22                   5709 /   300 /     0 (1)   [07207f7532ec]
+duktape-2.7.0              5709 /   300 /     0 (1)   [07207f7532ec]
+engine262                  5850 /   159 /     0 (1)   [73bac672df55]
+hermes-0.13.0              5709 /   300 /     0 (1)   [07207f7532ec]
+javascriptcore-319418      5709 /   300 /     0 (1)   [07207f7532ec]
+javascriptcore-324323      5709 /   300 /     0 (1)   [07207f7532ec]
+jerryscript-3.0.0          5709 /   300 /     0 (1)   [07207f7532ec]
+macos-libm-c               5709 /   300 /     0 (1)   [07207f7532ec]
+mqjs                       5850 /   159 /     0 (1)   [73bac672df55]
+mqjs-soft                  5850 /   159 /     0 (1)   [73bac672df55]
+node-22.22.1               5850 /   159 /     0 (1)   [73bac672df55]
+node-24.19.0               5850 /   159 /     0 (1)   [73bac672df55]
+node-26.12.0               5850 /   159 /     0 (1)   [73bac672df55]
+node-26.7.0                5850 /   159 /     0 (1)   [73bac672df55]
+quickjs-ng-0.17.0          5709 /   300 /     0 (1)   [07207f7532ec]
+spidermonkey-155.0b1       5850 /   159 /     0 (1)   [18903f7b41ec]
+spidermonkey-159.0b5       5850 /   159 /     0 (1)   [18903f7b41ec]
+v8-13.6.233                5850 /   159 /     0 (1)   [18903f7b41ec]
+v8-14.1.146                5850 /   159 /     0 (1)   [18903f7b41ec]
+v8-14.6.202                5850 /   159 /     0 (1)   [18903f7b41ec]
+v8-15.4.8                  6009 /     0 /     0 (0)   [1deb6a6794aa]
+v8-15.8.32                 6009 /     0 /     0 (0)   [1deb6a6794aa]
+xs-10.0.2                  5850 /   159 /     0 (1)   [73bac672df55]
+xs-9.0.0                   5850 /   159 /     0 (1)   [73bac672df55]
+identical-output groups: 4
+  [18903f7b41ec] bare-1.36.0, spidermonkey-155.0b1, spidermonkey-159.0b5, v8-13.6.233, v8-14.1.146, v8-14.6.202
+  [07207f7532ec] boa-0.22, duktape-2.7.0, hermes-0.13.0, javascriptcore-319418, javascriptcore-324323, jerryscript-3.0.0, macos-libm-c, quickjs-ng-0.17.0
+  [73bac672df55] engine262, mqjs, mqjs-soft, node-22.22.1, node-24.19.0, node-26.12.0, node-26.7.0, xs-10.0.2, xs-9.0.0
+  [1deb6a6794aa] v8-15.4.8, v8-15.8.32
+
+## Math.asin (6009 cases)
+bare-1.36.0                5897 /   112 /     0 (1)   [a1c28e03969e]
+boa-0.22                   5921 /    88 /     0 (1)   [f167689d40e5]
+duktape-2.7.0              5921 /    88 /     0 (1)   [f167689d40e5]
+engine262                  5897 /   112 /     0 (1)   [d326c0aa4840]
+hermes-0.13.0              5921 /    88 /     0 (1)   [f167689d40e5]
+javascriptcore-319418      5921 /    88 /     0 (1)   [f167689d40e5]
+javascriptcore-324323      5921 /    88 /     0 (1)   [f167689d40e5]
+jerryscript-3.0.0          5921 /    88 /     0 (1)   [f167689d40e5]
+macos-libm-c               5921 /    88 /     0 (1)   [f167689d40e5]
+mqjs                       5897 /   112 /     0 (1)   [d326c0aa4840]
+mqjs-soft                  5897 /   112 /     0 (1)   [d326c0aa4840]
+node-22.22.1               5897 /   112 /     0 (1)   [d326c0aa4840]
+node-24.19.0               5897 /   112 /     0 (1)   [d326c0aa4840]
+node-26.12.0               5897 /   112 /     0 (1)   [d326c0aa4840]
+node-26.7.0                5897 /   112 /     0 (1)   [d326c0aa4840]
+quickjs-ng-0.17.0          5921 /    88 /     0 (1)   [f167689d40e5]
+spidermonkey-155.0b1       5897 /   112 /     0 (1)   [a1c28e03969e]
+spidermonkey-159.0b5       5897 /   112 /     0 (1)   [a1c28e03969e]
+v8-13.6.233                5897 /   112 /     0 (1)   [a1c28e03969e]
+v8-14.1.146                5897 /   112 /     0 (1)   [a1c28e03969e]
+v8-14.6.202                5897 /   112 /     0 (1)   [a1c28e03969e]
+v8-15.4.8                  6009 /     0 /     0 (0)   [ea4c4e002b84]
+v8-15.8.32                 6009 /     0 /     0 (0)   [ea4c4e002b84]
+xs-10.0.2                  5897 /   112 /     0 (1)   [d326c0aa4840]
+xs-9.0.0                   5897 /   112 /     0 (1)   [d326c0aa4840]
+identical-output groups: 4
+  [a1c28e03969e] bare-1.36.0, spidermonkey-155.0b1, spidermonkey-159.0b5, v8-13.6.233, v8-14.1.146, v8-14.6.202
+  [f167689d40e5] boa-0.22, duktape-2.7.0, hermes-0.13.0, javascriptcore-319418, javascriptcore-324323, jerryscript-3.0.0, macos-libm-c, quickjs-ng-0.17.0
+  [d326c0aa4840] engine262, mqjs, mqjs-soft, node-22.22.1, node-24.19.0, node-26.12.0, node-26.7.0, xs-10.0.2, xs-9.0.0
+  [ea4c4e002b84] v8-15.4.8, v8-15.8.32
+
+## Math.atan (6498 cases)
+bare-1.36.0                6368 /   130 /     0 (1)   [7b3415650fcd]
+boa-0.22                   6276 /   222 /     0 (1)   [0850c8641aae]
+duktape-2.7.0              6276 /   222 /     0 (1)   [0850c8641aae]
+engine262                  6368 /   130 /     0 (1)   [e8cd6d9b84db]
+hermes-0.13.0              6276 /   222 /     0 (1)   [0850c8641aae]
+javascriptcore-319418      6276 /   222 /     0 (1)   [0850c8641aae]
+javascriptcore-324323      6276 /   222 /     0 (1)   [0850c8641aae]
+jerryscript-3.0.0          6276 /   222 /     0 (1)   [0850c8641aae]
+macos-libm-c               6276 /   222 /     0 (1)   [0850c8641aae]
+mqjs                       6368 /   130 /     0 (1)   [e8cd6d9b84db]
+mqjs-soft                  6368 /   130 /     0 (1)   [e8cd6d9b84db]
+node-22.22.1               6368 /   130 /     0 (1)   [e8cd6d9b84db]
+node-24.19.0               6368 /   130 /     0 (1)   [e8cd6d9b84db]
+node-26.12.0               6368 /   130 /     0 (1)   [e8cd6d9b84db]
+node-26.7.0                6368 /   130 /     0 (1)   [e8cd6d9b84db]
+quickjs-ng-0.17.0          6276 /   222 /     0 (1)   [0850c8641aae]
+spidermonkey-155.0b1       6368 /   130 /     0 (1)   [7b3415650fcd]
+spidermonkey-159.0b5       6368 /   130 /     0 (1)   [7b3415650fcd]
+v8-13.6.233                6368 /   130 /     0 (1)   [7b3415650fcd]
+v8-14.1.146                6368 /   130 /     0 (1)   [7b3415650fcd]
+v8-14.6.202                6368 /   130 /     0 (1)   [7b3415650fcd]
+v8-15.4.8                  6362 /   136 /     0 (1)   [dfeb183ada38]
+v8-15.8.32                 6362 /   136 /     0 (1)   [dfeb183ada38]
+xs-10.0.2                  6368 /   130 /     0 (1)   [e8cd6d9b84db]
+xs-9.0.0                   6368 /   130 /     0 (1)   [e8cd6d9b84db]
+identical-output groups: 4
+  [7b3415650fcd] bare-1.36.0, spidermonkey-155.0b1, spidermonkey-159.0b5, v8-13.6.233, v8-14.1.146, v8-14.6.202
+  [0850c8641aae] boa-0.22, duktape-2.7.0, hermes-0.13.0, javascriptcore-319418, javascriptcore-324323, jerryscript-3.0.0, macos-libm-c, quickjs-ng-0.17.0
+  [e8cd6d9b84db] engine262, mqjs, mqjs-soft, node-22.22.1, node-24.19.0, node-26.12.0, node-26.7.0, xs-10.0.2, xs-9.0.0
+  [dfeb183ada38] v8-15.4.8, v8-15.8.32
+
+## Math.atan2 (7003 cases)
+bare-1.36.0                5776 /  1227 /     0 (1)   [25a21f4cf501]
+boa-0.22                   6863 /   140 /     0 (1)   [5a0082229750]
+duktape-2.7.0              6863 /   140 /     0 (1)   [5a0082229750]
+engine262                  5776 /  1227 /     0 (1)   [3d1a6ab6f8a9]
+hermes-0.13.0              6863 /   140 /     0 (1)   [5a0082229750]
+javascriptcore-319418      6863 /   140 /     0 (1)   [5a0082229750]
+javascriptcore-324323      6863 /   140 /     0 (1)   [5a0082229750]
+jerryscript-3.0.0          6863 /   140 /     0 (1)   [5a0082229750]
+macos-libm-c               6863 /   140 /     0 (1)   [5a0082229750]
+mqjs                       5776 /  1227 /     0 (1)   [3d1a6ab6f8a9]
+mqjs-soft                  5776 /  1227 /     0 (1)   [3d1a6ab6f8a9]
+node-22.22.1               5776 /  1227 /     0 (1)   [3d1a6ab6f8a9]
+node-24.19.0               5776 /  1227 /     0 (1)   [3d1a6ab6f8a9]
+node-26.12.0               5776 /  1227 /     0 (1)   [3d1a6ab6f8a9]
+node-26.7.0                5776 /  1227 /     0 (1)   [3d1a6ab6f8a9]
+quickjs-ng-0.17.0          6863 /   140 /     0 (1)   [5a0082229750]
+spidermonkey-155.0b1       5776 /  1227 /     0 (1)   [25a21f4cf501]
+spidermonkey-159.0b5       5776 /  1227 /     0 (1)   [25a21f4cf501]
+v8-13.6.233                5776 /  1227 /     0 (1)   [25a21f4cf501]
+v8-14.1.146                5776 /  1227 /     0 (1)   [25a21f4cf501]
+v8-14.6.202                5776 /  1227 /     0 (1)   [25a21f4cf501]
+v8-15.4.8                  7003 /     0 /     0 (0)   [82911ed2a51a]
+v8-15.8.32                 7003 /     0 /     0 (0)   [82911ed2a51a]
+xs-10.0.2                  5776 /  1227 /     0 (1)   [3d1a6ab6f8a9]
+xs-9.0.0                   5776 /  1227 /     0 (1)   [3d1a6ab6f8a9]
+identical-output groups: 4
+  [25a21f4cf501] bare-1.36.0, spidermonkey-155.0b1, spidermonkey-159.0b5, v8-13.6.233, v8-14.1.146, v8-14.6.202
+  [5a0082229750] boa-0.22, duktape-2.7.0, hermes-0.13.0, javascriptcore-319418, javascriptcore-324323, jerryscript-3.0.0, macos-libm-c, quickjs-ng-0.17.0
+  [3d1a6ab6f8a9] engine262, mqjs, mqjs-soft, node-22.22.1, node-24.19.0, node-26.12.0, node-26.7.0, xs-10.0.2, xs-9.0.0
+  [82911ed2a51a] v8-15.4.8, v8-15.8.32
+
+## Math.cos (23995 cases)
+bare-1.36.0               23937 /    58 /     0 (1)   [2210fefe97d7]
+boa-0.22                  23055 /   940 /     0 (1)   [2cef4fcf0f1b]
+duktape-2.7.0             23055 /   940 /     0 (1)   [2cef4fcf0f1b]
+engine262                 23159 /   836 /     0 (1)   [192e41c62397]
+hermes-0.13.0             23055 /   940 /     0 (1)   [2cef4fcf0f1b]
+javascriptcore-319418     23055 /   940 /     0 (1)   [2cef4fcf0f1b]
+javascriptcore-324323     23055 /   940 /     0 (1)   [2cef4fcf0f1b]
+jerryscript-3.0.0         23055 /   940 /     0 (1)   [2cef4fcf0f1b]
+macos-libm-c              23055 /   940 /     0 (1)   [2cef4fcf0f1b]
+mqjs                      23159 /   836 /     0 (1)   [55b5c48872e7]
+mqjs-soft                 23179 /   816 /     0 (1)   [980f2456b7d2]
+node-22.22.1              23159 /   836 /     0 (1)   [192e41c62397]
+node-24.19.0              23159 /   836 /     0 (1)   [192e41c62397]
+node-26.12.0              23159 /   836 /     0 (1)   [192e41c62397]
+node-26.7.0               23159 /   836 /     0 (1)   [192e41c62397]
+quickjs-ng-0.17.0         23055 /   940 /     0 (1)   [2cef4fcf0f1b]
+spidermonkey-155.0b1      23055 /   940 /     0 (1)   [2cef4fcf0f1b]
+spidermonkey-159.0b5      23055 /   940 /     0 (1)   [2cef4fcf0f1b]
+v8-13.6.233               23937 /    58 /     0 (1)   [2210fefe97d7]
+v8-14.1.146               23937 /    58 /     0 (1)   [2210fefe97d7]
+v8-14.6.202               23937 /    58 /     0 (1)   [2210fefe97d7]
+v8-15.4.8                 23995 /     0 /     0 (0)   [4fb8f11173b5]
+v8-15.8.32                23995 /     0 /     0 (0)   [4fb8f11173b5]
+xs-10.0.2                 23217 /   778 /     0 (1)   [b98d6ee917c9]
+xs-9.0.0                  23217 /   778 /     0 (1)   [b98d6ee917c9]
+identical-output groups: 7
+  [2210fefe97d7] bare-1.36.0, v8-13.6.233, v8-14.1.146, v8-14.6.202
+  [2cef4fcf0f1b] boa-0.22, duktape-2.7.0, hermes-0.13.0, javascriptcore-319418, javascriptcore-324323, jerryscript-3.0.0, macos-libm-c, quickjs-ng-0.17.0, spidermonkey-155.0b1, spidermonkey-159.0b5
+  [192e41c62397] engine262, node-22.22.1, node-24.19.0, node-26.12.0, node-26.7.0
+  [55b5c48872e7] mqjs
+  [980f2456b7d2] mqjs-soft
+  [4fb8f11173b5] v8-15.4.8, v8-15.8.32
+  [b98d6ee917c9] xs-10.0.2, xs-9.0.0
+
+## Math.exp (4996 cases)
+bare-1.36.0                4592 /   404 /     0 (1)   [6bc09d4870e0]
+boa-0.22                   4990 /     6 /     0 (1)   [0c75c5d23150]
+duktape-2.7.0              4990 /     6 /     0 (1)   [0c75c5d23150]
+engine262                  4590 /   406 /     0 (1)   [c62440030e5f]
+hermes-0.13.0              4990 /     6 /     0 (1)   [0c75c5d23150]
+javascriptcore-319418      4990 /     6 /     0 (1)   [0c75c5d23150]
+javascriptcore-324323      4990 /     6 /     0 (1)   [0c75c5d23150]
+jerryscript-3.0.0          4990 /     6 /     0 (1)   [0c75c5d23150]
+macos-libm-c               4990 /     6 /     0 (1)   [0c75c5d23150]
+mqjs                       4589 /   407 /     0 (1)   [416b4300c65b]
+mqjs-soft                  4589 /   407 /     0 (1)   [416b4300c65b]
+node-22.22.1               4590 /   406 /     0 (1)   [c62440030e5f]
+node-24.19.0               4590 /   406 /     0 (1)   [c62440030e5f]
+node-26.12.0               4590 /   406 /     0 (1)   [c62440030e5f]
+node-26.7.0                4590 /   406 /     0 (1)   [c62440030e5f]
+quickjs-ng-0.17.0          4990 /     6 /     0 (1)   [0c75c5d23150]
+spidermonkey-155.0b1       4592 /   404 /     0 (1)   [6bc09d4870e0]
+spidermonkey-159.0b5       4592 /   404 /     0 (1)   [6bc09d4870e0]
+v8-13.6.233                4592 /   404 /     0 (1)   [6bc09d4870e0]
+v8-14.1.146                4592 /   404 /     0 (1)   [6bc09d4870e0]
+v8-14.6.202                4592 /   404 /     0 (1)   [6bc09d4870e0]
+v8-15.4.8                  4996 /     0 /     0 (0)   [d9c925a2079a]
+v8-15.8.32                 4996 /     0 /     0 (0)   [d9c925a2079a]
+xs-10.0.2                  4590 /   406 /     0 (1)   [c62440030e5f]
+xs-9.0.0                   4590 /   406 /     0 (1)   [c62440030e5f]
+identical-output groups: 5
+  [6bc09d4870e0] bare-1.36.0, spidermonkey-155.0b1, spidermonkey-159.0b5, v8-13.6.233, v8-14.1.146, v8-14.6.202
+  [0c75c5d23150] boa-0.22, duktape-2.7.0, hermes-0.13.0, javascriptcore-319418, javascriptcore-324323, jerryscript-3.0.0, macos-libm-c, quickjs-ng-0.17.0
+  [c62440030e5f] engine262, node-22.22.1, node-24.19.0, node-26.12.0, node-26.7.0, xs-10.0.2, xs-9.0.0
+  [416b4300c65b] mqjs, mqjs-soft
+  [d9c925a2079a] v8-15.4.8, v8-15.8.32
+
+## Math.fround (167035 cases)
+bare-1.36.0              167035 /     0 /     0 (0)   [c48bcab9842b]
+boa-0.22                 167035 /     0 /     0 (0)   [c48bcab9842b]
+duktape-2.7.0           INCOMPLETE: 420 of 167035 lines
+engine262                167035 /     0 /     0 (0)   [c48bcab9842b]
+hermes-0.13.0            167035 /     0 /     0 (0)   [c48bcab9842b]
+javascriptcore-319418    167035 /     0 /     0 (0)   [c48bcab9842b]
+javascriptcore-324323    167035 /     0 /     0 (0)   [c48bcab9842b]
+jerryscript-3.0.0        167035 /     0 /     0 (0)   [c48bcab9842b]
+macos-libm-c             167035 /     0 /     0 (0)   [c48bcab9842b]
+mqjs                     167035 /     0 /     0 (0)   [c48bcab9842b]
+mqjs-soft                167035 /     0 /     0 (0)   [c48bcab9842b]
+node-22.22.1             167035 /     0 /     0 (0)   [c48bcab9842b]
+node-24.19.0             167035 /     0 /     0 (0)   [c48bcab9842b]
+node-26.12.0             167035 /     0 /     0 (0)   [c48bcab9842b]
+node-26.7.0              167035 /     0 /     0 (0)   [c48bcab9842b]
+quickjs-ng-0.17.0        167035 /     0 /     0 (0)   [c48bcab9842b]
+spidermonkey-155.0b1     167035 /     0 /     0 (0)   [c48bcab9842b]
+spidermonkey-159.0b5     167035 /     0 /     0 (0)   [c48bcab9842b]
+v8-13.6.233              167035 /     0 /     0 (0)   [c48bcab9842b]
+v8-14.1.146              167035 /     0 /     0 (0)   [c48bcab9842b]
+v8-14.6.202              167035 /     0 /     0 (0)   [c48bcab9842b]
+v8-15.4.8                167035 /     0 /     0 (0)   [c48bcab9842b]
+v8-15.8.32               167035 /     0 /     0 (0)   [c48bcab9842b]
+xs-10.0.2                167035 /     0 /     0 (0)   [c48bcab9842b]
+xs-9.0.0                 167035 /     0 /     0 (0)   [c48bcab9842b]
+identical-output groups: 2
+  [c48bcab9842b] bare-1.36.0, boa-0.22, engine262, hermes-0.13.0, javascriptcore-319418, javascriptcore-324323, jerryscript-3.0.0, macos-libm-c, mqjs, mqjs-soft, node-22.22.1, node-24.19.0, node-26.12.0, node-26.7.0, quickjs-ng-0.17.0, spidermonkey-155.0b1, spidermonkey-159.0b5, v8-13.6.233, v8-14.1.146, v8-14.6.202, v8-15.4.8, v8-15.8.32, xs-10.0.2, xs-9.0.0
+  [37f222ea7c5e] duktape-2.7.0
+
+## Math.log (3495 cases)
+bare-1.36.0                3359 /   136 /     0 (1)   [bb48bd99fa32]
+boa-0.22                   3493 /     2 /     0 (1)   [f12fa34f59d8]
+duktape-2.7.0              3493 /     2 /     0 (1)   [f12fa34f59d8]
+engine262                  3365 /   130 /     0 (1)   [46a23c37a90e]
+hermes-0.13.0              3493 /     2 /     0 (1)   [f12fa34f59d8]
+javascriptcore-319418      3493 /     2 /     0 (1)   [f12fa34f59d8]
+javascriptcore-324323      3493 /     2 /     0 (1)   [f12fa34f59d8]
+jerryscript-3.0.0          3493 /     2 /     0 (1)   [f12fa34f59d8]
+macos-libm-c               3493 /     2 /     0 (1)   [f12fa34f59d8]
+mqjs                       3495 /     0 /     0 (0)   [3838847db31a]
+mqjs-soft                  3495 /     0 /     0 (0)   [3838847db31a]
+node-22.22.1               3365 /   130 /     0 (1)   [46a23c37a90e]
+node-24.19.0               3365 /   130 /     0 (1)   [46a23c37a90e]
+node-26.12.0               3365 /   130 /     0 (1)   [46a23c37a90e]
+node-26.7.0                3365 /   130 /     0 (1)   [46a23c37a90e]
+quickjs-ng-0.17.0          3493 /     2 /     0 (1)   [f12fa34f59d8]
+spidermonkey-155.0b1       3359 /   136 /     0 (1)   [bb48bd99fa32]
+spidermonkey-159.0b5       3359 /   136 /     0 (1)   [bb48bd99fa32]
+v8-13.6.233                3359 /   136 /     0 (1)   [bb48bd99fa32]
+v8-14.1.146                3359 /   136 /     0 (1)   [bb48bd99fa32]
+v8-14.6.202                3359 /   136 /     0 (1)   [bb48bd99fa32]
+v8-15.4.8                  3495 /     0 /     0 (0)   [3838847db31a]
+v8-15.8.32                 3495 /     0 /     0 (0)   [3838847db31a]
+xs-10.0.2                  3365 /   130 /     0 (1)   [46a23c37a90e]
+xs-9.0.0                   3365 /   130 /     0 (1)   [46a23c37a90e]
+identical-output groups: 4
+  [bb48bd99fa32] bare-1.36.0, spidermonkey-155.0b1, spidermonkey-159.0b5, v8-13.6.233, v8-14.1.146, v8-14.6.202
+  [f12fa34f59d8] boa-0.22, duktape-2.7.0, hermes-0.13.0, javascriptcore-319418, javascriptcore-324323, jerryscript-3.0.0, macos-libm-c, quickjs-ng-0.17.0
+  [46a23c37a90e] engine262, node-22.22.1, node-24.19.0, node-26.12.0, node-26.7.0, xs-10.0.2, xs-9.0.0
+  [3838847db31a] mqjs, mqjs-soft, v8-15.4.8, v8-15.8.32
+
+## Math.log10 (3495 cases)
+bare-1.36.0                3206 /   289 /     0 (1)   [d03186a494dc]
+boa-0.22                   3495 /     0 /     0 (0)   [f96305b75f92]
+duktape-2.7.0              3495 /     0 /     0 (0)   [f96305b75f92]
+engine262                  3203 /   292 /     0 (1)   [9baa07cb1682]
+hermes-0.13.0              3495 /     0 /     0 (0)   [f96305b75f92]
+javascriptcore-319418      3495 /     0 /     0 (0)   [f96305b75f92]
+javascriptcore-324323      3495 /     0 /     0 (0)   [f96305b75f92]
+jerryscript-3.0.0          3495 /     0 /     0 (0)   [f96305b75f92]
+macos-libm-c               3495 /     0 /     0 (0)   [f96305b75f92]
+mqjs                       3495 /     0 /     0 (0)   [f96305b75f92]
+mqjs-soft                  3495 /     0 /     0 (0)   [f96305b75f92]
+node-22.22.1               3203 /   292 /     0 (1)   [9baa07cb1682]
+node-24.19.0               3203 /   292 /     0 (1)   [9baa07cb1682]
+node-26.12.0               3203 /   292 /     0 (1)   [9baa07cb1682]
+node-26.7.0                3203 /   292 /     0 (1)   [9baa07cb1682]
+quickjs-ng-0.17.0          3495 /     0 /     0 (0)   [f96305b75f92]
+spidermonkey-155.0b1       3478 /    17 /     0 (1)   [e3473ec389e4]
+spidermonkey-159.0b5       3478 /    17 /     0 (1)   [e3473ec389e4]
+v8-13.6.233                3206 /   289 /     0 (1)   [d03186a494dc]
+v8-14.1.146                3206 /   289 /     0 (1)   [d03186a494dc]
+v8-14.6.202                3206 /   289 /     0 (1)   [d03186a494dc]
+v8-15.4.8                  3495 /     0 /     0 (0)   [f96305b75f92]
+v8-15.8.32                 3495 /     0 /     0 (0)   [f96305b75f92]
+xs-10.0.2                  3480 /    15 /     0 (1)   [a14e9075afe6]
+xs-9.0.0                   3480 /    15 /     0 (1)   [a14e9075afe6]
+identical-output groups: 5
+  [d03186a494dc] bare-1.36.0, v8-13.6.233, v8-14.1.146, v8-14.6.202
+  [f96305b75f92] boa-0.22, duktape-2.7.0, hermes-0.13.0, javascriptcore-319418, javascriptcore-324323, jerryscript-3.0.0, macos-libm-c, mqjs, mqjs-soft, quickjs-ng-0.17.0, v8-15.4.8, v8-15.8.32
+  [9baa07cb1682] engine262, node-22.22.1, node-24.19.0, node-26.12.0, node-26.7.0
+  [e3473ec389e4] spidermonkey-155.0b1, spidermonkey-159.0b5
+  [a14e9075afe6] xs-10.0.2, xs-9.0.0
+
+## Math.log2 (3499 cases)
+bare-1.36.0                3486 /    13 /     0 (1)   [cbe1a9e9ef32]
+boa-0.22                   3498 /     1 /     0 (1)   [9335870f5733]
+duktape-2.7.0              3498 /     1 /     0 (1)   [9335870f5733]
+engine262                  3486 /    13 /     0 (1)   [cbe1a9e9ef32]
+hermes-0.13.0              3498 /     1 /     0 (1)   [9335870f5733]
+javascriptcore-319418      3498 /     1 /     0 (1)   [9335870f5733]
+javascriptcore-324323      3498 /     1 /     0 (1)   [9335870f5733]
+jerryscript-3.0.0          3498 /     1 /     0 (1)   [9335870f5733]
+macos-libm-c               3498 /     1 /     0 (1)   [9335870f5733]
+mqjs                       3499 /     0 /     0 (0)   [f995d31c3879]
+mqjs-soft                  3499 /     0 /     0 (0)   [f995d31c3879]
+node-22.22.1               3486 /    13 /     0 (1)   [cbe1a9e9ef32]
+node-24.19.0               3486 /    13 /     0 (1)   [cbe1a9e9ef32]
+node-26.12.0               3486 /    13 /     0 (1)   [cbe1a9e9ef32]
+node-26.7.0                3486 /    13 /     0 (1)   [cbe1a9e9ef32]
+quickjs-ng-0.17.0          3498 /     1 /     0 (1)   [9335870f5733]
+spidermonkey-155.0b1       3486 /    13 /     0 (1)   [cbe1a9e9ef32]
+spidermonkey-159.0b5       3486 /    13 /     0 (1)   [cbe1a9e9ef32]
+v8-13.6.233                3486 /    13 /     0 (1)   [cbe1a9e9ef32]
+v8-14.1.146                3486 /    13 /     0 (1)   [cbe1a9e9ef32]
+v8-14.6.202                3486 /    13 /     0 (1)   [cbe1a9e9ef32]
+v8-15.4.8                  3499 /     0 /     0 (0)   [f995d31c3879]
+v8-15.8.32                 3499 /     0 /     0 (0)   [f995d31c3879]
+xs-10.0.2                  3498 /     1 /     0 (1)   [9335870f5733]
+xs-9.0.0                   3498 /     1 /     0 (1)   [9335870f5733]
+identical-output groups: 3
+  [cbe1a9e9ef32] bare-1.36.0, engine262, node-22.22.1, node-24.19.0, node-26.12.0, node-26.7.0, spidermonkey-155.0b1, spidermonkey-159.0b5, v8-13.6.233, v8-14.1.146, v8-14.6.202
+  [9335870f5733] boa-0.22, duktape-2.7.0, hermes-0.13.0, javascriptcore-319418, javascriptcore-324323, jerryscript-3.0.0, macos-libm-c, quickjs-ng-0.17.0, xs-10.0.2, xs-9.0.0
+  [f995d31c3879] mqjs, mqjs-soft, v8-15.4.8, v8-15.8.32
+
+## Math.pow (69633 cases)
+bare-1.36.0               69517 /   116 /     0 (1)   [b49eecd31d43]
+boa-0.22                  69515 /   118 /     0 (1)   [a42416e05abc]
+duktape-2.7.0             69515 /   118 /     0 (1)   [a42416e05abc]
+engine262                 69517 /   116 /     0 (1)   [b49eecd31d43]
+hermes-0.13.0             69515 /   118 /     0 (1)   [a42416e05abc]
+javascriptcore-319418     60834 /  3704 /  5095 (51)   [d8ea61d8c0c7]
+javascriptcore-324323     60834 /  3704 /  5095 (51)   [d8ea61d8c0c7]
+jerryscript-3.0.0         69515 /   118 /     0 (1)   [a42416e05abc]
+macos-libm-c              69515 /   118 /     0 (1)   [a42416e05abc]
+mqjs                      65359 /  4274 /     0 (1)   [758b9f022958]
+mqjs-soft                 65359 /  4274 /     0 (1)   [758b9f022958]
+node-22.22.1              65216 /  4417 /     0 (1)   [39f262a540e9]
+node-24.19.0              69517 /   116 /     0 (1)   [b49eecd31d43]
+node-26.12.0              69517 /   116 /     0 (1)   [b49eecd31d43]
+node-26.7.0               69517 /   116 /     0 (1)   [b49eecd31d43]
+quickjs-ng-0.17.0         69515 /   118 /     0 (1)   [a42416e05abc]
+spidermonkey-155.0b1      67994 /  1622 /    17 (2)   [1b256f36f686]
+spidermonkey-159.0b5      67994 /  1622 /    17 (2)   [1b256f36f686]
+v8-13.6.233               69517 /   116 /     0 (1)   [b49eecd31d43]
+v8-14.1.146               69517 /   116 /     0 (1)   [b49eecd31d43]
+v8-14.6.202               69517 /   116 /     0 (1)   [b49eecd31d43]
+v8-15.4.8                 69517 /   116 /     0 (1)   [b49eecd31d43]
+v8-15.8.32                69517 /   116 /     0 (1)   [b49eecd31d43]
+xs-10.0.2                 65359 /  4274 /     0 (1)   [758b9f022958]
+xs-9.0.0                  65359 /  4274 /     0 (1)   [758b9f022958]
+identical-output groups: 6
+  [b49eecd31d43] bare-1.36.0, engine262, node-24.19.0, node-26.12.0, node-26.7.0, v8-13.6.233, v8-14.1.146, v8-14.6.202, v8-15.4.8, v8-15.8.32
+  [a42416e05abc] boa-0.22, duktape-2.7.0, hermes-0.13.0, jerryscript-3.0.0, macos-libm-c, quickjs-ng-0.17.0
+  [d8ea61d8c0c7] javascriptcore-319418, javascriptcore-324323
+  [758b9f022958] mqjs, mqjs-soft, xs-10.0.2, xs-9.0.0
+  [39f262a540e9] node-22.22.1
+  [1b256f36f686] spidermonkey-155.0b1, spidermonkey-159.0b5
+
+## Math.sin (23995 cases)
+bare-1.36.0               23963 /    32 /     0 (1)   [b4f600342682]
+boa-0.22                  23001 /   994 /     0 (1)   [049b5d0c3055]
+duktape-2.7.0             23001 /   994 /     0 (1)   [049b5d0c3055]
+engine262                 23217 /   778 /     0 (1)   [3c84824eafe1]
+hermes-0.13.0             23001 /   994 /     0 (1)   [049b5d0c3055]
+javascriptcore-319418     23001 /   994 /     0 (1)   [049b5d0c3055]
+javascriptcore-324323     23001 /   994 /     0 (1)   [049b5d0c3055]
+jerryscript-3.0.0         23001 /   994 /     0 (1)   [049b5d0c3055]
+macos-libm-c              23001 /   994 /     0 (1)   [049b5d0c3055]
+mqjs                      23231 /   764 /     0 (1)   [08e6104cfea4]
+mqjs-soft                 23225 /   770 /     0 (1)   [2b8af651e841]
+node-22.22.1              23217 /   778 /     0 (1)   [3c84824eafe1]
+node-24.19.0              23217 /   778 /     0 (1)   [3c84824eafe1]
+node-26.12.0              23217 /   778 /     0 (1)   [3c84824eafe1]
+node-26.7.0               23217 /   778 /     0 (1)   [3c84824eafe1]
+quickjs-ng-0.17.0         23001 /   994 /     0 (1)   [049b5d0c3055]
+spidermonkey-155.0b1      23001 /   994 /     0 (1)   [049b5d0c3055]
+spidermonkey-159.0b5      23001 /   994 /     0 (1)   [049b5d0c3055]
+v8-13.6.233               23963 /    32 /     0 (1)   [b4f600342682]
+v8-14.1.146               23963 /    32 /     0 (1)   [b4f600342682]
+v8-14.6.202               23963 /    32 /     0 (1)   [b4f600342682]
+v8-15.4.8                 23995 /     0 /     0 (0)   [5db4fedf3dc9]
+v8-15.8.32                23995 /     0 /     0 (0)   [5db4fedf3dc9]
+xs-10.0.2                 23259 /   736 /     0 (1)   [3ad92615847c]
+xs-9.0.0                  23259 /   736 /     0 (1)   [3ad92615847c]
+identical-output groups: 7
+  [b4f600342682] bare-1.36.0, v8-13.6.233, v8-14.1.146, v8-14.6.202
+  [049b5d0c3055] boa-0.22, duktape-2.7.0, hermes-0.13.0, javascriptcore-319418, javascriptcore-324323, jerryscript-3.0.0, macos-libm-c, quickjs-ng-0.17.0, spidermonkey-155.0b1, spidermonkey-159.0b5
+  [3c84824eafe1] engine262, node-22.22.1, node-24.19.0, node-26.12.0, node-26.7.0
+  [08e6104cfea4] mqjs
+  [2b8af651e841] mqjs-soft
+  [5db4fedf3dc9] v8-15.4.8, v8-15.8.32
+  [3ad92615847c] xs-10.0.2, xs-9.0.0
+
+## Math.sqrt (40019 cases)
+bare-1.36.0               40019 /     0 /     0 (0)   [07ac46f484c5]
+boa-0.22                  40019 /     0 /     0 (0)   [07ac46f484c5]
+duktape-2.7.0             40019 /     0 /     0 (0)   [07ac46f484c5]
+engine262                 40019 /     0 /     0 (0)   [07ac46f484c5]
+hermes-0.13.0             40019 /     0 /     0 (0)   [07ac46f484c5]
+javascriptcore-319418     40019 /     0 /     0 (0)   [07ac46f484c5]
+javascriptcore-324323     40019 /     0 /     0 (0)   [07ac46f484c5]
+jerryscript-3.0.0         40019 /     0 /     0 (0)   [07ac46f484c5]
+macos-libm-c              40019 /     0 /     0 (0)   [07ac46f484c5]
+mqjs                      40019 /     0 /     0 (0)   [07ac46f484c5]
+mqjs-soft                 40019 /     0 /     0 (0)   [07ac46f484c5]
+node-22.22.1              40019 /     0 /     0 (0)   [07ac46f484c5]
+node-24.19.0              40019 /     0 /     0 (0)   [07ac46f484c5]
+node-26.12.0              40019 /     0 /     0 (0)   [07ac46f484c5]
+node-26.7.0               40019 /     0 /     0 (0)   [07ac46f484c5]
+quickjs-ng-0.17.0         40019 /     0 /     0 (0)   [07ac46f484c5]
+spidermonkey-155.0b1      40019 /     0 /     0 (0)   [07ac46f484c5]
+spidermonkey-159.0b5      40019 /     0 /     0 (0)   [07ac46f484c5]
+v8-13.6.233               40019 /     0 /     0 (0)   [07ac46f484c5]
+v8-14.1.146               40019 /     0 /     0 (0)   [07ac46f484c5]
+v8-14.6.202               40019 /     0 /     0 (0)   [07ac46f484c5]
+v8-15.4.8                 40019 /     0 /     0 (0)   [07ac46f484c5]
+v8-15.8.32                40019 /     0 /     0 (0)   [07ac46f484c5]
+xs-10.0.2                 40019 /     0 /     0 (0)   [07ac46f484c5]
+xs-9.0.0                  40019 /     0 /     0 (0)   [07ac46f484c5]
+identical-output groups: 1
+  [07ac46f484c5] bare-1.36.0, boa-0.22, duktape-2.7.0, engine262, hermes-0.13.0, javascriptcore-319418, javascriptcore-324323, jerryscript-3.0.0, macos-libm-c, mqjs, mqjs-soft, node-22.22.1, node-24.19.0, node-26.12.0, node-26.7.0, quickjs-ng-0.17.0, spidermonkey-155.0b1, spidermonkey-159.0b5, v8-13.6.233, v8-14.1.146, v8-14.6.202, v8-15.4.8, v8-15.8.32, xs-10.0.2, xs-9.0.0
+
+## Math.tan (12492 cases)
+bare-1.36.0               12072 /   420 /     0 (1)   [0b2f1116d03d]
+boa-0.22                   8040 /  4270 /   182 (2)   [1c2c17589f64]
+duktape-2.7.0              8040 /  4270 /   182 (2)   [1c2c17589f64]
+engine262                 12108 /   384 /     0 (1)   [1766e9ad85d5]
+hermes-0.13.0              8040 /  4270 /   182 (2)   [1c2c17589f64]
+javascriptcore-319418      8040 /  4270 /   182 (2)   [1c2c17589f64]
+javascriptcore-324323      8040 /  4270 /   182 (2)   [1c2c17589f64]
+jerryscript-3.0.0          8040 /  4270 /   182 (2)   [1c2c17589f64]
+macos-libm-c               8040 /  4270 /   182 (2)   [1c2c17589f64]
+mqjs                       9048 /  3432 /    12 (2)   [9936a1113204]
+mqjs-soft                  9026 /  3452 /    14 (2)   [0a60e779e0d4]
+node-22.22.1              12108 /   384 /     0 (1)   [1766e9ad85d5]
+node-24.19.0              12108 /   384 /     0 (1)   [1766e9ad85d5]
+node-26.12.0              12108 /   384 /     0 (1)   [1766e9ad85d5]
+node-26.7.0               12108 /   384 /     0 (1)   [1766e9ad85d5]
+quickjs-ng-0.17.0          8040 /  4270 /   182 (2)   [1c2c17589f64]
+spidermonkey-155.0b1       8040 /  4270 /   182 (2)   [1c2c17589f64]
+spidermonkey-159.0b5       8040 /  4270 /   182 (2)   [1c2c17589f64]
+v8-13.6.233               12072 /   420 /     0 (1)   [0b2f1116d03d]
+v8-14.1.146               12072 /   420 /     0 (1)   [0b2f1116d03d]
+v8-14.6.202               12072 /   420 /     0 (1)   [0b2f1116d03d]
+v8-15.4.8                 12492 /     0 /     0 (0)   [c512b9ae53d2]
+v8-15.8.32                12492 /     0 /     0 (0)   [c512b9ae53d2]
+xs-10.0.2                 12108 /   384 /     0 (1)   [1766e9ad85d5]
+xs-9.0.0                  12108 /   384 /     0 (1)   [1766e9ad85d5]
+identical-output groups: 6
+  [0b2f1116d03d] bare-1.36.0, v8-13.6.233, v8-14.1.146, v8-14.6.202
+  [1c2c17589f64] boa-0.22, duktape-2.7.0, hermes-0.13.0, javascriptcore-319418, javascriptcore-324323, jerryscript-3.0.0, macos-libm-c, quickjs-ng-0.17.0, spidermonkey-155.0b1, spidermonkey-159.0b5
+  [1766e9ad85d5] engine262, node-22.22.1, node-24.19.0, node-26.12.0, node-26.7.0, xs-10.0.2, xs-9.0.0
+  [9936a1113204] mqjs
+  [0a60e779e0d4] mqjs-soft
+  [c512b9ae53d2] v8-15.4.8, v8-15.8.32
+
+## erf (5944 cases)
+bare-1.36.0                5752 /   192 /     0 (1)   [afb68e718d9c]
+boa-0.22                   5752 /   192 /     0 (1)   [afb68e718d9c]
+duktape-2.7.0              5752 /   192 /     0 (1)   [afb68e718d9c]
+engine262                  5752 /   192 /     0 (1)   [afb68e718d9c]
+hermes-0.13.0              5752 /   192 /     0 (1)   [afb68e718d9c]
+javascriptcore-319418      5752 /   192 /     0 (1)   [afb68e718d9c]
+javascriptcore-324323      5752 /   192 /     0 (1)   [afb68e718d9c]
+jerryscript-3.0.0          5752 /   192 /     0 (1)   [afb68e718d9c]
+macos-libm-c               4365 /  1509 /    70 (2)   [514ab4e5a299]
+mqjs                       5752 /   192 /     0 (1)   [afb68e718d9c]
+mqjs-soft                  5752 /   192 /     0 (1)   [afb68e718d9c]
+node-22.22.1               5752 /   192 /     0 (1)   [afb68e718d9c]
+node-24.19.0               5752 /   192 /     0 (1)   [afb68e718d9c]
+node-26.12.0               5752 /   192 /     0 (1)   [afb68e718d9c]
+node-26.7.0                5752 /   192 /     0 (1)   [afb68e718d9c]
+quickjs-ng-0.17.0          5752 /   192 /     0 (1)   [afb68e718d9c]
+spidermonkey-155.0b1       5752 /   192 /     0 (1)   [afb68e718d9c]
+spidermonkey-159.0b5       5752 /   192 /     0 (1)   [afb68e718d9c]
+v8-13.6.233                5752 /   192 /     0 (1)   [afb68e718d9c]
+v8-14.1.146                5752 /   192 /     0 (1)   [afb68e718d9c]
+v8-14.6.202                5752 /   192 /     0 (1)   [afb68e718d9c]
+v8-15.4.8                  5752 /   192 /     0 (1)   [afb68e718d9c]
+v8-15.8.32                 5752 /   192 /     0 (1)   [afb68e718d9c]
+xs-10.0.2                  5752 /   192 /     0 (1)   [afb68e718d9c]
+xs-9.0.0                   5752 /   192 /     0 (1)   [afb68e718d9c]
+identical-output groups: 2
+  [afb68e718d9c] bare-1.36.0, boa-0.22, duktape-2.7.0, engine262, hermes-0.13.0, javascriptcore-319418, javascriptcore-324323, jerryscript-3.0.0, mqjs, mqjs-soft, node-22.22.1, node-24.19.0, node-26.12.0, node-26.7.0, quickjs-ng-0.17.0, spidermonkey-155.0b1, spidermonkey-159.0b5, v8-13.6.233, v8-14.1.146, v8-14.6.202, v8-15.4.8, v8-15.8.32, xs-10.0.2, xs-9.0.0
+  [514ab4e5a299] macos-libm-c
+
+## gamma (2971 cases)
+bare-1.36.0                1140 /  1370 /   461 (5)   [569296411619]
+boa-0.22                   1140 /  1370 /   461 (5)   [569296411619]
+duktape-2.7.0              1140 /  1370 /   461 (5)   [569296411619]
+engine262                  1140 /  1370 /   461 (5)   [569296411619]
+hermes-0.13.0              1140 /  1370 /   461 (5)   [569296411619]
+javascriptcore-319418      1140 /  1370 /   461 (5)   [569296411619]
+javascriptcore-324323      1140 /  1370 /   461 (5)   [569296411619]
+jerryscript-3.0.0          1140 /  1370 /   461 (5)   [569296411619]
+macos-libm-c               2493 /   450 /    28 (254)   [29084bdb95ad]
+mqjs                       1140 /  1370 /   461 (5)   [569296411619]
+mqjs-soft                  1140 /  1370 /   461 (5)   [569296411619]
+node-22.22.1               1140 /  1370 /   461 (5)   [569296411619]
+node-24.19.0               1140 /  1370 /   461 (5)   [569296411619]
+node-26.12.0               1140 /  1370 /   461 (5)   [569296411619]
+node-26.7.0                1140 /  1370 /   461 (5)   [569296411619]
+quickjs-ng-0.17.0          1140 /  1370 /   461 (5)   [569296411619]
+spidermonkey-155.0b1       1140 /  1370 /   461 (5)   [569296411619]
+spidermonkey-159.0b5       1140 /  1370 /   461 (5)   [569296411619]
+v8-13.6.233                1140 /  1370 /   461 (5)   [569296411619]
+v8-14.1.146                1140 /  1370 /   461 (5)   [569296411619]
+v8-14.6.202                1140 /  1370 /   461 (5)   [569296411619]
+v8-15.4.8                  1140 /  1370 /   461 (5)   [569296411619]
+v8-15.8.32                 1140 /  1370 /   461 (5)   [569296411619]
+xs-10.0.2                  1140 /  1370 /   461 (5)   [569296411619]
+xs-9.0.0                   1140 /  1370 /   461 (5)   [569296411619]
+identical-output groups: 2
+  [569296411619] bare-1.36.0, boa-0.22, duktape-2.7.0, engine262, hermes-0.13.0, javascriptcore-319418, javascriptcore-324323, jerryscript-3.0.0, mqjs, mqjs-soft, node-22.22.1, node-24.19.0, node-26.12.0, node-26.7.0, quickjs-ng-0.17.0, spidermonkey-155.0b1, spidermonkey-159.0b5, v8-13.6.233, v8-14.1.146, v8-14.6.202, v8-15.4.8, v8-15.8.32, xs-10.0.2, xs-9.0.0
+  [29084bdb95ad] macos-libm-c
+
+## log1p (4995 cases)
+bare-1.36.0                4819 /   176 /     0 (1)   [bc3ffa2c48d8]
+boa-0.22                   4819 /   176 /     0 (1)   [bc3ffa2c48d8]
+duktape-2.7.0              4819 /   176 /     0 (1)   [bc3ffa2c48d8]
+engine262                  4819 /   176 /     0 (1)   [bc3ffa2c48d8]
+hermes-0.13.0              4819 /   176 /     0 (1)   [bc3ffa2c48d8]
+javascriptcore-319418      4819 /   176 /     0 (1)   [bc3ffa2c48d8]
+javascriptcore-324323      4819 /   176 /     0 (1)   [bc3ffa2c48d8]
+jerryscript-3.0.0          4819 /   176 /     0 (1)   [bc3ffa2c48d8]
+macos-libm-c               4992 /     3 /     0 (1)   [4cc9afee2885]
+mqjs                       4819 /   176 /     0 (1)   [bc3ffa2c48d8]
+mqjs-soft                  4819 /   176 /     0 (1)   [bc3ffa2c48d8]
+node-22.22.1               4819 /   176 /     0 (1)   [bc3ffa2c48d8]
+node-24.19.0               4819 /   176 /     0 (1)   [bc3ffa2c48d8]
+node-26.12.0               4819 /   176 /     0 (1)   [bc3ffa2c48d8]
+node-26.7.0                4819 /   176 /     0 (1)   [bc3ffa2c48d8]
+quickjs-ng-0.17.0          4819 /   176 /     0 (1)   [bc3ffa2c48d8]
+spidermonkey-155.0b1       4819 /   176 /     0 (1)   [bc3ffa2c48d8]
+spidermonkey-159.0b5       4819 /   176 /     0 (1)   [bc3ffa2c48d8]
+v8-13.6.233                4819 /   176 /     0 (1)   [bc3ffa2c48d8]
+v8-14.1.146                4819 /   176 /     0 (1)   [bc3ffa2c48d8]
+v8-14.6.202                4819 /   176 /     0 (1)   [bc3ffa2c48d8]
+v8-15.4.8                  4819 /   176 /     0 (1)   [bc3ffa2c48d8]
+v8-15.8.32                 4819 /   176 /     0 (1)   [bc3ffa2c48d8]
+xs-10.0.2                  4819 /   176 /     0 (1)   [bc3ffa2c48d8]
+xs-9.0.0                   4819 /   176 /     0 (1)   [bc3ffa2c48d8]
+identical-output groups: 2
+  [bc3ffa2c48d8] bare-1.36.0, boa-0.22, duktape-2.7.0, engine262, hermes-0.13.0, javascriptcore-319418, javascriptcore-324323, jerryscript-3.0.0, mqjs, mqjs-soft, node-22.22.1, node-24.19.0, node-26.12.0, node-26.7.0, quickjs-ng-0.17.0, spidermonkey-155.0b1, spidermonkey-159.0b5, v8-13.6.233, v8-14.1.146, v8-14.6.202, v8-15.4.8, v8-15.8.32, xs-10.0.2, xs-9.0.0
+  [4cc9afee2885] macos-libm-c

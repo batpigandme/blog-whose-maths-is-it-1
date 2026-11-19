@@ -1,0 +1,53 @@
+# engine:   the same engines on Linux, where a binary of that name existed
+# platform: Linux x86_64, glibc 2.39 (Ubuntu 24.04)
+# obtained: jsvu Linux binaries, nvm, and builds; see the README
+# date:     2026-10-22T11:54:13Z
+# script:   not in this repository yet (results only for now)
+# captured: copied from an earlier run, not regenerated; attribution of each engine's result bits by hash; no edits to the table body
+
+# Attribution of Linux result bits by hash; 2026-10-22T11:54:13.130Z
+# fround and sqrt are exactly specified and identical everywhere they ran, so they are omitted.
+# G = glibc (this host), M = macOS libm column, S = same bits as the macOS binary of this name,
+# - = none of those, x = incomplete, . = no macOS binary of this name to compare with
+
+                                    acos  asin  atan atan2   cos   exp   log log10  log2   pow   sin   tan   erf gamma log1p
+bare-1.36.0                            S     S     S     S     S     S     S     S     S     -     S     S     S     S     S
+boa-0.22                               G     G     G     G     G     G     G     G     G     G     G     G     S     S     S
+duktape-2.7.0                          G     G     G     G     G     G     G     G     G     G     G     G     S     S     S
+engine262                              -     -     -     -     -     -     -     -     S     -     -     -     S     S     S
+graaljs-25.0.3                         .     .     .     .     .     .     .     M     .     .     .     .     .     .     .
+hermes-0.13.0                          -     -     -     -     G     G     G     G     -     G     G     -     S     S     S
+javascriptcore-324323                  G     G     G     G     G     G     G     G     G     -     G     G     S     S     S
+javascriptcore-webkitgtk-2.52.6        G     G     G     G     G     G     G     G     G     .     G     G     .     .     .
+jerryscript-3.0.0                      G     G     G     G     G     G     G     G     G     G     G     G     S     S     S
+mqjs                                   -     -     -     -     -     -     S    MS     S     -     -     -     S     S     S
+mqjs-arm32-softfp                      .     .     .     .     .     .     .     M     .     .     .     .     .     .     .
+mqjs-soft                              -     -     -     -     -     -     S    MS     S     -     -     -     S     S     S
+node-22.22.0                           .     .     .     .     .     .     .     .     .     .     .     .     .     .     .
+node-24.19.0                           -     -     -     -     -     -     -     -     S     -     -     -     S     S     S
+node-26.7.0                            -     -     -     -     -     -     -     -     S     -     -     -     S     S     S
+quickjs-2021-03-27                     G     G     G     G     G     G     G     G     G     G     G     G     .     .     .
+quickjs-ng-0.17.0                      -     -     -     -     -     -     G     -     -     -     -     -     S     S     S
+spidermonkey-115.10.0                  .     .     .     .     G     .     .     .     .     .     G     G     .     .     .
+spidermonkey-159.0b5                   S     S     S     S     G     S     S     S     S     -     G     G     S     S     S
+txiki-26.6.0                           G     G     G     G     G     G     G     G     G     G     G     G     .     .     .
+v8-13.6.233                            S     S     S     S     S     S     S     S     S     -     S     S     S     S     S
+v8-14.1.146                            S     S     S     S     S     S     S     S     S     -     S     S     S     S     S
+v8-14.6.202                            S     S     S     S     S     S     S     S     S     -     S     S     S     S     S
+v8-15.4.8                              S     S     -     S     S     S     S    MS     S     -     S     S     S     S     S
+v8-15.8.32                             S     S     -     S     S     S     S    MS     S     -     S     S     S     S     S
+xs-10.0.2                              -     -     -     -     -     -     -     -     G     -     -     -     S     S     S
+
+# glibc against the macOS C library, per function (same bits?):
+  Math.acos   different
+  Math.asin   different
+  Math.atan   different
+  Math.atan2  different
+  Math.cos    different
+  Math.exp    different
+  Math.log    different
+  Math.log10  different
+  Math.log2   different
+  Math.pow    different
+  Math.sin    different
+  Math.tan    different

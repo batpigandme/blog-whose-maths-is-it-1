@@ -1,0 +1,14 @@
+{
+  "name": "stdlib-fns",
+  "private": true,
+  "version": "0.0.0",
+  "description": "erf, gamma and log1p from stdlib's published packages, bundled for engines without a module system.",
+  "dependencies": {
+    "@stdlib/math-base-special-erf": "0.2.6",
+    "@stdlib/math-base-special-gamma": "0.3.1",
+    "@stdlib/math-base-special-log1p": "0.2.4"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.10"
+  }
+}

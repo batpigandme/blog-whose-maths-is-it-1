@@ -1,0 +1,32 @@
+# engine:   MicroQuickJS 6d4d7eb6b99011d5aab6e88a9b99e8fd4d86c6e9; builds mac-default, mac-nocontract, linux-x86_64
+# platform: macOS 26.7.3, arm64, Apple M1 Pro (comparison only; see the three run outputs for each build's platform)
+# obtained: result columns left by run-contract-mac.sh and run-contract-linux.sh
+# date:     2026-11-19T19:37:02Z
+# script:   fma-contraction/compare-all.sh
+
+## the three builds, by hash of each function's result column
+function     mac-default                             mac-nocontract                          linux-x86_64                            
+Math.acos    73bac672df55                            18903f7b41ec != mac-default             18903f7b41ec != mac-default             
+Math.asin    d326c0aa4840                            a1c28e03969e != mac-default             a1c28e03969e != mac-default             
+Math.atan    e8cd6d9b84db                            7b3415650fcd != mac-default             7b3415650fcd != mac-default             
+Math.atan2   3d1a6ab6f8a9                            25a21f4cf501 != mac-default             25a21f4cf501 != mac-default             
+Math.cos     55b5c48872e7                            51ee42e7c13e != mac-default             51ee42e7c13e != mac-default             
+Math.exp     416b4300c65b                            a4670584f3ac != mac-default             a4670584f3ac != mac-default             
+Math.fround  c48bcab9842b                            c48bcab9842b = mac-default              c48bcab9842b = mac-default              
+Math.log     3838847db31a                            3838847db31a = mac-default              3838847db31a = mac-default              
+Math.log10   f96305b75f92                            f96305b75f92 = mac-default              f96305b75f92 = mac-default              
+Math.log2    f995d31c3879                            f995d31c3879 = mac-default              f995d31c3879 = mac-default              
+Math.pow     758b9f022958                            e4cc4c025d01 != mac-default             e4cc4c025d01 != mac-default             
+Math.sin     08e6104cfea4                            e330f792d650 != mac-default             e330f792d650 != mac-default             
+Math.sqrt    07ac46f484c5                            07ac46f484c5 = mac-default              07ac46f484c5 = mac-default              
+Math.tan     9936a1113204                            1126897c2aff != mac-default             1126897c2aff != mac-default             
+erf          afb68e718d9c                            afb68e718d9c = mac-default              afb68e718d9c = mac-default              
+gamma        569296411619                            569296411619 = mac-default              569296411619 = mac-default              
+log1p        bc3ffa2c48d8                            bc3ffa2c48d8 = mac-default              bc3ffa2c48d8 = mac-default              
+
+mac-default and mac-nocontract: same bits on 8 of 17 functions; differ on acos, asin, atan, atan2, cos, exp, pow, sin, tan
+mac-default and linux-x86_64: same bits on 8 of 17 functions; differ on acos, asin, atan, atan2, cos, exp, pow, sin, tan
+mac-nocontract and linux-x86_64: same bits on 17 of 17 functions
+
+## the emulated linux-x86_64 run against the earlier run on a real x86_64 machine
+same hash on all 17 functions

@@ -1,0 +1,51 @@
+# engine:   MicroQuickJS 6d4d7eb6b99011d5aab6e88a9b99e8fd4d86c6e9, built with GCC 13.3.0 (the hashes); with clang 23.1.3 (the last section)
+# platform: Ubuntu 24.04.5 LTS, x86_64 (a real x86_64 machine, not emulated), Intel(R) Xeon(R) Processor @ 2.80GHz; glibc 2.39-0ubuntu8.9
+# obtained: built from the pinned commit with the Makefile's own flags; gcc and make from Ubuntu 24.04's packages
+# date:     2026-10-22
+# script:   none in this repository; these are lines copied from an earlier run's output
+# captured: 2026-11-19, copied from an earlier run (2026-10-22); paths stripped. Not rerun for this repository.
+#
+# The cases came from an earlier run of lib/gen-cases.js's generator. The hash of a
+# result column covers every case in order, so the rerun's equal hashes on all 17
+# functions (results/compare.txt) mean the case sets and the results are the same.
+
+## hash of each function's result column (the first 12 hex digits of the SHA-256 of the result column, as lib/colhash.js)
+Math.acos 18903f7b41ec
+Math.asin a1c28e03969e
+Math.atan 7b3415650fcd
+Math.atan2 25a21f4cf501
+Math.cos 51ee42e7c13e
+Math.exp a4670584f3ac
+Math.fround c48bcab9842b
+Math.log 3838847db31a
+Math.log10 f96305b75f92
+Math.log2 f995d31c3879
+Math.pow e4cc4c025d01
+Math.sin e330f792d650
+Math.sqrt 07ac46f484c5
+Math.tan 1126897c2aff
+erf afb68e718d9c
+gamma 569296411619
+log1p bc3ffa2c48d8
+
+## MicroQuickJS on x86_64 Linux built with clang, with and without fused multiply-add
+mqjs-x86-clang-fma: CFLAGS +'-mfma -ffp-contract=on', FMA instructions in libm.o: 106
+mqjs-x86-clang-nofma: CFLAGS +'', FMA instructions in libm.o: 0
+function     clang -mfma = macOS mqjs?  clang no FMA = macOS?      clang no FMA = GCC Linux?
+Math.acos    yes                        NO                         yes
+Math.asin    yes                        NO                         yes
+Math.atan    yes                        NO                         yes
+Math.atan2   yes                        NO                         yes
+Math.cos     yes                        NO                         yes
+Math.exp     yes                        NO                         yes
+Math.fround  yes                        yes                        yes
+Math.log     yes                        yes                        yes
+Math.log10   yes                        yes                        yes
+Math.log2    yes                        yes                        yes
+Math.pow     yes                        NO                         yes
+Math.sin     yes                        NO                         yes
+Math.sqrt    yes                        yes                        yes
+Math.tan     yes                        NO                         yes
+erf          yes                        yes                        yes
+gamma        yes                        yes                        yes
+log1p        yes                        yes                        yes

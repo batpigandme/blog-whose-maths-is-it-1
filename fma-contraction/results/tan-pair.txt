@@ -1,0 +1,11 @@
+# engine:   MicroQuickJS 6d4d7eb6b99011d5aab6e88a9b99e8fd4d86c6e9 (three builds); MPFR through Julia 1.13.3 (tan-mpfr.jl, run now)
+# platform: assembled on macOS 26.7.3, arm64, Apple M1 Pro; each answer's platform is in its own output file
+# obtained: lines of results/contract-mac-arm64.txt and results/contract-linux-x86_64.txt
+# date:     2026-11-19T19:37:03Z
+# script:   fma-contraction/tan-pair.sh
+
+Math.tan of 0xc0322052fd59ea32
+3fec40c1bc40f28e  +1 ulp    macOS arm64, Apple clang 21.0.0, default (fused)
+3fec40c1bc40f28c  -1 ulp    macOS arm64, Apple clang 21.0.0, -ffp-contract=off
+3fec40c1bc40f28c  -1 ulp    Ubuntu 24.04 x86_64, GCC 13.3.0, default
+3fec40c1bc40f28d  exact     correctly rounded (MPFR)

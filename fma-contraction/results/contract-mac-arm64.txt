@@ -1,0 +1,57 @@
+# engine:   MicroQuickJS 6d4d7eb6b99011d5aab6e88a9b99e8fd4d86c6e9, libm.c built two ways
+# platform: macOS 26.7.3, arm64, Apple M1 Pro
+# obtained: built from commit 6d4d7eb6b99011d5aab6e88a9b99e8fd4d86c6e9 (2026-09-26) with Apple clang version 21.0.0 (clang-2100.3.34.2)
+# date:     2026-11-19T19:22:57Z
+# script:   fma-contraction/run-contract-mac.sh
+# cc:       Apple clang version 21.0.0 (clang-2100.3.34.2); Target: arm64-apple-darwin25.6.0
+# make:     GNU Make 4.4.1; objdump: Apple LLVM version 21.0.0
+# default contraction: ffp-contract=on (the flag Apple clang passes when none is given)
+# cases:    lib/gen-cases.js from stdlib 550666096f34c73f90f4bf86139935e4214fe421, checked against lib/cases.sha256
+
+## build mac-default
+libm.c compile line: gcc  -Wall -g -MMD -D_GNU_SOURCE -fno-math-errno -fno-trapping-math -Os -c -o libm.o libm.c
+fused multiply-add instructions in libm.o:     68
+fused multiply-add instructions in mquickjs.o: 0
+fused multiply-add instructions in dtoa.o:     0
+fused multiply-add instructions in cutils.o:   0
+fused multiply-add instructions in mqjs.o:     0
+
+## build mac-nocontract (extra flag: -ffp-contract=off)
+libm.c compile line: gcc -ffp-contract=off -Wall -g -MMD -D_GNU_SOURCE -fno-math-errno -fno-trapping-math -Os -c -o libm.o libm.c
+fused multiply-add instructions in libm.o:     0
+fused multiply-add instructions in mquickjs.o: 0
+fused multiply-add instructions in dtoa.o:     0
+fused multiply-add instructions in cutils.o:   0
+fused multiply-add instructions in mqjs.o:     0
+
+## the tan input, 0xc0322052fd59ea32
+mac-default:       Math.tan c0322052fd59ea32 3fec40c1bc40f28e
+mac-nocontract:    Math.tan c0322052fd59ea32 3fec40c1bc40f28c
+
+## all cases, both builds
+392083 results from mac-default
+mac-default: 23 s
+392083 results from mac-nocontract
+mac-nocontract: 22 s
+
+## hash of each function's result column (lib/colhash.js)
+function     mac-default                             mac-nocontract                          
+Math.acos    73bac672df55                            18903f7b41ec != mac-default             
+Math.asin    d326c0aa4840                            a1c28e03969e != mac-default             
+Math.atan    e8cd6d9b84db                            7b3415650fcd != mac-default             
+Math.atan2   3d1a6ab6f8a9                            25a21f4cf501 != mac-default             
+Math.cos     55b5c48872e7                            51ee42e7c13e != mac-default             
+Math.exp     416b4300c65b                            a4670584f3ac != mac-default             
+Math.fround  c48bcab9842b                            c48bcab9842b = mac-default              
+Math.log     3838847db31a                            3838847db31a = mac-default              
+Math.log10   f96305b75f92                            f96305b75f92 = mac-default              
+Math.log2    f995d31c3879                            f995d31c3879 = mac-default              
+Math.pow     758b9f022958                            e4cc4c025d01 != mac-default             
+Math.sin     08e6104cfea4                            e330f792d650 != mac-default             
+Math.sqrt    07ac46f484c5                            07ac46f484c5 = mac-default              
+Math.tan     9936a1113204                            1126897c2aff != mac-default             
+erf          afb68e718d9c                            afb68e718d9c = mac-default              
+gamma        569296411619                            569296411619 = mac-default              
+log1p        bc3ffa2c48d8                            bc3ffa2c48d8 = mac-default              
+
+mac-default and mac-nocontract: same bits on 8 of 17 functions; differ on acos, asin, atan, atan2, cos, exp, pow, sin, tan

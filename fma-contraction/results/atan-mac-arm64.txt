@@ -1,0 +1,37 @@
+# engine:   d8 14.6.202, 15.4.8, 15.8.32; LLVM libc at 6fd5620cc4fd3c55ee749e9bf71f52038431f76d
+# platform: macOS 26.7.3, arm64, Apple M1 Pro
+# obtained: d8 from V8's build bucket (lib/fetch-d8.sh); LLVM libc built from commit 6fd5620cc4fd3c55ee749e9bf71f52038431f76d with Apple clang version 21.0.0 (clang-2100.3.34.2)
+# date:     2026-11-19T19:24:47Z
+# script:   fma-contraction/run-atan-mac.sh
+# cases:    6498 Math.atan inputs (lib/gen-cases.js), sha256 5198c011451eab3d
+
+## pins
+v8 15.4.8 -> 332c967a18581b884d6d684005bd02d84bf970ac (expected 332c967a18581b884d6d684005bd02d84bf970ac)
+  DEPS:   'third_party/llvm-libc/src':
+  DEPS:     Var('chromium_url') + '/external/github.com/llvm/llvm-project/libc.git' + '@' + '6fd5620cc4fd3c55ee749e9bf71f52038431f76d',
+  src/base/ieee754.cc:24:#include "third_party/llvm-libc/src/shared/math.h"
+  src/base/ieee754.cc:164:double atan(double x) { return LIBC_NAMESPACE::shared::atan(x); }
+  third_party/llvm-libc/BUILD.gn:8:  defines = [ "LIBC_NAMESPACE=__llvm_libc_cr" ]
+libc: 6fd5620cc4fd3c55ee749e9bf71f52038431f76d 2026-08-08 [libc] Disable read() on linux/arm (#215035)
+  where multiply_add switches on FMA availability:
+  cpu_features.h:103:#if defined(__ARM_FEATURE_FMA) || (defined(__AVX2__) && defined(__FMA__)) ||   \
+  multiply_add.h:28:  return x * y + z;
+  multiply_add.h:34:  return x * y + z;
+  multiply_add.h:70:  return __builtin_fma(x, y, z);
+
+## the d8 columns: hash of the result column on the Math.atan cases (lib/colhash.js)
+macOS d8 14.6.202 sha256 fb9af3ddddfed69b  7b3415650fcd   issue input -> 40600e99e0bbf8d4 3ff9021897ae0934
+macOS d8 15.4.8   sha256 6410a29b9fb50558  dfeb183ada38   issue input -> 40600e99e0bbf8d4 3ff9021897ae0933
+macOS d8 15.8.32  sha256 a59f1e33fd8f5163  dfeb183ada38   issue input -> 40600e99e0bbf8d4 3ff9021897ae0933
+
+## LLVM libc atan, arm64, native (Apple clang version 21.0.0 (clang-2100.3.34.2))
+default []                                         fused=20  hash=dfeb183ada38  issue input -> 3ff9021897ae0933  (LIBC_TARGET_CPU_HAS_FMA path)
+nofma [-U__ARM_FEATURE_FMA -ffp-contract=off]      fused=0   hash=bc5fda2988f9  issue input -> 3ff9021897ae0933  (no-FMA path)
+library-path-only [-ffp-contract=off]              fused=20  hash=dfeb183ada38  issue input -> 3ff9021897ae0933  (LIBC_TARGET_CPU_HAS_FMA path)
+compiler-contraction-only [-U__ARM_FEATURE_FMA]    fused=22  hash=dfeb183ada38  issue input -> 3ff9021897ae0933  (no-FMA path)
+
+## reading the hashes
+A build's hash matches a d8 column when it gives the same bits on every one of the cases. Compare the lines above; run-atan-linux.sh adds the Linux columns.
+
+## llvm-project issue 197072, read-only (GitHub REST API)
+state=open created=2026-05-12T00:31:24Z title=[libm] atan() isn't exact for all inputs

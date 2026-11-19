@@ -1,0 +1,44 @@
+# engine:   MicroQuickJS 6d4d7eb6b99011d5aab6e88a9b99e8fd4d86c6e9
+# platform: Ubuntu 24.04.5 LTS, x86_64, VirtualApple @ 2.50GHz
+# obtained: built from the pinned commit with gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, in image ubuntu@sha256:73b999393d07f2bf65a40373778a44dc9a6d54ad7718d29247d8ff9413c4d6a8; gcc, make and nodejs from Ubuntu's apt
+# date:     2026-11-19T19:34:04Z
+# script:   fma-contraction/run-contract-linux.sh
+# gcc:      gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0; make: GNU Make 4.3; objdump: GNU objdump (GNU Binutils for Ubuntu) 2.42
+# node:     v18.19.1 (Ubuntu's nodejs package; only quotes the cases and hashes the results)
+# default contraction: -ffp-contract=fast (from gcc -Q --help=common)
+# CPU has FMA flag: fma; kernel: Linux 7.2.12-orbstack-00394-gbecdd6130068
+# cases:    lib/gen-cases.js from stdlib 550666096f34c73f90f4bf86139935e4214fe421, checked against lib/cases.sha256
+
+## build linux-x86_64 (GCC's default flags, plus nothing)
+libm.c compile line: gcc  -Wall -g -MMD -D_GNU_SOURCE -fno-math-errno -fno-trapping-math -Os -c -o libm.o libm.c
+fused multiply-add instructions in libm.o:     0
+fused multiply-add instructions in mquickjs.o: 0
+fused multiply-add instructions in dtoa.o:     0
+fused multiply-add instructions in cutils.o:   0
+fused multiply-add instructions in mqjs.o:     0
+
+## the tan input, 0xc0322052fd59ea32
+linux-x86_64:      Math.tan c0322052fd59ea32 3fec40c1bc40f28c
+
+## all cases
+392083 results from linux-x86_64
+linux-x86_64: 160 s
+
+## hash of each function's result column (lib/colhash.js)
+Math.acos 18903f7b41ec
+Math.asin a1c28e03969e
+Math.atan 7b3415650fcd
+Math.atan2 25a21f4cf501
+Math.cos 51ee42e7c13e
+Math.exp a4670584f3ac
+Math.fround c48bcab9842b
+Math.log 3838847db31a
+Math.log10 f96305b75f92
+Math.log2 f995d31c3879
+Math.pow e4cc4c025d01
+Math.sin e330f792d650
+Math.sqrt 07ac46f484c5
+Math.tan 1126897c2aff
+erf afb68e718d9c
+gamma 569296411619
+log1p bc3ffa2c48d8

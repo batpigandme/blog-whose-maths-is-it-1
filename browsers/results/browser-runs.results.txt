@@ -1,0 +1,27 @@
+# engines:  Chrome 158.0.8127.37 (Official Build) (arm64), "JavaScript V8 15.8.62.31", revision b8c2be851f62f6a394ec57955d7f31335d7cb6d4, from chrome://version
+#           Firefox 160.0.1 (aarch64), from the browser's About dialog; built from 58fed86b1b6864ad71b83c910a879d6f1a6b678b, release channel, from about:buildconfig
+#           Safari 27.2 (21625.2.8.18.4), from Safari's About dialog
+# platform: macOS 26.7.3 (build 25G342), arm64, one Mac for all three browsers
+# obtained: not recorded; Chrome reports an Official Build, and Firefox reports the release channel with official branding
+# date:     2026-11-18
+# script:   none; the snippet below, typed into each browser's console, once
+# captured: values as recorded from each console on 2026-11-18, not regenerated; there is no transcript or screenshot of the three runs
+
+# snippet (the same text in all three consoles; it prints the raw bits of the four answers):
+f=new Float64Array(1),u=new BigUint64Array(f.buffer),[Math.tan(4),Math.tan(7),Math.sin(18),Math.cos(29)].map(x=>(f[0]=x,u[0].toString(16)))
+
+# output, in the order tan(4), tan(7), sin(18), cos(29):
+
+# Chrome 158.0.8127.37
+["3ff2866f9be4de13","3febe2e6e13eea79","bfe8081668131e26","bfe7f01658314e47"]
+
+# Firefox 160.0.1
+["3ff2866f9be4de14","3febe2e6e13eea78","bfe8081668131e27","bfe7f01658314e48"]
+
+# Safari 27.2 (Web Inspector's console formats the array with spaces)
+["3ff2866f9be4de13", "3febe2e6e13eea7a", "bfe8081668131e27", "bfe7f01658314e48"]
+
+# architecture checks, as recorded:
+# Chrome:  chrome://version shows "(arm64)".
+# Firefox: the About dialog shows aarch64, and Activity Monitor's Kind column shows "Apple" for every Firefox process. about:buildconfig shows a target of x86_64-apple-darwin in the same browser.
+# Safari:  Activity Monitor's Kind column shows "Apple" for Safari and its processes.

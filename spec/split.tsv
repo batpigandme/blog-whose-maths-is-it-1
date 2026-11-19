@@ -1,0 +1,43 @@
+# engine:   ECMA-262 17th edition (ES2026), HTML at https://262.ecma-international.org/17.0/, sha256 5df49e088c2b5c7a3dfd4a330414b92897fb4535cb62fc5936cad101a6c2304a
+# platform: macOS-26.7.3-arm64-arm-64bit-Mach-O, arm64, Python 3.15.2
+# obtained: downloaded from https://262.ecma-international.org/17.0/ on 2026-11-19T19:06:07Z (urllib); sha256 checked against the value in the script
+# date:     2026-11-19T19:06:07Z
+# script:   spec/recount-split.py
+function	clause	link	category	decided_by	text
+Math.abs	21.3.2.1	https://262.ecma-international.org/17.0/index.html#sec-math.abs	exact	no term in this clause or in the operations it calls	
+Math.acos	21.3.2.2	https://262.ecma-international.org/17.0/index.html#sec-math.acos	implementation-approximated	this clause, step 4	Return an implementation-approximated Number value representing the inverse cosine of ℝ(n).
+Math.acosh	21.3.2.3	https://262.ecma-international.org/17.0/index.html#sec-math.acosh	implementation-approximated	this clause, step 5	Return an implementation-approximated Number value representing the inverse hyperbolic cosine of ℝ(n).
+Math.asin	21.3.2.4	https://262.ecma-international.org/17.0/index.html#sec-math.asin	implementation-approximated	this clause, step 4	Return an implementation-approximated Number value representing the inverse sine of ℝ(n).
+Math.asinh	21.3.2.5	https://262.ecma-international.org/17.0/index.html#sec-math.asinh	implementation-approximated	this clause, step 3	Return an implementation-approximated Number value representing the inverse hyperbolic sine of ℝ(n).
+Math.atan	21.3.2.6	https://262.ecma-international.org/17.0/index.html#sec-math.atan	implementation-approximated	this clause, step 3	If n is +∞𝔽, return an implementation-approximated Number value representing π / 2.
+Math.atanh	21.3.2.7	https://262.ecma-international.org/17.0/index.html#sec-math.atanh	implementation-approximated	this clause, step 6	Return an implementation-approximated Number value representing the inverse hyperbolic tangent of ℝ(n).
+Math.atan2	21.3.2.8	https://262.ecma-international.org/17.0/index.html#sec-math.atan2	implementation-approximated	this clause, step 4.a	If nx is +∞𝔽, return an implementation-approximated Number value representing π / 4.
+Math.cbrt	21.3.2.9	https://262.ecma-international.org/17.0/index.html#sec-math.cbrt	implementation-approximated	this clause, step 3	Return an implementation-approximated Number value representing the cube root of ℝ(n).
+Math.ceil	21.3.2.10	https://262.ecma-international.org/17.0/index.html#sec-math.ceil	exact	no term in this clause or in the operations it calls	
+Math.clz32	21.3.2.11	https://262.ecma-international.org/17.0/index.html#sec-math.clz32	exact	no term in this clause or in the operations it calls	
+Math.cos	21.3.2.12	https://262.ecma-international.org/17.0/index.html#sec-math.cos	implementation-approximated	this clause, step 4	Return an implementation-approximated Number value representing the cosine of ℝ(n).
+Math.cosh	21.3.2.13	https://262.ecma-international.org/17.0/index.html#sec-math.cosh	implementation-approximated	this clause, step 5	Return an implementation-approximated Number value representing the hyperbolic cosine of ℝ(n).
+Math.exp	21.3.2.14	https://262.ecma-international.org/17.0/index.html#sec-math.exp	implementation-approximated	this clause, step 5	Return an implementation-approximated Number value representing the exponential function of ℝ(n).
+Math.expm1	21.3.2.15	https://262.ecma-international.org/17.0/index.html#sec-math.expm1	implementation-approximated	this clause, step 5	Return an implementation-approximated Number value representing exp - 1.
+Math.floor	21.3.2.16	https://262.ecma-international.org/17.0/index.html#sec-math.floor	exact	no term in this clause or in the operations it calls	
+Math.fround	21.3.2.17	https://262.ecma-international.org/17.0/index.html#sec-math.fround	exact	no term in this clause or in the operations it calls	
+Math.f16round	21.3.2.18	https://262.ecma-international.org/17.0/index.html#sec-math.f16round	exact	no term in this clause or in the operations it calls	
+Math.hypot	21.3.2.19	https://262.ecma-international.org/17.0/index.html#sec-math.hypot	implementation-approximated	this clause, step 7	Return an implementation-approximated Number value representing the square root of the sum of squares of the mathematical values of the elements of coerced.
+Math.imul	21.3.2.20	https://262.ecma-international.org/17.0/index.html#sec-math.imul	exact	no term in this clause or in the operations it calls	
+Math.log	21.3.2.21	https://262.ecma-international.org/17.0/index.html#sec-math.log	implementation-approximated	this clause, step 6	Return an implementation-approximated Number value representing ln(ℝ(n)).
+Math.log1p	21.3.2.22	https://262.ecma-international.org/17.0/index.html#sec-math.log1p	implementation-approximated	this clause, step 5	Return an implementation-approximated Number value representing ln(1 + ℝ(n)).
+Math.log10	21.3.2.23	https://262.ecma-international.org/17.0/index.html#sec-math.log10	implementation-approximated	this clause, step 6	Return an implementation-approximated Number value representing log10(ℝ(n)).
+Math.log2	21.3.2.24	https://262.ecma-international.org/17.0/index.html#sec-math.log2	implementation-approximated	this clause, step 6	Return an implementation-approximated Number value representing log2(ℝ(n)).
+Math.max	21.3.2.25	https://262.ecma-international.org/17.0/index.html#sec-math.max	exact	no term in this clause or in the operations it calls	
+Math.min	21.3.2.26	https://262.ecma-international.org/17.0/index.html#sec-math.min	exact	no term in this clause or in the operations it calls	
+Math.pow	21.3.2.27	https://262.ecma-international.org/17.0/index.html#sec-math.pow	implementation-approximated	Number::exponentiate (called at step 3), sentence	It returns an implementation-approximated value representing the result of raising base to the exponent power.
+Math.random	21.3.2.28	https://262.ecma-international.org/17.0/index.html#sec-math.random	implementation-defined	this clause, sentence	This function returns a Number value with positive sign, greater than or equal to +0𝔽 but strictly less than 1𝔽, chosen randomly or pseudo randomly with approximately uniform distribution over that range, using an implementation-defined algorithm or strategy.
+Math.round	21.3.2.29	https://262.ecma-international.org/17.0/index.html#sec-math.round	exact	no term in this clause or in the operations it calls	
+Math.sign	21.3.2.30	https://262.ecma-international.org/17.0/index.html#sec-math.sign	exact	no term in this clause or in the operations it calls	
+Math.sin	21.3.2.31	https://262.ecma-international.org/17.0/index.html#sec-math.sin	implementation-approximated	this clause, step 4	Return an implementation-approximated Number value representing the sine of ℝ(n).
+Math.sinh	21.3.2.32	https://262.ecma-international.org/17.0/index.html#sec-math.sinh	implementation-approximated	this clause, step 3	Return an implementation-approximated Number value representing the hyperbolic sine of ℝ(n).
+Math.sqrt	21.3.2.33	https://262.ecma-international.org/17.0/index.html#sec-math.sqrt	exact	no term in this clause or in the operations it calls	
+Math.sumPrecise	21.3.2.34	https://262.ecma-international.org/17.0/index.html#sec-math.sumprecise	exact	no term in this clause or in the operations it calls	
+Math.tan	21.3.2.35	https://262.ecma-international.org/17.0/index.html#sec-math.tan	implementation-approximated	this clause, step 4	Return an implementation-approximated Number value representing the tangent of ℝ(n).
+Math.tanh	21.3.2.36	https://262.ecma-international.org/17.0/index.html#sec-math.tanh	implementation-approximated	this clause, step 5	Return an implementation-approximated Number value representing the hyperbolic tangent of ℝ(n).
+Math.trunc	21.3.2.37	https://262.ecma-international.org/17.0/index.html#sec-math.trunc	exact	no term in this clause or in the operations it calls	

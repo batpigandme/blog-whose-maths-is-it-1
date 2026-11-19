@@ -1,0 +1,53 @@
+# engine:   ECMA-262 1st, 2nd, 3rd, 5th, 5.1 (PDF) and 17th (HTML) editions; sha256 in the sources lines below
+# platform: macOS-26.7.3-arm64-arm-64bit-Mach-O, arm64, Python 3.15.2, pdftotext version 26.11.0
+# obtained: downloaded from Ecma and 262.ecma-international.org with urllib, a cached download reused; sha256 checked against the table in the script
+# date:     2026-11-19T19:06:57Z
+# script:   spec/extract-math-wording.py
+# source:   1st edition (1997) https://ecma-international.org/wp-content/uploads/ECMA-262_1st_edition_june_1997.pdf sha256 cccbe1a1f1a653ddc864ab396987a4fba288acbdd06b1a4bab49fe61ff9a73fc
+# source:   2nd edition (1998) https://ecma-international.org/wp-content/uploads/ECMA-262_2nd_edition_august_1998.pdf sha256 f037ad7b405d32c16e8b40bb970459d3e485419411a427f518b1732ac8a78121
+# source:   3rd edition (1999) https://ecma-international.org/wp-content/uploads/ECMA-262_3rd_edition_december_1999.pdf sha256 752717984fd8f6daeccc4414d39998b01aa95683bbb023c64655d52c40d2fc47
+# source:   5th edition (2009) https://ecma-international.org/wp-content/uploads/ECMA-262_5th_edition_december_2009.pdf sha256 d19ea217f1a70022fd5ca9bf9292f922d99558470dde6932aa4037a5df9faa7b
+# source:   5.1 edition (2011) https://ecma-international.org/wp-content/uploads/ECMA-262_5.1_edition_june_2011.pdf sha256 ba56aac6044735047085f9766ad757519a8605ca43e011a696c0386316f587e4
+# source:   17th edition (2026) https://262.ecma-international.org/17.0/ sha256 5df49e088c2b5c7a3dfd4a330414b92897fb4535cb62fc5936cad101a6c2304a
+
+1st edition (1997), 15.8.2
+  functions named (10): acos, asin, atan, atan2, cos, exp, log, pow, sin, sqrt
+  the passage opens with the label NOTE: no
+  spelling in the same-library sentence: implementor
+  same-library sentence: The general intent is that an implementor should be able to use the same mathematical library for ECMAScript on a given hardware platform that is available to C programmers on that platform.
+  fdlibm: Nevertheless, this specification recommends (though it does not require) the approximation algorithms for IEEE 754 arithmetic contained in fdlibm, the freely distributable mathematical library [XXXREF].
+
+2nd edition (1998), 15.8.2
+  functions named (10): acos, asin, atan, atan2, cos, exp, log, pow, sin, sqrt
+  the passage opens with the label NOTE: no
+  spelling in the same-library sentence: implementor
+  same-library sentence: The general intent is that an implementor should be able to use the same mathematical library for ECMAScript on a given hardware platform that is available to C programmers on that platform.
+  fdlibm: Although the choice of algorithms is left to the implementation, it is recommended (but not specified by this standard) that implementations use the approximation algorithms for IEEE 754 arithmetic contained in fdlibm, the freely distributable mathematical library from Sun Microsystems (fdlibm-comment@sunpro.eng.sun.com).
+
+3rd edition (1999), 15.8.2
+  functions named (10): acos, asin, atan, atan2, cos, exp, log, pow, sin, sqrt
+  the passage opens with the label NOTE: yes
+  spelling in the same-library sentence: implementer
+  same-library sentence: The general intent is that an implementer should be able to use the same mathematical library for ECMAScript on a given hardware platform that is available to C programmers on that platform.
+  fdlibm: Although the choice of algorithms is left to the implementation, it is recommended (but not specified by this standard) that implementations use the approximation algorithms for IEEE 754 arithmetic contained in fdlibm, the freely distributable mathematical library from Sun Microsystems (fdlibm-comment@sunpro.eng.sun.com).
+
+5th edition (2009), 15.8.2
+  functions named (10): acos, asin, atan, atan2, cos, exp, log, pow, sin, sqrt
+  the passage opens with the label NOTE: yes
+  spelling in the same-library sentence: implementer
+  same-library sentence: The general intent is that an implementer should be able to use the same mathematical library for ECMAScript on a given hardware platform that is available to C programmers on that platform.
+  fdlibm: Although the choice of algorithms is left to the implementation, it is recommended (but not specified by this standard) that implementations use the approximation algorithms for IEEE 754 arithmetic contained in fdlibm, the freely distributable mathematical library from Sun Microsystems (http://www.netlib.org/fdlibm).
+
+5.1 edition (2011), 15.8.2
+  functions named (11): acos, asin, atan, atan2, cos, exp, log, pow, sin, sqrt, tan
+  the passage opens with the label NOTE: yes
+  spelling in the same-library sentence: implementer
+  same-library sentence: The general intent is that an implementer should be able to use the same mathematical library for ECMAScript on a given hardware platform that is available to C programmers on that platform.
+  fdlibm: Although the choice of algorithms is left to the implementation, it is recommended (but not specified by this standard) that implementations use the approximation algorithms for IEEE 754 arithmetic contained in fdlibm, the freely distributable mathematical library from Sun Microsystems (http://www.netlib.org/fdlibm).
+
+17th edition (2026), 21.3.2
+  functions named (23): acos, acosh, asin, asinh, atan, atanh, atan2, cbrt, cos, cosh, exp, expm1, hypot, log, log1p, log2, log10, pow, random, sin, sinh, tan, tanh
+  the passage opens with the label NOTE: yes
+  spelling in the same-library sentence: implementer
+  same-library sentence: The general intent is that an implementer should be able to use the same mathematical library for ECMAScript on a given hardware platform that is available to C programmers on that platform.
+  fdlibm: Although the choice of algorithms is left to the implementation, it is recommended (but not specified by this standard) that implementations use the approximation algorithms for IEEE 754-2019 arithmetic contained in fdlibm, the freely distributable mathematical library from Sun Microsystems (http://www.netlib.org/fdlibm).

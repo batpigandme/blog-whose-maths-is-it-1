@@ -1,0 +1,40 @@
+# engine:   ECMA-262, 17 editions (1st to 17th), each from its own text; sources and sha256 in the sources lines below
+# platform: macOS-26.7.3-arm64-arm-64bit-Mach-O, arm64, Python 3.15.2, pdftotext version 26.11.0
+# obtained: downloaded from Ecma (PDFs, 1st to 5.1) and 262.ecma-international.org (HTML, 6th to 17th) with urllib, a cached download reused; sha256 checked against the table in the script
+# date:     2026-11-19T19:06:43Z
+# script:   spec/count-math-functions.py
+# source:   1st (ES1) https://ecma-international.org/wp-content/uploads/ECMA-262_1st_edition_june_1997.pdf sha256 cccbe1a1f1a653ddc864ab396987a4fba288acbdd06b1a4bab49fe61ff9a73fc
+# source:   2nd (ES2) https://ecma-international.org/wp-content/uploads/ECMA-262_2nd_edition_august_1998.pdf sha256 f037ad7b405d32c16e8b40bb970459d3e485419411a427f518b1732ac8a78121
+# source:   3rd (ES3) https://ecma-international.org/wp-content/uploads/ECMA-262_3rd_edition_december_1999.pdf sha256 752717984fd8f6daeccc4414d39998b01aa95683bbb023c64655d52c40d2fc47
+# source:   5th (ES5) https://ecma-international.org/wp-content/uploads/ECMA-262_5th_edition_december_2009.pdf sha256 d19ea217f1a70022fd5ca9bf9292f922d99558470dde6932aa4037a5df9faa7b
+# source:   5.1 (ES5.1) https://ecma-international.org/wp-content/uploads/ECMA-262_5.1_edition_june_2011.pdf sha256 ba56aac6044735047085f9766ad757519a8605ca43e011a696c0386316f587e4
+# source:   6th (ES2015) https://262.ecma-international.org/6.0/ sha256 4d4243dc2f04c9cdd09498f2cc2af6f6cdc07b0430da5578e7cf440d4f7846a0
+# source:   7th (ES2016) https://262.ecma-international.org/7.0/ sha256 4feb2067bdc0f87c4f96c57d6f23b87aee420600ee9f8ea45da92cd2157c3740
+# source:   8th (ES2017) https://262.ecma-international.org/8.0/ sha256 6ed5f0c60abfa25439a7dd3a1b56d64bd5a507681c98b6af00916e26b3a7e032
+# source:   9th (ES2018) https://262.ecma-international.org/9.0/ sha256 035e809154ffcab5f0018b3692a9220f5233fd71efc734a285be62232fda52a2
+# source:   10th (ES2019) https://262.ecma-international.org/10.0/ sha256 36906ca3fdf102aef621487c34c3f1b1f12fa11a4e58cd12c9e9c00013e298f0
+# source:   11th (ES2020) https://262.ecma-international.org/11.0/ sha256 e9797ccca974ee27ed1d7be1bd20d02bad82b30d506c6f50fae147fe2498a99c
+# source:   12th (ES2021) https://262.ecma-international.org/12.0/ sha256 6728f494a385e66fad94d4f44a7677c7c09439430a3c2f673e88ea5f6ec68f0a
+# source:   13th (ES2022) https://262.ecma-international.org/13.0/ sha256 91e41a7b90db6fb3220b960a222abb108bdc17c42f5e74efe07acb0a25a49efc
+# source:   14th (ES2023) https://262.ecma-international.org/14.0/ sha256 031ca0d5635b051a0f3192520013bb8f1b258a5d0503d0f83a257902afda50cd
+# source:   15th (ES2024) https://262.ecma-international.org/15.0/ sha256 eabb3c1fc6c5b0610b143ef7bea8de7c0f323a777d669a453e47c39a2986c846
+# source:   16th (ES2025) https://262.ecma-international.org/16.0/ sha256 6a28f9423133ed7b7c59a40baf620c2740f12f0bc9c251042f2a85b9cc5ed713
+# source:   17th (ES2026) https://262.ecma-international.org/17.0/ sha256 5df49e088c2b5c7a3dfd4a330414b92897fb4535cb62fc5936cad101a6c2304a
+edition	name	year	math_functions	added	removed
+1st	ES1	1997	18		
+2nd	ES2	1998	18		
+3rd	ES3	1999	18		
+5th	ES5	2009	18		
+5.1	ES5.1	2011	18		
+6th	ES2015	2015	35	acosh,asinh,atanh,cbrt,clz32,cosh,expm1,fround,hypot,imul,log1p,log10,log2,sign,sinh,tanh,trunc	
+7th	ES2016	2016	35		
+8th	ES2017	2017	35		
+9th	ES2018	2018	35		
+10th	ES2019	2019	35		
+11th	ES2020	2020	35		
+12th	ES2021	2021	35		
+13th	ES2022	2022	35		
+14th	ES2023	2023	35		
+15th	ES2024	2024	35		
+16th	ES2025	2025	36	f16round	
+17th	ES2026	2026	37	sumPrecise	

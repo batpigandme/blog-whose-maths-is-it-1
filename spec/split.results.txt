@@ -1,0 +1,18 @@
+# engine:   ECMA-262 17th edition (ES2026), HTML at https://262.ecma-international.org/17.0/, sha256 5df49e088c2b5c7a3dfd4a330414b92897fb4535cb62fc5936cad101a6c2304a
+# platform: macOS-26.7.3-arm64-arm-64bit-Mach-O, arm64, Python 3.15.2
+# obtained: downloaded from https://262.ecma-international.org/17.0/ on 2026-11-19T19:06:07Z (urllib); sha256 checked against the value in the script
+# date:     2026-11-19T19:06:07Z
+# script:   spec/recount-split.py
+
+function properties of Math in 21.3.2: 37
+implementation-approximated: 22
+implementation-defined: 1
+exact: 14
+
+implementation-approximated: acos, acosh, asin, asinh, atan, atanh, atan2, cbrt, cos, cosh, exp, expm1, hypot, log, log1p, log10, log2, pow, sin, sinh, tan, tanh
+implementation-defined: random
+exact: abs, ceil, clz32, floor, fround, f16round, imul, max, min, round, sign, sqrt, sumPrecise, trunc
+
+functions named in the Note that opens 21.3.2 (23) equal the non-exact set (23): yes
+split the post states: 22 implementation-approximated, 1 implementation-defined, 14 exact
+recount matches the post: yes

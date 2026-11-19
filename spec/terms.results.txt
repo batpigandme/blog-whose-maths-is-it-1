@@ -1,0 +1,27 @@
+# engine:   ECMA-262 11th, 12th, and 17th editions (HTML, https://262.ecma-international.org/)
+# platform: macOS-26.7.3-arm64-arm-64bit-Mach-O, arm64, Python 3.15.2
+# obtained: downloaded from https://262.ecma-international.org/ with urllib, a cached download reused; sha256 checked against the table in the script (11.0 e9797ccca974, 12.0 6728f494a385, 17.0 5df49e088c2b)
+# date:     2026-11-19T19:06:43Z
+# script:   spec/extract-terms.py
+
+17th edition, 4.2 Hosts and Implementations: https://262.ecma-international.org/17.0/index.html#sec-hosts-and-implementations
+  An implementation-defined facility is one that defers its definition to an external source without further qualification. This specification does not make any recommendations for particular behaviours, and conforming implementations are free to choose any behaviour within the constraints put forth by this specification.
+  An implementation-approximated facility is one that defers its definition to an external source while recommending an ideal behaviour. While conforming implementations are free to choose any behaviour within the constraints put forth by this specification, they are encouraged to strive to approximate the ideal. Some mathematical operations, such as Math.exp, are implementation-approximated.
+  example sentence found as quoted: yes
+  sentence on implementation-defined found as quoted: yes
+  'strive' wording found as quoted: yes
+
+17th edition, 4.4.1 implementation-approximated: https://262.ecma-international.org/17.0/index.html#sec-terms-and-definitions-implementation-approximated
+  an implementation-approximated facility is defined in whole or in part by an external source but has a recommended, ideal behaviour in this specification
+
+17th edition, 4.4.2 implementation-defined: https://262.ecma-international.org/17.0/index.html#sec-terms-and-definitions-implementation-defined
+  an implementation-defined facility is defined in whole or in part by an external source to this specification
+
+12th edition, 4.4.1 implementation-approximated: https://262.ecma-international.org/12.0/#sec-terms-and-definitions-implementation-approximated
+  an implementation-approximated facility is defined in whole or in part by an external source but has a recommended, ideal behaviour in this specification
+
+occurrences of the string 'implementation-approximated' in the whole page:
+  11th edition (ES2020): 0
+  12th edition (ES2021): 139
+  17th edition (ES2026): 136
+absent from the 11th edition and present in the 12th: yes

@@ -3,10 +3,10 @@
 # obtained: LLVM libc built from that commit with Ubuntu clang version 18.1.3 (1ubuntu1), in image ubuntu@sha256:73b999393d07f2bf65a40373778a44dc9a6d54ad7718d29247d8ff9413c4d6a8; clang, binutils, nodejs from Ubuntu's apt
 # date:     2026-11-19T19:29:08Z
 # script:   fma-contraction/run-atan-linux.sh
-# kernel:   Linux 7.2.12-orbstack-00394-gbecdd6130068; this container's architecture is the host's, so nothing is emulated
+# kernel:   Linux 7.2.12-orbstack-00394-gbecdd6130068
 # cases:    6498 Math.atan inputs (lib/gen-cases.js), sha256 5198c011451eab3d
 
-## LLVM libc atan, aarch64, native to this container's architecture (Ubuntu clang version 18.1.3 (1ubuntu1))
+## LLVM libc atan, aarch64 (Ubuntu clang version 18.1.3 (1ubuntu1))
 default []                                   fused=20  hash=dfeb183ada38  issue input -> 3ff9021897ae0933  (LIBC_TARGET_CPU_HAS_FMA path)
 nofma [-U__ARM_FEATURE_FMA -ffp-contract=off] fused=0   hash=bc5fda2988f9  issue input -> 3ff9021897ae0933  (no-FMA path)
 

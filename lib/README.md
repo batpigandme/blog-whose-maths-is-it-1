@@ -14,4 +14,4 @@ Small scripts that more than one folder uses. Each one's header says what it nee
 | `reference.jl` | The correctly rounded answer for every case, from MPFR through Julia |
 | `reference.sha256` | SHA-256 of each file `reference.jl` writes |
 | `fetch-d8.sh` | Downloads a published d8 build from V8's build bucket, without installing anything |
-| `header.sh` | The metadata header every committed output starts with |
+| `header.sh` | The metadata header every committed output starts with; `PLATFORM_LABEL` names the environment and is printed first on the platform line |

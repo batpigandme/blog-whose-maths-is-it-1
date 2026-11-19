@@ -47,7 +47,7 @@ run_it() {
 	"$DOCKER" run --rm --platform "$PLATFORM" \
 		-v "$HERE:/src:ro" -v "$VOLUME:/build" \
 		-e MAIN_IN="$MAIN_IN" -e MAIN_REF="$MAIN_REF" -e CTRL_IN="$CTRL_IN" -e CTRL_REF="$CTRL_REF" \
-		-e IMAGE="$IMAGE" -e PINS="$PINS" -e JOBS="$JOBS" -e SCRIPT="$SCRIPT" \
+		-e IMAGE="$IMAGE" -e PINS="$PINS" -e JOBS="$JOBS" -e SCRIPT="$SCRIPT" -e PLATFORM_LABEL="${PLATFORM_LABEL:-}" \
 		"$IMAGE" bash /src/glibc-in-container.sh
 }
 

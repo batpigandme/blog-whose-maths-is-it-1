@@ -17,6 +17,15 @@
 # Works on macOS and Linux. For a container, the platform line says what the
 # container reports; under emulation the CPU line says so (it names the
 # virtual CPU, not the host's).
+#
+# PLATFORM_LABEL names the environment the run happened in, and is printed first
+# on the platform line, before a semicolon. The committed outputs use:
+#
+#   "Claude Code Cloud, x86_64 VM"
+#   "OrbStack, aarch64 Linux VM on macOS"
+#   "OrbStack, aarch64 Linux VM on macOS, x86_64 container under emulation"
+#
+# Unset, the platform line says only what the machine or container reports.
 
 # platform_string: "<OS and version>, <arch>[, <CPU>]".
 platform_string() {
@@ -29,7 +38,7 @@ platform_string() {
 		cpu="$( sed -n 's/^model name[[:space:]]*: *//p' /proc/cpuinfo 2>/dev/null | head -1 )"
 		[ -n "$cpu" ] || cpu="$( sed -n 's/^Hardware[[:space:]]*: *//p' /proc/cpuinfo 2>/dev/null | head -1 )"
 	fi
-	printf '%s, %s%s' "$os" "$( uname -m )" "${cpu:+, $cpu}"
+	printf '%s%s, %s%s' "${PLATFORM_LABEL:+$PLATFORM_LABEL; }" "$os" "$( uname -m )" "${cpu:+, $cpu}"
 }
 
 emit_header() {

@@ -23,7 +23,7 @@ The input is the float64 with bits `5c99c487f2337e3a`, `1.1986535513718587e+138`
 
 ## Rerun
 
-Each script takes its paths from environment variables (documented at the top of each file) and prints to the terminal; set `OUT=<file>` to write the same text to a file too.
+Each script takes its paths from environment variables (documented at the top of each file) and prints to the terminal; set `OUT=<file>` to write the same text to a file too. Set `PLATFORM_LABEL` to name the environment the run happens in; it is printed first on the output's platform line. The committed Linux outputs use "Claude Code Cloud, x86_64 VM", "OrbStack, aarch64 Linux VM on macOS", and "OrbStack, aarch64 Linux VM on macOS, x86_64 container under emulation".
 
 ```bash
 python3 -I reference.py 5c99c487f2337e3a        # the correctly rounded value, about a second

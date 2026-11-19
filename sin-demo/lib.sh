@@ -2,6 +2,8 @@
 # lib.sh: small helpers shared by d8.sh, glibc.sh and versions.sh. Source it; don't run it.
 
 # Where an output's header says the run happened: OS and version, arch, CPU if known.
+# PLATFORM_LABEL, if set, names the environment and is printed first, before a
+# semicolon (see lib/header.sh for the labels the committed outputs use).
 platform_line() {
 	local os cpu
 	case "$(uname -s)" in
@@ -18,7 +20,7 @@ platform_line() {
 			cpu=""
 			;;
 	esac
-	printf '%s, %s' "$os" "$(uname -m)"
+	printf '%s%s, %s' "${PLATFORM_LABEL:+$PLATFORM_LABEL; }" "$os" "$(uname -m)"
 	if [ -n "$cpu" ]; then
 		printf ', %s' "$cpu"
 	fi

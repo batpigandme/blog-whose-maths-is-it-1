@@ -16,6 +16,8 @@ In the footnotes: the glibc copy is `third_party/glibc` (README at 13.6.233.17),
 
 ## Rerun
 
+Set `PLATFORM_LABEL` to name the environment the run happens in; it is printed first on the output's platform line. The committed Linux outputs use "Claude Code Cloud, x86_64 VM", "OrbStack, aarch64 Linux VM on macOS", and "OrbStack, aarch64 Linux VM on macOS, x86_64 container under emulation".
+
 From the repository root. Run `node lib/gen-cases.js` once first, after `./lib/fetch-stdlib-fixtures.sh`, to generate the case files into `.cache/cases/` (see `lib/gen-cases.js`; the fixtures are fetched at a pinned commit and `lib/cases.sha256` checks the result).
 
 ```bash

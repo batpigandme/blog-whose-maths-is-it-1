@@ -14,10 +14,14 @@
 # Environment (defaults):
 #   IMAGE     container image (ubuntu:24.04)
 #   OUT_DIR   output directory (fma-contraction/results)
+#   PLATFORM_LABEL, PLATFORM_LABEL_X86_64, PLATFORM_LABEL_AARCH64
+#             the environment the run happens in, printed first on each output's
+#             platform line (see lib/header.sh); the per-architecture variables
+#             override PLATFORM_LABEL for that container
 #
-# Needs Docker, git, node and network access. On an arm64 Mac the amd64
-# container is emulated, so its `fma` build may fail to run (the output says
-# whether it did); the arm64 container is native. Takes about 10 minutes.
+# Needs Docker, git, node and network access. On an arm64 host the amd64
+# container runs under emulation, and its `fma` build may fail to run (the
+# output says whether it did). Takes about 10 minutes.
 
 set -euo pipefail
 HERE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -31,7 +35,8 @@ node "$ROOT/lib/gen-cases.js" --check >/dev/null || { echo "cases differ from li
 "$HERE/fetch-llvm-libc.sh" >/dev/null
 
 for p in linux/amd64:x86_64 linux/arm64:aarch64; do
-	docker run --rm --platform "${p%%:*}" -v "$ROOT:/repo" \
+	label_var="PLATFORM_LABEL_$( printf '%s' "${p##*:}" | tr a-z A-Z )"
+	docker run --rm --platform "${p%%:*}" -v "$ROOT:/repo" -e PLATFORM_LABEL="${!label_var:-${PLATFORM_LABEL:-}}" \
 		-e OUT=/repo/"${OUT_DIR#"$ROOT"/}/atan-linux-${p##*:}.txt" \
 		-e IMAGE_ID="$( docker image inspect "$IMAGE" --format '{{index .RepoDigests 0}}' 2>/dev/null || echo "$IMAGE" )" \
 		"$IMAGE" bash /repo/fma-contraction/in-container-atan.sh

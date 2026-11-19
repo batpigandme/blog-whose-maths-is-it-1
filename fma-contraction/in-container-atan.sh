@@ -31,7 +31,7 @@ emit_header "LLVM libc at 6fd5620cc4fd3c55ee749e9bf71f52038431f76d$( [ "$ARCH" =
 if [ "$ARCH" = x86_64 ]; then
 	echo "# CPU flags: $( grep -m1 -o -w fma /proc/cpuinfo || echo 'no fma' ), $( grep -m1 -o -w avx2 /proc/cpuinfo || echo 'no avx2' ) (as /proc/cpuinfo reports them); kernel: $( uname -sr )"
 else
-	echo "# kernel:   $( uname -sr ); this container's architecture is the host's, so nothing is emulated"
+	echo "# kernel:   $( uname -sr )"
 fi
 echo "# cases:    $( wc -l < "$CASES" | tr -d ' ' ) Math.atan inputs (lib/gen-cases.js), sha256 $( sha256sum "$CASES" | cut -c1-16 )"
 echo
@@ -54,7 +54,7 @@ build() { # name, flags...
 	fi
 }
 
-echo "## LLVM libc atan, $ARCH, native to this container's architecture ($( clang++ --version | head -1 ))"
+echo "## LLVM libc atan, $ARCH ($( clang++ --version | head -1 ))"
 if [ "$ARCH" = x86_64 ]; then
 	build base
 	build fma -mavx2 -mfma

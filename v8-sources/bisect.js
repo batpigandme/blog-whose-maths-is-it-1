@@ -116,7 +116,7 @@ try {
 } catch ( e ) {
 	// keep the generic name
 }
-log( '# platform: ' + osName + ', ' + os.arch() + ', ' + os.cpus()[ 0 ].model );
+log( '# platform: ' + ( process.env.PLATFORM_LABEL ? process.env.PLATFORM_LABEL + '; ' : '' ) + osName + ', ' + os.arch() + ', ' + os.cpus()[ 0 ].model );
 log( '# obtained: https://storage.googleapis.com/chromium-v8/official/canary/ (lib/fetch-d8.sh); version list ' + path.basename( VERSIONS ) );
 log( '# date:     ' + new Date().toISOString().replace( /\.\d+Z$/, 'Z' ) );
 log( '# script:   v8-sources/bisect.js' );

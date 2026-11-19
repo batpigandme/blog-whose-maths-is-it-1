@@ -20,7 +20,7 @@ The `tan` input is `0xc0322052fd59ea32`; the answers are `3fec40c1bc40f28e` (mac
 
 ## Rerun
 
-From the repository root. Each script fetches what it needs at pinned commits into `.cache/` (ignored by git), and writes its output to `fma-contraction/results/`.
+From the repository root. Each script fetches what it needs at pinned commits into `.cache/` (ignored by git), and writes its output to `fma-contraction/results/`. Set `PLATFORM_LABEL` to name the environment the run happens in; it is printed first on the output's platform line. The committed Linux outputs use "Claude Code Cloud, x86_64 VM", "OrbStack, aarch64 Linux VM on macOS", and "OrbStack, aarch64 Linux VM on macOS, x86_64 container under emulation". `run-atan-linux.sh` also takes `PLATFORM_LABEL_X86_64` and `PLATFORM_LABEL_AARCH64`, one per container.
 
 ```bash
 ./fma-contraction/run-contract-mac.sh      # MicroQuickJS twice, all 392,083 cases: about 2 minutes

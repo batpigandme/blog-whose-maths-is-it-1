@@ -41,6 +41,6 @@ node "$ROOT/lib/gen-cases.js" --check >/dev/null || { echo "cases differ from li
 
 # The mounts: the repository at /repo, where the container writes the cache and
 # its output. Paths inside the container never reach the output.
-docker run --rm --platform "$PLATFORM" -v "$ROOT:/repo" -e OUT=/repo/"${OUT#"$ROOT"/}" \
+docker run --rm --platform "$PLATFORM" -v "$ROOT:/repo" -e OUT=/repo/"${OUT#"$ROOT"/}" -e PLATFORM_LABEL="${PLATFORM_LABEL:-}" \
 	-e IMAGE_ID="$( docker image inspect "$IMAGE" --format '{{index .RepoDigests 0}}' 2>/dev/null || echo "$IMAGE" )" \
 	"$IMAGE" bash /repo/fma-contraction/in-container-linux.sh

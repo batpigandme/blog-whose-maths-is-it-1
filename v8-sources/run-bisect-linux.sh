@@ -20,7 +20,7 @@ set -euo pipefail
 HERE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ROOT="$( cd "$HERE/.." && pwd )"
 IMAGE="${IMAGE:-ubuntu:24.04}"
-docker run --rm --platform linux/amd64 -v "$ROOT:/repo" -e CACHE_DIR=/tmp/cache "$IMAGE" bash -c '
+docker run --rm --platform linux/amd64 -v "$ROOT:/repo" -e CACHE_DIR=/tmp/cache -e PLATFORM_LABEL="${PLATFORM_LABEL:-}" "$IMAGE" bash -c '
 	set -euo pipefail
 	export DEBIAN_FRONTEND=noninteractive
 	apt-get update -qq >/dev/null

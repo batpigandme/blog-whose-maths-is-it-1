@@ -1,0 +1,20 @@
+# subject:  npm package mathjs, and the GitHub repository josdejong/mathjs
+# platform: GitHub REST API and api.npmjs.org reads; the original does not record the machine
+# obtained: gh api (read-only) for the repository, its default branch's HEAD commit, and the README's path; curl for npm's download counts and registry
+# date:     2026-11-19, about 17:40 UTC
+# script:   not in this repository yet (results only for now)
+# captured: copied from an earlier run, not regenerated; the original's data lines unedited
+
+## mathjs josdejong/mathjs
+desc: An extensive math library for JavaScript and Node.js
+stars: 15107
+archived: false
+default: develop
+pushed: 2026-11-17T08:38:11Z
+sha: 1847c3344a0a63ad4bd5b2f2b97e7f4f05f32566
+lastcommit: 2026-11-17T08:38:11Z
+readmepath: README.md
+dl 2017: {"downloads":3738593,"start":"2017-01-01","end":"2017-12-31","package":"mathjs"}
+dl 2020: {"downloads":12039356,"start":"2020-01-01","end":"2020-12-31","package":"mathjs"}
+dl 2023: {"downloads":30806333,"start":"2023-01-01","end":"2023-12-31","package":"mathjs"}
+latest: 15.2.0 2026-04-07T14:35:09.363Z

@@ -1,0 +1,20 @@
+# subject:  npm package bn.js, and the GitHub repository indutny/bn.js
+# platform: GitHub REST API and api.npmjs.org reads; the original does not record the machine
+# obtained: gh api (read-only) for the repository, its default branch's HEAD commit, and the README's path; curl for npm's download counts and registry
+# date:     2026-11-19, about 17:40 UTC
+# script:   not in this repository yet (results only for now)
+# captured: copied from an earlier run, not regenerated; the original's data lines unedited
+
+## bn.js indutny/bn.js
+desc: BigNum in pure javascript
+stars: 1232
+archived: false
+default: master
+pushed: 2026-07-09T04:24:18Z
+sha: eb2e57c4e50a9b9a1f277a59ef446c13f564dddc
+lastcommit: 2026-07-09T04:05:56Z
+readmepath: README.md
+dl 2017: {"downloads":64903332,"start":"2017-01-01","end":"2017-12-31","package":"bn.js"}
+dl 2020: {"downloads":747625460,"start":"2020-01-01","end":"2020-12-31","package":"bn.js"}
+dl 2023: {"downloads":1950042459,"start":"2023-01-01","end":"2023-12-31","package":"bn.js"}
+latest: 5.2.5 2026-07-09T04:35:21.577Z

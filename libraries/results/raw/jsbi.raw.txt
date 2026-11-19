@@ -1,0 +1,20 @@
+# subject:  npm package jsbi, and the GitHub repository GoogleChromeLabs/jsbi
+# platform: GitHub REST API and api.npmjs.org reads; the original does not record the machine
+# obtained: gh api (read-only) for the repository, its default branch's HEAD commit, and the README's path; curl for npm's download counts and registry
+# date:     2026-11-19, about 17:40 UTC
+# script:   not in this repository yet (results only for now)
+# captured: copied from an earlier run, not regenerated; the original's data lines unedited
+
+## jsbi GoogleChromeLabs/jsbi
+desc: JSBI is a pure-JavaScript implementation of the official ECMAScript BigInt proposal.
+stars: 963
+archived: false
+default: main
+pushed: 2025-03-31T12:45:10Z
+sha: 5382367c7e3199858d36bb620977e1f90605bcb9
+lastcommit: 2025-03-31T12:45:06Z
+readmepath: README.md
+dl 2017: {"downloads":0,"start":"2017-01-01","end":"2017-12-31","package":"jsbi"}
+dl 2020: {"downloads":7405040,"start":"2020-01-01","end":"2020-12-31","package":"jsbi"}
+dl 2023: {"downloads":58446476,"start":"2023-01-01","end":"2023-12-31","package":"jsbi"}
+latest: 4.3.2 2025-03-31T12:46:42.777Z

@@ -1,0 +1,20 @@
+# subject:  npm package bignumber.js, and the GitHub repository MikeMcl/bignumber.js
+# platform: GitHub REST API and api.npmjs.org reads; the original does not record the machine
+# obtained: gh api (read-only) for the repository, its default branch's HEAD commit, and the README's path; curl for npm's download counts and registry
+# date:     2026-11-19, about 17:40 UTC
+# script:   not in this repository yet (results only for now)
+# captured: copied from an earlier run, not regenerated; the original's data lines unedited
+
+## bignumber.js MikeMcl/bignumber.js
+desc: A JavaScript library for arbitrary-precision decimal and non-decimal arithmetic 
+stars: 7013
+archived: false
+default: main
+pushed: 2026-08-31T18:20:35Z
+sha: 02109ca2749538d57551cdcc7e38585db111b4bb
+lastcommit: 2026-08-31T18:20:35Z
+readmepath: README.md
+dl 2017: {"downloads":16164870,"start":"2017-01-01","end":"2017-12-31","package":"bignumber.js"}
+dl 2020: {"downloads":192133725,"start":"2020-01-01","end":"2020-12-31","package":"bignumber.js"}
+dl 2023: {"downloads":463040661,"start":"2023-01-01","end":"2023-12-31","package":"bignumber.js"}
+latest: 11.1.5 2026-07-05T15:16:46.027Z

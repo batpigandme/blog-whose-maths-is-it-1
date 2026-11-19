@@ -1,0 +1,20 @@
+# subject:  npm package decimal.js, and the GitHub repository MikeMcl/decimal.js
+# platform: GitHub REST API and api.npmjs.org reads; the original does not record the machine
+# obtained: gh api (read-only) for the repository, its default branch's HEAD commit, and the README's path; curl for npm's download counts and registry
+# date:     2026-11-19, about 17:40 UTC
+# script:   not in this repository yet (results only for now)
+# captured: copied from an earlier run, not regenerated; the original's data lines unedited
+
+## decimal.js MikeMcl/decimal.js
+desc: An arbitrary-precision Decimal type for JavaScript
+stars: 7273
+archived: false
+default: master
+pushed: 2026-08-30T20:11:56Z
+sha: b1d1e311eb272b16f5b2ca0e0d1f4c4fa8558edf
+lastcommit: 2026-08-30T20:11:56Z
+readmepath: README.md
+dl 2017: {"downloads":4286292,"start":"2017-01-01","end":"2017-12-31","package":"decimal.js"}
+dl 2020: {"downloads":118104020,"start":"2020-01-01","end":"2020-12-31","package":"decimal.js"}
+dl 2023: {"downloads":802294389,"start":"2023-01-01","end":"2023-12-31","package":"decimal.js"}
+latest: 10.6.0 2025-07-06T22:50:38.844Z

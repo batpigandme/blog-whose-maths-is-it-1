@@ -1,0 +1,20 @@
+# subject:  npm package simple-statistics, and the GitHub repository simple-statistics/simple-statistics
+# platform: GitHub REST API and api.npmjs.org reads; the original does not record the machine
+# obtained: gh api (read-only) for the repository, its default branch's HEAD commit, and the README's path; curl for npm's download counts and registry
+# date:     2026-11-19, about 17:40 UTC
+# script:   not in this repository yet (results only for now)
+# captured: copied from an earlier run, not regenerated; the original's data lines unedited
+
+## simple-statistics simple-statistics/simple-statistics
+desc: simple statistics for node & browser javascript
+stars: 3530
+archived: false
+default: main
+pushed: 2026-11-15T15:29:21Z
+sha: 551ad9eebea7daa85f145f2cf8fe5e70b847aeb4
+lastcommit: 2026-11-15T15:28:51Z
+readmepath: README.md
+dl 2017: {"downloads":371570,"start":"2017-01-01","end":"2017-12-31","package":"simple-statistics"}
+dl 2020: {"downloads":2854098,"start":"2020-01-01","end":"2020-12-31","package":"simple-statistics"}
+dl 2023: {"downloads":5870371,"start":"2023-01-01","end":"2023-12-31","package":"simple-statistics"}
+latest: 8.0.0 2026-10-28T18:06:53.000Z

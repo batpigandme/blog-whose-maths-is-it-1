@@ -1,0 +1,20 @@
+# subject:  npm package jstat, and the GitHub repository jstat/jstat
+# platform: GitHub REST API and api.npmjs.org reads; the original does not record the machine
+# obtained: gh api (read-only) for the repository, its default branch's HEAD commit, and the README's path; curl for npm's download counts and registry
+# date:     2026-11-19, about 17:40 UTC
+# script:   not in this repository yet (results only for now)
+# captured: copied from an earlier run, not regenerated; the original's data lines unedited
+
+## jstat jstat/jstat
+desc: JavaScript Statistical Library
+stars: 1807
+archived: false
+default: 1.x
+pushed: 2026-02-28T08:23:25Z
+sha: 72f367f6dbd45c2d903053ee3f9981489912cad4
+lastcommit: 2022-12-28T16:37:23Z
+readmepath: README.md
+dl 2017: {"downloads":29446,"start":"2017-01-01","end":"2017-12-31","package":"jstat"}
+dl 2020: {"downloads":1684098,"start":"2020-01-01","end":"2020-12-31","package":"jstat"}
+dl 2023: {"downloads":9291393,"start":"2023-01-01","end":"2023-12-31","package":"jstat"}
+latest: 1.9.6 2022-11-21T19:18:27.530Z

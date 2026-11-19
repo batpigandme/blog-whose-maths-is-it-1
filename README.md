@@ -37,7 +37,7 @@ Local runs vary by operating system, compiler, and CPU. That's part of the post'
 | `[^split]` | the 22 / 1 / 14 split of the 37 `Math` functions | [`spec/`](./spec/) | a | published |
 | `[^sumprecise-node]` | `sumPrecise` support by Node.js version | | b | results only for now |
 | `[^lull]` | the count of `Math` functions per edition | [`spec/`](./spec/) | a | published |
-| `[^libs]` | npm downloads, stars, and archive status for the library list | | a | results only for now |
+| `[^libs]` | npm downloads, stars, and archive status for the libraries the post names | | a | results only for now |
 | `[^mquickjs]` | MicroQuickJS's `tan` pair, and nine functions that differ between macOS and Linux | [`fma-contraction/`](./fma-contraction/) | b | published |
 | `[^atan]` | V8's LLVM `atan` and the fused multiply-add probe | [`fma-contraction/`](./fma-contraction/) | b | published |
 | `[^contract]` | the contraction probe: 68 fused instructions with contraction on, none with it off | [`fma-contraction/`](./fma-contraction/) | b | published |

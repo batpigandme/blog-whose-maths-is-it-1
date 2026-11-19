@@ -1,0 +1,65 @@
+# subject:  eleven numerical and big-number JavaScript libraries: npm downloads for 2017, 2020, and 2023, and each repository's stars, archived flag, last commit, and latest npm version
+# platform: GitHub REST API and api.npmjs.org reads; the original does not record the machine
+# obtained: gh api (read-only) for each repository's default-branch HEAD, stars, and archived flag; curl for npm's downloads/point endpoint (one calendar year per request) and the npm registry
+# date:     2026-11-19, about 17:40 UTC
+# script:   not in this repository yet (results only for now)
+# captured: copied from an earlier run, not regenerated; rewritten from a results note and the raw outputs in raw/ (the table values were checked against the raw outputs) with first-person notes made into plain statements
+
+## Downloads, stars, archive status, and last commit
+
+npm package	repository at the commit read	default branch	stars	archived	last commit	latest version (published)	downloads 2017	downloads 2020	downloads 2023
+jstat	jstat/jstat @ 72f367f6dbd45c2d903053ee3f9981489912cad4	1.x	1,807	no	2022-12-28	1.9.6 (2022-11-21)	29,446	1,684,098	9,291,393
+mathjs	josdejong/mathjs @ 1847c3344a0a63ad4bd5b2f2b97e7f4f05f32566	develop	15,107	no	2026-11-17	15.2.0 (2026-04-07)	3,738,593	12,039,356	30,806,333
+bn.js	indutny/bn.js @ eb2e57c4e50a9b9a1f277a59ef446c13f564dddc	master	1,232	no	2026-07-09	5.2.5 (2026-07-09)	64,903,332	747,625,460	1,950,042,459
+big-integer	peterolson/BigInteger.js @ 441f6bd73cef6a5029dd5600f17e3dd79eafeddb	master	1,125	no	2024-02-02	1.6.52 (2023-11-21)	8,666,713	74,748,757	498,179,727
+bignumber.js	MikeMcl/bignumber.js @ 02109ca2749538d57551cdcc7e38585db111b4bb	main	7,013	no	2026-08-31	11.1.5 (2026-07-05)	16,164,870	192,133,725	463,040,661
+big.js	MikeMcl/big.js @ cdbc06f1d5ae9be429b97f433ee884cf9ad28072	main	5,202	no	2025-04-22	7.0.1 (2025-04-21)	65,765,963	626,484,992	1,026,382,435
+decimal.js	MikeMcl/decimal.js @ b1d1e311eb272b16f5b2ca0e0d1f4c4fa8558edf	master	7,273	no	2026-08-30	10.6.0 (2025-07-06)	4,286,292	118,104,020	802,294,389
+jsbi	GoogleChromeLabs/jsbi @ 5382367c7e3199858d36bb620977e1f90605bcb9	main	963	no	2025-03-31	4.3.2 (2025-03-31)	0	7,405,040	58,446,476
+numeric	sloisel/numeric @ 656fa1254be540f428710738ca9c1539625777f1	master	1,444	no	2012-12-20	1.2.6 (2012-12-20)	426,640	3,802,633	4,213,743
+ndarray	scijs/ndarray @ b735a1472293b0290817225506569866a07bfbf6	master	1,247	no	2026-08-26	1.1.1 (2026-08-26)	2,274,088	10,616,826	20,816,295
+simple-statistics	simple-statistics/simple-statistics @ 551ad9eebea7daa85f145f2cf8fe5e70b847aeb4	main	3,530	no	2026-11-15	8.0.0 (2026-10-28)	371,570	2,854,098	5,870,371
+
+## Notes on the table
+
+- Downloads are calendar-year counts from api.npmjs.org's point endpoint, 1 January to 31 December of the year named, with no errors. jsbi's count for 2017 is 0; its first publish came after that.
+- npm's download counts include installs of a package as another package's dependency. Dependents weren't queried, so how much of any count is that isn't known. That applies to every row. Two 2023 counts, bn.js's (1.95 billion) and big.js's (1.03 billion), are far above the others, and the reason wasn't investigated.
+- Stars and latest versions are as of 2026-11-19. They aren't the 2017 to 2023 values; only the downloads are for those years.
+- The repository column gives the commit that was the default branch's HEAD on 2026-11-19, and last commit is that commit's committer date. The two don't always agree with other dates GitHub or npm gives:
+  - jstat: the default branch is 1.x, and the repository's `pushed_at` (2026-02-28) is later than the last default-branch commit (2022-12-28).
+  - numeric: `pushed_at` is 2018-09-14, and the last default-branch commit is 2012-12-20, the same day as its latest npm version, 1.2.6. Its README doesn't say it is unmaintained.
+  - decimal.js: the last commit is 2026-08-30, and its latest npm version is from 2025-07-06.
+  - ndarray's README carries a "stable/frozen" badge image (stability-badges `frozen.svg`).
+- The READMEs read at these commits aren't kept in this folder. The sentences quoted below are from them, and each can be checked at the pinned commit.
+
+## Each README's own description of the library, as read
+
+| npm package | GitHub description | README sentence |
+| --- | --- | --- |
+| jstat | JavaScript Statistical Library | "jStat provides native javascript implementations of statistical functions." |
+| mathjs | An extensive math library for JavaScript and Node.js | "Math.js is an extensive math library for JavaScript and Node.js." |
+| bn.js | BigNum in pure javascript | "BigNum in pure javascript" (the line under the title), and "**Note**: decimals are not supported in this library." |
+| big-integer | An arbitrary length integer library for Javascript | "**BigInteger.js** is an arbitrary-length integer library for Javascript, allowing arithmetic operations on integers of unlimited size, notwithstanding memory and time limitations." |
+| bignumber.js | A JavaScript library for arbitrary-precision decimal and non-decimal arithmetic. | "A JavaScript library for arbitrary-precision decimal and non-decimal arithmetic." |
+| big.js | A small, fast JavaScript library for arbitrary-precision decimal arithmetic. | "A small, fast JavaScript library for arbitrary-precision decimal arithmetic." (the bold tagline under the title) |
+| decimal.js | An arbitrary-precision Decimal type for JavaScript | "An arbitrary-precision Decimal type for JavaScript." |
+| jsbi | JSBI is a pure-JavaScript implementation of the official ECMAScript BigInt proposal. | "JSBI is a pure-JavaScript implementation of [the ECMAScript BigInt proposal], which officially became a part of the JavaScript language in ES2020." |
+| numeric | Numerical analysis in Javascript | "Numeric Javascript is a javascript library for doing numerical analysis in the browser." |
+| ndarray | Multidimensional arrays for JavaScript | "Modular multidimensional arrays for JavaScript." The introduction says: "`ndarrays` provide higher dimensional views of 1D arrays." |
+| simple-statistics | simple statistics for node & browser javascript | "A JavaScript implementation of descriptive, regression, and inference statistics." |
+
+## Two README passages, verbatim
+
+JSBI, GoogleChromeLabs/jsbi at 5382367c7e3199858d36bb620977e1f90605bcb9, README.md, section "Why?":
+
+> JSBI is designed for exactly this purpose: it provides a BigInt “polyfill” implementation that behaves exactly like the upcoming native BigInts, but with a syntax that you can ship on all browsers, today.
+
+> it behaves exactly like native BigInts do where they are available, so to eventually migrate to those, you can [mechanically](https://github.com/GoogleChromeLabs/babel-plugin-transform-jsbi-to-bigint) update your code’s syntax; no re-thinking of its logic will be required.
+
+> The solution is to do it the other way round: write code using a library’s syntax, and [transpile it to native BigInt code](https://github.com/GoogleChromeLabs/babel-plugin-transform-jsbi-to-bigint) when available.
+
+In "Installation/Usage", the same README says: "Use [babel-plugin-transform-jsbi-to-bigint](https://github.com/GoogleChromeLabs/babel-plugin-transform-jsbi-to-bigint) to transpile JSBI code into native BigInt code." The curly quotes around "polyfill" are the README's own.
+
+BigInteger.js, peterolson/BigInteger.js at 441f6bd73cef6a5029dd5600f17e3dd79eafeddb, README.md, "Update (December 2, 2018)":
+
+> `BigInt` is being added as a native feature of JavaScript. This library now works as a polyfill: if the environment supports the native `BigInt`, this library acts as a thin wrapper over the native implementation.

@@ -1,0 +1,22 @@
+# source:   MDN browser-compat-data, javascript/builtins/Math.json, the sumPrecise entry
+# platform: not a run; a reading of a data file
+# obtained: read with the GitHub API (gh), not downloaded or kept here
+# date:     2026-11-17 (commit 9237d95b), 2026-11-18 (commit 290cd74d)
+# script:   none
+# captured: values recorded from those reads; the file's text isn't kept here, and nothing was fetched again for this repository except the commit hashes below
+
+# pinned reads
+9237d95b44e0ed02a094c50a0277e228c81b236f   committed 2026-11-17T19:57:48Z   read 2026-11-17   https://github.com/mdn/browser-compat-data/blob/9237d95b44e0ed02a094c50a0277e228c81b236f/javascript/builtins/Math.json   (the commit the post's footnote pins)
+290cd74dbb04d539bc252f4e8f44a723947f8f31   committed 2026-11-18T10:14:59Z   read 2026-11-18   the same path at that commit
+7171dca74fea50d3fd88eca8e75b2636954a45b8   an earlier read, dated 2026-06-01                                the same path at that commit
+
+# recorded entry for Math.sumPrecise at 9237d95b; the same six entries are recorded at 7171dca7, and the same six entries with nodejs still false at 290cd74d
+chrome       147
+edge         147
+firefox      137
+safari       26.2
+deno         2.7.8
+bun          1.2.18
+nodejs       false
+
+# the first six rows are the six browser and runtime entries that carry a version number; the last row is the Node.js entry, recorded as false

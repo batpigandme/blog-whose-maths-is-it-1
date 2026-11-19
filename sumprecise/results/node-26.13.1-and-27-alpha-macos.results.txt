@@ -1,0 +1,25 @@
+# engines:  Node.js 26.13.1 (V8 14.6.202.34-node.40), tag commit e9c277643b0249c50f6e6de5413be8a88ea11b6a
+#           Node.js 27.0.0-alpha.0.1.1 (V8 15.6.75.50-node.14), tag commit 6c7c89331d062a47d6fe3d16b3c00e4a3145826d
+# platform: macOS, arm64 (a Mac); the original record doesn't give the OS version
+# obtained: nvm for the alpha; the 26.13.1 install on the same machine isn't recorded separately
+# date:     2026-11-18
+# script:   none recorded; a console or REPL check on each version
+# captured: 2026-11-18, recorded as a written sentence and not rerun; there is no transcript. The values below are that sentence's, in its order.
+
+# presence, no flag: typeof Math.sumPrecise
+Node.js 27.0.0-alpha.0.1.1   process.versions.v8 15.6.75.50-node.14    "function"
+Node.js 26.13.1              process.versions.v8 14.6.202.34-node.40   undefined
+
+# four spot values on Node.js 27.0.0-alpha.0.1.1, no flag
+Math.sumPrecise([1e20, 0.1, -1e20])             0.1
+Math.sumPrecise([0.1, 0.2, 0.3])                0.6     (a reduce over the same array gives 0.6000000000000001)
+Math.sumPrecise([5e-324, 5e-324])               1e-323
+Math.sin(1.1986535513718587e+138)               3.811845021115953e-16     (recorded as the correctly rounded value; not a sumPrecise call)
+
+# the alpha's release record, as read with the GitHub API on 2026-11-18
+# https://github.com/nodejs/node/releases/tag/v27.0.0-alpha.0.1.1
+#   name:       "2026-11-16, Version 27.0.0-alpha.0.1.1 (Alpha)"
+#   published:  2026-11-17
+#   prerelease: false (GitHub does not flag it as a prerelease)
+# the project's own page for it: https://nodejs.org/en/blog/release/v27.0.0-alpha.0.1.1
+#   archived on archive.today: https://archive.is/6X3Ed (2026-11-18)

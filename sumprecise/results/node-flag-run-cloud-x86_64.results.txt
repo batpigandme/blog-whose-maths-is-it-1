@@ -1,0 +1,121 @@
+# engines:  Node.js 22.23.5 (V8 12.4.254.21-node.57), Node.js 24.19.0 (V8 13.6.233.17-node.51), Node.js 26.7.0 (V8 14.6.202.34-node.28)
+# platform: Claude Code Cloud, x86_64 VM; Ubuntu 24.04.5 LTS; Intel Xeon Processor @ 2.10GHz
+# obtained: Node.js 22.23.5 is the environment image's default; Node.js 24.19.0 and 26.7.0 were preinstalled in the image, and how they were fetched isn't recorded in the output
+# date:     2026-11-17T20:56:17Z
+# script:   not in this repository yet (results only for now)
+# captured: 2026-11-17, copied from an earlier run, not regenerated; paths stripped. The run started at 2026-11-17T13:56:17-07:00, as its transcript's first line prints it. This file is the Node.js part of that run's 869-line transcript.
+# left out: every line about the other binaries in that run (d8, SpiderMonkey, JavaScriptCore, XS, QuickJS and QuickJS-ng, Hermes, GraalJS, Duktape, JerryScript, Boa, engine262, Bare, txiki.js), the other binaries' help searches and test262 results, and the transcript's subnormal-input section
+# test262:  commit 2e58f87d8350ad51224617a041c6e041d52f8444, test/built-ins/Math/sumPrecise, 10 files, each run twice (sloppy and strict), so 20 runs
+
+## versions (the Node.js rows)
+runtime  node             node v22.23.5 / V8 12.4.254.21-node.57
+runtime  node24           node v24.19.0 / V8 13.6.233.17-node.51
+runtime  node26           node v26.7.0 / V8 14.6.202.34-node.28
+runtime  node26+flag      node v26.7.0 / V8 14.6.202.34-node.28 --js-sum-precise
+
+## 0. smoke test, the Node.js rows (every binary invoked correctly; the same output hash on all 19 binaries in the run)
+runtime  node             exit=0   ef0d2e503451   6 lines
+runtime  node24           exit=0   ef0d2e503451   6 lines
+runtime  node26           exit=0   ef0d2e503451   6 lines
+
+## 1. presence, no flags: typeof Math.sumPrecise
+#### node [runtime]
+typeof Math.sumPrecise: undefined
+[exit 0]
+#### node24 [runtime]
+typeof Math.sumPrecise: undefined
+[exit 0]
+#### node26 [runtime]
+typeof Math.sumPrecise: undefined
+[exit 0]
+
+## 1b. flags, searched in each absent binary's own help (case-insensitive "sum")
+$ node --v8-options | grep -i -A1 -- '--js-sum'
+(no match)
+$ node24 --v8-options | grep -i -A1 -- '--js-sum'
+(no match)
+$ node26 --v8-options | grep -i -A1 -- '--js-sum'
+  --js-sum-precise (enable "Math.sumPrecise")
+        type: bool  default: --no-js-sum-precise
+$ node --js-sum-precise probe.js
+node: bad option: --js-sum-precise
+[exit 9]
+$ node24 --js-sum-precise probe.js
+node24: bad option: --js-sum-precise
+[exit 9]
+$ node26 --js-sum-precise probe.js
+typeof Math.sumPrecise: function
+[exit 0]
+-- presence with the flag found:
+#### node26+flag [runtime] --js-sum-precise
+typeof Math.sumPrecise: function
+[exit 0]
+
+## 2. test262 conformance, with the flag on
+test262 2e58f87d8350ad51224617a041c6e041d52f8444  test/built-ins/Math/sumPrecise  10 files x 2 modes
+#### runtime  node26+flag      node v26.7.0 / V8 14.6.202.34-node.28 --js-sum-precise
+result node26+flag        pass 20  fail  0  of 20
+node26+flag        pass 20  fail  0  of 20
+
+## 2b. negative control: the same runner on node24, which lacks Math.sumPrecise (must fail all 20)
+== summary
+node24             pass  0  fail 20  of 20
+
+## 3. hand-check, Node.js rows (35 checks against values worked out from the specification)
+#### node [runtime]
+Math.sumPrecise: absent (typeof undefined)
+[exit 0]
+#### node24 [runtime]
+Math.sumPrecise: absent (typeof undefined)
+[exit 0]
+#### node26 [runtime]
+Math.sumPrecise: absent (typeof undefined)
+[exit 0]
+#### node26+flag [runtime] --js-sum-precise
+ok   [1e20, 0.1, -1e20]  got 3fb99999 9999999a (0.1)  want 3fb99999 9999999a  -- exact sum is 0.1; naive gives 0
+ok   []  got 80000000 00000000 (0)  want 80000000 00000000  -- state stays minus-zero: -0
+ok   [-0]  got 80000000 00000000 (0)  want 80000000 00000000  -- -0 does not leave minus-zero
+ok   [-0, -0]  got 80000000 00000000 (0)  want 80000000 00000000  -- still minus-zero
+ok   [-0, 0]  got 00000000 00000000 (0)  want 00000000 00000000  -- +0 makes state finite, sum 0 -> +0
+ok   [-0, 1, -1]  got 00000000 00000000 (0)  want 00000000 00000000  -- finite, exact sum 0 -> +0
+ok   [5e-324, -5e-324]  got 00000000 00000000 (0)  want 00000000 00000000  -- finite, exact sum 0 -> +0
+ok   [Infinity, 1]  got 7ff00000 00000000 (Infinity)  want 7ff00000 00000000  -- plus-infinity
+ok   [-Infinity, -1]  got fff00000 00000000 (-Infinity)  want fff00000 00000000  -- minus-infinity
+ok   [Infinity, -Infinity]  got 7ff80000 00000000 (NaN)  want NaN  -- opposite infinities -> not-a-number
+ok   [-Infinity, Infinity]  got 7ff80000 00000000 (NaN)  want NaN  -- same, other order
+ok   [NaN]  got 7ff80000 00000000 (NaN)  want NaN  -- not-a-number
+ok   [Infinity, NaN]  got 7ff80000 00000000 (NaN)  want NaN  -- NaN wins over infinity
+ok   [NaN, Infinity, -Infinity, 1]  got 7ff80000 00000000 (NaN)  want NaN  -- not-a-number is sticky
+ok   [1e308, 1e308]  got 7ff00000 00000000 (Infinity)  want 7ff00000 00000000  -- exact 2e308 rounds to 2^1024 -> +Infinity
+ok   [-1e308, -1e308]  got fff00000 00000000 (-Infinity)  want fff00000 00000000  -- mirror: -Infinity
+ok   [1e308, 1e308, -1e308]  got 7fe1ccf3 85ebc8a0 (1e+308)  want 7fe1ccf3 85ebc8a0  -- no intermediate overflow: 1e308
+ok   [1e308, 1e308, -Infinity]  got fff00000 00000000 (-Infinity)  want fff00000 00000000  -- infinity input decides, not overflow
+ok   [MAX_VALUE, 2^969]  got 7fefffff ffffffff (1.7976931348623157e+308)  want 7fefffff ffffffff  -- below the halfway point to 2^1024: MAX_VALUE
+ok   [MAX_VALUE, 2^970]  got 7ff00000 00000000 (Infinity)  want 7ff00000 00000000  -- exact tie; 2^1024 is even -> +Infinity
+ok   [-MAX_VALUE, -2^970]  got fff00000 00000000 (-Infinity)  want fff00000 00000000  -- mirror: -Infinity
+ok   [1, 1e100, 1, -1e100]  got 40000000 00000000 (2)  want 40000000 00000000  -- exact sum 2; naive gives 0
+ok   [2^53, 1, 1]  got 43400000 00000001 (9007199254740994)  want 43400000 00000001  -- 2^53 + 2; naive gives 2^53
+ok   [1, 2^-53]  got 3ff00000 00000000 (1)  want 3ff00000 00000000  -- exact tie, ties to even: 1
+ok   [1, 2^-53, 2^-80]  got 3ff00000 00000001 (1.0000000000000002)  want 3ff00000 00000001  -- just above the tie: 1 + 2^-52
+ok   [5e-324, 5e-324]  got 00000000 00000002 (1e-323)  want 00000000 00000002  -- subnormal: 2 * MIN_VALUE
+ok   [0.1, 0.2, 0.3]  got 3fe33333 33333333 (0.6)  want 3fe33333 33333333  -- exact sum of the three doubles rounds to 0.6
+naive  [0.1, 0.2, 0.3]  loop 3fe33333 33333334 (0.6000000000000001)  sumPrecise 3fe33333 33333333 (0.6)
+ok   ['1']  threw TypeError  want TypeError
+ok   [NaN, '1']  threw TypeError  want TypeError
+ok   [new Number(1)]  threw TypeError  want TypeError
+ok   [BigInt(1)]  threw TypeError  want TypeError
+ok   ()  threw TypeError  want TypeError
+ok   (1)  threw TypeError  want TypeError
+ok   iterable 1, 'x'  threw TypeError  want TypeError
+ok   iterator closed after the non-Number  got true  want true
+hand-check: 35 of 35 as specified
+
+## 3c. hand-check summary lines, Node.js rows
+#### node [runtime]
+Math.sumPrecise: absent (typeof undefined)
+#### node24 [runtime]
+Math.sumPrecise: absent (typeof undefined)
+#### node26 [runtime]
+Math.sumPrecise: absent (typeof undefined)
+#### node26+flag [runtime] --js-sum-precise
+hand-check: 35 of 35 as specified

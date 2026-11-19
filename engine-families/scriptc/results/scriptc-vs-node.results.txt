@@ -1,0 +1,38 @@
+# engine:   scriptc 0.4.7 (typed Math control) against Node.js v24.19.0 (V8 13.6.233.17-node.51), and against Node.js v24.22.2 (V8 13.6.233.17-node.63) and glibc 2.39
+# platform: Claude Code Cloud, x86_64 VM; Linux x86_64, glibc 2.39 (Ubuntu 24.04)
+# obtained: see the headers of the two output files in this folder
+# date:     2026-11-02, in runs that began 19:56:46Z and 20:35:18Z
+# script:   not in this repository yet (results only for now)
+# captured: copied from earlier runs, not regenerated; only the lines about scriptc and the Node.js references are kept, in the original order; the machine paths in the last section's version lines are removed; no other edits to the lines kept
+# digests:  "bits" is a digest of the output's result bits, "NaN-equal" the same after treating every NaN as one value; both are truncated sha256 hex
+# names:    "node24-ref" is Node.js v24.19.0; "scriptc+typed" is scriptc's compiled typed control; "scriptc" is the original, untyped control, which did not compile (see scriptc-untyped-control-compile-error.results.txt)
+
+## Math control: rows, by digest (the lines for the Node.js reference and for scriptc)
+rows: bits digest, NaN-equal digest, name, repeat, lines, last line (rows with a + are labelled variants)
+  0429ac9a4a2f1efb 0cbd366ce542e3e7 node24-ref           identical  7821 cases 7820
+  0429ac9a4a2f1efb 0cbd366ce542e3e7 scriptc+typed        identical  7821 cases 7820
+  34a3003f71dc9885 34a3003f71dc9885 scriptc              identical    25 [unrun-aot: scriptc compile failed, exit 1]
+groups by NaN-equal digest (the two groups that name node24-ref or scriptc):
+  0cbd366ce542e3e7 (2): node24-ref scriptc+typed
+  34a3003f71dc9885 (1): scriptc
+
+## The typed control on the Node.js reference, against the original control's output
+typed control on node24-ref: byte-identical to the original's output (sha256 38ff3e5e7738d8c3)
+
+## Math control: each row against node24-ref (the two scriptc rows)
+-- scriptc+typed
+   compared 7820, bit-identical 7820, NaN payload only 0, value differs 0, unmatched lines 0
+   value differences by function: none
+-- scriptc
+   compared 0, bit-identical 0, NaN payload only 0, value differs 0, unmatched lines 7820
+   value differences by function: none
+
+## glibc's own functions on the control's inputs (the lines for Node.js and for the typed scriptc run)
+glibc control: digest 0e52c8eba09c7617, 7821 lines, repeat identical
+  node24-ref           differs from glibc on 542 lines
+  scriptc+typed        differs from glibc on 542 lines
+
+## Which Node.js: the reference (v24.19.0) against nvm's v24.22.2 on the control
+node24: v24.19.0 V8 13.6.233.17-node.51
+nvm v24.22.2: v24.22.2 V8 13.6.233.17-node.63
+v24.22.2 on the control: digest 0429ac9a4a2f1efb, repeat identical; against the v24.19.0 reference: byte-identical; against scriptc's typed control: byte-identical

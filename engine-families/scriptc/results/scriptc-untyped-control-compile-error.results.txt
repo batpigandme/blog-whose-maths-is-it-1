@@ -1,0 +1,31 @@
+# engine:   scriptc 0.4.7 (tag v0.4.7, commit 6c60b0bcbfc6edd34ce5c1cdb588d42bdb7171ff), compiling the original, untyped Math control
+# platform: Claude Code Cloud, x86_64 VM; Linux x86_64, glibc 2.39 (Ubuntu 24.04)
+# obtained: npm install of scriptc@0.4.7 on Node.js v24.22.2 from nvm
+# date:     2026-11-02, in a run that began 19:56:46Z and ended 20:17:43Z
+# script:   not in this repository yet (results only for now)
+# captured: copied from an earlier run, not regenerated; the machine paths are replaced by file names (scriptc.exe, unrun-math-control.js, the output name); no other edits
+$ scriptc.exe build unrun-math-control.js -o unrun-math-control
+unrun-math-control.js:92:7 - error SC0001: Operator '+' cannot be applied to types 'string | number' and 'number'.
+
+  91 | 	for ( j = 0; j < N; j++ ) {
+  92 | 		x = UNARY[ i ][ 1 ] + ( uniform() * ( UNARY[ i ][ 2 ] - UNARY[ i ][ 1 ] ) );
+     |       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  93 | 		out( UNARY[ i ][ 0 ] + ' ' + bits( x ) + ' ' + bits( f( x ) ) );
+
+unrun-math-control.js:104:7 - error SC0001: Operator '+' cannot be applied to types 'string | number' and 'number'.
+
+  103 | 	for ( j = 0; j < N; j++ ) {
+  104 | 		x = BINARY[ i ][ 1 ] + ( uniform() * ( BINARY[ i ][ 2 ] - BINARY[ i ][ 1 ] ) );
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  105 | 		y = BINARY[ i ][ 3 ] + ( uniform() * ( BINARY[ i ][ 4 ] - BINARY[ i ][ 3 ] ) );
+
+unrun-math-control.js:105:7 - error SC0001: Operator '+' cannot be applied to types 'string | number' and 'number'.
+
+  104 | 		x = BINARY[ i ][ 1 ] + ( uniform() * ( BINARY[ i ][ 2 ] - BINARY[ i ][ 1 ] ) );
+  105 | 		y = BINARY[ i ][ 3 ] + ( uniform() * ( BINARY[ i ][ 4 ] - BINARY[ i ][ 3 ] ) );
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  106 | 		out( BINARY[ i ][ 0 ] + ' ' + bits( x ) + ' ' + bits( y ) + ' ' + bits( f( x, y ) ) );
+
+3 errors.
+[compile exit 1]
+[unrun-aot: scriptc compile failed, exit 1]

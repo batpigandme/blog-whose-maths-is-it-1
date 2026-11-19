@@ -16,7 +16,7 @@ From the post: many engines draw on somebody else's code, and sorted by whose, t
 
 ## Tier
 
-c: results only, for now. The full folder will be tier b: it needs a Mac, jsvu builds of each engine, and Docker for the Linux half.
+c: results only, for now. The full folder will be tier b: it needs a Mac and jsvu builds of each engine, and its Linux half comes from Claude Code Cloud or OrbStack.
 
 ## What the committed results show
 
@@ -76,7 +76,7 @@ The post's other claims in "The families" rest on runs that aren't in this folde
 | The language's maths: Java | Rhino, GraalJS | `java.lang.Math` is "not defined to return the bit-for-bit same results" | results to follow |
 | The language's maths: Rust | Boa 0.22 | Boa's bits are the C library's (see the tables above) | the tables above |
 | The engine's own code | MicroQuickJS [`6d4d7eb`](https://github.com/bellard/mquickjs/commit/6d4d7eb6b99011d5aab6e88a9b99e8fd4d86c6e9), its `libm.c`; Elk [`71a86fa`](https://github.com/cesanta/elk/commit/71a86fa2fef146696be9ae66715bf3f91d0a5f2c), with no `Math` object | MicroQuickJS ships its own maths library; Elk has none | the MicroQuickJS rows above |
-| A port of V8's code | scriptc [`4af5844`](https://github.com/vercel-labs/scriptc/commit/4af5844f522b2762716226114262fd7dd86c8e65) | its `Math` matches Node.js 24.19.0's bit for bit on all 7,820 cases tested, with `pow` going to the platform's | results to follow |
+| A port of V8's code | scriptc [`4af5844`](https://github.com/vercel-labs/scriptc/commit/4af5844f522b2762716226114262fd7dd86c8e65); the run and source reading are of v0.4.7, [`6c60b0b`](https://github.com/vercel-labs/scriptc/commit/6c60b0bcbfc6edd34ce5c1cdb588d42bdb7171ff) | its `Math` matches Node.js 24.19.0's bit for bit on all 7,820 cases tested, with `pow` going to the platform's | [`scriptc/`](scriptc/README.md) |
 | Borrowed from the host | engine262 [`d553e7b`](https://github.com/engine262/engine262/commit/d553e7b52501fbc47eae981c8d0fa7a5c26d0171) | its maths matches the engine running it, inferred from its bits | the engine262 rows above |
 
 ## Committed outputs

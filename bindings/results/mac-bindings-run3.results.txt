@@ -1,0 +1,203 @@
+# engine:   v8go at commit 12b0374faffcc6a93eb284808ca1beab58259e72 (V8 9.0.257.18); PyMiniRacer 0.14.1 (V8 14.4.258.23), trig flag on and off; d8 9.0.257 and 14.4.258; Node.js 24.19.0 and 26.13.1
+# platform: macOS 26.6.2 (25G83), arm64, Apple M1 Pro
+# obtained: v8go from the Go module proxy (go get, Go 1.27.4 from conda-forge); PyMiniRacer from its PyPI wheel (pip, Python 3.13.18); d8 from jsvu; Node.js from nvm
+# date:     2026-11-17T23:23:25Z
+# script:   not in this repository yet (results only for now)
+# captured: copied from an earlier run, not regenerated; paths stripped (the scratch directory is shown as <scratch>, the home directory as ~); the line at the end naming a raw-outputs bundle refers to a file not kept here, apart from the three control outputs in control/
+
+# bindings-math-run.sh run3, 2026-11-17T23:23:25Z; Darwin 25.6.0 arm64; Apple M1 Pro
+
+## host and toolchain
+  ProductName:		macOS
+  ProductVersion:		26.6.2
+  BuildVersion:		25G83
+  clang: Apple clang version 21.0.0 (clang-2100.3.34.2)
+  pixi: pixi 0.84.2, workspace <scratch>/bindings/env: go 1.27.4 cgo_h5804ab5_1;python 3.13.18 hb59dee6_100_cp313
+  go: go version go1.27.4 darwin/arm64, <scratch>/bindings/env/.pixi/envs/default/bin/go
+  python: Python 3.13.18, venv on Python 3.13.18 at <scratch>/bindings/env/.pixi/envs/default/bin/python
+  pip list: mini-racer==0.14.1 pip==26.2.2
+
+## v8go: build metadata
+rogchap.com/v8go v0.6.1-0.20211117174756-12b0374faffc
+  module dir: <scratch>/bindings/gopath/pkg/mod/rogchap.com/v8go@v0.6.1-0.20211117174756-12b0374faffc
+  deps/v8_version: 9.0.257.18
+  deps/include/v8-version.h: 9.0.257.18
+  deps/darwin_arm64/libv8.a: 30633648 bytes, sha256 a5e2274735886de8
+  GN args in deps/build.py naming libm or trig: 0
+  libv8.a strings naming use_libm_trig: 0
+  go.mod require: require rogchap.com/v8go v0.6.1-0.20211117174756-12b0374faffc; go.sum sha256 7576f4ffc6a7baa6; CC /usr/bin/clang, CXX /usr/bin/clang++
+  built bindings-v8go.go, sha256 3cd97f02355c3f54, binary sha256 c2740674063da982
+  at runtime, v8go.Version(): 9.0.257.18-v8go
+
+## PyMiniRacer: build metadata
+  package dir: <scratch>/bindings/venv/lib/python3.13/site-packages/py_mini_racer
+  wheel: mini_racer-0.14.1-py3-none-macosx_11_0_arm64.whl, sha256 56cc6965a1665a50d8d613bc43aa83b4cec6b1f09acc69dc4c2845dacb201463
+  __about__: __version__ = "0.14.0"
+  DEFAULT_V8_FLAGS: ('--single-threaded',)
+  libmini_racer.dylib: 52796560 bytes, sha256 a4b440dcf5f4f6c7, Mach-O 64-bit dynamically linked shared library arm64
+    version strings: 14.4.258.23
+    flag strings: use libm trig functions
+  at runtime, MiniRacer().v8_version: 14.4.258.23
+
+## comparisons: d8 from jsvu, Node from nvm
+  d8 9.0.257: ~/.jsvu/engines/v8-9.0.257/v8-9.0.257, sha256 e630152758822a90; --help lines naming use-libm-trig-functions: 0
+  d8 14.4.258: ~/.jsvu/engines/v8-14.4.258/v8-14.4.258, sha256 9fbb1a2caa0cc738; --help lines naming use-libm-trig-functions: 2
+    help:   --use-libm-trig-functions (use libm trig functions)
+    help:         type: bool  default: --use-libm-trig-functions
+    help:   --is-standalone-d8-shell (Tells V8 it's running as part of the d8. This flag should not be set in other cases.)
+  node: ~/.nvm/versions/node/v26.13.1/bin/node, sha256 266dec4dce3a6cdc, v26.13.1 V8 14.6.202.34-node.40
+  node: ~/.nvm/versions/node/v24.19.0/bin/node, sha256 27db838bb204ef7c, v24.19.0 V8 13.6.233.17-node.51
+
+## the probes
+  sin: d8-libm-sin-probe.js, sha256 42bf3ca77ed35ec5
+  control: unrun-math-control.js, sha256 f022300acf07a5fc
+  unrun-math-crosschecks.sh sha256 d8086ee3cfe97691
+  na: print([Math.atan2(-3.2637896500529635, 0.07873802091397586), Math.atan2(-1, 1), Math.atan2(-1, 0.5), Math.atan2(-2, 0.1), Math.atan2(1, 0.1), Math.atan2(-0.5, 1)].join(" "));
+  ke: console.log([Math.log1p(1e-300), Math.expm1(1e-300), Math.log1p(1e-20), Math.expm1(1e-20), Math.log1p(5e-324), Math.expm1(1e-10)].join(" "));
+  ra: print([Math.asinh(5e-324), Math.asinh(1e-300), Math.asinh(1e-10), Math.asinh(1e300), Math.asinh(-0.5), Math.acosh(1e300), Math.atanh(1e-10), Math.atanh(0.5)].join(" "));
+  gl: console.log([Math.log(5e-324), Math.log10(5e-324), Math.log(1e-310), Math.log2(5e-324), Math.log(2.2250738585072014e-308)].join(" "));
+  (little-endian assumed by __bd: arm64)
+
+## probe sin
+-- v8go [exits 0 0, repeat identical]
+   input 5c99c487f2337e3a 1.1986535513718587e+138
+   sin 3cbb779ceaa3c069 3.811845021115953e-16
+-- d8-9.0.257 [exits 0 0, repeat identical]
+   input 5c99c487f2337e3a 1.1986535513718587e+138
+   sin 3cbb779ceaa3c069 3.811845021115953e-16
+-- pyminiracer [exits 0 0, repeat identical]
+   input 5c99c487f2337e3a 1.1986535513718587e+138
+   sin 3cbb779ceaa3bc42 3.811845021115429e-16
+-- pyminiracer-flagoff [exits 0 0, repeat identical]
+   input 5c99c487f2337e3a 1.1986535513718587e+138
+   sin 3cbb779ceaa3c069 3.811845021115953e-16
+-- d8-14.4.258 [exits 0 0, repeat identical]
+   input 5c99c487f2337e3a 1.1986535513718587e+138
+   sin 3cbb779ceaa3bc42 3.811845021115429e-16
+-- d8-14.4.258-flagoff [exits 0 0, repeat identical]
+   input 5c99c487f2337e3a 1.1986535513718587e+138
+   sin 3cbb779ceaa3c069 3.811845021115953e-16
+-- node-v26.13.1 [exits 0 0, repeat identical]
+   input 5c99c487f2337e3a 1.1986535513718587e+138
+   sin 3cbb779ceaa3c069 3.811845021115953e-16
+-- node-v24.19.0 [exits 0 0, repeat identical]
+   input 5c99c487f2337e3a 1.1986535513718587e+138
+   sin 3cbb779ceaa3c069 3.811845021115953e-16
+
+## probe na
+-- v8go [exits 0 0, repeat identical]
+   bff8bf2fa12ba6f1:-1.546676282474831 bfe921fb54442d18:-0.7853981633974483 bff1b6e192ebbe44:-1.1071487177940904 bff8555a2787981f:-1.5208379310729538 3ff789bd2c160054:1.4711276743037347 bfddac670561bb4f:-0.4636476090008061
+-- d8-9.0.257 [exits 0 0, repeat identical]
+   bff8bf2fa12ba6f1:-1.546676282474831 bfe921fb54442d18:-0.7853981633974483 bff1b6e192ebbe44:-1.1071487177940904 bff8555a2787981f:-1.5208379310729538 3ff789bd2c160054:1.4711276743037347 bfddac670561bb4f:-0.4636476090008061
+-- pyminiracer [exits 0 0, repeat identical]
+   bff8bf2fa12ba6f1:-1.546676282474831 bfe921fb54442d18:-0.7853981633974483 bff1b6e192ebbe44:-1.1071487177940904 bff8555a2787981f:-1.5208379310729538 3ff789bd2c160054:1.4711276743037347 bfddac670561bb4f:-0.4636476090008061
+-- pyminiracer-flagoff [exits 0 0, repeat identical]
+   bff8bf2fa12ba6f1:-1.546676282474831 bfe921fb54442d18:-0.7853981633974483 bff1b6e192ebbe44:-1.1071487177940904 bff8555a2787981f:-1.5208379310729538 3ff789bd2c160054:1.4711276743037347 bfddac670561bb4f:-0.4636476090008061
+-- d8-14.4.258 [exits 0 0, repeat identical]
+   bff8bf2fa12ba6f1:-1.546676282474831 bfe921fb54442d18:-0.7853981633974483 bff1b6e192ebbe44:-1.1071487177940904 bff8555a2787981f:-1.5208379310729538 3ff789bd2c160054:1.4711276743037347 bfddac670561bb4f:-0.4636476090008061
+-- d8-14.4.258-flagoff [exits 0 0, repeat identical]
+   bff8bf2fa12ba6f1:-1.546676282474831 bfe921fb54442d18:-0.7853981633974483 bff1b6e192ebbe44:-1.1071487177940904 bff8555a2787981f:-1.5208379310729538 3ff789bd2c160054:1.4711276743037347 bfddac670561bb4f:-0.4636476090008061
+-- node-v26.13.1 [exits 0 0, repeat identical]
+   bff8bf2fa12ba6f1:-1.546676282474831 bfe921fb54442d18:-0.7853981633974483 bff1b6e192ebbe44:-1.1071487177940904 bff8555a2787981f:-1.5208379310729538 3ff789bd2c160054:1.4711276743037347 bfddac670561bb4f:-0.4636476090008061
+-- node-v24.19.0 [exits 0 0, repeat identical]
+   bff8bf2fa12ba6f1:-1.546676282474831 bfe921fb54442d18:-0.7853981633974483 bff1b6e192ebbe44:-1.1071487177940904 bff8555a2787981f:-1.5208379310729538 3ff789bd2c160054:1.4711276743037347 bfddac670561bb4f:-0.4636476090008061
+
+## probe ke
+-- v8go [exits 0 0, repeat identical]
+   01a56e1fc2f8f359:1e-300 01a56e1fc2f8f359:1e-300 3bc79ca10c924223:1e-20 3bc79ca10c924223:1e-20 0000000000000001:5e-324 3ddb7cdfd9dda4e3:1.00000000005e-10
+-- d8-9.0.257 [exits 0 0, repeat identical]
+   01a56e1fc2f8f359:1e-300 01a56e1fc2f8f359:1e-300 3bc79ca10c924223:1e-20 3bc79ca10c924223:1e-20 0000000000000001:5e-324 3ddb7cdfd9dda4e3:1.00000000005e-10
+-- pyminiracer [exits 0 0, repeat identical]
+   01a56e1fc2f8f359:1e-300 01a56e1fc2f8f359:1e-300 3bc79ca10c924223:1e-20 3bc79ca10c924223:1e-20 0000000000000001:5e-324 3ddb7cdfd9dda4e3:1.00000000005e-10
+-- pyminiracer-flagoff [exits 0 0, repeat identical]
+   01a56e1fc2f8f359:1e-300 01a56e1fc2f8f359:1e-300 3bc79ca10c924223:1e-20 3bc79ca10c924223:1e-20 0000000000000001:5e-324 3ddb7cdfd9dda4e3:1.00000000005e-10
+-- d8-14.4.258 [exits 0 0, repeat identical]
+   01a56e1fc2f8f359:1e-300 01a56e1fc2f8f359:1e-300 3bc79ca10c924223:1e-20 3bc79ca10c924223:1e-20 0000000000000001:5e-324 3ddb7cdfd9dda4e3:1.00000000005e-10
+-- d8-14.4.258-flagoff [exits 0 0, repeat identical]
+   01a56e1fc2f8f359:1e-300 01a56e1fc2f8f359:1e-300 3bc79ca10c924223:1e-20 3bc79ca10c924223:1e-20 0000000000000001:5e-324 3ddb7cdfd9dda4e3:1.00000000005e-10
+-- node-v26.13.1 [exits 0 0, repeat identical]
+   01a56e1fc2f8f359:1e-300 01a56e1fc2f8f359:1e-300 3bc79ca10c924223:1e-20 3bc79ca10c924223:1e-20 0000000000000001:5e-324 3ddb7cdfd9dda4e3:1.00000000005e-10
+-- node-v24.19.0 [exits 0 0, repeat identical]
+   01a56e1fc2f8f359:1e-300 01a56e1fc2f8f359:1e-300 3bc79ca10c924223:1e-20 3bc79ca10c924223:1e-20 0000000000000001:5e-324 3ddb7cdfd9dda4e3:1.00000000005e-10
+
+## probe ra
+-- v8go [exits 0 0, repeat identical]
+   0000000000000001:5e-324 01a56e1fc2f8f359:1e-300 3ddb7cdfd9d7bdbb:1e-10 40859bbfd8b83e43:691.4686750787736 bfdecc2caec5160a:-0.48121182505960347 40859bbfd8b83e43:691.4686750787736 3ddb7cdfd9d7bdbb:1e-10 3fe193ea7aad030a:0.5493061443340548
+-- d8-9.0.257 [exits 0 0, repeat identical]
+   0000000000000001:5e-324 01a56e1fc2f8f359:1e-300 3ddb7cdfd9d7bdbb:1e-10 40859bbfd8b83e43:691.4686750787736 bfdecc2caec5160a:-0.48121182505960347 40859bbfd8b83e43:691.4686750787736 3ddb7cdfd9d7bdbb:1e-10 3fe193ea7aad030a:0.5493061443340548
+-- pyminiracer [exits 0 0, repeat identical]
+   0000000000000001:5e-324 01a56e1fc2f8f359:1e-300 3ddb7cdfd9d7bdbb:1e-10 40859bbfd8b83e43:691.4686750787736 bfdecc2caec5160a:-0.48121182505960347 40859bbfd8b83e43:691.4686750787736 3ddb7cdfd9d7bdbb:1e-10 3fe193ea7aad030a:0.5493061443340548
+-- pyminiracer-flagoff [exits 0 0, repeat identical]
+   0000000000000001:5e-324 01a56e1fc2f8f359:1e-300 3ddb7cdfd9d7bdbb:1e-10 40859bbfd8b83e43:691.4686750787736 bfdecc2caec5160a:-0.48121182505960347 40859bbfd8b83e43:691.4686750787736 3ddb7cdfd9d7bdbb:1e-10 3fe193ea7aad030a:0.5493061443340548
+-- d8-14.4.258 [exits 0 0, repeat identical]
+   0000000000000001:5e-324 01a56e1fc2f8f359:1e-300 3ddb7cdfd9d7bdbb:1e-10 40859bbfd8b83e43:691.4686750787736 bfdecc2caec5160a:-0.48121182505960347 40859bbfd8b83e43:691.4686750787736 3ddb7cdfd9d7bdbb:1e-10 3fe193ea7aad030a:0.5493061443340548
+-- d8-14.4.258-flagoff [exits 0 0, repeat identical]
+   0000000000000001:5e-324 01a56e1fc2f8f359:1e-300 3ddb7cdfd9d7bdbb:1e-10 40859bbfd8b83e43:691.4686750787736 bfdecc2caec5160a:-0.48121182505960347 40859bbfd8b83e43:691.4686750787736 3ddb7cdfd9d7bdbb:1e-10 3fe193ea7aad030a:0.5493061443340548
+-- node-v26.13.1 [exits 0 0, repeat identical]
+   0000000000000001:5e-324 01a56e1fc2f8f359:1e-300 3ddb7cdfd9d7bdbb:1e-10 40859bbfd8b83e43:691.4686750787736 bfdecc2caec5160a:-0.48121182505960347 40859bbfd8b83e43:691.4686750787736 3ddb7cdfd9d7bdbb:1e-10 3fe193ea7aad030a:0.5493061443340548
+-- node-v24.19.0 [exits 0 0, repeat identical]
+   0000000000000001:5e-324 01a56e1fc2f8f359:1e-300 3ddb7cdfd9d7bdbb:1e-10 40859bbfd8b83e43:691.4686750787736 bfdecc2caec5160a:-0.48121182505960347 40859bbfd8b83e43:691.4686750787736 3ddb7cdfd9d7bdbb:1e-10 3fe193ea7aad030a:0.5493061443340548
+
+## probe gl
+-- v8go [exits 0 0, repeat identical]
+   c0874385446d71c3:-744.4400719213812 c07434e6420f4374:-323.3062153431158 c0864e69394d9508:-713.8013788281542 c090c80000000000:-1074 c086232bdd7abcd2:-708.3964185322641
+-- d8-9.0.257 [exits 0 0, repeat identical]
+   c0874385446d71c3:-744.4400719213812 c07434e6420f4374:-323.3062153431158 c0864e69394d9508:-713.8013788281542 c090c80000000000:-1074 c086232bdd7abcd2:-708.3964185322641
+-- pyminiracer [exits 0 0, repeat identical]
+   c0874385446d71c3:-744.4400719213812 c07434e6420f4374:-323.3062153431158 c0864e69394d9508:-713.8013788281542 c090c80000000000:-1074 c086232bdd7abcd2:-708.3964185322641
+-- pyminiracer-flagoff [exits 0 0, repeat identical]
+   c0874385446d71c3:-744.4400719213812 c07434e6420f4374:-323.3062153431158 c0864e69394d9508:-713.8013788281542 c090c80000000000:-1074 c086232bdd7abcd2:-708.3964185322641
+-- d8-14.4.258 [exits 0 0, repeat identical]
+   c0874385446d71c3:-744.4400719213812 c07434e6420f4374:-323.3062153431158 c0864e69394d9508:-713.8013788281542 c090c80000000000:-1074 c086232bdd7abcd2:-708.3964185322641
+-- d8-14.4.258-flagoff [exits 0 0, repeat identical]
+   c0874385446d71c3:-744.4400719213812 c07434e6420f4374:-323.3062153431158 c0864e69394d9508:-713.8013788281542 c090c80000000000:-1074 c086232bdd7abcd2:-708.3964185322641
+-- node-v26.13.1 [exits 0 0, repeat identical]
+   c0874385446d71c3:-744.4400719213812 c07434e6420f4374:-323.3062153431158 c0864e69394d9508:-713.8013788281542 c090c80000000000:-1074 c086232bdd7abcd2:-708.3964185322641
+-- node-v24.19.0 [exits 0 0, repeat identical]
+   c0874385446d71c3:-744.4400719213812 c07434e6420f4374:-323.3062153431158 c0864e69394d9508:-713.8013788281542 c090c80000000000:-1074 c086232bdd7abcd2:-708.3964185322641
+
+## probe control
+  v8go                 digest 389506fe5a04677b, 7821 lines, last "cases 7820", exits 0 0, repeat identical
+  d8-9.0.257           digest 389506fe5a04677b, 7821 lines, last "cases 7820", exits 0 0, repeat identical
+  pyminiracer          digest 6837870d4acd9392, 7821 lines, last "cases 7820", exits 0 0, repeat identical
+  pyminiracer-flagoff  digest 7b5613b0b56b3466, 7821 lines, last "cases 7820", exits 0 0, repeat identical
+  d8-14.4.258          digest 6837870d4acd9392, 7821 lines, last "cases 7820", exits 0 0, repeat identical
+  d8-14.4.258-flagoff  digest 7b5613b0b56b3466, 7821 lines, last "cases 7820", exits 0 0, repeat identical
+  node-v26.13.1        digest 606a3ac03df5f5e1, 7821 lines, last "cases 7820", exits 0 0, repeat identical
+  node-v24.19.0        digest 40c986c46387a8ef, 7821 lines, last "cases 7820", exits 0 0, repeat identical
+
+## comparisons, run 1 of each row: identical, or the control compared per function by unrun-math-compare.js (sha256 7f2eff4efd051d36): NaN-equal, and ULP where values differ
+  v8go                 vs d8-9.0.257           identical: sin na ke ra gl control; differ: none
+  pyminiracer          vs d8-14.4.258          identical: sin na ke ra gl control; differ: none
+  pyminiracer-flagoff  vs d8-14.4.258-flagoff  identical: sin na ke ra gl control; differ: none
+  v8go                 vs node-v26.13.1        identical: sin na ke ra gl; differ: control
+    control, through unrun-math-compare.js with node-v26.13.1 as the reference:
+      compared 7820, bit-identical 7703, NaN payload only 57, value differs 60, unmatched lines 0
+      value differences by function: sin:1(max 1 ulp) tan:5(max 1 ulp) asin:3(max 1 ulp) acos:1(max 1 ulp) atanh:1(max 1 ulp) log10:1(max 1 ulp) pow:48(max 1 ulp)
+  pyminiracer          vs node-v26.13.1        identical: na ke ra gl; differ: sin control
+    control, through unrun-math-compare.js with node-v26.13.1 as the reference:
+      compared 7820, bit-identical 7790, NaN payload only 0, value differs 30, unmatched lines 0
+      value differences by function: sin:9(max 1 ulp) cos:10(max 1 ulp) tan:5(max 1 ulp) asin:3(max 1 ulp) acos:1(max 1 ulp) atanh:1(max 1 ulp) log10:1(max 1 ulp)
+  pyminiracer-flagoff  vs node-v26.13.1        identical: sin na ke ra gl; differ: control
+    control, through unrun-math-compare.js with node-v26.13.1 as the reference:
+      compared 7820, bit-identical 7808, NaN payload only 0, value differs 12, unmatched lines 0
+      value differences by function: sin:1(max 1 ulp) tan:5(max 1 ulp) asin:3(max 1 ulp) acos:1(max 1 ulp) atanh:1(max 1 ulp) log10:1(max 1 ulp)
+  d8-9.0.257           vs node-v26.13.1        identical: sin na ke ra gl; differ: control
+    control, through unrun-math-compare.js with node-v26.13.1 as the reference:
+      compared 7820, bit-identical 7703, NaN payload only 57, value differs 60, unmatched lines 0
+      value differences by function: sin:1(max 1 ulp) tan:5(max 1 ulp) asin:3(max 1 ulp) acos:1(max 1 ulp) atanh:1(max 1 ulp) log10:1(max 1 ulp) pow:48(max 1 ulp)
+  d8-14.4.258          vs node-v26.13.1        identical: na ke ra gl; differ: sin control
+    control, through unrun-math-compare.js with node-v26.13.1 as the reference:
+      compared 7820, bit-identical 7790, NaN payload only 0, value differs 30, unmatched lines 0
+      value differences by function: sin:9(max 1 ulp) cos:10(max 1 ulp) tan:5(max 1 ulp) asin:3(max 1 ulp) acos:1(max 1 ulp) atanh:1(max 1 ulp) log10:1(max 1 ulp)
+  node-v24.19.0        vs node-v26.13.1        identical: sin na ke ra gl; differ: control
+    control, through unrun-math-compare.js with node-v26.13.1 as the reference:
+      compared 7820, bit-identical 7763, NaN payload only 57, value differs 0, unmatched lines 0
+      value differences by function: none
+  v8go                 vs pyminiracer          identical: na ke ra gl; differ: sin control
+    control, through unrun-math-compare.js with pyminiracer as the reference:
+      compared 7820, bit-identical 7697, NaN payload only 57, value differs 66, unmatched lines 0
+      value differences by function: sin:8(max 1 ulp) cos:10(max 1 ulp) pow:48(max 1 ulp)
+
+# raw outputs: 2026-11-17-mac-bindings-math-run3-outputs.tar.xz, 96 files, sha256 2b3af4ad0ed09e3a
+# done 2026-11-17T23:23:36Z

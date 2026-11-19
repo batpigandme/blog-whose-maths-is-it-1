@@ -1,0 +1,23 @@
+# engine:   d8 14.6.202 (the V8 in Node.js 26.13.1) against Node.js 26.13.1
+# platform: macOS 26.6.2 (25G83), arm64, Apple M1 Pro
+# obtained: d8 from jsvu; Node.js from nvm
+# date:     2026-11-17T23:24:00Z
+# script:   not in this repository yet (results only for now)
+# captured: copied from an earlier run, not regenerated; paths stripped (the scratch directory is shown as <scratch>, the home directory as ~); run by hand after run 3, as a supplement, to separate V8 version from build
+
+# supplementary to bindings-math-run.sh run3: is the 1-ULP split from Node one of V8 version or of build? d8 14.6.202 is Node v26.13.1's V8. 2026-11-17T23:24:00Z; Darwin 25.6.0 arm64
+# d8 14.6.202 ~/.jsvu/engines/v8-14.6.202/v8-14.6.202 sha256 fb9af3ddddfed69b; node v26.13.1 V8 14.6.202.34-node.40; unrun-math-control.js sha256 f022300acf07a5fc; unrun-math-compare.js sha256 7f2eff4efd051d36
+
+## d8 14.6.202 default : digest 6837870d4acd9392, repeat identical
+-- against node-v26.13.1 (run3's output)
+   compared 7820, bit-identical 7790, NaN payload only 0, value differs 30, unmatched lines 0
+   value differences by function: sin:9(max 1 ulp) cos:10(max 1 ulp) tan:5(max 1 ulp) asin:3(max 1 ulp) acos:1(max 1 ulp) atanh:1(max 1 ulp) log10:1(max 1 ulp)
+
+## d8 14.6.202 flagoff --no-use-libm-trig-functions: digest 7b5613b0b56b3466, repeat identical
+-- against node-v26.13.1 (run3's output)
+   compared 7820, bit-identical 7808, NaN payload only 0, value differs 12, unmatched lines 0
+   value differences by function: sin:1(max 1 ulp) tan:5(max 1 ulp) asin:3(max 1 ulp) acos:1(max 1 ulp) atanh:1(max 1 ulp) log10:1(max 1 ulp)
+
+## d8 14.6.202 flagoff against d8-14.4.258-flagoff (run3's output)
+   compared 7820, bit-identical 7820, NaN payload only 0, value differs 0, unmatched lines 0
+   value differences by function: none

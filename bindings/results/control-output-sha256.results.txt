@@ -1,0 +1,40 @@
+# engine:   the 7,820-case Math control, every row of runs 3 and 4, both repeats
+# platform: macOS 26.6.2 (25G83), arm64, Apple M1 Pro
+# obtained: see the run files
+# date:     2026-11-17T23:23Z (run 3) and 2026-11-17T23:31Z (run 4)
+# script:   not in this repository yet (results only for now)
+# captured: computed for this repository from the unpacked raw outputs of the two runs (hashing, not a rerun); hash is of the output exactly as written by the run, without the header lines used in control/
+
+run   row                       repeat  sha256 of the unedited control output
+run3  d8-14.4.258               1       6837870d4acd93924a18e558cf0a1012cdffb271a97bcfecc91ceeac515798c6
+run3  d8-14.4.258               2       6837870d4acd93924a18e558cf0a1012cdffb271a97bcfecc91ceeac515798c6
+run3  d8-14.4.258-flagoff       1       7b5613b0b56b34662e2e1b86b3fcb86bb5234fe9eac99b2f178dd6ba938270f7
+run3  d8-14.4.258-flagoff       2       7b5613b0b56b34662e2e1b86b3fcb86bb5234fe9eac99b2f178dd6ba938270f7
+run3  d8-9.0.257                1       389506fe5a04677b0f7d73f19d3482bf9cff3b5d3bc5ebcafea1170c12a649a9
+run3  d8-9.0.257                2       389506fe5a04677b0f7d73f19d3482bf9cff3b5d3bc5ebcafea1170c12a649a9
+run3  node-v24.19.0             1       40c986c46387a8efddeb0dbf42b2b5d107c0fd5109cc6d78caa35a92ca4e2b96
+run3  node-v24.19.0             2       40c986c46387a8efddeb0dbf42b2b5d107c0fd5109cc6d78caa35a92ca4e2b96
+run3  node-v26.13.1             1       606a3ac03df5f5e1a029b7fa86fbeb654dfc5a608fb6a7b010a582d6f8f208e7
+run3  node-v26.13.1             2       606a3ac03df5f5e1a029b7fa86fbeb654dfc5a608fb6a7b010a582d6f8f208e7
+run3  pyminiracer               1       6837870d4acd93924a18e558cf0a1012cdffb271a97bcfecc91ceeac515798c6
+run3  pyminiracer               2       6837870d4acd93924a18e558cf0a1012cdffb271a97bcfecc91ceeac515798c6
+run3  pyminiracer-flagoff       1       7b5613b0b56b34662e2e1b86b3fcb86bb5234fe9eac99b2f178dd6ba938270f7
+run3  pyminiracer-flagoff       2       7b5613b0b56b34662e2e1b86b3fcb86bb5234fe9eac99b2f178dd6ba938270f7
+run3  v8go                      1       389506fe5a04677b0f7d73f19d3482bf9cff3b5d3bc5ebcafea1170c12a649a9
+run3  v8go                      2       389506fe5a04677b0f7d73f19d3482bf9cff3b5d3bc5ebcafea1170c12a649a9
+run4  d8-10.9.194               1       389506fe5a04677b0f7d73f19d3482bf9cff3b5d3bc5ebcafea1170c12a649a9
+run4  d8-10.9.194               2       389506fe5a04677b0f7d73f19d3482bf9cff3b5d3bc5ebcafea1170c12a649a9
+run4  d8-14.4.258               1       6837870d4acd93924a18e558cf0a1012cdffb271a97bcfecc91ceeac515798c6
+run4  d8-14.4.258               2       6837870d4acd93924a18e558cf0a1012cdffb271a97bcfecc91ceeac515798c6
+run4  d8-14.4.258-flagoff       1       7b5613b0b56b34662e2e1b86b3fcb86bb5234fe9eac99b2f178dd6ba938270f7
+run4  d8-14.4.258-flagoff       2       7b5613b0b56b34662e2e1b86b3fcb86bb5234fe9eac99b2f178dd6ba938270f7
+run4  node-v24.19.0             1       40c986c46387a8efddeb0dbf42b2b5d107c0fd5109cc6d78caa35a92ca4e2b96
+run4  node-v24.19.0             2       40c986c46387a8efddeb0dbf42b2b5d107c0fd5109cc6d78caa35a92ca4e2b96
+run4  node-v26.13.1             1       606a3ac03df5f5e1a029b7fa86fbeb654dfc5a608fb6a7b010a582d6f8f208e7
+run4  node-v26.13.1             2       606a3ac03df5f5e1a029b7fa86fbeb654dfc5a608fb6a7b010a582d6f8f208e7
+run4  pyminiracer               1       6837870d4acd93924a18e558cf0a1012cdffb271a97bcfecc91ceeac515798c6
+run4  pyminiracer               2       6837870d4acd93924a18e558cf0a1012cdffb271a97bcfecc91ceeac515798c6
+run4  pyminiracer-flagoff       1       7b5613b0b56b34662e2e1b86b3fcb86bb5234fe9eac99b2f178dd6ba938270f7
+run4  pyminiracer-flagoff       2       7b5613b0b56b34662e2e1b86b3fcb86bb5234fe9eac99b2f178dd6ba938270f7
+run4  v8go                      1       389506fe5a04677b0f7d73f19d3482bf9cff3b5d3bc5ebcafea1170c12a649a9
+run4  v8go                      2       389506fe5a04677b0f7d73f19d3482bf9cff3b5d3bc5ebcafea1170c12a649a9

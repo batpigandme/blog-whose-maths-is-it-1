@@ -1,6 +1,6 @@
-# {{TODO:title}}
+# Whose maths is it?
 
-> Source code for the blog post ["{{TODO:title}}"][post].
+> Source code for the blog post ["Whose maths is it?"][post].
 
 ## License
 
@@ -8,10 +8,10 @@ See [LICENSE][license].
 
 ## Copyright
 
-Copyright © 2024. The Stdlib [Authors][stdlib-authors].
+Copyright © 2026. The Stdlib [Authors][stdlib-authors].
 
-[post]: https://blog.stdlib.io/{{TODO:url}}/
+[post]: https://blog.stdlib.io/whose-maths-is-it/
 
 [stdlib-authors]: https://github.com/stdlib-js/stdlib/graphs/contributors
 
-[license]: https://raw.githubusercontent.com/stdlib-js/blog-calling-fortran-from-nodejs-1/main/LICENSE
+[license]: ./LICENSE

@@ -2,6 +2,8 @@
 
 Backs the `tan` pair in `[^mquickjs]`, the mechanism in `[^contract]`, and V8's `atan` in `[^atan]`, in "Whose maths is it?".
 
+Measured on macOS arm64 (Apple M1 Pro), and on Linux VMs in Claude Code Cloud (x86_64) and OrbStack (aarch64, with an x86_64 container under emulation). The Linux scripts run on any Docker host.
+
 ## Claim
 
 > MicroQuickJS, the engine for embedded systems from the last post, carries its own maths library, `libm.c`. Built from the same commit by GCC on Linux x86_64 and by Apple clang on macOS arm64, it gives different answers on nine `Math` functions.
@@ -22,7 +24,7 @@ From the repository root. Each script fetches what it needs at pinned commits in
 
 ```bash
 ./fma-contraction/run-contract-mac.sh      # MicroQuickJS twice, all 392,083 cases: about 2 minutes
-./fma-contraction/run-contract-linux.sh    # Ubuntu 24.04 x86_64, GCC 13.3.0 (emulated on an arm64 Mac): about 6 minutes
+./fma-contraction/run-contract-linux.sh    # Ubuntu 24.04 x86_64, GCC 13.3.0 (under emulation on an arm64 Mac): about 6 minutes
 ./fma-contraction/compare-all.sh           # the three builds side by side
 ./fma-contraction/tan-pair.sh              # the three answers for the tan input, with MPFR
 ./fma-contraction/run-atan-mac.sh          # LLVM libc's atan, and d8 14.6.202, 15.4.8, 15.8.32
@@ -53,16 +55,16 @@ The correctly rounded reference for every case (not needed for the comparisons h
 | File | What it is | Status | Date | Platform |
 | --- | --- | --- | --- | --- |
 | `results/contract-mac-arm64.txt` | MicroQuickJS built default and with `-ffp-contract=off`; fused counts; the `tan` input; a hash per function | regenerated for this repository | 2026-11-19 | macOS 26.7.3, arm64, Apple M1 Pro, Apple clang 21.0.0 |
-| `results/contract-linux-x86_64.txt` | The same on Ubuntu 24.04, GCC 13.3.0 | regenerated for this repository | 2026-11-19 | container, linux/amd64, emulated on the machine above |
-| `results/compare.txt` | The three builds' hashes side by side; the emulated run against the captured real x86_64 hashes | regenerated for this repository | 2026-11-19 | assembled on the macOS machine |
+| `results/contract-linux-x86_64.txt` | The same on Ubuntu 24.04, GCC 13.3.0 | regenerated for this repository | 2026-11-19 | OrbStack, aarch64 Linux VM on macOS, x86_64 container under emulation (linux/amd64) |
+| `results/compare.txt` | The three builds' hashes side by side; the OrbStack x86_64 run against the captured Claude Code Cloud hashes | regenerated for this repository | 2026-11-19 | assembled on the macOS machine |
 | `results/tan-pair.txt` | The `tan` answers, with MPFR | regenerated for this repository | 2026-11-19 | assembled on the macOS machine; MPFR 4.2.2 through Julia 1.13.3 |
 | `results/atan-mac-arm64.txt` | LLVM libc's `atan` four ways, and d8 14.6.202, 15.4.8, 15.8.32, on macOS | regenerated for this repository | 2026-11-19 | macOS 26.7.3, arm64, Apple M1 Pro |
-| `results/atan-linux-x86_64.txt` | The same library built without and with `-mavx2 -mfma`, and the published Linux d8 builds | regenerated for this repository | 2026-11-19 | container, linux/amd64, emulated |
-| `results/atan-linux-aarch64.txt` | The same library on arm64 Linux, with and without the fused path | regenerated for this repository | 2026-11-19 | container, linux/arm64, native |
-| `results/captured-linux-x86_64-2026-10-22.txt` | The 17 hashes, and a clang `-mfma` build, from an earlier run on a real x86_64 machine | captured earlier, not rerun | 2026-10-22 | Ubuntu 24.04.5, x86_64, Intel Xeon 2.80 GHz; paths stripped |
+| `results/atan-linux-x86_64.txt` | The same library built without and with `-mavx2 -mfma`, and the published Linux d8 builds | regenerated for this repository | 2026-11-19 | OrbStack, aarch64 Linux VM on macOS, x86_64 container under emulation (linux/amd64) |
+| `results/atan-linux-aarch64.txt` | The same library on arm64 Linux, with and without the fused path | regenerated for this repository | 2026-11-19 | OrbStack, aarch64 Linux VM on macOS (linux/arm64) |
+| `results/captured-linux-x86_64-2026-10-22.txt` | The 17 hashes, and a clang `-mfma` build, from an earlier run | captured earlier, not rerun | 2026-10-22 | Claude Code Cloud, x86_64 VM; Ubuntu 24.04.5, Intel Xeon 2.80 GHz; paths stripped |
 | `lib/cases.sha256`, `lib/reference.sha256` | SHA-256 of the generated case files and of MPFR's reference answers | regenerated for this repository | 2026-11-19 | macOS arm64; Julia 1.13.3 |
 
-**Where this rerun differs from the earlier one.** Nothing in the results. All 17 hashes of the macOS builds, and of the Linux build, equal the earlier run's, as do the 68 and 0 fused instructions, the three `atan` hashes, and the MPFR reference files. What changed is the setup: macOS is 26.7.3 (it was 26.6.2), the Linux half ran in an emulated x86_64 container rather than on a real x86_64 machine (the equal hashes are the check that the emulation reproduces it), `erf`, `gamma`, and `log1p` come from stdlib's published npm packages rather than a checkout of the repository, and the clang that builds LLVM libc's `atan` in the x86_64 container is Ubuntu's 18.1.3 rather than Debian's 16.0.6.
+**Where this rerun differs from the earlier one.** Nothing in the results. All 17 hashes of the macOS builds, and of the Linux build, equal the earlier run's, as do the 68 and 0 fused instructions, the three `atan` hashes, and the MPFR reference files. What changed is the setup: macOS is 26.7.3 (it was 26.6.2), the Linux half ran in an OrbStack x86_64 container under emulation rather than in a Claude Code Cloud x86_64 VM (the equal hashes show the emulation reproduces it), `erf`, `gamma`, and `log1p` come from stdlib's published npm packages rather than a checkout of the repository, and the clang that builds LLVM libc's `atan` in the x86_64 container is Ubuntu's 18.1.3 rather than Debian's 16.0.6.
 
 ## Sources pinned
 
@@ -76,9 +78,9 @@ The correctly rounded reference for every case (not needed for the comparisons h
 | `erf`, `gamma`, `log1p` | `@stdlib/math-base-special-erf@0.2.6`, `-gamma@0.3.1`, `-log1p@0.2.4`, and `esbuild@0.25.10`, with every dependency pinned in `stdlib-fns/package-lock.json` |
 | Ubuntu 24.04 container image | `ubuntu@sha256:73b999393d07f2bf65a40373778a44dc9a6d54ad7718d29247d8ff9413c4d6a8` (linux/amd64 digest as recorded in each output); `gcc`, `make`, `clang`, and `nodejs` from its apt archive, whose versions each output prints |
 
-## Not yet public
+## Scope
 
-- **A run on a real x86_64 machine.** The Linux half here ran under emulation. GCC for baseline x86_64 emits only SSE2 double arithmetic, and the hashes equal the earlier run's on real hardware (`results/captured-linux-x86_64-2026-10-22.txt`), but that run is captured, not repeated.
-- **MicroQuickJS built with clang `-mfma -ffp-contract=on` on x86_64** (the same source with fusing turned on, which gives the macOS bits on all 17 functions): only the captured table, not rerun. The emulated container reports `fma` but not `avx2` in its CPU flags, though the `-mavx2 -mfma` build of LLVM libc's `atan` ran there (`results/atan-linux-x86_64.txt`), so it might run; the result would still come from an emulator, which is a weaker claim than the real-hardware table.
-- **Accuracy against MPFR for every case, per build.** `lib/reference.jl` and its checksums are here; the per-build exact, one-ulp, and worse counts are not, because the post doesn't state them.
-- **d8 15.x on Linux arm64.** V8 doesn't publish one in the bucket the scripts use, so the arm64 Linux column is LLVM libc's `atan` built natively, not d8.
+- **The regenerated x86_64 run is under emulation.** GCC for baseline x86_64 emits only SSE2 double arithmetic, and the hashes equal those of the captured Claude Code Cloud run (`results/captured-linux-x86_64-2026-10-22.txt`). Emulation isn't a physical x86_64 CPU: its flags show `fma` and no `avx2`, so the clang `-mfma` build's result on x86_64 comes from the Claude Code Cloud run.
+- **MicroQuickJS built with clang `-mfma -ffp-contract=on` on x86_64** (the same source with fusing turned on, which gives the macOS bits on all 17 functions) is a captured table, not rerun. The `-mavx2 -mfma` build of LLVM libc's `atan` did run in the emulated container (`results/atan-linux-x86_64.txt`).
+- **Per-build accuracy against MPFR isn't tabulated.** `lib/reference.jl` and its checksums are here; the per-build exact, one-ulp, and worse counts aren't, because the post doesn't state them.
+- **d8 15.x on Linux aarch64 isn't covered.** V8 doesn't publish one in the bucket the scripts use, so the aarch64 Linux column is LLVM libc's `atan` built in the container, not d8.

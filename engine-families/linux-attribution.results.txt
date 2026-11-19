@@ -1,5 +1,5 @@
 # engine:   the same engines on Linux, where a binary of that name existed
-# platform: Linux x86_64, glibc 2.39 (Ubuntu 24.04)
+# platform: Claude Code Cloud, x86_64 VM; Linux x86_64, glibc 2.39 (Ubuntu 24.04)
 # obtained: jsvu Linux binaries, nvm, and builds; see the README
 # date:     2026-10-22T11:54:13Z
 # script:   not in this repository yet (results only for now)

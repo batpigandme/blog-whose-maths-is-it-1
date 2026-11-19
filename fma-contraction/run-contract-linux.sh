@@ -19,8 +19,8 @@
 #
 # On an arm64 Mac the container is emulated (the CPU line of the output says
 # VirtualApple). GCC for baseline x86_64 emits only SSE2 double arithmetic,
-# which an emulator reproduces exactly; the output's last section compares the
-# result hashes with those of a run on a real x86_64 machine. Needs Docker, git,
+# which an emulator reproduces exactly; compare-all.sh compares the result
+# hashes with those of the earlier Claude Code Cloud x86_64 VM run. Needs Docker, git,
 # node and npm on the host (to prepare the cases and the stdlib bundle), and
 # network access. Takes about 10 minutes.
 

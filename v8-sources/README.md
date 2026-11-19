@@ -2,6 +2,8 @@
 
 Backs `[^v8]` and `[^v8-move]` in "Whose maths is it?": V8's four sources for `Math`, and when each moved.
 
+Measured on macOS arm64 (Apple M1 Pro), and on Linux VMs in Claude Code Cloud (x86_64) and OrbStack (an x86_64 container under emulation). The Linux script runs on any Docker host.
+
 ## Claim
 
 > V8 is the clearest case, because by default it draws its `Math` from four places, and they've changed with its version. Its own code, for most functions ... A copy of glibc's code, for `sin` and `cos`, from V8 11.0 (late 2022) until 15.0 ... They're glibc's code apart from build glue, and d8's default `sin` and `cos` match them on every case tested. LLVM's maths library, from 15.0, in May 2026, for most functions, one family per commit ... The platform's C library, for `pow`, by a flag that's on by default. `pow` was never V8's own code, so 15.0 had nothing to move.
@@ -10,7 +12,7 @@ In the footnotes: the glibc copy is `third_party/glibc` (README at 13.6.233.17),
 
 ## Tier
 
-*b: needs a Mac and particular binaries* for the measurements: macOS arm64 with `clang` and `objdump`, Node.js 24.19.0 and 26.13.1 installed with nvm (the script reads `$NVM_DIR`, default `$HOME/.nvm`), curl, unzip, and Node.js. `sources.sh` and `glibc-diff.sh` need only curl, Node.js, and diff, so they run anywhere (*a*). The bisection result is *c* as a published result, and the rerun needs only a Mac or Linux machine with curl, unzip, and Node.js, and takes several minutes. d8 comes from V8's public build bucket, not from jsvu, and no `Math` result depends on how it was installed.
+*b: needs a Mac and particular binaries* for the measurements: macOS arm64 with `clang` and `objdump`, Node.js 24.19.0 and 26.13.1 installed with nvm (the script reads `$NVM_DIR`, default `$HOME/.nvm`), curl, unzip, and Node.js. `sources.sh` and `glibc-diff.sh` need curl, Node.js, and diff, so they run anywhere (*a*). The bisection result is *c* as a published result, and the rerun needs a Mac or Linux machine with curl, unzip, and Node.js, and takes several minutes. d8 comes from V8's public build bucket, not from jsvu, and no `Math` result depends on how it was installed.
 
 ## Rerun
 
@@ -43,8 +45,8 @@ node v8-sources/bisect.js      # which published build each function changes in:
 | `results/sources.txt` | Pinned source lines and commit metadata read from GitHub | regenerated for this repository | 2026-11-19 | any (curl and Node.js) |
 | `results/glibc-diff.txt` | V8's copy against glibc at the named revision | regenerated for this repository | 2026-11-19 | any (curl and diff) |
 | `results/bisect-mac-arm64.txt` | Per-function bisection of published macOS arm64 d8 builds, 14.6.202 to 15.4.8 | regenerated for this repository | 2026-11-19 | macOS 26.7.3, arm64, Apple M1 Pro |
-| `results/bisect-linux64.txt` | The same on published linux64 builds, in a container | regenerated for this repository | 2026-11-19 | container, Ubuntu 24.04, linux/amd64, emulated on the macOS machine above |
-| `results/captured-bisect-linux64-2026-10-23.txt` | The earlier per-function bisection on linux64 builds, as far as its summary | captured earlier, not rerun | 2026-10-23 | Linux x86_64, Intel Xeon 2.10 GHz; host name stripped |
+| `results/bisect-linux64.txt` | The same on published linux64 builds, in a container | regenerated for this repository | 2026-11-19 | OrbStack, aarch64 Linux VM on macOS, x86_64 container under emulation; Ubuntu 24.04, linux/amd64 |
+| `results/captured-bisect-linux64-2026-10-23.txt` | The earlier per-function bisection on linux64 builds, as far as its summary | captured earlier, not rerun | 2026-10-23 | Claude Code Cloud, x86_64 VM; Intel Xeon 2.10 GHz; host name stripped |
 | `math-cases.txt`, `math-probe.js` | The 88 probe inputs (8 per function where d8 14.6.202 and 15.4.8 differ on Linux), and the d8 script generated from them | captured earlier (the inputs); regenerated (the script, byte for byte from the inputs) | 2026-10-23 | the inputs come from Linux x86_64 result columns |
 | `versions-mac-arm64-14-15.txt`, `versions-linux64-14-15.txt` | The 14.x and 15.x builds published in the bucket for each platform | regenerated for this repository | 2026-11-19 | any (curl and Node.js) |
 
@@ -61,10 +63,10 @@ node v8-sources/bisect.js      # which published build each function changes in:
 | Node.js 24.19.0, 26.13.1 | nvm installs; `check.sh` prints the first 16 hex digits of each binary's SHA-256 (`27db838bb204ef7c`, `266dec4dce3a6cdc`) and its V8 version (`13.6.233.17-node.51`, `14.6.202.34-node.40`) |
 | [stdlib](https://github.com/stdlib-js/stdlib) test fixtures (Apache-2.0) | commit `550666096f34c73f90f4bf86139935e4214fe421`, through `lib/fetch-stdlib-fixtures.sh` |
 
-## Not yet public
+## Scope
 
-- **Chromium's own build of V8, and Chrome.** The post says that by the same build configuration a clang build of Chrome would have had the glibc `sin` before 15.0, and that no older Chrome was run. Nothing here runs Chrome.
-- **Node.js's build files.** The footnote says Node.js's gyp files at v24.19.0 don't mention `v8_use_libm_trig_functions`. This repository shows the consequence (the flag is a bad option; the copy's results don't match) but doesn't read Node.js's gyp files.
-- **The tracking bug's text** ([issue 510499297](https://issues.chromium.org/issues/510499297)) isn't fetched; the commit messages that cite it are not reproduced here either.
-- **`tanh`, `sinh`, and `cosh` in 15.9.** The bisection covers 14.6.202 to 15.4.8 and the functions the earlier run bisected, not those three.
+- **Chromium's own build of V8, and Chrome, aren't run.** The post says that by the same build configuration a clang build of Chrome would have had the glibc `sin` before 15.0, and that no older Chrome was run.
+- **Node.js's gyp files aren't read.** The footnote says they don't mention `v8_use_libm_trig_functions` at v24.19.0. This repository shows the consequence: the flag is a bad option, and the copy's results don't match.
+- **The tracking bug's text** ([issue 510499297](https://issues.chromium.org/issues/510499297)) isn't fetched, and the commit messages that cite it aren't reproduced.
+- **The bisection covers 14.6.202 to 15.4.8** and the functions the earlier run bisected; it doesn't cover `tanh`, `sinh`, and `cosh` in 15.9.
 - **The accuracy figures in V8's commit messages** (for example the maximum errors of the old and new `sin`) aren't reproduced; the commit hashes are pinned for a reader who wants them.

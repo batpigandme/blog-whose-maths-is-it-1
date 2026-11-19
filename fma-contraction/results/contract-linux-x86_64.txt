@@ -1,5 +1,5 @@
 # engine:   MicroQuickJS 6d4d7eb6b99011d5aab6e88a9b99e8fd4d86c6e9
-# platform: Ubuntu 24.04.5 LTS, x86_64, VirtualApple @ 2.50GHz
+# platform: OrbStack, aarch64 Linux VM on macOS, x86_64 container under emulation; Ubuntu 24.04.5 LTS, x86_64, VirtualApple @ 2.50GHz
 # obtained: built from the pinned commit with gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, in image ubuntu@sha256:73b999393d07f2bf65a40373778a44dc9a6d54ad7718d29247d8ff9413c4d6a8; gcc, make and nodejs from Ubuntu's apt
 # date:     2026-11-19T19:34:04Z
 # script:   fma-contraction/run-contract-linux.sh

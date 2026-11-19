@@ -28,5 +28,5 @@ mac-default and mac-nocontract: same bits on 8 of 17 functions; differ on acos, 
 mac-default and linux-x86_64: same bits on 8 of 17 functions; differ on acos, asin, atan, atan2, cos, exp, pow, sin, tan
 mac-nocontract and linux-x86_64: same bits on 17 of 17 functions
 
-## the emulated linux-x86_64 run against the earlier run on a real x86_64 machine
+## the OrbStack x86_64-under-emulation linux-x86_64 run against the earlier Claude Code Cloud, x86_64 VM run
 same hash on all 17 functions

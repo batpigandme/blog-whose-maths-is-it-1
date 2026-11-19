@@ -1,5 +1,5 @@
 # engines:  glibc 2.39 (system, Ubuntu package libc6 2.39-0ubuntu8.12); glibc 2.43 (built from tag glibc-2.43, commit f762ccf84f122d1354f103a151cba8bde797d521); glibc 2.44 (built from tag glibc-2.44, commit c3a3a9808ad3ab4a3336836833f83288b672ccbf)
-# platform: Ubuntu 24.04, x86_64 (the CPU reports FMA and AVX2)
+# platform: Claude Code Cloud, x86_64 VM; Ubuntu 24.04, x86_64 (the CPU reports FMA and AVX2)
 # obtained: system glibc from Ubuntu 24.04's apt; the others built from https://sourceware.org/git/glibc.git at the tags named
 # captured: 2026-11-19, copied from an earlier run (2026-11-18, the original's own date line is kept below); paths and host names stripped
 # script:   an earlier version of sin-demo/glibc.sh, since rewritten; its output format differs from the regenerated files

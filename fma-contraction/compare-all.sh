@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 #
 # compare-all.sh -- put the three builds' hashes side by side, and check the
-# emulated Linux run against the earlier run on a real x86_64 machine.
+# OrbStack x86_64-under-emulation run against the earlier Claude Code Cloud
+# x86_64 VM run.
 #
 #   ./fma-contraction/compare-all.sh
 #
@@ -33,7 +34,7 @@ CAPTURED="$HERE/results/captured-linux-x86_64-2026-10-22.txt"
 	echo "## the three builds, by hash of each function's result column"
 	"$HERE/compare.sh" "$RES" mac-default mac-nocontract linux-x86_64
 	echo
-	echo "## the emulated linux-x86_64 run against the earlier run on a real x86_64 machine"
+	echo "## the OrbStack x86_64-under-emulation linux-x86_64 run against the earlier Claude Code Cloud, x86_64 VM run"
 	node "$ROOT/lib/colhash.js" "$RES/linux-x86_64" > "$( dirname "$RES" )/linux-hashes.tmp"
 	grep -E '^(Math\.[a-z0-9]+|erf|gamma|log1p) [0-9a-f]{12}$' "$CAPTURED" | sort > "$( dirname "$RES" )/captured-hashes.tmp"
 	sort "$( dirname "$RES" )/linux-hashes.tmp" > "$( dirname "$RES" )/linux-hashes-sorted.tmp"

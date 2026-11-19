@@ -1,5 +1,5 @@
 # engine:   d8 release builds 14.6.202 to 15.4.8 (1190 builds between), published linux64 builds, one probe of 88 inputs per build
-# platform: Ubuntu 24.04.5 LTS, x64, VirtualApple @ 2.50GHz
+# platform: OrbStack, aarch64 Linux VM on macOS, x86_64 container under emulation; Ubuntu 24.04.5 LTS, x64, VirtualApple @ 2.50GHz
 # obtained: https://storage.googleapis.com/chromium-v8/official/canary/ (lib/fetch-d8.sh); version list versions-linux64-14-15.txt
 # date:     2026-11-19T19:38:08Z
 # script:   v8-sources/bisect.js

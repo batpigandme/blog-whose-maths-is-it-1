@@ -2,6 +2,8 @@
 
 Backs the post's footnotes `[^split]` (how the specification splits the `Math` functions), `[^terms]` (the two terms), `[^lull]` (the count of `Math` functions per edition), and `[^es1]` (the 1st edition's wording).
 
+Measured on macOS arm64, with Python 3.15.2 and poppler's `pdftotext` 26.11.0, against fixed editions of ECMA-262.
+
 ## Claim
 
 From `[^split]`: counted from each function's own steps, in the 17th edition of ECMA-262 (ES2026), "22 functions return an implementation-approximated value, `random` is implementation-defined, and 14 are exact." `pow` is approximated through `Number::exponentiate`, which `**` also uses. `Math.sumPrecise` is at 21.3.2.34 and `Math.sqrt` is exact.
@@ -83,8 +85,7 @@ Every source is a fixed edition, so each is pinned by sha256, which the scripts 
 | 6th to 17th | `https://262.ecma-international.org/<n>.0/` | listed per edition in `math-function-counts.tsv` and `count-math-functions.py` |
 | 17th (2026) | `https://262.ecma-international.org/17.0/` | `5df49e088c2b5c7a3dfd4a330414b92897fb4535cb62fc5936cad101a6c2304a` |
 
-## Not yet public
+## Scope
 
-- The pull request titles in `[^lull]` (tc39/ecma262 [#1515](https://github.com/tc39/ecma262/pull/1515), [#1951](https://github.com/tc39/ecma262/pull/1951), [#2122](https://github.com/tc39/ecma262/pull/2122), [#2523](https://github.com/tc39/ecma262/pull/2523), [#3345](https://github.com/tc39/ecma262/pull/3345)) and the clause-by-clause diffs between consecutive editions. They were read by hand, and no script here regenerates them.
-- That `Math.sqrt` became exact in the 16th edition. The split is recounted on the 17th edition only; the 16th edition's `sqrt` text is not compared.
-- That `pow` was redefined on `Number::exponentiate` in the 11th edition (ES2020). Only the 17th edition's text is read.
+- **The pull request titles** in `[^lull]` (tc39/ecma262 [#1515](https://github.com/tc39/ecma262/pull/1515), [#1951](https://github.com/tc39/ecma262/pull/1951), [#2122](https://github.com/tc39/ecma262/pull/2122), [#2523](https://github.com/tc39/ecma262/pull/2523), [#3345](https://github.com/tc39/ecma262/pull/3345)) and the clause-by-clause diffs between consecutive editions were read by hand; no script here regenerates them.
+- **The split is counted on the 17th edition.** The claim that `Math.sqrt` became exact in the 16th edition isn't checked, because the 16th edition's `sqrt` text isn't compared, and neither is the claim that `pow` was redefined on `Number::exponentiate` in the 11th edition (ES2020).

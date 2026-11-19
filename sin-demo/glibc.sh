@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # glibc.sh: sin on one input through glibc 2.39 (Ubuntu 24.04's package) and
-# glibc 2.43 and 2.44 built from source, in Docker containers. Runs on a host
-# with Docker (macOS or Linux); the committed output is from macOS with
-# OrbStack, so the containers are arm64.
+# glibc 2.43 and 2.44 built from source, in Docker containers. Runs on any host
+# with Docker (macOS or Linux). The committed regenerated outputs are from
+# OrbStack on macOS; the captured x86_64 output came from a Claude Code Cloud
+# x86_64 VM.
 #
 #   ./glibc.sh                                  prints to the terminal
 #   OUT=outputs/glibc-arm64.txt ./glibc.sh      also writes the same text to a file

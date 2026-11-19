@@ -4,6 +4,8 @@
 
 Backs the post's section "The families" and its footnotes `[^c-library]`, `[^scriptc]`, `[^go-log]`, `[^strictmath]`, and `[^rust]`, and Figure 4, "Many engines, a handful of sources."
 
+The outputs were measured on macOS arm64, and on Linux x86_64 in a Claude Code Cloud VM.
+
 ## Claim
 
 From the post: many engines draw on somebody else's code, and sorted by whose, they fall into a few families. Engines that call the same library get the same answers from it, so one bug shows up in all of them, and one upstream fix fixes all of them.
@@ -14,7 +16,7 @@ From the post: many engines draw on somebody else's code, and sorted by whose, t
 
 ## Tier
 
-c: results only, for now. The full folder will be tier b: it needs a Mac, jsvu builds of each engine, and a Linux x86_64 host.
+c: results only, for now. The full folder will be tier b: it needs a Mac, jsvu builds of each engine, and Docker for the Linux half.
 
 ## What the committed results show
 
@@ -43,7 +45,7 @@ From `macos-all-engines.results.txt`: for each `Math` function the output lists 
 
 `fround` and `sqrt`, which are exactly specified, match macOS's C library for every engine in the table except Duktape on `fround`.
 
-### On Linux, against glibc 2.39
+### On Linux (Claude Code Cloud, x86_64 VM), against glibc 2.39
 
 From `linux-attribution.results.txt`: each cell says whether an engine's Linux result bits are glibc's (`G`), are the same as the macOS binary of the same name (`S`), or are neither (`-`); `.` means there was no macOS binary of that name to compare with. The table counts the output's 12 columns (`acos`, `asin`, `atan`, `atan2`, `cos`, `exp`, `log`, `log10`, `log2`, `pow`, `sin`, `tan`); `fround` and `sqrt` are left out of that output because they are exactly specified.
 
@@ -82,8 +84,8 @@ The post's other claims in "The families" rest on runs that aren't in this folde
 | File | What it is | Regenerated or captured | Date | Platform |
 | --- | --- | --- | --- | --- |
 | `macos-all-engines.results.txt` | 25 binaries by 17 functions against MPFR, with groups of identical output | captured, not rerun | 2026-10-22 | a Mac (arm64); the OS version isn't in the original output |
-| `linux-attribution.results.txt` | the same engines' Linux results attributed by hash to glibc, the macOS binary, or neither | captured, not rerun | 2026-10-22 | Linux x86_64, glibc 2.39 |
-| `linux-binaries-and-musl.results.txt` | what jsvu's Linux binaries link, and QuickJS-ng and Hermes against musl | captured, not rerun | 2026-10-22 | Linux x86_64, glibc 2.39 and musl 1.2.4 |
+| `linux-attribution.results.txt` | the same engines' Linux results attributed by hash to glibc, the macOS binary, or neither | captured, not rerun | 2026-10-22 | Claude Code Cloud, x86_64 VM; glibc 2.39 |
+| `linux-binaries-and-musl.results.txt` | what jsvu's Linux binaries link, and QuickJS-ng and Hermes against musl | captured, not rerun | 2026-10-22 | Claude Code Cloud, x86_64 VM; glibc 2.39 and musl 1.2.4 |
 
 The three files are the original outputs with a header added. Their table bodies are unedited, apart from the one excerpt noted in the last file's header.
 
@@ -96,9 +98,7 @@ The three files are the original outputs with a header added. Their table bodies
 - The Go, Java, and Rust results, and scriptc's cases and run, where "V8" means Node.js's build of it, not d8's; the scriptc run is one build, read from source and run.
 - Hermes's `MathStdFunctions.def` at 0.13.0, which calls `std::sin` and the like.
 
-## Not yet public
+## Scope
 
-- The scripts, the case set's generator, and its checksum.
-- The macOS version, and how each of the 25 binaries was obtained, for the macOS output.
-- The Go, Java, and Rust runs and scriptc's run, listed above.
-- Windows: no Windows build was run.
+- The macOS output doesn't record the macOS version, or how each of the 25 binaries was obtained.
+- Windows isn't covered: no Windows build was run.

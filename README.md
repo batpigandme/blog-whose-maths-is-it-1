@@ -2,7 +2,7 @@
 
 > Source code for the blog post ["Whose maths is it?"][post].
 
-The post asks where JavaScript's `Math` functions come from, and why the same engine can answer differently on different builds and machines. This repository holds the code, data, and outputs behind its claims, one folder per claim, so you can check them or rerun them.
+The post asks where JavaScript's `Math` functions come from, and why the same engine can answer differently on different builds and machines. This repository holds the code, data, and outputs behind its claims, one folder per claim, so you can check them or rerun them. The results were measured on macOS arm64, and on Linux VMs in Claude Code Cloud (x86_64) and OrbStack (aarch64, on a Mac).
 
 ## How to use this repository
 
@@ -22,7 +22,7 @@ Every footnote or section in the post that defers to the repository is listed in
 
 **Committed outputs** are labeled in each folder's README as *regenerated* (the script in the folder produced it, on the date and machine in its header) or *captured* (copied from an earlier run, with machine paths stripped, not rerun). Every output starts with a header naming the engine, platform, how the engine was obtained, the date, and the script. [`ENGINES.md`](./ENGINES.md) collects the engines, tools, and platforms in one table.
 
-Local runs vary by operating system, compiler, and CPU. That's part of the post's argument, so two machines giving different bits isn't a bug in a script. Nothing in this repository is a Docker image yet; the Linux halves run in containers you build yourself.
+Local runs vary by operating system, compiler, and CPU. That's part of the post's argument, so two machines giving different bits isn't a bug in a script. No Docker image is shipped; the Linux halves run in containers you build yourself, on any Docker host.
 
 ## Index
 
@@ -36,14 +36,14 @@ Local runs vary by operating system, compiler, and CPU. That's part of the post'
 | `[^terms]` | §4.2's example, "implementation-approximated" | [`spec/`](./spec/) | a | published |
 | `[^split]` | the 22 / 1 / 14 split of the 37 `Math` functions | [`spec/`](./spec/) | a | published |
 | `[^sumprecise-node]` | `sumPrecise` support by Node.js version | | b | results only for now |
-| `[^lull]` | the count of `Math` functions per edition | [`spec/`](./spec/) | a | published; the pull-request titles and clause diffs aren't scripted yet |
+| `[^lull]` | the count of `Math` functions per edition | [`spec/`](./spec/) | a | published |
 | `[^libs]` | npm downloads, stars, and archive status for the library list | | a | results only for now |
 | `[^mquickjs]` | MicroQuickJS's `tan` pair, and nine functions that differ between macOS and Linux | [`fma-contraction/`](./fma-contraction/) | b | published |
 | `[^atan]` | V8's LLVM `atan` and the fused multiply-add probe | [`fma-contraction/`](./fma-contraction/) | b | published |
 | `[^contract]` | the contraction probe: 68 fused instructions with contraction on, none with it off | [`fma-contraction/`](./fma-contraction/) | b | published |
 | `[^sin-check]` | the 1,063-ULP `sin` through d8, Node.js, glibc, and Chrome | [`sin-demo/`](./sin-demo/) | b | published; the Chrome run is a README note |
 | `[^versions]` | the Node.js patch-release comparison; Node.js 26.13.1's V8 | [`sin-demo/`](./sin-demo/) | b | published |
-| `[^v8]` | V8's glibc copy, `pow`, and the build switch | [`v8-sources/`](./v8-sources/) | b | published; Node.js's build files aren't read here |
+| `[^v8]` | V8's glibc copy, `pow`, and the build switch | [`v8-sources/`](./v8-sources/) | b | published |
 | `[^v8-move]` | `tan`'s move to LLVM's libm; the per-family bisection of d8 builds | [`v8-sources/`](./v8-sources/) | b | published |
 | `[^rhino]` | Rhino's `asinh`, `acosh`, and `atanh` across hosts and versions | | b | results only for now |
 | `[^c-library]` | per-engine, per-platform runs against the C library | [`engine-families/`](./engine-families/) | c for now (b later) | results only for now: a stub of captured results |
@@ -67,7 +67,7 @@ engine-families/      which library each engine's maths matches (results only fo
 lib/                  helpers more than one folder uses: the case generator, drivers, checksums
 ```
 
-Each folder has its own README: the claim it backs, its tier, how to rerun it, the expected output, the committed outputs, the sources pinned to commits or checksums, and what isn't public yet. Third-party code isn't copied here; scripts fetch it at a pinned commit into an ignored `.cache/` folder, and generated inputs ship as the generator plus a checksum of its output.
+Each folder has its own README: the claim it backs, its tier, how to rerun it, the expected output, the committed outputs, the sources pinned to commits or checksums, and its scope. Third-party code isn't copied here; scripts fetch it at a pinned commit into an ignored `.cache/` folder, and generated inputs ship as the generator plus a checksum of its output.
 
 ## License
 

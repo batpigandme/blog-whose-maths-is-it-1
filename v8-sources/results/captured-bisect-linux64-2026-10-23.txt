@@ -1,5 +1,5 @@
 # engine:   d8 release builds 14.6.202 to 15.4.8 (1190 builds between), published linux64 builds, one probe of 88 inputs per build
-# platform: Linux x86_64 (a real x86_64 machine, not emulated), Intel(R) Xeon(R) Processor @ 2.10GHz
+# platform: Claude Code Cloud, x86_64 VM; Linux x86_64, Intel(R) Xeon(R) Processor @ 2.10GHz
 # obtained: jsvu pinned installs (`jsvu --os=linux64 v8@<version>`) of the builds in the bucket chromium-v8/official/canary/, each removed after its probe unless an endpoint
 # date:     2026-10-23
 # script:   an earlier shell version of v8-sources/bisect.js, not in this repository; the probe (math-probe.js) and its inputs are

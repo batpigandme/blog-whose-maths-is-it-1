@@ -1,7 +1,7 @@
 # engines:  glibc 2.39 (system, package libc6 2.39-0ubuntu8.12)
 #           glibc 2.43 (built from tag glibc-2.43, commit f762ccf84f122d1354f103a151cba8bde797d521)
 #           glibc 2.44 (built from tag glibc-2.44, commit c3a3a9808ad3ab4a3336836833f83288b672ccbf)
-# platform: Ubuntu 24.04.5 LTS, x86_64, VirtualApple @ 2.50GHz, in a container
+# platform: OrbStack, aarch64 Linux VM on macOS, x86_64 container under emulation; Ubuntu 24.04.5 LTS, x86_64, VirtualApple @ 2.50GHz, in a container
 # obtained: system glibc from apt in image ubuntu:24.04@sha256:73b999393d07f2bf65a40373778a44dc9a6d54ad7718d29247d8ff9413c4d6a8; the others built from https://sourceware.org/git/glibc.git at the commit named, checked after cloning
 # date:     2026-11-19T19:08:25Z
 # script:   sin-demo/glibc.sh

@@ -1,0 +1,166 @@
+# engines:  d8 13.6.233, 14.6.202, 15.8.32; Node.js 24.19.0 and 26.13.1; versions and binary hashes below
+# platform: macOS 26.7.3, arm64, Apple M1 Pro
+# obtained: d8 from V8's build bucket (lib/fetch-d8.sh); Node.js from nvm; V8's glibc copy fetched at b0a55a7dad7f536cce1f9aaddba89894c8533946
+# date:     2026-11-19T19:26:27Z
+# script:   v8-sources/check.sh
+# cc:       Apple clang version 21.0.0 (clang-2100.3.34.2)
+# cases:    Math.sin 23995 lines, sha256 4cf8ca42903b8696; Math.cos 23995 lines, sha256 a7ef4ddda4eaf35c; Math.pow 69633 lines, sha256 92b037e5bb840e1d; 
+# d8 13.6.233: sha256 6b91f615cd9b0c12, version() 13.6.233
+#   --help lists: --use-libm-trig-functions --use-std-math-pow 
+# d8 14.6.202: sha256 fb9af3ddddfed69b, version() 14.6.202
+#   --help lists: --use-libm-trig-functions --use-std-math-pow 
+# d8 15.8.32: sha256 a59f1e33fd8f5163, version() 15.8.32
+#   --help lists: --use-std-math-pow 
+# node v24.19.0: sha256 27db838bb204ef7c, V8 13.6.233.17-node.51
+# node v26.13.1: sha256 266dec4dce3a6cdc, V8 14.6.202.34-node.40
+
+## Part 1. sin and cos against V8's own copy of glibc's code
+
+V8's third_party/glibc at b0a55a7dad7f536cce1f9aaddba89894c8533946, fetched with curl; each file's sha256 is checked against glibc-files.sha256:
+  branred.c    sha256 8a21104b079e3d5b
+  branred.h    sha256 7750d1665e454b94
+  dla.h        sha256 8d94c1212d955c55
+  endian.h     sha256 10dbc22a1eeded97
+  mydefs.h     sha256 41a661cdcb78709a
+  s_sin.c      sha256 b05c66b322da8bde
+  sincostab.c  sha256 b0d85d1187a70beb
+  trig.h       sha256 5325957fce7dc430
+  usncs.h      sha256 c78fb520931e8636
+  all nine files match glibc-files.sha256
+  built harness-off: clang -O3 -ffp-contract=off, 0 fused multiply-add instructions
+  built harness-on: clang -O3 -ffp-contract=on, 73 fused multiply-add instructions
+  built harness-fast: clang -O3 -ffp-contract=fast, 73 fused multiply-add instructions
+
+### Math.sin
+  sin-copy-contract-off              exit 0,  23995 lines, sha256 3093faa79f3924fb
+  sin-copy-contract-on               exit 0,  23995 lines, sha256 f3854a6258ddf6a0
+  sin-copy-contract-fast             exit 0,  23995 lines, sha256 f3854a6258ddf6a0
+  sin-platform-libm                  exit 0,  23995 lines, sha256 457a6bf08c419bc8
+  sin-d8-13.6.233-default-1          exit 0,  23995 lines, sha256 3093faa79f3924fb
+  sin-d8-13.6.233-trigoff-1          exit 0,  23995 lines, sha256 cb6e19b13471ad0d
+  sin-d8-13.6.233-default-2          exit 0,  23995 lines, sha256 3093faa79f3924fb
+  sin-d8-13.6.233-trigoff-2          exit 0,  23995 lines, sha256 cb6e19b13471ad0d
+  sin-d8-14.6.202-default-1          exit 0,  23995 lines, sha256 3093faa79f3924fb
+  sin-d8-14.6.202-trigoff-1          exit 0,  23995 lines, sha256 cb6e19b13471ad0d
+  sin-d8-14.6.202-default-2          exit 0,  23995 lines, sha256 3093faa79f3924fb
+  sin-d8-14.6.202-trigoff-2          exit 0,  23995 lines, sha256 cb6e19b13471ad0d
+  sin-d8-15.8.32-default             exit 0,  23995 lines, sha256 9e5e22e2febac0ba
+  sin-node-24.19.0                   exit 0,  23995 lines, sha256 c825593e64c88607
+  sin-node-26.13.1                   exit 0,  23995 lines, sha256 c825593e64c88607
+
+  sin-d8-13.6.233-default-1          vs sin-d8-13.6.233-default-2         0 of 23995 differ
+  sin-d8-13.6.233-trigoff-1          vs sin-d8-13.6.233-trigoff-2         0 of 23995 differ
+  sin-d8-13.6.233-default-1          vs sin-copy-contract-off             0 of 23995 differ
+  sin-d8-13.6.233-default-1          vs sin-copy-contract-on             12 of 23995 differ
+  sin-d8-13.6.233-default-1          vs sin-copy-contract-fast           12 of 23995 differ
+  sin-d8-13.6.233-trigoff-1          vs sin-copy-contract-off           784 of 23995 differ
+  sin-d8-13.6.233-default-1          vs sin-platform-libm               994 of 23995 differ
+  sin-d8-14.6.202-default-1          vs sin-d8-14.6.202-default-2         0 of 23995 differ
+  sin-d8-14.6.202-trigoff-1          vs sin-d8-14.6.202-trigoff-2         0 of 23995 differ
+  sin-d8-14.6.202-default-1          vs sin-copy-contract-off             0 of 23995 differ
+  sin-d8-14.6.202-default-1          vs sin-copy-contract-on             12 of 23995 differ
+  sin-d8-14.6.202-default-1          vs sin-copy-contract-fast           12 of 23995 differ
+  sin-d8-14.6.202-trigoff-1          vs sin-copy-contract-off           784 of 23995 differ
+  sin-d8-14.6.202-default-1          vs sin-platform-libm               994 of 23995 differ
+  sin-node-24.19.0                   vs sin-d8-13.6.233-trigoff-1       134 of 23995 differ
+  sin-node-24.19.0                   vs sin-copy-contract-off           766 of 23995 differ
+  sin-node-26.13.1                   vs sin-d8-13.6.233-trigoff-1       134 of 23995 differ
+  sin-node-26.13.1                   vs sin-copy-contract-off           766 of 23995 differ
+  sin-d8-15.8.32-default             vs sin-copy-contract-off            32 of 23995 differ
+
+### Math.cos
+  cos-copy-contract-off              exit 0,  23995 lines, sha256 c85ef49f2a795743
+  cos-copy-contract-on               exit 0,  23995 lines, sha256 032f8debe8b93d5c
+  cos-copy-contract-fast             exit 0,  23995 lines, sha256 032f8debe8b93d5c
+  cos-platform-libm                  exit 0,  23995 lines, sha256 e09348184181ae89
+  cos-d8-13.6.233-default-1          exit 0,  23995 lines, sha256 c85ef49f2a795743
+  cos-d8-13.6.233-trigoff-1          exit 0,  23995 lines, sha256 c3d652f8f98bd569
+  cos-d8-13.6.233-default-2          exit 0,  23995 lines, sha256 c85ef49f2a795743
+  cos-d8-13.6.233-trigoff-2          exit 0,  23995 lines, sha256 c3d652f8f98bd569
+  cos-d8-14.6.202-default-1          exit 0,  23995 lines, sha256 c85ef49f2a795743
+  cos-d8-14.6.202-trigoff-1          exit 0,  23995 lines, sha256 c3d652f8f98bd569
+  cos-d8-14.6.202-default-2          exit 0,  23995 lines, sha256 c85ef49f2a795743
+  cos-d8-14.6.202-trigoff-2          exit 0,  23995 lines, sha256 c3d652f8f98bd569
+  cos-d8-15.8.32-default             exit 0,  23995 lines, sha256 75792670e7e0563c
+  cos-node-24.19.0                   exit 0,  23995 lines, sha256 99bd151d1419bf3d
+  cos-node-26.13.1                   exit 0,  23995 lines, sha256 99bd151d1419bf3d
+
+  cos-d8-13.6.233-default-1          vs cos-d8-13.6.233-default-2         0 of 23995 differ
+  cos-d8-13.6.233-trigoff-1          vs cos-d8-13.6.233-trigoff-2         0 of 23995 differ
+  cos-d8-13.6.233-default-1          vs cos-copy-contract-off             0 of 23995 differ
+  cos-d8-13.6.233-default-1          vs cos-copy-contract-on             28 of 23995 differ
+  cos-d8-13.6.233-default-1          vs cos-copy-contract-fast           28 of 23995 differ
+  cos-d8-13.6.233-trigoff-1          vs cos-copy-contract-off           804 of 23995 differ
+  cos-d8-13.6.233-default-1          vs cos-platform-libm               934 of 23995 differ
+  cos-d8-14.6.202-default-1          vs cos-d8-14.6.202-default-2         0 of 23995 differ
+  cos-d8-14.6.202-trigoff-1          vs cos-d8-14.6.202-trigoff-2         0 of 23995 differ
+  cos-d8-14.6.202-default-1          vs cos-copy-contract-off             0 of 23995 differ
+  cos-d8-14.6.202-default-1          vs cos-copy-contract-on             28 of 23995 differ
+  cos-d8-14.6.202-default-1          vs cos-copy-contract-fast           28 of 23995 differ
+  cos-d8-14.6.202-trigoff-1          vs cos-copy-contract-off           804 of 23995 differ
+  cos-d8-14.6.202-default-1          vs cos-platform-libm               934 of 23995 differ
+  cos-node-24.19.0                   vs cos-d8-13.6.233-trigoff-1       130 of 23995 differ
+  cos-node-24.19.0                   vs cos-copy-contract-off           810 of 23995 differ
+  cos-node-26.13.1                   vs cos-d8-13.6.233-trigoff-1       130 of 23995 differ
+  cos-node-26.13.1                   vs cos-copy-contract-off           810 of 23995 differ
+  cos-d8-15.8.32-default             vs cos-copy-contract-off            58 of 23995 differ
+
+## Part 2. pow, with --use-std-math-pow at its default and off
+
+  pow-platform-libm                  exit 0,  69633 lines, sha256 cb60261754b059d7
+  pow-d8-13.6.233-default-1          exit 0,  69633 lines, sha256 fe2414ccdd02dd30
+  pow-d8-13.6.233-default-2          exit 0,  69633 lines, sha256 fe2414ccdd02dd30
+  pow-d8-13.6.233-stdoff             exit 0,  69633 lines, sha256 ff4af05cf1ef01b5
+  pow-d8-13.6.233-jitless            exit 0,  69633 lines, sha256 fe2414ccdd02dd30
+  pow-d8-13.6.233-jitless-stdoff     exit 0,  69633 lines, sha256 ff4af05cf1ef01b5
+  pow-d8-14.6.202-default-1          exit 0,  69633 lines, sha256 fe2414ccdd02dd30
+  pow-d8-14.6.202-default-2          exit 0,  69633 lines, sha256 fe2414ccdd02dd30
+  pow-d8-14.6.202-stdoff             exit 0,  69633 lines, sha256 ff4af05cf1ef01b5
+  pow-d8-14.6.202-jitless            exit 0,  69633 lines, sha256 fe2414ccdd02dd30
+  pow-d8-14.6.202-jitless-stdoff     exit 0,  69633 lines, sha256 ff4af05cf1ef01b5
+  pow-d8-15.8.32-default-1           exit 0,  69633 lines, sha256 fe2414ccdd02dd30
+  pow-d8-15.8.32-default-2           exit 0,  69633 lines, sha256 fe2414ccdd02dd30
+  pow-d8-15.8.32-stdoff              exit 0,  69633 lines, sha256 2d2bc8b3ce49d3c3
+  pow-d8-15.8.32-jitless             exit 0,  69633 lines, sha256 fe2414ccdd02dd30
+  pow-d8-15.8.32-jitless-stdoff      exit 0,  69633 lines, sha256 2d2bc8b3ce49d3c3
+  pow-node-24.19.0                   exit 0,  69633 lines, sha256 fe2414ccdd02dd30
+  pow-node-26.13.1                   exit 0,  69633 lines, sha256 fe2414ccdd02dd30
+
+  pow-d8-13.6.233-default-1          vs pow-d8-13.6.233-default-2         0 of 69633 differ
+  pow-d8-13.6.233-default-1          vs pow-platform-libm                 2 of 69633 differ
+  pow-d8-13.6.233-jitless            vs pow-platform-libm                 2 of 69633 differ
+  pow-d8-13.6.233-stdoff             vs pow-platform-libm              4383 of 69633 differ
+  pow-d8-13.6.233-jitless-stdoff     vs pow-d8-13.6.233-stdoff            0 of 69633 differ
+  pow-d8-13.6.233-stdoff             vs pow-d8-13.6.233-stdoff            0 of 69633 differ
+  pow-d8-14.6.202-default-1          vs pow-d8-14.6.202-default-2         0 of 69633 differ
+  pow-d8-14.6.202-default-1          vs pow-platform-libm                 2 of 69633 differ
+  pow-d8-14.6.202-jitless            vs pow-platform-libm                 2 of 69633 differ
+  pow-d8-14.6.202-stdoff             vs pow-platform-libm              4383 of 69633 differ
+  pow-d8-14.6.202-jitless-stdoff     vs pow-d8-14.6.202-stdoff            0 of 69633 differ
+  pow-d8-14.6.202-stdoff             vs pow-d8-13.6.233-stdoff            0 of 69633 differ
+  pow-d8-15.8.32-default-1           vs pow-d8-15.8.32-default-2          0 of 69633 differ
+  pow-d8-15.8.32-default-1           vs pow-platform-libm                 2 of 69633 differ
+  pow-d8-15.8.32-jitless             vs pow-platform-libm                 2 of 69633 differ
+  pow-d8-15.8.32-stdoff              vs pow-platform-libm               118 of 69633 differ
+  pow-d8-15.8.32-jitless-stdoff      vs pow-d8-15.8.32-stdoff             0 of 69633 differ
+  pow-d8-15.8.32-stdoff              vs pow-d8-13.6.233-stdoff         4423 of 69633 differ
+  pow-node-24.19.0                   vs pow-platform-libm                 2 of 69633 differ
+  pow-node-26.13.1                   vs pow-platform-libm                 2 of 69633 differ
+
+## Where pow's differing results are: inputs where the column differs from the platform's pow, and how many of those have y = 2 (bits 4000000000000000)
+  pow-d8-13.6.233-default-1    2 differ, 2 with y = 2 (x=56cd7b181aa06328) (x=56ce6220adb950f0)
+  pow-d8-14.6.202-default-1    2 differ, 2 with y = 2 (x=56cd7b181aa06328) (x=56ce6220adb950f0)
+  pow-d8-15.8.32-default-1     2 differ, 2 with y = 2 (x=56cd7b181aa06328) (x=56ce6220adb950f0)
+  pow-node-24.19.0             2 differ, 2 with y = 2 (x=56cd7b181aa06328) (x=56ce6220adb950f0)
+  pow-node-26.13.1             2 differ, 2 with y = 2 (x=56cd7b181aa06328) (x=56ce6220adb950f0)
+
+d8 13.6.233's two, in full:
+  x = 56cd7b181aa06328, y = 4000000000000000: d8 6dab28f531a18cba, platform 6dab28f531a18cb9
+  x = 56ce6220adb950f0, y = 4000000000000000: d8 6dacd92a2e04e5f3, platform 6dacd92a2e04e5f4
+## Part 3. Do Node.js builds accept the flags?
+  node v24.19.0  --no-use-libm-trig-functions     <nvm>/v24.19.0/bin/node: bad option: --no-use-libm-trig-functions
+  node v24.19.0  --use-libm-trig-functions        <nvm>/v24.19.0/bin/node: bad option: --use-libm-trig-functions
+  node v24.19.0  --no-use-std-math-pow            accepted
+  node v26.13.1  --no-use-libm-trig-functions     <nvm>/v26.13.1/bin/node: bad option: --no-use-libm-trig-functions
+  node v26.13.1  --use-libm-trig-functions        <nvm>/v26.13.1/bin/node: bad option: --use-libm-trig-functions
+  node v26.13.1  --no-use-std-math-pow            accepted

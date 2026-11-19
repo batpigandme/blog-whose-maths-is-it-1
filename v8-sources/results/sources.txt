@@ -1,0 +1,46 @@
+# engine:   none run; reads V8's source at 13.6.233.17 (b0a55a7dad7f536cce1f9aaddba89894c8533946) and commits by SHA
+# platform: any; curl and node
+# obtained: https://raw.githubusercontent.com/v8/v8 and https://api.github.com/repos/v8/v8, read-only
+# date:     2026-11-19T19:12:40Z
+# script:   v8-sources/sources.sh
+
+## third_party/glibc/README.v8 at b0a55a7dad7f536cce1f9aaddba89894c8533946
+2:URL: https://www.gnu.org/software/libc/
+3:License: LGPL 2.1
+9:Revision: 4e21c2075193e406a92c0d1cb091a7c804fda4d9
+11:This directory contains a handful of files that are forked from glibc.
+
+## gni/v8.gni at b0a55a7dad7f536cce1f9aaddba89894c8533946
+169:  v8_use_libm_trig_functions = is_clang
+
+## src/flags/flag-definitions.h at b0a55a7dad7f536cce1f9aaddba89894c8533946
+1029:DEFINE_BOOL(use_std_math_pow, true,
+1030-            "use std::pow instead of our custom implementation")
+--
+3489:DEFINE_BOOL(use_libm_trig_functions, true, "use libm trig functions")
+3490-#endif
+
+## src/numbers/ieee754.cc at b0a55a7dad7f536cce1f9aaddba89894c8533946: Math.pow
+2:  if (v8_flags.use_std_math_pow) {
+22:    if (y == 2) {
+23:      // x ** 2   ==>   x * x
+24:      return x * x;
+25:    } else if (y == 0.5) {
+26:      // x ** 0.5   ==>  sqrt(x), except if x is -Infinity
+31:        return std::sqrt(x + 0);
+35:    return std::pow(x, y);
+37:  return base::ieee754::legacy::pow(x, y);
+
+## src/base/ieee754.cc at b0a55a7dad7f536cce1f9aaddba89894c8533946: V8's own code, line 1
+// The following is adapted from fdlibm (http://www.netlib.org/fdlibm).
+
+## the switch to glibc's sin and cos: commits, by full SHA
+  4588fe544f78784f5d3a8861886cd4d73f20ab1e  author 2022-11-30  committer 2022-11-30  adds the ability for v8 to use sin/cos from libm
+  ea18ee8ff8ecf50ef09593551eed40c9e554fabc  author 2022-12-01  committer 2022-12-01  Revert "adds the ability for v8 to use sin/cos from libm"
+  7519793938af3bb5e74594a45da10bc04bd33f20  author 2022-12-01  committer 2022-12-02  [reland] adds the ability for v8 to use sin/cos from libm
+  include/v8-version.h at 4588fe5: V8_MAJOR_VERSION=11 V8_MINOR_VERSION=0 
+  (ea18ee8ff8 is the revert, a prefix resolved by the API; the reland is 7519793)
+
+## the move to LLVM's libm, and the removal of the glibc copy
+  cc1a6fcbdabbe4c912948bebe29371c084eade33  author 2026-05-11  committer 2026-05-11  [math] Implement Math.tan() using LLVM's libm
+  8787f0842a158b0be8de8b4ae9b1d2f89a40d8ab  author 2026-05-18  committer 2026-07-06  Remove ability to call glibc sin/cos

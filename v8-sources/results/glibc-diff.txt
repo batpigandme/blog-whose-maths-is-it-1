@@ -1,0 +1,61 @@
+# engine:   none run; V8 third_party/glibc at 13.6.233.17 (b0a55a7dad7f536cce1f9aaddba89894c8533946) against glibc at 4e21c2075193e406a92c0d1cb091a7c804fda4d9
+# platform: any; curl and diff
+# obtained: https://raw.githubusercontent.com/v8/v8 and https://raw.githubusercontent.com/bminor/glibc, read-only
+# date:     2026-11-19T19:22:02Z
+# script:   v8-sources/glibc-diff.sh
+
+## branred.c: 2 differing lines ('<' glibc, '>' V8's copy), 143 lines in V8's
+> 
+< #include <math_private.h>
+
+## branred.h: 2 differing lines ('<' glibc, '>' V8's copy), 79 lines in V8's
+< #include <dla.h>
+> #include "dla.h"
+
+## dla.h: 148 differing lines ('<' glibc, '>' V8's copy), 38 lines in V8's
+
+## endian.h: not in glibc at that revision under sysdeps/ieee754/dbl-64/ (V8's own file)
+
+## mydefs.h: 0 differing lines ('<' glibc, '>' V8's copy), 34 lines in V8's
+
+## s_sin.c: 30 differing lines ('<' glibc, '>' V8's copy), 312 lines in V8's
+< #include <math_private.h>
+< #include <fenv_private.h>
+< #include <math-underflow.h>
+< #include <libm-alias-double.h>
+< #include <fenv.h>
+> #define attribute_hidden
+> #if !defined(__always_inline)
+> #define __always_inline
+> #endif
+> 
+< __sin (double x)
+> glibc_sin (double x)
+<   SET_RESTORE_ROUND_53BIT (FE_TONEAREST);
+< 
+<       math_check_force_underflow (x);
+<       if (k == 0x7ff00000 && u.i[LOW_HALF] == 0)
+< 	__set_errno (EDOM);
+< __cos (double x)
+> glibc_cos (double x)
+<   SET_RESTORE_ROUND_53BIT (FE_TONEAREST);
+< 
+<       if (k == 0x7ff00000 && u.i[LOW_HALF] == 0)
+< 	__set_errno (EDOM);
+< #ifndef __cos
+< libm_alias_double (__cos, cos)
+< #ifndef __sin
+< libm_alias_double (__sin, sin)
+< #endif
+< 
+< #endif
+
+## sincostab.c: 4 differing lines ('<' glibc, '>' V8's copy), 913 lines in V8's
+< #include <mydefs.h>
+< #include <endian.h>
+> #include "mydefs.h"
+> #include "endian.h"
+
+## trig.h: not in glibc at that revision under sysdeps/ieee754/dbl-64/ (V8's own file)
+
+## usncs.h: 0 differing lines ('<' glibc, '>' V8's copy), 47 lines in V8's

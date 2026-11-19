@@ -1,0 +1,202 @@
+# engine:   d8 release builds 14.6.202 to 15.4.8 (1190 builds between), published linux64 builds, one probe of 88 inputs per build
+# platform: Ubuntu 24.04.5 LTS, x64, VirtualApple @ 2.50GHz
+# obtained: https://storage.googleapis.com/chromium-v8/official/canary/ (lib/fetch-d8.sh); version list versions-linux64-14-15.txt
+# date:     2026-11-19T19:38:08Z
+# script:   v8-sources/bisect.js
+
+######## acos
+endpoint 14.6.202: old
+endpoint 15.4.8: new
+tested 15.0.55: old
+tested 15.1.119: new
+tested 15.0.211: new
+tested 15.0.132: new
+tested 15.0.93: old
+tested 15.0.113: new
+tested 15.0.103: old
+tested 15.0.107: new
+tested 15.0.105: new
+tested 15.0.104: old
+RESULT acos: 15.0.104 is old, 15.0.105 is new, adjacent in the published list
+######## asin
+endpoint 14.6.202: old
+endpoint 15.4.8: new
+tested 15.0.55: old
+tested 15.1.119: new
+tested 15.0.211: new
+tested 15.0.132: new
+tested 15.0.93: old
+tested 15.0.113: new
+tested 15.0.103: old
+tested 15.0.107: new
+tested 15.0.105: new
+tested 15.0.104: old
+RESULT asin: 15.0.104 is old, 15.0.105 is new, adjacent in the published list
+######## atan
+endpoint 14.6.202: old
+endpoint 15.4.8: new
+tested 15.0.55: old
+tested 15.1.119: new
+tested 15.0.211: new
+tested 15.0.132: old
+tested 15.0.171: old
+tested 15.0.191: old
+tested 15.0.200: new
+tested 15.0.195: old
+tested 15.0.197: old
+tested 15.0.198: old
+tested 15.0.199: old
+RESULT atan: 15.0.199 is old, 15.0.200 is new, adjacent in the published list
+######## atan2
+endpoint 14.6.202: old
+endpoint 15.4.8: new
+tested 15.0.55: old
+tested 15.1.119: new
+tested 15.0.211: new
+tested 15.0.132: old
+tested 15.0.171: old
+tested 15.0.191: old
+tested 15.0.200: new
+tested 15.0.195: old
+tested 15.0.197: old
+tested 15.0.198: old
+tested 15.0.199: old
+RESULT atan2: 15.0.199 is old, 15.0.200 is new, adjacent in the published list
+######## cos
+endpoint 14.6.202: old
+endpoint 15.4.8: new
+tested 15.0.55: old
+tested 15.1.119: new
+tested 15.0.211: new
+tested 15.0.132: new
+tested 15.0.93: old
+tested 15.0.113: old
+tested 15.0.122: new
+tested 15.0.117: new
+tested 15.0.115: new
+tested 15.0.114: old
+RESULT cos: 15.0.114 is old, 15.0.115 is new, adjacent in the published list
+######## exp
+endpoint 14.6.202: old
+endpoint 15.4.8: new
+tested 15.0.55: old
+tested 15.1.119: new
+tested 15.0.211: new
+tested 15.0.132: new
+tested 15.0.93: old
+tested 15.0.113: old
+tested 15.0.122: new
+tested 15.0.117: old
+tested 15.0.119: new
+tested 15.0.118: new
+RESULT exp: 15.0.117 is old, 15.0.118 is new, adjacent in the published list
+######## log
+endpoint 14.6.202: old
+endpoint 15.4.8: new
+tested 15.0.55: new
+tested 14.8.136: old
+tested 14.9.109: old
+tested 14.9.187: old
+tested 15.0.15: old
+tested 15.0.34: old
+tested 15.0.43: old
+tested 15.0.50: new
+tested 15.0.45: old
+tested 15.0.46: new
+RESULT log: 15.0.45 is old, 15.0.46 is new, adjacent in the published list
+######## log10
+endpoint 14.6.202: old
+endpoint 15.4.8: new
+tested 15.0.55: new
+tested 14.8.136: old
+tested 14.9.109: old
+tested 14.9.187: old
+tested 15.0.15: old
+tested 15.0.34: old
+tested 15.0.43: old
+tested 15.0.50: new
+tested 15.0.45: old
+tested 15.0.46: new
+RESULT log10: 15.0.45 is old, 15.0.46 is new, adjacent in the published list
+######## log2
+endpoint 14.6.202: old
+endpoint 15.4.8: new
+tested 15.0.55: new
+tested 14.8.136: old
+tested 14.9.109: old
+tested 14.9.187: old
+tested 15.0.15: old
+tested 15.0.34: old
+tested 15.0.43: old
+tested 15.0.50: new
+tested 15.0.45: old
+tested 15.0.46: new
+RESULT log2: 15.0.45 is old, 15.0.46 is new, adjacent in the published list
+######## sin
+endpoint 14.6.202: old
+endpoint 15.4.8: new
+tested 15.0.55: old
+tested 15.1.119: new
+tested 15.0.211: new
+tested 15.0.132: new
+tested 15.0.93: old
+tested 15.0.113: old
+tested 15.0.122: new
+tested 15.0.117: new
+tested 15.0.115: new
+tested 15.0.114: old
+RESULT sin: 15.0.114 is old, 15.0.115 is new, adjacent in the published list
+######## tan
+endpoint 14.6.202: old
+endpoint 15.4.8: new
+tested 15.0.55: new
+tested 14.8.136: old
+tested 14.9.109: old
+tested 14.9.187: old
+tested 15.0.15: old
+tested 15.0.34: old
+tested 15.0.43: old
+tested 15.0.50: new
+tested 15.0.45: old
+tested 15.0.46: old
+tested 15.0.47: old
+RESULT tan: 15.0.47 is old, 15.0.50 is new, adjacent in the published list
+
+######## boundary builds probed again, twice each (fresh download and run)
+recheck 15.0.104 run 1: acos old, asin old
+recheck 15.0.104 run 2: acos old, asin old
+recheck 15.0.105 run 1: acos new, asin new
+recheck 15.0.105 run 2: acos new, asin new
+recheck 15.0.114 run 1: cos old, sin old
+recheck 15.0.114 run 2: cos old, sin old
+recheck 15.0.115 run 1: cos new, sin new
+recheck 15.0.115 run 2: cos new, sin new
+recheck 15.0.117 run 1: exp old
+recheck 15.0.117 run 2: exp old
+recheck 15.0.118 run 1: exp new
+recheck 15.0.118 run 2: exp new
+recheck 15.0.199 run 1: atan old, atan2 old
+recheck 15.0.199 run 2: atan old, atan2 old
+recheck 15.0.200 run 1: atan new, atan2 new
+recheck 15.0.200 run 2: atan new, atan2 new
+recheck 15.0.45 run 1: log old, log10 old, log2 old
+recheck 15.0.45 run 2: log old, log10 old, log2 old
+recheck 15.0.46 run 1: log new, log10 new, log2 new
+recheck 15.0.46 run 2: log new, log10 new, log2 new
+recheck 15.0.47 run 1: tan old
+recheck 15.0.47 run 2: tan old
+recheck 15.0.50 run 1: tan new
+recheck 15.0.50 run 2: tan new
+
+######## summary: the window each function changes in, as published builds
+acos    15.0.104 (old) -> 15.0.105 (new)
+asin    15.0.104 (old) -> 15.0.105 (new)
+atan    15.0.199 (old) -> 15.0.200 (new)
+atan2   15.0.199 (old) -> 15.0.200 (new)
+cos     15.0.114 (old) -> 15.0.115 (new)
+exp     15.0.117 (old) -> 15.0.118 (new)
+log     15.0.45 (old) -> 15.0.46 (new)
+log10   15.0.45 (old) -> 15.0.46 (new)
+log2    15.0.45 (old) -> 15.0.46 (new)
+sin     15.0.114 (old) -> 15.0.115 (new)
+tan     15.0.47 (old) -> 15.0.50 (new)

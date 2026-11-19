@@ -1,0 +1,248 @@
+# engine:   d8 release builds 14.6.202 to 15.4.8 (1190 builds between), published linux64 builds, one probe of 88 inputs per build
+# platform: Linux x86_64 (a real x86_64 machine, not emulated), Intel(R) Xeon(R) Processor @ 2.10GHz
+# obtained: jsvu pinned installs (`jsvu --os=linux64 v8@<version>`) of the builds in the bucket chromium-v8/official/canary/, each removed after its probe unless an endpoint
+# date:     2026-10-23
+# script:   an earlier shell version of v8-sources/bisect.js, not in this repository; the probe (math-probe.js) and its inputs are
+# captured: 2026-11-19, copied from an earlier run (2026-10-23); host name and paths stripped. Not rerun for this repository
+#           (v8-sources/results/bisect-mac-arm64.txt is the rerun, on the macOS arm64 builds).
+#
+# The per-function sections below ran the bisection one function at a time because the first, all-function bisection stopped at
+# 15.0.55 with a mixed result: log, log10, log2 and tan already had the new bits there, and the rest the old.
+
+# bisect math 14.6.202..15.4.8 (1190 builds between); 2026-10-23T06:50:40-06:00
+endpoint 14.6.202: old
+endpoint 15.4.8: new
+tested 15.0.55: mixed[56/32/0  acos 8/0/0, asin 8/0/0, atan 8/0/0, atan2 8/0/0, cos 8/0/0, exp 8/0/0, log 0/8/0, log10 0/8/0, log2 0/8/0, sin 8/0/0, tan 0/8/0]
+STOP: 15.0.55 is neither endpoint's class (mixed[56/32/0  acos 8/0/0, asin 8/0/0, atan 8/0/0, atan2 8/0/0, cos 8/0/0, exp 8/0/0, log 0/8/0, log10 0/8/0, log2 0/8/0, sin 8/0/0, tan 0/8/0]); the change is not a single step here
+
+######## acos
+# bisect math:acos 14.6.202..15.4.8 (1190 builds between); 2026-10-23T06:51:06-06:00
+endpoint 14.6.202: old
+endpoint 15.4.8: new
+tested 15.0.55: old
+tested 15.1.119: new
+tested 15.0.211: new
+tested 15.0.132: new
+tested 15.0.93: old
+tested 15.0.113: new
+tested 15.0.103: old
+tested 15.0.107: new
+tested 15.0.105: new
+tested 15.0.104: old
+RESULT math:acos: 15.0.104 is old, 15.0.105 is new, adjacent in the published list
+recheck 15.0.104 run 1: old
+recheck 15.0.104 run 2: old
+recheck 15.0.105 run 1: new
+recheck 15.0.105 run 2: new
+
+######## asin
+# bisect math:asin 14.6.202..15.4.8 (1190 builds between); 2026-10-23T06:51:25-06:00
+endpoint 14.6.202: old
+endpoint 15.4.8: new
+tested 15.0.55: old
+tested 15.1.119: new
+tested 15.0.211: new
+tested 15.0.132: new
+tested 15.0.93: old
+tested 15.0.113: new
+tested 15.0.103: old
+tested 15.0.107: new
+tested 15.0.105: new
+tested 15.0.104: old
+RESULT math:asin: 15.0.104 is old, 15.0.105 is new, adjacent in the published list
+recheck 15.0.104 run 1: old
+recheck 15.0.104 run 2: old
+recheck 15.0.105 run 1: new
+recheck 15.0.105 run 2: new
+
+######## atan
+# bisect math:atan 14.6.202..15.4.8 (1190 builds between); 2026-10-23T06:51:42-06:00
+endpoint 14.6.202: old
+endpoint 15.4.8: new
+tested 15.0.55: old
+tested 15.1.119: new
+tested 15.0.211: new
+tested 15.0.132: old
+tested 15.0.171: old
+tested 15.0.191: old
+tested 15.0.200: new
+tested 15.0.195: old
+tested 15.0.197: old
+tested 15.0.198: old
+tested 15.0.199: old
+RESULT math:atan: 15.0.199 is old, 15.0.200 is new, adjacent in the published list
+recheck 15.0.199 run 1: old
+recheck 15.0.199 run 2: old
+recheck 15.0.200 run 1: new
+recheck 15.0.200 run 2: new
+
+######## atan2
+# bisect math:atan2 14.6.202..15.4.8 (1190 builds between); 2026-10-23T06:52:02-06:00
+endpoint 14.6.202: old
+endpoint 15.4.8: new
+tested 15.0.55: old
+tested 15.1.119: new
+tested 15.0.211: new
+tested 15.0.132: old
+tested 15.0.171: old
+tested 15.0.191: old
+tested 15.0.200: new
+tested 15.0.195: old
+tested 15.0.197: old
+tested 15.0.198: old
+tested 15.0.199: old
+RESULT math:atan2: 15.0.199 is old, 15.0.200 is new, adjacent in the published list
+recheck 15.0.199 run 1: old
+recheck 15.0.199 run 2: old
+recheck 15.0.200 run 1: new
+recheck 15.0.200 run 2: new
+
+######## cos
+# bisect math:cos 14.6.202..15.4.8 (1190 builds between); 2026-10-23T06:52:20-06:00
+endpoint 14.6.202: old
+endpoint 15.4.8: new
+tested 15.0.55: old
+tested 15.1.119: new
+tested 15.0.211: new
+tested 15.0.132: new
+tested 15.0.93: old
+tested 15.0.113: old
+tested 15.0.122: new
+tested 15.0.117: new
+tested 15.0.115: new
+tested 15.0.114: old
+RESULT math:cos: 15.0.114 is old, 15.0.115 is new, adjacent in the published list
+recheck 15.0.114 run 1: old
+recheck 15.0.114 run 2: old
+recheck 15.0.115 run 1: new
+recheck 15.0.115 run 2: new
+
+######## exp
+# bisect math:exp 14.6.202..15.4.8 (1190 builds between); 2026-10-23T06:52:43-06:00
+endpoint 14.6.202: old
+endpoint 15.4.8: new
+tested 15.0.55: old
+tested 15.1.119: new
+tested 15.0.211: new
+tested 15.0.132: new
+tested 15.0.93: old
+tested 15.0.113: old
+tested 15.0.122: new
+tested 15.0.117: old
+tested 15.0.119: new
+tested 15.0.118: new
+RESULT math:exp: 15.0.117 is old, 15.0.118 is new, adjacent in the published list
+recheck 15.0.117 run 1: old
+recheck 15.0.117 run 2: old
+recheck 15.0.118 run 1: new
+recheck 15.0.118 run 2: new
+
+######## log
+# bisect math:log 14.6.202..15.4.8 (1190 builds between); 2026-10-23T06:53:01-06:00
+endpoint 14.6.202: old
+endpoint 15.4.8: new
+tested 15.0.55: new
+tested 14.8.136: old
+tested 14.9.109: old
+tested 14.9.187: old
+tested 15.0.15: old
+tested 15.0.34: old
+tested 15.0.43: old
+tested 15.0.50: new
+tested 15.0.45: old
+tested 15.0.46: new
+RESULT math:log: 15.0.45 is old, 15.0.46 is new, adjacent in the published list
+recheck 15.0.45 run 1: old
+recheck 15.0.45 run 2: old
+recheck 15.0.46 run 1: new
+recheck 15.0.46 run 2: new
+
+######## log10
+# bisect math:log10 14.6.202..15.4.8 (1190 builds between); 2026-10-23T06:53:20-06:00
+endpoint 14.6.202: old
+endpoint 15.4.8: new
+tested 15.0.55: new
+tested 14.8.136: old
+tested 14.9.109: old
+tested 14.9.187: old
+tested 15.0.15: old
+tested 15.0.34: old
+tested 15.0.43: old
+tested 15.0.50: new
+tested 15.0.45: old
+tested 15.0.46: new
+RESULT math:log10: 15.0.45 is old, 15.0.46 is new, adjacent in the published list
+recheck 15.0.45 run 1: old
+recheck 15.0.45 run 2: old
+recheck 15.0.46 run 1: new
+recheck 15.0.46 run 2: new
+
+######## log2
+# bisect math:log2 14.6.202..15.4.8 (1190 builds between); 2026-10-23T06:53:38-06:00
+endpoint 14.6.202: old
+endpoint 15.4.8: new
+tested 15.0.55: new
+tested 14.8.136: old
+tested 14.9.109: old
+tested 14.9.187: old
+tested 15.0.15: old
+tested 15.0.34: old
+tested 15.0.43: old
+tested 15.0.50: new
+tested 15.0.45: old
+tested 15.0.46: new
+RESULT math:log2: 15.0.45 is old, 15.0.46 is new, adjacent in the published list
+recheck 15.0.45 run 1: old
+recheck 15.0.45 run 2: old
+recheck 15.0.46 run 1: new
+recheck 15.0.46 run 2: new
+
+######## sin
+# bisect math:sin 14.6.202..15.4.8 (1190 builds between); 2026-10-23T06:53:57-06:00
+endpoint 14.6.202: old
+endpoint 15.4.8: new
+tested 15.0.55: old
+tested 15.1.119: new
+tested 15.0.211: new
+tested 15.0.132: new
+tested 15.0.93: old
+tested 15.0.113: old
+tested 15.0.122: new
+tested 15.0.117: new
+tested 15.0.115: new
+tested 15.0.114: old
+RESULT math:sin: 15.0.114 is old, 15.0.115 is new, adjacent in the published list
+recheck 15.0.114 run 1: old
+recheck 15.0.114 run 2: old
+recheck 15.0.115 run 1: new
+recheck 15.0.115 run 2: new
+
+######## tan
+# bisect math:tan 14.6.202..15.4.8 (1190 builds between); 2026-10-23T06:54:13-06:00
+endpoint 14.6.202: old
+endpoint 15.4.8: new
+tested 15.0.55: new
+tested 14.8.136: old
+tested 14.9.109: old
+tested 14.9.187: old
+tested 15.0.15: old
+tested 15.0.34: old
+tested 15.0.43: old
+tested 15.0.50: new
+tested 15.0.45: old
+tested 15.0.46: old
+tested 15.0.47: old
+RESULT math:tan: 15.0.47 is old, 15.0.50 is new, adjacent in the published list
+recheck 15.0.47 run 1: old
+recheck 15.0.47 run 2: old
+recheck 15.0.50 run 1: new
+recheck 15.0.50 run 2: new
+
+######## SUMMARY (per-function windows, each boundary rechecked twice above)
+log, log10, log2   15.0.45 -> 15.0.46
+tan                15.0.47 -> 15.0.50 (15.0.48 and 15.0.49 are not published)
+acos, asin         15.0.104 -> 15.0.105
+cos, sin           15.0.114 -> 15.0.115
+exp                15.0.117 -> 15.0.118
+atan, atan2        15.0.199 -> 15.0.200
+pow                not probed: d8 14.6.202 and 15.4.8 give the same pow bits on all 69,633 cases

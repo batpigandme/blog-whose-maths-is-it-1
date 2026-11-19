@@ -177,3 +177,6 @@ jsconfig.json
 ################
 *.sublime-workspace
 *.sublime-project
+
+# Fetched sources, builds and case files (see lib/ and each folder README)
+.cache/

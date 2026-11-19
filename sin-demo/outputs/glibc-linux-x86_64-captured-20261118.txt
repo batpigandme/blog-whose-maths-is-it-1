@@ -1,0 +1,46 @@
+# engines:  glibc 2.39 (system, Ubuntu package libc6 2.39-0ubuntu8.12); glibc 2.43 (built from tag glibc-2.43, commit f762ccf84f122d1354f103a151cba8bde797d521); glibc 2.44 (built from tag glibc-2.44, commit c3a3a9808ad3ab4a3336836833f83288b672ccbf)
+# platform: Ubuntu 24.04, x86_64 (the CPU reports FMA and AVX2)
+# obtained: system glibc from Ubuntu 24.04's apt; the others built from https://sourceware.org/git/glibc.git at the tags named
+# captured: 2026-11-19, copied from an earlier run (2026-11-18, the original's own date line is kept below); paths and host names stripped
+# script:   an earlier version of sin-demo/glibc.sh, since rewritten; its output format differs from the regenerated files
+# date: 2026-11-18T17:13:50Z   host: x86_64
+# gcc: gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+# system: ldd (Ubuntu GLIBC 2.39-0ubuntu8.12) 2.39
+# cpu flags: fma avx avx2 
+# reference (mpmath 1.4.1):
+#   main in=5c99c487f2337e3a correct=3cbb779ceaa3c069
+#   ctrl in=6414c96c11134d36 correct=bc56ec67bcf77522
+
+## system glibc
+system default                     libc=2.39 in=5c99c487f2337e3a out=3cbb779ceaa3bc42 sin_at=/lib/x86_64-linux-gnu/libm.so.6+0x7b2d0
+system default                     libc=2.39 in=6414c96c11134d36 out=bc56ec67bcf5e379 sin_at=/lib/x86_64-linux-gnu/libm.so.6+0x7b2d0
+system -AVX2,-FMA                  libc=2.39 in=5c99c487f2337e3a out=3cbb779ceaa3bc42 sin_at=/lib/x86_64-linux-gnu/libm.so.6+0x848c0
+system -AVX2,-FMA                  libc=2.39 in=6414c96c11134d36 out=bc56ec67bcf5e379 sin_at=/lib/x86_64-linux-gnu/libm.so.6+0x848c0
+system -AVX,-AVX2,-FMA             libc=2.39 in=5c99c487f2337e3a out=3cbb779ceaa3bc42 sin_at=/lib/x86_64-linux-gnu/libm.so.6+0x2f8e0
+system -AVX,-AVX2,-FMA             libc=2.39 in=6414c96c11134d36 out=bc56ec67bcf5e379 sin_at=/lib/x86_64-linux-gnu/libm.so.6+0x2f8e0
+
+## build-243: 2.43
+243 default                        libc=2.43 in=5c99c487f2337e3a out=3cbb779ceaa3bc42 sin_at=/build/build-243/math/libm.so.6+0x8e930
+243 default                        libc=2.43 in=6414c96c11134d36 out=bc56ec67bcf5e379 sin_at=/build/build-243/math/libm.so.6+0x8e930
+243 -AVX2,-FMA                     libc=2.43 in=5c99c487f2337e3a out=3cbb779ceaa3bc42 sin_at=/build/build-243/math/libm.so.6+0x8d960
+243 -AVX2,-FMA                     libc=2.43 in=6414c96c11134d36 out=bc56ec67bcf5e379 sin_at=/build/build-243/math/libm.so.6+0x8d960
+243 -AVX,-AVX2,-FMA                libc=2.43 in=5c99c487f2337e3a out=3cbb779ceaa3bc42 sin_at=/build/build-243/math/libm.so.6+0x65b00
+243 -AVX,-AVX2,-FMA                libc=2.43 in=6414c96c11134d36 out=bc56ec67bcf5e379 sin_at=/build/build-243/math/libm.so.6+0x65b00
+# libm sin variants in this build (nm):
+#   000000000008d960 t __sin_avx
+#   000000000008e930 t __sin_fma
+#   0000000000085560 t __sin_fma4
+#   0000000000065b00 t __sin_sse2
+
+## build-244: 2.44
+244 default                        libc=2.44 in=5c99c487f2337e3a out=3cbb779ceaa3c069 sin_at=/build/build-244/math/libm.so.6+0x919b0
+244 default                        libc=2.44 in=6414c96c11134d36 out=bc56ec67bcf77522 sin_at=/build/build-244/math/libm.so.6+0x919b0
+244 -AVX2,-FMA                     libc=2.44 in=5c99c487f2337e3a out=3cbb779ceaa3c069 sin_at=/build/build-244/math/libm.so.6+0x909f0
+244 -AVX2,-FMA                     libc=2.44 in=6414c96c11134d36 out=bc56ec67bcf77522 sin_at=/build/build-244/math/libm.so.6+0x909f0
+244 -AVX,-AVX2,-FMA                libc=2.44 in=5c99c487f2337e3a out=3cbb779ceaa3c069 sin_at=/build/build-244/math/libm.so.6+0x67460
+244 -AVX,-AVX2,-FMA                libc=2.44 in=6414c96c11134d36 out=bc56ec67bcf77522 sin_at=/build/build-244/math/libm.so.6+0x67460
+# libm sin variants in this build (nm):
+#   00000000000909f0 t __sin_avx
+#   00000000000919b0 t __sin_fma
+#   00000000000877c0 t __sin_fma4
+#   0000000000067460 t __sin_sse2

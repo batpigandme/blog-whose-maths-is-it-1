@@ -1,0 +1,24 @@
+# engines:  Node.js 24.19.0 24.22.3 26.13.1
+# platform: macOS 26.7.3, arm64, Apple M1 Pro
+# obtained: Node.js from nvm; V8 version files from GitHub at each release's commit
+# date:     2026-11-19T19:05:24Z
+# script:   sin-demo/versions.sh
+
+## part 1: the same Math calls, release by release
+v24.19.0: process.versions.v8 13.6.233.17-node.51, binary sha256 27db838bb204ef7c
+  math-control.js: 7821 lines, sha256 40c986c46387a8efddeb0dbf42b2b5d107c0fd5109cc6d78caa35a92ca4e2b96
+  probe.js: sin 3cbb779ceaa3c069 3.811845021115953e-16
+v24.22.3: process.versions.v8 13.6.233.17-node.63, binary sha256 ba7073582822078d
+  math-control.js: 7821 lines, sha256 40c986c46387a8efddeb0dbf42b2b5d107c0fd5109cc6d78caa35a92ca4e2b96
+  probe.js: sin 3cbb779ceaa3c069 3.811845021115953e-16
+v26.13.1: process.versions.v8 14.6.202.34-node.40, binary sha256 266dec4dce3a6cdc
+  math-control.js: 7821 lines, sha256 606a3ac03df5f5e1a029b7fa86fbeb654dfc5a608fb6a7b010a582d6f8f208e7
+  probe.js: sin 3cbb779ceaa3c069 3.811845021115953e-16
+v24.19.0 against v24.22.3 (same V8 version, different embedder suffix):
+  math-control.js: identical (cmp)
+  probe.js: identical (cmp)
+
+## part 2: the V8 each release's own source names
+v24.19.0, commit cdc1b38d40cb567b7ad0b39c86addf830a0af0ae: v8-version.h says 13.6.233.17; common.gypi v8_embedder_string '-node.51'; together 13.6.233.17-node.51
+v24.22.3, commit e63cab040c09d43ceef8cb35508c40044614e906: v8-version.h says 13.6.233.17; common.gypi v8_embedder_string '-node.63'; together 13.6.233.17-node.63
+v26.13.1, commit e9c277643b0249c50f6e6de5413be8a88ea11b6a: v8-version.h says 14.6.202.34; common.gypi v8_embedder_string '-node.40'; together 14.6.202.34-node.40

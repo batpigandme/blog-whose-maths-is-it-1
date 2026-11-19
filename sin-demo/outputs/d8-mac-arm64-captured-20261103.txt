@@ -1,0 +1,60 @@
+# engines:  d8 13.6.233, 14.6.202, 15.8.32 (jsvu); Node.js v24.19.0 (nvm)
+# platform: macOS (Darwin 25.6.0), arm64, Apple M1 Pro
+# obtained: d8 from jsvu; Node.js from nvm
+# captured: 2026-11-19, copied from an earlier run (2026-11-03); paths stripped
+# script:   an earlier version of sin-demo/d8.sh, since rewritten; its output format differs from the regenerated file's
+# 2026-11-03T15:21:02Z; Darwin 25.6.0 arm64; Apple M1 Pro
+# correctly rounded 3cbb779ceaa3c069; glibc 2.39 3cbb779ceaa3bc42
+
+## d8 13.6.233, ~/.jsvu/engines/v8-13.6.233/v8-13.6.233, sha256 6b91f615cd9b0c12, jsvu's wrapper
+version: 13.6.233
+help:   --use-libm-trig-functions (use libm trig functions)
+help:         type: bool  default: --use-libm-trig-functions
+help:   --verify-predictable (this mode is used for checking that V8 behaves predictably)
+13.6.233-default-1: input 5c99c487f2337e3a 1.1986535513718587e+138
+13.6.233-default-1: sin 3cbb779ceaa3bc42 3.811845021115429e-16
+13.6.233-flagoff-1: input 5c99c487f2337e3a 1.1986535513718587e+138
+13.6.233-flagoff-1: sin 3cbb779ceaa3c069 3.811845021115953e-16
+13.6.233-default-2: input 5c99c487f2337e3a 1.1986535513718587e+138
+13.6.233-default-2: sin 3cbb779ceaa3bc42 3.811845021115429e-16
+13.6.233-flagoff-2: input 5c99c487f2337e3a 1.1986535513718587e+138
+13.6.233-flagoff-2: sin 3cbb779ceaa3c069 3.811845021115953e-16
+
+## d8 14.6.202, ~/.jsvu/engines/v8-14.6.202/v8-14.6.202, sha256 fb9af3ddddfed69b, jsvu's wrapper
+version: 14.6.202
+help:   --use-libm-trig-functions (use libm trig functions)
+help:         type: bool  default: --use-libm-trig-functions
+help:   --track-array-buffer-views (Track TypedArrays and DataViews attached to array buffers and update them in-place when the buffer detaches (experimental))
+14.6.202-default-1: input 5c99c487f2337e3a 1.1986535513718587e+138
+14.6.202-default-1: sin 3cbb779ceaa3bc42 3.811845021115429e-16
+14.6.202-flagoff-1: input 5c99c487f2337e3a 1.1986535513718587e+138
+14.6.202-flagoff-1: sin 3cbb779ceaa3c069 3.811845021115953e-16
+14.6.202-default-2: input 5c99c487f2337e3a 1.1986535513718587e+138
+14.6.202-default-2: sin 3cbb779ceaa3bc42 3.811845021115429e-16
+14.6.202-flagoff-2: input 5c99c487f2337e3a 1.1986535513718587e+138
+14.6.202-flagoff-2: sin 3cbb779ceaa3c069 3.811845021115953e-16
+
+## Node v24.19.0, ~/.nvm/versions/node/v24.19.0/bin/node, sha256 27db838bb204ef7c, V8 13.6.233.17-node.51
+node-1: input 5c99c487f2337e3a 1.1986535513718587e+138
+node-1: sin 3cbb779ceaa3c069 3.811845021115953e-16
+node-2: input 5c99c487f2337e3a 1.1986535513718587e+138
+node-2: sin 3cbb779ceaa3c069 3.811845021115953e-16
+
+## after the move to LLVM's libm, default only: --help on this build doesn't list the flag
+help lines naming it: 0
+15.8.32-default: input 5c99c487f2337e3a 1.1986535513718587e+138
+15.8.32-default: sin 3cbb779ceaa3c069 3.811845021115953e-16
+
+## distances, in ULP
+run                  sin                from-correct from-glibc
+13.6.233-default-1   3cbb779ceaa3bc42         1063          0
+13.6.233-default-2   3cbb779ceaa3bc42         1063          0
+13.6.233-flagoff-1   3cbb779ceaa3c069            0       1063
+13.6.233-flagoff-2   3cbb779ceaa3c069            0       1063
+14.6.202-default-1   3cbb779ceaa3bc42         1063          0
+14.6.202-default-2   3cbb779ceaa3bc42         1063          0
+14.6.202-flagoff-1   3cbb779ceaa3c069            0       1063
+14.6.202-flagoff-2   3cbb779ceaa3c069            0       1063
+15.8.32-default      3cbb779ceaa3c069            0       1063
+node-1               3cbb779ceaa3c069            0       1063
+node-2               3cbb779ceaa3c069            0       1063

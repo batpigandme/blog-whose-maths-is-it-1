@@ -84,7 +84,7 @@ See [LICENSE][license].
 
 Copyright © 2026. The Stdlib [Authors][stdlib-authors].
 
-[post]: https://blog.stdlib.io/whose-maths-is-it/
+[post]: `TODO: put blog post link here`
 
 [stdlib-authors]: https://github.com/stdlib-js/stdlib/graphs/contributors
 

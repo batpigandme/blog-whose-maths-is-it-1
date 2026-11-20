@@ -1,6 +1,6 @@
 # scriptc
 
-> **Results only for now: scripts and reruns to follow.** Everything here is copied from earlier runs and readings and not regenerated. Nothing in this folder can be rerun yet.
+> Captured results from earlier runs and readings, not regenerated. The scripts and reruns are added after publication.
 
 Backs the post's footnote `[^scriptc]`, and the sentence in "The families" that says scriptc, "the last post's compiler with no engine at run time, carries a C port of V8's maths code, and its `Math` matches Node.js 24.19.0's bit for bit on all 7,820 cases tested: no engine, and still V8's answers."
 
@@ -14,7 +14,7 @@ The source reading and the run are of scriptc 0.4.7, tag `v0.4.7`, commit [`6c60
 
 ## Tier
 
-c: results only, for now. The full folder will be tier b: it needs Linux x86_64 with Node.js, clang, and a C library, and an install of `scriptc@0.4.7` from npm.
+c: results only. The full folder will be tier b: it needs Linux x86_64 with Node.js, clang, and a C library, and an install of `scriptc@0.4.7` from npm.
 
 ## What the committed results show
 

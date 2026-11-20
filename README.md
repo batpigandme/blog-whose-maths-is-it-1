@@ -17,7 +17,8 @@ Every footnote or section in the post that defers to the repository is listed in
 **Status** is one of:
 
 - **published**: the folder is here, with its script and committed output.
-- **results only for now**: the folder holds captured or recorded results, labeled as such, and the scripts and reruns follow. Folders that hold only a recorded reading or quotation say so.
+- **results only**: the folder holds recorded observations or readings, such as browser console runs and quotations, and no script is planned for them.
+- **results only for now**: the folder holds captured results, labeled as such, and the scripts and reruns are added after publication.
 - **link only**: the footnote's pinned link is the evidence; nothing is kept here.
 
 **Committed outputs** are labeled in each folder's README as *regenerated* (the script in the folder produced it, on the date and machine in its header) or *captured* (copied from an earlier run, with machine paths stripped, not rerun). Every output starts with a header naming the engine, platform, how the engine was obtained, the date, and the script. [`ENGINES.md`](./ENGINES.md) collects the engines, tools, and platforms in one table.
@@ -30,8 +31,8 @@ Local runs vary by operating system, compiler, and CPU. That's part of the post'
 | --- | --- | --- | --- | --- |
 | Plainly wrong | each story's builds, inputs, outputs, and script | [`plainly-wrong/`](./plainly-wrong/) | b | results only for now |
 | The families | which engines draw on which library | [`engine-families/`](./engine-families/) | c for now (b later) | results only for now: a stub of captured results |
-| `[^browsers]` | the shell scan, and the three browser runs on `sin`, `cos`, `tan` | [`browsers/`](./browsers/) | c (b for the shell scan) | results only for now |
-| `[^js10]` | the figure's 17 `Math` functions and 8 constants | [`reads/`](./reads/) | c | results only for now |
+| `[^browsers]` | the shell scan, and the three browser runs on `sin`, `cos`, `tan` | [`browsers/`](./browsers/) | c (b for the shell scan) | results only for the browser runs; the shell scan's scripts are added after publication |
+| `[^js10]` | the figure's 17 `Math` functions and 8 constants | [`reads/`](./reads/) | c | results only: a recorded reading |
 | `[^es1]` | the 1st edition's 18 functions by clause; the 3rd edition's "implementer" | [`spec/`](./spec/) | a | published |
 | `[^terms]` | §4.2's example, "implementation-approximated" | [`spec/`](./spec/) | a | published |
 | `[^split]` | the 22 / 1 / 14 split of the 37 `Math` functions | [`spec/`](./spec/) | a | published |
@@ -49,10 +50,10 @@ Local runs vary by operating system, compiler, and CPU. That's part of the post'
 | `[^c-library]` | per-engine, per-platform runs against the C library | [`engine-families/`](./engine-families/) | c for now (b later) | results only for now: a stub of captured results |
 | `[^scriptc]` | scriptc's cases and run | [`engine-families/scriptc/`](./engine-families/scriptc/) | b | results only for now |
 | `[^go-log]` | Go's `log` of `5e-324` on x86_64 and arm64 | [`plainly-wrong/`](./plainly-wrong/) | b | results only for now |
-| `[^java-math]` | `java.lang.Math` and `StrictMath` | [`reads/`](./reads/) | c | results only for now |
+| `[^java-math]` | `java.lang.Math` and `StrictMath` | [`reads/`](./reads/) | c | results only: a recorded reading |
 | `[^bindings]` | v8go and PyMiniRacer against d8 at the same V8 | [`bindings/`](./bindings/) | b | results only for now |
 | `[^firefox]` | where SpiderMonkey reads its preference | | c | link only |
-| `[^numpy]` | NumPy's `np.finfo(np.longdouble)` on a Mac | [`reads/`](./reads/) | a | results only for now |
+| `[^numpy]` | NumPy's `np.finfo(np.longdouble)` on a Mac | [`reads/`](./reads/) | a | results only for now: a recorded check; its script is added after publication |
 
 ## Layout
 
@@ -65,11 +66,11 @@ v8-sources/           where V8's maths comes from, by version
 fma-contraction/      MicroQuickJS's and V8's maths library, with and without fused multiply-add
 engine-families/      which library each engine's maths matches, and scriptc (results only for now)
 plainly-wrong/        Rhino, Go's log, and the other cases the post calls plainly wrong (results only for now)
-browsers/             Chrome, Firefox, and Safari on one Mac, and the shell scan (results only for now)
+browsers/             Chrome, Firefox, and Safari on one Mac as recorded, and the shell scan (results only)
 sumprecise/           Math.sumPrecise support by Node.js version (results only for now)
 libraries/            npm downloads and repository status for the libraries the post names (results only for now)
 bindings/             v8go and PyMiniRacer against d8 at the same V8 (results only for now)
-reads/                recorded readings: the HOPL figure, java.lang.Math, NumPy (results only for now)
+reads/                recorded readings: the HOPL figure, java.lang.Math, NumPy (results only)
 lib/                  helpers more than one folder uses: the case generator, drivers, checksums
 ```
 

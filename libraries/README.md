@@ -1,6 +1,6 @@
 # libraries
 
-> **Results only for now: scripts and reruns to follow.** Everything here is copied from earlier reads of GitHub's and npm's APIs and not regenerated. Nothing in this folder can be rerun yet.
+> Captured results from earlier reads of GitHub's and npm's APIs, not regenerated. The scripts and reruns are added after publication.
 
 Backs the post's paragraph on the libraries of the lull and its footnotes `[^libs]` and `[^bigint-libs]`.
 
@@ -17,7 +17,7 @@ This folder holds the numbers behind "widely downloaded" and "where they are now
 
 ## Tier
 
-c: results only, for now. The full folder will be tier a: a rerun needs `gh` (authenticated, read-only) and network access to GitHub and api.npmjs.org, on any operating system.
+c: results only. The full folder will be tier a: a rerun needs `gh` (authenticated, read-only) and network access to GitHub and api.npmjs.org, on any operating system.
 
 ## What the committed results show
 

@@ -1,6 +1,6 @@
 # plainly-wrong
 
-> **Results only for now: scripts and reruns to follow.** Everything here is copied from earlier runs and not regenerated. Nothing in this folder can be rerun yet.
+> Captured results from earlier runs, not regenerated. The scripts and reruns are added after publication.
 
 Backs the post's section "Plainly wrong" and its footnotes `[^rhino]` and `[^go-log]`: Rhino's `asinh`, `acosh`, and `atanh`, fixed in 1.9.2, and Go's `log` of `5e-324` through goja and otto. It also holds the spare cases from the same runs.
 
@@ -24,7 +24,7 @@ And from `[^go-log]`: `Math.log(5e-324)` is `-709.0895657128241` on x86_64 (Go's
 
 ## Tier
 
-c: results only, for now. The full folder will be tier b: it needs particular binaries (the javascript-zoo release 20260303 builds of Rhino, Nova, Kiesel, and Quanta; Go; Java), an arm64 Linux host or a Mac with Docker, and an x86_64 Linux host for the x86_64 rows.
+c: results only. The full folder will be tier b: it needs particular binaries (the javascript-zoo release 20260303 builds of Rhino, Nova, Kiesel, and Quanta; Go; Java), an arm64 Linux host or a Mac with Docker, and an x86_64 Linux host for the x86_64 rows.
 
 ## What the committed results show
 

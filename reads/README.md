@@ -1,6 +1,6 @@
 # reads
 
-> **Results only for now: scripts and reruns to follow.** Everything here is a recorded quotation or reading, copied from earlier notes and not regenerated. Nothing in this folder is a run, and nothing can be rerun yet.
+> Recorded quotations and readings, copied from earlier notes. Nothing in this folder is a run. The NumPy check's script is added after publication; the other two files are readings of documents.
 
 Backs the post's footnotes `[^js10]`, `[^java-math]`, and `[^numpy]`: three claims that rest on a reading of a published document or of one check, rather than on a run.
 
@@ -16,7 +16,7 @@ From the post:
 
 ## Tier
 
-c: results only, for now. The full folder will be tier a for `numpy-longdouble.md`, whose check becomes a script that runs anywhere NumPy is installed; the other two stay readings of documents.
+c: results only. `numpy-longdouble.md`'s check will become a tier a script that runs anywhere NumPy is installed; the other two files stay readings of documents.
 
 ## Committed outputs
 

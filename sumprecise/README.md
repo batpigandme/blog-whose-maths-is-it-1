@@ -1,6 +1,6 @@
 # sumprecise
 
-> **Results only for now: scripts and reruns to follow.** Everything here is copied from earlier runs, or recorded from reads of them, and not regenerated. Nothing in this folder can be rerun yet.
+> Captured results from earlier runs, and recorded reads of them, not regenerated. The scripts and reruns are added after publication.
 
 Backs the post's sentence "As of November 2026, no stable Node.js release has it on by default" and its footnote `[^sumprecise-node]`, which says that Node.js 26.13.1 "has no `sumPrecise` without a flag," that Node.js 26.7.0 "has it behind `--js-sum-precise`," and that the Node.js 27 alpha "has it unflagged."
 
@@ -14,7 +14,7 @@ The folder also holds two records that back the body sentence about stable relea
 
 ## Tier
 
-c: results only, for now. The full folder will be tier b: it needs the Node.js versions above (nvm installs them on macOS or Linux) and, for the test262 part, a fetch of test262 at a pinned commit.
+c: results only. The full folder will be tier b: it needs the Node.js versions above (nvm installs them on macOS or Linux) and, for the test262 part, a fetch of test262 at a pinned commit.
 
 ## What the committed results show
 

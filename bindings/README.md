@@ -1,6 +1,6 @@
 # bindings
 
-> **Results only for now: scripts and reruns to follow.** Everything here is copied from earlier runs and not regenerated, apart from one table of hashes computed from those runs' outputs. Nothing in this folder can be rerun yet.
+> Captured results from earlier runs, not regenerated, apart from one table of hashes computed from those runs' outputs. The scripts and reruns are added after publication.
 
 Backs the post's section "The binding" and its footnote `[^bindings]`, including the table "Copy, V8, and its `sin` of the bug's input."
 
@@ -16,7 +16,7 @@ From the post: a binding embeds an engine in another language's programs, and it
 
 ## Tier
 
-c: results only, for now. The full folder will be tier b: it needs a Mac, Go and Python with a C and C++ compiler (Apple clang), and jsvu's d8 builds at three V8 versions.
+c: results only. The full folder will be tier b: it needs a Mac, Go and Python with a C and C++ compiler (Apple clang), and jsvu's d8 builds at three V8 versions.
 
 ## What the committed results show
 

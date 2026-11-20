@@ -1,6 +1,6 @@
 # engine-families
 
-> **Results only for now: scripts and reruns to follow.** Everything here is copied from earlier runs and not regenerated. Nothing in this folder can be rerun yet.
+> Captured results from earlier runs, not regenerated. The scripts and reruns are added after publication.
 
 Backs the post's section "The families" and its footnotes `[^c-library]`, `[^scriptc]`, `[^go-log]`, `[^strictmath]`, and `[^rust]`, and Figure 4, "Many engines, a handful of sources."
 
@@ -16,7 +16,7 @@ From the post: many engines draw on somebody else's code, and sorted by whose, t
 
 ## Tier
 
-c: results only, for now. The full folder will be tier b: it needs a Mac and jsvu builds of each engine, and its Linux half comes from Claude Code Cloud or OrbStack.
+c: results only. The full folder will be tier b: it needs a Mac and jsvu builds of each engine, and its Linux half comes from Claude Code Cloud or OrbStack.
 
 ## What the committed results show
 
@@ -66,14 +66,14 @@ From `linux-attribution.results.txt`: each cell says whether an engine's Linux r
 
 QuickJS-ng's Linux binary is statically linked, and the C library inside it is musl 1.2.6, by the source path embedded in the binary. `linux-binaries-and-musl.results.txt` shows a C program built against Ubuntu's musl 1.2.4 giving the same bits as that binary on all 12 functions, and Hermes's static Linux binary matching musl on only `log` and `log2`. That's the "mix" the post describes.
 
-## The other families, results to follow
+## The other families
 
-The post's other claims in "The families" rest on runs that aren't in this folder yet. Each will get a folder of its own here, with the pinned source it reads.
+The post's other claims in "The families" rest on results held in other folders of this repository, with the pinned source each reads.
 
 | Family | Engines, at the commits the post cites | Claim, in the post's words | In this folder |
 | --- | --- | --- | --- |
-| The language's maths: Go | goja [`622d100`](https://github.com/dop251/goja/commit/622d10077b6c154d9dc0897878aa1b4a674d7c9b), otto [`43d0d58`](https://github.com/robertkrimen/otto/commit/43d0d581930e54a0daee9e3770b68e947a7f33fc), on Go 1.24.7 and 1.26.10 | Go's `log` of `5e-324` is wrong on x86_64 and right on arm64, and goja and otto give exactly Go's answers on both | results to follow |
-| The language's maths: Java | Rhino, GraalJS | `java.lang.Math` is "not defined to return the bit-for-bit same results" | results to follow |
+| The language's maths: Go | goja [`622d100`](https://github.com/dop251/goja/commit/622d10077b6c154d9dc0897878aa1b4a674d7c9b), otto [`43d0d58`](https://github.com/robertkrimen/otto/commit/43d0d581930e54a0daee9e3770b68e947a7f33fc), on Go 1.24.7 and 1.26.10 | Go's `log` of `5e-324` is wrong on x86_64 and right on arm64, and goja and otto give exactly Go's answers on both | [`plainly-wrong/`](../plainly-wrong/) |
+| The language's maths: Java | Rhino, GraalJS | `java.lang.Math` is "not defined to return the bit-for-bit same results" | [`reads/java-math.md`](../reads/java-math.md) |
 | The language's maths: Rust | Boa 0.22 | Boa's bits are the C library's (see the tables above) | the tables above |
 | The engine's own code | MicroQuickJS [`6d4d7eb`](https://github.com/bellard/mquickjs/commit/6d4d7eb6b99011d5aab6e88a9b99e8fd4d86c6e9), its `libm.c`; Elk [`71a86fa`](https://github.com/cesanta/elk/commit/71a86fa2fef146696be9ae66715bf3f91d0a5f2c), with no `Math` object | MicroQuickJS ships its own maths library; Elk has none | the MicroQuickJS rows above |
 | A port of V8's code | scriptc [`4af5844`](https://github.com/vercel-labs/scriptc/commit/4af5844f522b2762716226114262fd7dd86c8e65); the run and source reading are of v0.4.7, [`6c60b0b`](https://github.com/vercel-labs/scriptc/commit/6c60b0bcbfc6edd34ce5c1cdb588d42bdb7171ff) | its `Math` matches Node.js 24.19.0's bit for bit on all 7,820 cases tested, with `pow` going to the platform's | [`scriptc/`](scriptc/README.md) |

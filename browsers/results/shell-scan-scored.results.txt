@@ -2,7 +2,7 @@
 # platform: macOS (Darwin 25.6.0), arm64, Apple M1 Pro
 # obtained: jsvu
 # date:     2026-11-18
-# script:   not in this repository yet (results only for now)
+# script:   none (a captured result)
 # captured: 2026-11-18, copied from an earlier run, not regenerated; the table body is unedited
 # what:     every (function, input) pair on which d8 and the SpiderMonkey shell's fdlibm path returned different bits, from the three shell-scan files, with each result's distance from the correctly rounded value in ULPs
 #           (computed against mpmath at 300 bits; the scoring script prints a row only when both distances are at most 1 ULP)

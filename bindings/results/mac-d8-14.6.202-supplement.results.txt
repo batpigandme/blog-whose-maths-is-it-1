@@ -2,7 +2,7 @@
 # platform: macOS 26.6.2 (25G83), arm64, Apple M1 Pro
 # obtained: d8 from jsvu; Node.js from nvm
 # date:     2026-11-17T23:24:00Z
-# script:   not in this repository yet (results only for now)
+# script:   none (a captured result)
 # captured: copied from an earlier run, not regenerated; paths stripped (the scratch directory is shown as <scratch>, the home directory as ~); run by hand after run 3, as a supplement, to separate V8 version from build
 
 # supplementary to bindings-math-run.sh run3: is the 1-ULP split from Node one of V8 version or of build? d8 14.6.202 is Node v26.13.1's V8. 2026-11-17T23:24:00Z; Darwin 25.6.0 arm64

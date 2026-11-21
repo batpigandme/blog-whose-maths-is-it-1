@@ -3,7 +3,7 @@
 # platform: OrbStack, aarch64 Linux VM on macOS; Ubuntu 24.04.5 container, aarch64, glibc 2.39-0ubuntu8.9
 # obtained: rhino-all-1.9.2.jar from repo1.maven.org with its published sha1 and md5 checked (the .asc signature was not checked); the 7386aa0 jar from the javascript-zoo release; OpenJDK and Node.js from conda-forge through pixi
 # date:     2026-11-03T14:40:07Z (UTC)
-# script:   not in this repository yet (results only for now)
+# script:   none (a captured result)
 # captured: 2026-11-19, copied from the run of 2026-11-03, not regenerated; paths, script names, finding labels, and host strings stripped
 # image:    ubuntu:24.04@sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852
 
@@ -40,7 +40,7 @@ print([Math.asinh(5e-324), Math.asinh(1e-300), Math.asinh(1e-10), Math.asinh(1e3
 5e-324 1e-300 1e-10 691.4686750787736 -0.48121182505960347 691.4686750787736 1e-10 0.5493061443340548
    (run 2 [exit 0] identical)
 
-## the 7,820-case Math.* control, on a terminal, JDK 25 (the case list is not in this repository yet)
+## the 7,820-case Math.* control, on a terminal, JDK 25 (the case list is not in this repository)
   rhino-7386aa0  digest 857ec12f2b607d60, 7821 lines, exits 0 0, repeat identical
   rhino-1.9.2    digest 1cdbd31a94558901, 7821 lines, exits 0 0, repeat identical
   node           digest 29e5cea63f90a65c, 7821 lines, exits 0 0, repeat identical

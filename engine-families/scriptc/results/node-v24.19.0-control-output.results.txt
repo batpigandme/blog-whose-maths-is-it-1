@@ -2,7 +2,7 @@
 # platform: Claude Code Cloud, x86_64 VM; Linux x86_64, glibc 2.39 (Ubuntu 24.04)
 # obtained: nvm
 # date:     2026-11-02, in a run that began 19:56:46Z and ended 20:17:43Z
-# script:   not in this repository yet (results only for now)
+# script:   none (a captured result)
 # captured: copied from an earlier run, not regenerated; paths stripped; no edits to the data lines
 # columns:  function, then the IEEE 754 bits of each argument and of the result, in hex (two arguments for atan2, hypot, and pow)
 # body:     7,820 case lines, then the program's own count line; the body's sha256 is 0429ac9a4a2f1efbd2b669baec65e605633342869943ef340e78e9dc3eebb1ff

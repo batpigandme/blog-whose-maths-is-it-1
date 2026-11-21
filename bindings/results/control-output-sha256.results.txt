@@ -2,7 +2,7 @@
 # platform: macOS 26.6.2 (25G83), arm64, Apple M1 Pro
 # obtained: see the run files
 # date:     2026-11-17T23:23Z (run 3) and 2026-11-17T23:31Z (run 4)
-# script:   not in this repository yet (results only for now)
+# script:   none (a captured result)
 # captured: computed for this repository from the unpacked raw outputs of the two runs (hashing, not a rerun); hash is of the output exactly as written by the run, without the header lines used in control/
 
 run   row                       repeat  sha256 of the unedited control output

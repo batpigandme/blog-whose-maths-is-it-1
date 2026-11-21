@@ -1,6 +1,6 @@
 # plainly-wrong
 
-> Captured results from earlier runs, not regenerated. The scripts and reruns are added after publication.
+> Captured results from earlier runs, not regenerated. This folder has no scripts.
 
 Backs the post's section "Plainly wrong" and its footnotes `[^rhino]` and `[^go-log]`: Rhino's `asinh`, `acosh`, and `atanh`, fixed in 1.9.2, and Go's `log` of `5e-324` through goja and otto. It also holds the spare cases from the same runs.
 
@@ -24,7 +24,7 @@ And from `[^go-log]`: `Math.log(5e-324)` is `-709.0895657128241` on x86_64 (Go's
 
 ## Tier
 
-c: results only. The full folder will be tier b: it needs particular binaries (the javascript-zoo release 20260303 builds of Rhino, Nova, Kiesel, and Quanta; Go; Java), an arm64 Linux host or a Mac with Docker, and an x86_64 Linux host for the x86_64 rows.
+c: results only.
 
 ## What the committed results show
 
@@ -128,14 +128,6 @@ The OrbStack outputs are the second run of two (the first is not committed). Eac
 | javascript-zoo | release [20260303](https://github.com/ivankra/javascript-zoo/releases/tag/20260303), [`056b628e1ab0ba8d7fcd112023b0c7c2407461fa`](https://github.com/ivankra/javascript-zoo/commit/056b628e1ab0ba8d7fcd112023b0c7c2407461fa), the source of the Rhino, Nova, Kiesel, and Quanta binaries |
 | Node.js, Go, GCC, OpenJDK | conda-forge packages named in `orbstack-host.results.txt` (Node.js 24.19.0, V8 13.6.233.17-node.51; OpenJDK 25.0.2 and 21.0.10; GCC 13.3.0) |
 | Container image | `ubuntu:24.04@sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852` |
-
-## What the full folder will hold
-
-- The probe scripts, one per story, each running its case twice, and the script that fetches and checks every binary at the pins above.
-- Rhino's `NativeMath.java` at `7386aa0` and at the 1.9.2 commit, with the lines for `asinh`, `acosh`, and `atanh` side by side, and the 1.9.2 release notes quoted.
-- Go's `src/math` build-tag files for both Go versions, quoted at their pinned release.
-- The generator for the 7,820-case control list (a checksum of its output, not the list) and the comparison that produced the counts above.
-- Reruns on the platforms the tier needs, with a version and platform header on each output.
 
 ## Scope
 

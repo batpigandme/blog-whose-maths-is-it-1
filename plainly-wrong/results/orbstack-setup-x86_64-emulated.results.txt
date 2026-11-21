@@ -2,7 +2,7 @@
 # platform: OrbStack, aarch64 Linux VM on macOS, x86_64 container under emulation; Ubuntu 24.04.5, x86_64, glibc 2.39-0ubuntu8.9
 # obtained: as each section shows (curl from the javascript-zoo and Hermes releases, go install, npm install)
 # date:     2026-11-03T14:25:59Z (UTC)
-# script:   not in this repository yet (results only for now)
+# script:   none (a captured result)
 # captured: 2026-11-19, copied from the run of 2026-11-03, not regenerated; paths, script names, finding labels, and host strings stripped
 # image:    ubuntu:24.04@sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852
 

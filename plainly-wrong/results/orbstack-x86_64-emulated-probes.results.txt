@@ -5,7 +5,7 @@
 # platform: OrbStack, aarch64 Linux VM on macOS, x86_64 container under emulation; Ubuntu 24.04.5, x86_64, glibc 2.39-0ubuntu8.9
 # obtained: javascript-zoo release 20260303 binaries; goja and otto with go install; Porffor from npm; Hermes from its GitHub release; Node.js, Go, GCC, and OpenJDK from conda-forge through pixi; see orbstack-setup-x86_64-emulated.results.txt
 # date:     2026-11-03T14:40:07Z (UTC)
-# script:   not in this repository yet (results only for now)
+# script:   none (a captured result)
 # captured: 2026-11-19, copied from the run of 2026-11-03, not regenerated; paths, script names, finding labels, and host strings stripped
 # image:    ubuntu:24.04@sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852
 # note:     the Porffor lines marked DIFFERS are two segfaults whose process IDs differ; the same failure both times.

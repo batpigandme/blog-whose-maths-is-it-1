@@ -1,6 +1,6 @@
 # libraries
 
-> Captured results from earlier reads of GitHub's and npm's APIs, not regenerated. The scripts and reruns are added after publication.
+> Captured results from earlier reads of GitHub's and npm's APIs, not regenerated. This folder has no scripts.
 
 Backs the post's paragraph on the libraries of the lull and its footnotes `[^libs]` and `[^bigint-libs]`.
 
@@ -17,7 +17,7 @@ This folder holds the numbers behind "widely downloaded" and "where they are now
 
 ## Tier
 
-c: results only. The full folder will be tier a: a rerun needs `gh` (authenticated, read-only) and network access to GitHub and api.npmjs.org, on any operating system.
+c: results only.
 
 ## What the committed results show
 
@@ -67,11 +67,6 @@ Each of the eleven commits was the default branch's HEAD when read on 2026-11-19
 | `results/raw/<package>.raw.txt` (11 files) | each library's raw output: repository description, stars, archived flag, default branch, HEAD SHA and date, and the three downloads responses and latest version from npm | captured, not rerun | 2026-11-19 | GitHub and npm API reads; the machine isn't recorded |
 
 The two kinds of file are the original data with a header added.
-
-## What the full folder will hold
-
-- The script that reads each library's repository and npm downloads, taking the commits above as input so a rerun reads the same repositories. The downloads and stars it returns will be later numbers.
-- Each library's README at its pinned commit, as a checksum, with the sentences quoted in the post located in it.
 
 ## Scope
 

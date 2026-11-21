@@ -10,7 +10,7 @@ On a Mac with Apple clang on arm64, `long double` is the same as `double`, so Nu
 
 ## Tier
 
-c: results only, for now. The full folder will be tier a for the NumPy half, a script that runs anywhere NumPy 2.5.5 is installed, and tier c for the Apple clang half, whose result is recorded here and depends on the compiler.
+c: results only for both halves: the NumPy half and the Apple clang half are each recorded here, and the Apple clang result depends on the compiler.
 
 ## The recorded reading
 

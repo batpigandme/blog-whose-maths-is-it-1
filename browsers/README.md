@@ -1,6 +1,6 @@
 # browsers
 
-> Recorded results from browser consoles, plus captured outputs from a scan of the same functions in two shells. The browser runs are complete as recorded: browser, version, OS and architecture, date, snippet, and output bits. To compare, paste the snippet below into your own browser's console. The scan's scripts are added after publication.
+> Recorded results from browser consoles, plus captured outputs from a scan of the same functions in two shells. The browser runs are complete as recorded: browser, version, OS and architecture, date, snippet, and output bits. To compare, paste the snippet below into your own browser's console. This folder has no scripts.
 
 Backs the post's opening, where `Math.tan( 7 )` gives three answers in Chrome, Firefox, and Safari on one Mac, and its footnote `[^browsers]`: "Run on 18 November 2026, once in each browser's console, on one Mac with macOS 26.7.3, all three running as arm64."
 
@@ -14,7 +14,7 @@ The post attributes the three answers to three libraries: LLVM's for Chrome, fdl
 
 ## Tier
 
-c: results only for the browser runs. The shell scan will be tier b: it needs a Mac and jsvu builds of d8 and the SpiderMonkey shell.
+c: results only.
 
 ## What the committed results show
 
@@ -97,11 +97,6 @@ The Firefox 160.0.1 source lines and tag lookup were read with the GitHub API on
 | `results/shell-scan-scored.results.txt` | the 656 differing results, scored in ULPs from the correctly rounded value | captured, not rerun | 2026-11-18 | same |
 
 The four shell-scan files are the original outputs with a header added. Their data lines are unedited.
-
-## What the shell scan will add
-
-- The scan script, the scoring script, and the snippet file, with the install steps for d8 and the SpiderMonkey shell through jsvu, and each file's header produced by the script.
-- A rerun of the shell scan, with its result beside the captured one.
 
 ## Scope
 

@@ -2,7 +2,7 @@
 # platform: Claude Code Cloud, x86_64 VM; Linux x86_64, glibc 2.39 (Ubuntu 24.04)
 # obtained: npm install of scriptc@0.4.7 on Node.js v24.22.2 from nvm
 # date:     2026-11-02, in a run that began 19:56:46Z and ended 20:17:43Z
-# script:   not in this repository yet (results only for now)
+# script:   none (a captured result)
 # captured: copied from an earlier run, not regenerated; the machine paths are replaced by file names (scriptc.exe, unrun-math-control.js, the output name); no other edits
 $ scriptc.exe build unrun-math-control.js -o unrun-math-control
 unrun-math-control.js:92:7 - error SC0001: Operator '+' cannot be applied to types 'string | number' and 'number'.

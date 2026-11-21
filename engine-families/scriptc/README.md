@@ -1,6 +1,6 @@
 # scriptc
 
-> Captured results from earlier runs and readings, not regenerated. The scripts and reruns are added after publication.
+> Captured results from earlier runs and readings, not regenerated. This folder has no scripts.
 
 Backs the post's footnote `[^scriptc]`, and the sentence in "The families" that says scriptc, "the last post's compiler with no engine at run time, carries a C port of V8's maths code, and its `Math` matches Node.js 24.19.0's bit for bit on all 7,820 cases tested: no engine, and still V8's answers."
 
@@ -14,7 +14,7 @@ The source reading and the run are of scriptc 0.4.7, tag `v0.4.7`, commit [`6c60
 
 ## Tier
 
-c: results only. The full folder will be tier b: it needs Linux x86_64 with Node.js, clang, and a C library, and an install of `scriptc@0.4.7` from npm.
+c: results only.
 
 ## What the committed results show
 
@@ -46,13 +46,6 @@ The five `.results.txt` files are the original outputs with a header added, or l
 | The release run | [run 41153019462](https://github.com/vercel-labs/scriptc/actions/runs/41153019462), expired logs |
 | The project at the commit the post's table links | [`4af5844`](https://github.com/vercel-labs/scriptc/commit/4af5844f522b2762716226114262fd7dd86c8e65) |
 | Node.js reference | v24.19.0, V8 13.6.233.17-node.51 (nvm); no binary hash is committed |
-
-## What the full folder will hold
-
-- The case generator for the control, with a checksum of its output, and the typed variant that scriptc compiles, with its difference from the original described.
-- The script that installs scriptc 0.4.7, compiles the typed control, runs it and Node.js over the cases, and compares the bits.
-- The comparison against Node.js v24.22.2, and the check of what the executable links.
-- The source reading, with each file and line pinned, so a reader can follow `pow` from the port to the platform.
 
 ## Scope
 

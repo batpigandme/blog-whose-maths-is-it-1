@@ -1,6 +1,6 @@
 # reads
 
-> Recorded quotations and readings, copied from earlier notes. Nothing in this folder is a run. The NumPy check's script is added after publication; the other two files are readings of documents.
+> Recorded quotations and readings, copied from earlier notes. Nothing in this folder is a run. The NumPy check is recorded as a reading too, and the folder has no scripts.
 
 Backs the post's footnotes `[^js10]`, `[^java-math]`, and `[^numpy]`: three claims that rest on a reading of a published document or of one check, rather than on a run.
 
@@ -16,7 +16,7 @@ From the post:
 
 ## Tier
 
-c: results only. `numpy-longdouble.md`'s check will become a tier a script that runs anywhere NumPy is installed; the other two files stay readings of documents.
+c: results only.
 
 ## Committed outputs
 
@@ -27,11 +27,6 @@ c: results only. `numpy-longdouble.md`'s check will become a tier a script that 
 | `[^numpy]` | [`numpy-longdouble.md`](numpy-longdouble.md) | NumPy 2.5.5's `np.finfo(np.longdouble)` reporting float64's parameters, with `sizeof(long double)` 8, on macOS arm64 with Apple clang | recorded one-line check | 2026-11-18 | macOS arm64 |
 
 The counts in `js10.md` (17 functions, 8 constants) come from the lists it prints, which can be counted against the figure by anyone with the paper.
-
-## What the full folder will hold
-
-- `numpy-longdouble.md`'s check as a rerunnable script, with a header naming the NumPy version, the compiler, and the platform, and its output.
-- The page of each document read at a pinned copy where one exists, with a hash for any file that can't be pinned to a commit.
 
 ## Scope
 

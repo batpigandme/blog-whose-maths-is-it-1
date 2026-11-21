@@ -2,7 +2,7 @@
 # platform: macOS (Darwin 25.6.0), arm64, Apple M1 Pro
 # obtained: jsvu
 # date:     2026-11-18
-# script:   not in this repository yet (results only for now)
+# script:   none (a captured result)
 # captured: 2026-11-18, copied from an earlier run, not regenerated; the data lines are unedited
 # note:    the flag makes the shell take its fdlibm path for sin, cos, and tan, the path Firefox's own default preference selects outside Windows
 # columns: input, then the raw bits of the IEEE 754 double (16 hex digits) of the input, of Math.sin(input), of Math.cos(input), and of Math.tan(input)

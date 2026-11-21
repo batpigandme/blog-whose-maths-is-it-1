@@ -10,7 +10,7 @@ A recorded quotation from Java's documentation, not a run. Nothing here was rege
 
 ## Tier
 
-c: results only. The full folder will keep the quotations with the page's text read at a pinned copy.
+c: results only.
 
 ## The recorded reading
 

@@ -1,6 +1,6 @@
 # engine-families
 
-> Captured results from earlier runs, not regenerated. The scripts and reruns are added after publication.
+> Captured results from earlier runs, not regenerated. This folder has no scripts.
 
 Backs the post's section "The families" and its footnotes `[^c-library]`, `[^scriptc]`, `[^go-log]`, `[^strictmath]`, and `[^rust]`, and Figure 4, "Many engines, a handful of sources."
 
@@ -16,7 +16,7 @@ From the post: many engines draw on somebody else's code, and sorted by whose, t
 
 ## Tier
 
-c: results only. The full folder will be tier b: it needs a Mac and jsvu builds of each engine, and its Linux half comes from Claude Code Cloud or OrbStack.
+c: results only.
 
 ## What the committed results show
 
@@ -88,15 +88,6 @@ The post's other claims in "The families" rest on results held in other folders 
 | `linux-binaries-and-musl.results.txt` | what jsvu's Linux binaries link, and QuickJS-ng and Hermes against musl | captured, not rerun | 2026-10-22 | Claude Code Cloud, x86_64 VM; glibc 2.39 and musl 1.2.4 |
 
 The three files are the original outputs with a header added. Their table bodies are unedited, apart from the one excerpt noted in the last file's header.
-
-## What the full folder will hold
-
-- The per-engine tables, each engine's `Math` source line pinned to a commit, and each language's documentation quoted.
-- The scripts that produced these outputs: the generator for the case set (checksum of its output, not the case file), the harness that runs each engine's binary over the cases, and the comparison against the C program and against MPFR.
-- The install steps and the version and platform header for each of the 25 binaries.
-- The musl and glibc comparison, rerunnable in a container.
-- The Go, Java, and Rust results, and scriptc's cases and run, where "V8" means Node.js's build of it, not d8's; the scriptc run is one build, read from source and run.
-- Hermes's `MathStdFunctions.def` at 0.13.0, which calls `std::sin` and the like.
 
 ## Scope
 

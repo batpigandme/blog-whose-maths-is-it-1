@@ -1,6 +1,6 @@
 # bindings
 
-> Captured results from earlier runs, not regenerated, apart from one table of hashes computed from those runs' outputs. The scripts and reruns are added after publication.
+> Captured results from earlier runs, not regenerated, apart from one table of hashes computed from those runs' outputs. This folder has no scripts.
 
 Backs the post's section "The binding" and its footnote `[^bindings]`, including the table "Copy, V8, and its `sin` of the bug's input."
 
@@ -16,7 +16,7 @@ From the post: a binding embeds an engine in another language's programs, and it
 
 ## Tier
 
-c: results only. The full folder will be tier b: it needs a Mac, Go and Python with a C and C++ compiler (Apple clang), and jsvu's d8 builds at three V8 versions.
+c: results only.
 
 ## What the committed results show
 
@@ -107,14 +107,6 @@ d8 9.0.257, d8 10.9.194, and d8 14.4.258 (flag on) give the same counts as their
 | `results/control-output-sha256.results.txt` | the SHA-256 of every row's control output, both repeats, in runs 3 and 4 | computed for this repository from the runs' outputs, not a rerun | 2026-11-19 | the hashes are of macOS arm64 outputs |
 
 The run files are the original outputs with a header added and the scratch and home directories replaced by `<scratch>` and `~`. Each `control-*` file is a header, then the original output's lines unedited: dropping the lines that begin with `#` gives the output the hashes are of.
-
-## What the full folder will hold
-
-- The driver script, which records every version and build fact, builds the Go harness, runs every probe twice on every row, and compares; the Go harness for v8go and the Python harness for PyMiniRacer, which pass V8 flags through when given.
-- The probe files and the case generator for the 7,820-case control, with a checksum of the generator's output, not the case file.
-- The install steps: jsvu for the d8 builds, nvm for Node.js, `go get` of v8go at the commit and at v0.9.0, and `pip` for the PyMiniRacer wheel with its SHA-256 checked.
-- The raw outputs of every row and repeat, not only the three distinct control outputs, as the full set of both runs' files.
-- Runs on Linux, where both bindings ship their own builds.
 
 ## Scope
 

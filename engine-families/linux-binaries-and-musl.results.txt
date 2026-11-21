@@ -2,7 +2,7 @@
 # platform: Claude Code Cloud, x86_64 VM; Linux x86_64, glibc 2.39-0ubuntu8.9 (Ubuntu 24.04); musl 1.2.4-2 (Ubuntu) for the C program
 # obtained: jsvu Linux binaries; musl from Ubuntu's package
 # date:     2026-10-22T12:11:42Z (the original gives 06:11:42-06:00)
-# script:   not in this repository yet (results only for now)
+# script:   none (a captured result)
 # captured: copied from an earlier run, not regenerated; section 2 of a longer output, as the only part that bears on this folder; the host's compiler line and the other sections are left out
 
 ## 2. What jsvu's Linux binaries link, and QuickJS-ng against musl

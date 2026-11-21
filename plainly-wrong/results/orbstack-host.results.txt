@@ -1,7 +1,7 @@
 # platform: the Mac that hosts the OrbStack VM used for every OrbStack output in this folder (macOS arm64)
 # obtained: n/a (host fingerprint and environment lock lines)
 # date:     2026-11-03 (UTC 14:22)
-# script:   not in this repository yet (results only for now)
+# script:   none (a captured result)
 # captured: 2026-11-19, copied from the run of 2026-11-03, not regenerated; paths, script names, finding labels, and host strings stripped
 # left out: a line naming the working tree, and a line naming a private data file
 

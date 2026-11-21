@@ -2,7 +2,7 @@
 # platform: macOS 26.6.2 (25G83), arm64, Apple M1 Pro
 # obtained: v8go from the Go module proxy (go get, Go 1.27.4 from conda-forge); PyMiniRacer from its PyPI wheel (pip, Python 3.13.18); d8 from jsvu; Node.js from nvm
 # date:     2026-11-17T23:23Z (run 3; run 4's rows repeat it)
-# script:   not in this repository yet (results only for now)
+# script:   none (a captured result)
 # captured: copied from an earlier run, not regenerated; paths stripped (the scratch directory is shown as <scratch>, the home directory as ~); the 7,820-case Math control output, unedited after this header
 # rows: PyMiniRacer 0.14.1 (V8 14.4.258.23, trig flag on) and d8 14.4.258: the two give this one output, byte for byte
 # format: function, then the input bits (two inputs for atan2, hypot, and pow), then the result's bits, as 16 hex digits each; the last line counts the cases

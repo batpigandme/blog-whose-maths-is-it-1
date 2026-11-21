@@ -3,7 +3,7 @@
 #            "arm64" lines are OrbStack, aarch64 Linux VM on macOS; "amd64" lines are OrbStack, aarch64 Linux VM on macOS, x86_64 container under emulation
 # obtained: see the two probe files and the two setup files
 # date:     2026-11-03T14:50:25Z (UTC) for the comparison; the cloud runs are earlier
-# script:   not in this repository yet (results only for now)
+# script:   none (a captured result)
 # captured: 2026-11-19, copied from the run of 2026-11-03, not regenerated; paths, script names, finding labels, and host strings stripped
 # left out: the section that compared the 7,820-case Math.* control, row by row, against the cloud host
 

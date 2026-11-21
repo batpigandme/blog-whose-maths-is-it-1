@@ -1,6 +1,6 @@
 # sumprecise
 
-> Captured results from earlier runs, and recorded reads of them, not regenerated. The scripts and reruns are added after publication.
+> Captured results from earlier runs, and recorded reads of them, not regenerated. This folder has no scripts.
 
 Backs the post's sentence "As of November 2026, no stable Node.js release has it on by default" and its footnote `[^sumprecise-node]`, which says that Node.js 26.13.1 "has no `sumPrecise` without a flag," that Node.js 26.7.0 "has it behind `--js-sum-precise`," and that the Node.js 27 alpha "has it unflagged."
 
@@ -14,7 +14,7 @@ The folder also holds two records that back the body sentence about stable relea
 
 ## Tier
 
-c: results only. The full folder will be tier b: it needs the Node.js versions above (nvm installs them on macOS or Linux) and, for the test262 part, a fetch of test262 at a pinned commit.
+c: results only.
 
 ## What the committed results show
 
@@ -70,13 +70,6 @@ The five Node.js tag lookups were resolved to commits with the GitHub API on 202
 | `results/mdn-bcd-math-json.results.txt` | the `sumPrecise` entry in MDN's browser-compat-data at the pinned commits | recorded values from reads, not refetched | 2026-11-17 and 2026-11-18 | not a run |
 
 The Cloud file is the original transcript's Node.js lines with a header added and paths stripped. The other three are written from records, so their values are the recorded ones and their layout is new.
-
-## What the full folder will hold
-
-- The run script and the script that adds the flag rows, with their header output, and the test262 runner, which fetches test262 at the pinned commit.
-- The hand-check script and its oracle, which computes the expected values independently.
-- A rerun of the Node.js 22, 24, 26, and 27 alpha checks on macOS arm64 and in Claude Code Cloud, with the alpha's run as a transcript in place of the sentence.
-- The `Math.json` entry extracted at the pinned commit.
 
 ## Scope
 

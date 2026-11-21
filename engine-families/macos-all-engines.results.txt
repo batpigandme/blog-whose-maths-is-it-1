@@ -2,7 +2,7 @@
 # platform: macOS on a Mac (arm64); the original output does not record the OS version
 # obtained: jsvu, nvm, and builds; see the README
 # date:     2026-10-22T02:05:42Z
-# script:   not in this repository yet (results only for now)
+# script:   none (a captured result)
 # captured: copied from an earlier run, not regenerated; a 17-function run against MPFR references; no edits to the table body
 
 # 25 binaries x 17 functions against MPFR; 2026-10-22T02:05:42.682Z

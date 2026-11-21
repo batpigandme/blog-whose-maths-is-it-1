@@ -2,7 +2,7 @@
 # platform: macOS 26.6.2 (25G83), arm64, Apple M1 Pro
 # obtained: v8go from the Go module proxy (go get, Go 1.27.4 from conda-forge); PyMiniRacer from its PyPI wheel (pip, Python 3.13.18); d8 from jsvu; Node.js from nvm
 # date:     2026-11-17T23:31:36Z
-# script:   not in this repository yet (results only for now)
+# script:   none (a captured result)
 # captured: copied from an earlier run, not regenerated; paths stripped (the scratch directory is shown as <scratch>, the home directory as ~); the line at the end naming a raw-outputs bundle refers to a file not kept here, apart from the control outputs in control/
 
 # bindings-math-run.sh run4, 2026-11-17T23:31:36Z; Darwin 25.6.0 arm64; Apple M1 Pro

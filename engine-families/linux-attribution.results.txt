@@ -2,7 +2,7 @@
 # platform: Claude Code Cloud, x86_64 VM; Linux x86_64, glibc 2.39 (Ubuntu 24.04)
 # obtained: jsvu Linux binaries, nvm, and builds; see the README
 # date:     2026-10-22T11:54:13Z
-# script:   not in this repository yet (results only for now)
+# script:   none (a captured result)
 # captured: copied from an earlier run, not regenerated; attribution of each engine's result bits by hash; no edits to the table body
 
 # Attribution of Linux result bits by hash; 2026-10-22T11:54:13.130Z

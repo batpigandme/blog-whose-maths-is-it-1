@@ -2,7 +2,7 @@
 # platform: GitHub REST API and api.npmjs.org reads; the original does not record the machine
 # obtained: gh api (read-only) for the repository, its default branch's HEAD commit, and the README's path; curl for npm's download counts and registry
 # date:     2026-11-19, about 17:40 UTC
-# script:   not in this repository yet (results only for now)
+# script:   none (a captured result)
 # captured: copied from an earlier run, not regenerated; the original's data lines unedited
 
 ## bignumber.js MikeMcl/bignumber.js

@@ -2,7 +2,7 @@
 # platform: GitHub REST API and api.npmjs.org reads; the original does not record the machine
 # obtained: gh api (read-only) for each repository's default-branch HEAD, stars, and archived flag; curl for npm's downloads/point endpoint (one calendar year per request) and the npm registry
 # date:     2026-11-19, about 17:40 UTC
-# script:   not in this repository yet (results only for now)
+# script:   none (a captured result)
 # captured: copied from an earlier run, not regenerated; rewritten from a results note and the raw outputs in raw/ (the table values were checked against the raw outputs) with first-person notes made into plain statements
 
 ## Downloads, stars, archive status, and last commit

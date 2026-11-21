@@ -2,17 +2,19 @@
 
 Two readings, not runs. Nothing here was regenerated, and the CI logs in the second reading have expired, so it can't be rechecked against them.
 
+The first reading is of scriptc 0.4.7's source: its runtime carries a C port of V8's `ieee754.cc`, and `Math.pow` alone goes to the platform's `pow`. The second is of the log of the release run for that version: the run built the runtime pack from source at the tagged commit, and the npm publish took those builds.
+
 ## Source reading, at scriptc 0.4.7
 
-- **Pinned source:** [`vercel-labs/scriptc` at `6c60b0b`](https://github.com/vercel-labs/scriptc/tree/6c60b0bcbfc6edd34ce5c1cdb588d42bdb7171ff), the commit of tag [`v0.4.7`](https://github.com/vercel-labs/scriptc/releases/tag/v0.4.7), which is also npm `scriptc@0.4.7`. Read on 2026-11-02, before the run in this folder.
-- **Reading:** the runtime has its own C port of V8's `src/base/ieee754.cc`, as Node.js v24.22.0 bundles it (V8 13.6.233.17), compiled into the runtime as functions named `scr_ieee754_<function>` (for example `scr_ieee754_sin`). `Math.pow` alone goes to the platform's `pow`, through `scr_math_pow`.
+- **Pinned source:** [`vercel-labs/scriptc` at `6c60b0b`](https://github.com/vercel-labs/scriptc/tree/6c60b0bcbfc6edd34ce5c1cdb588d42bdb7171ff), the commit of tag [`v0.4.7`](https://github.com/vercel-labs/scriptc/releases/tag/v0.4.7), which is also npm [`scriptc@0.4.7`](https://www.npmjs.com/package/scriptc/v/0.4.7). Read on 2026-11-02, before the run in this folder.
+- **Reading:** the runtime has its own C port of V8's [`src/base/ieee754.cc`](https://github.com/v8/v8/blob/b0a55a7dad7f536cce1f9aaddba89894c8533946/src/base/ieee754.cc), as Node.js [v24.22.0](https://github.com/nodejs/node/releases/tag/v24.22.0) bundles it (V8 [13.6.233.17](https://github.com/v8/v8/tree/13.6.233.17), commit `b0a55a7`), compiled into the runtime as functions named `scr_ieee754_<function>` (for example `scr_ieee754_sin`). `Math.pow` alone goes to the platform's `pow`, through `scr_math_pow`.
 - **Where, in the pinned tree:**
   - [`packages/runtime/src/scr_ieee754.c`](https://github.com/vercel-labs/scriptc/blob/6c60b0bcbfc6edd34ce5c1cdb588d42bdb7171ff/packages/runtime/src/scr_ieee754.c#L16-L27), lines 16 to 27, the port's own account of what it is a port of; `scr_ieee754_sin` is at line 2467.
   - [`packages/runtime/vendor/README.md`](https://github.com/vercel-labs/scriptc/blob/6c60b0bcbfc6edd34ce5c1cdb588d42bdb7171ff/packages/runtime/vendor/README.md#L19-L24), lines 19 to 24.
   - [`packages/runtime/src/scr_lib.c`](https://github.com/vercel-labs/scriptc/blob/6c60b0bcbfc6edd34ce5c1cdb588d42bdb7171ff/packages/runtime/src/scr_lib.c#L7188), `scr_math_pow` at line 7188.
 - **The npm package:** its copies of those three files are byte-identical to the tag's.
 - **What the binary shows:** the compiled typed control defines the `scr_ieee754_*` functions and `scr_math_pow`, and its only import from the C library's `libm` is `pow` (`scriptc-binary-links.results.txt`).
-- **Later check, 2026-11-18:** at scriptc's `main`, [`8c03f35`](https://github.com/vercel-labs/scriptc/commit/8c03f356a560cb0dedab5fdecbde715df42b36ff) (whose newest release was v0.4.14, of 2026-11-15), the vendored V8 tree has the same git tree SHA, `89cb896a4f`, and `scr_ieee754.c` differs by one comment line, naming Node.js v24.22.1 where the 0.4.7 file names v24.22.0.
+- **Later check, 2026-11-18:** at scriptc's `main`, [`8c03f35`](https://github.com/vercel-labs/scriptc/commit/8c03f356a560cb0dedab5fdecbde715df42b36ff) (whose newest release was [v0.4.14](https://github.com/vercel-labs/scriptc/releases/tag/v0.4.14), of 2026-11-15), the vendored V8 tree has the same git tree SHA, `89cb896a4f`, and `scr_ieee754.c` differs by one comment line, naming Node.js [v24.22.1](https://github.com/nodejs/node/releases/tag/v24.22.1) where the 0.4.7 file names v24.22.0.
 
 ## Release run, read from the CI logs
 

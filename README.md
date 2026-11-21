@@ -4,6 +4,8 @@
 
 The post asks where JavaScript's `Math` functions come from, and why the same engine can answer differently on different builds and machines. This repository holds the code, data, and outputs behind its claims, one folder per claim. The folders marked published have scripts you can rerun; the results-only folders hold the recorded or captured results. The results were measured on macOS arm64, and on Linux VMs in Claude Code Cloud (x86_64) and OrbStack (aarch64, on a Mac).
 
+Each folder's README says what was run, on what, and what the results show, and its committed outputs hold the printed lines, so a folder can be read without running anything. Every engine, runtime, library, and tool version a README names links to a pinned source (a release tag, a commit, or a versioned download) where one exists; a version with no pinned source is named in plain text.
+
 ## How to use this repository
 
 Every footnote or section in the post that defers to the repository is listed in the index below, with a folder, a tier, and a status.
@@ -73,7 +75,7 @@ reads/                recorded readings: the HOPL figure, java.lang.Math, NumPy 
 lib/                  helpers more than one folder uses: the case generator, drivers, checksums
 ```
 
-Each folder has its own README: the claim it backs, its tier, how to rerun it (in the published folders), the expected output, the committed outputs, the sources pinned to commits or checksums, and its scope. Third-party code isn't copied here; scripts fetch it at a pinned commit into an ignored `.cache/` folder, and generated inputs ship as the generator plus a checksum of its output.
+Each folder has its own README: the claim it backs, its tier, how to rerun it (in the published folders), the expected output, the committed outputs, the sources pinned to commits, release tags, versioned downloads, or checksums, and its scope. Third-party code isn't copied here; scripts fetch it at a pinned commit into an ignored `.cache/` folder, and generated inputs ship as the generator plus a checksum of its output.
 
 ## License
 

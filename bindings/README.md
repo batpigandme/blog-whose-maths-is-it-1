@@ -6,6 +6,8 @@ Backs the post's section "The binding" and its footnote `[^bindings]`, including
 
 The outputs were measured on macOS arm64, on one Mac.
 
+What was run: on 2026-11-17, on one Mac, a driver ran six probes (the bug's `sin` input, four small `Math` probes, and a 7,820-case `Math` control) through v8go (at a commit, and at v0.9.0) and PyMiniRacer 0.14.1, through d8 at the same V8 builds, and through Node.js 24.19.0 and 26.13.1, twice each, and compared the printed bits. What the results show: each binding's output is identical to d8's at its own V8 on all six probes, and v8go v0.9.0's build metadata names V8 11.1.277.13 while the V8 it runs is 10.9.194.9, as the tables below give. Everything here can be read without running anything.
+
 ## Claim
 
 From the post: a binding embeds an engine in another language's programs, and it brings that engine's maths with it, not the language's.
@@ -86,13 +88,17 @@ d8 9.0.257, d8 10.9.194, and d8 14.4.258 (flag on) give the same counts as their
 | What | Pinned to |
 | --- | --- |
 | v8go, the commit run | [`12b0374faffcc6a93eb284808ca1beab58259e72`](https://github.com/rogchap/v8go/commit/12b0374faffcc6a93eb284808ca1beab58259e72), 2021-11-17, a pull request commit on no branch or tag (read with `gh api` on 2026-11-17: it diverges from v0.7.0 by 7 commits ahead and 1 behind), run as Go module `rogchap.com/v8go v0.6.1-0.20211117174756-12b0374faffc` |
-| v8go v0.9.0 | tag commit [`0e40e6e5827ad897d25f915917d8206e9a8231db`](https://github.com/rogchap/v8go/commit/0e40e6e5827ad897d25f915917d8206e9a8231db), 2023-03-20; `deps/darwin_arm64/libv8.a` is 55,859,440 bytes, SHA-256 prefix `0109276cbf192519` |
+| v8go v0.9.0 | [release `v0.9.0`](https://github.com/rogchap/v8go/releases/tag/v0.9.0) ([module page](https://pkg.go.dev/rogchap.com/v8go@v0.9.0)), tag commit [`0e40e6e5827ad897d25f915917d8206e9a8231db`](https://github.com/rogchap/v8go/commit/0e40e6e5827ad897d25f915917d8206e9a8231db), 2023-03-20; `deps/darwin_arm64/libv8.a` is 55,859,440 bytes, SHA-256 prefix `0109276cbf192519` |
 | v8go's last V8 commit, which sets the metadata to 11.1.277.13 | [`be4ff5ecead3461733ef5b9e1268faac4cfe3185`](https://github.com/rogchap/v8go/commit/be4ff5ecead3461733ef5b9e1268faac4cfe3185), 2023-03-20 |
 | v8go's last change to the prebuilt `libv8.a`, 10.9.194.9 | [`02e1763d01762e1397996f5543d11bf051403a83`](https://github.com/rogchap/v8go/commit/02e1763d01762e1397996f5543d11bf051403a83), 2023-01-30 |
-| PyMiniRacer 0.14.1 | tag commit [`95b89887e74103a91747bca45a1e35ff0e1b81c3`](https://github.com/bpcreech/PyMiniRacer/commit/95b89887e74103a91747bca45a1e35ff0e1b81c3), 2026-02-01; wheel `mini_racer-0.14.1-py3-none-macosx_11_0_arm64.whl`, SHA-256 `56cc6965a1665a50d8d613bc43aa83b4cec6b1f09acc69dc4c2845dacb201463`, matched against PyPI's |
+| PyMiniRacer 0.14.1 | [release `v0.14.1`](https://github.com/bpcreech/PyMiniRacer/releases/tag/v0.14.1) ([PyPI](https://pypi.org/project/mini-racer/0.14.1/)), tag commit [`95b89887e74103a91747bca45a1e35ff0e1b81c3`](https://github.com/bpcreech/PyMiniRacer/commit/95b89887e74103a91747bca45a1e35ff0e1b81c3), 2026-02-01; wheel `mini_racer-0.14.1-py3-none-macosx_11_0_arm64.whl`, SHA-256 `56cc6965a1665a50d8d613bc43aa83b4cec6b1f09acc69dc4c2845dacb201463`, matched against PyPI's |
 | V8's vendored glibc `sin` and `cos` | [`4588fe544f78784f5d3a8861886cd4d73f20ab1e`](https://github.com/v8/v8/commit/4588fe544f78784f5d3a8861886cd4d73f20ab1e), 2022-11-30 |
-| d8 9.0.257, 10.9.194, 14.4.258, and 14.6.202 | jsvu builds; SHA-256 prefixes `e630152758822a90`, `07749d6f15bf44c3`, `9fbb1a2caa0cc738`, and `fb9af3ddddfed69b` |
-| Node.js 24.19.0 and 26.13.1 | nvm builds; SHA-256 prefixes `27db838bb204ef7c` and `266dec4dce3a6cdc` |
+| d8 9.0.257, 10.9.194, 14.4.258, and 14.6.202 | jsvu builds; SHA-256 prefixes `e630152758822a90`, `07749d6f15bf44c3`, `9fbb1a2caa0cc738`, and `fb9af3ddddfed69b`; each version's build archive: [9.0.257](https://storage.googleapis.com/chromium-v8/official/canary/v8-mac-arm64-rel-9.0.257.zip), [10.9.194](https://storage.googleapis.com/chromium-v8/official/canary/v8-mac-arm64-rel-10.9.194.zip), [14.4.258](https://storage.googleapis.com/chromium-v8/official/canary/v8-mac-arm64-rel-14.4.258.zip), and [14.6.202](https://storage.googleapis.com/chromium-v8/official/canary/v8-mac-arm64-rel-14.6.202.zip) |
+| V8 at the bindings' patch levels | tags [9.0.257.18](https://github.com/v8/v8/tree/9.0.257.18) (v8go at `12b0374`), [10.9.194.9](https://github.com/v8/v8/tree/10.9.194.9) (v8go v0.9.0), [11.1.277.13](https://github.com/v8/v8/tree/11.1.277.13) (v8go v0.9.0's metadata), [14.4.258.23](https://github.com/v8/v8/tree/14.4.258.23) (PyMiniRacer), and [14.6.202.34](https://github.com/v8/v8/tree/14.6.202.34) (Node.js 26.13.1's V8) |
+| Node.js 24.19.0 and 26.13.1 | nvm builds; SHA-256 prefixes `27db838bb204ef7c` and `266dec4dce3a6cdc`; releases [`v24.19.0`](https://github.com/nodejs/node/releases/tag/v24.19.0) and [`v26.13.1`](https://github.com/nodejs/node/releases/tag/v26.13.1) |
+| Go 1.27.4, Python 3.13.18, and pixi 0.84.2 | the conda-forge builds that ran: Go [`osx-arm64`, `cgo_h5804ab5_1`](https://conda.anaconda.org/conda-forge/osx-arm64/go-1.27.4-cgo_h5804ab5_1.conda) (tag [go1.27.4](https://github.com/golang/go/tree/go1.27.4)) and Python [`osx-arm64`, `hb59dee6_100_cp313`](https://conda.anaconda.org/conda-forge/osx-arm64/python-3.13.18-hb59dee6_100_cp313.conda) (tag [v3.13.18](https://github.com/python/cpython/tree/v3.13.18)); the pixi that managed the environment, [release `v0.84.2`](https://github.com/prefix-dev/pixi/releases/tag/v0.84.2) |
+| pip 26.2.2 | [PyPI](https://pypi.org/project/pip/26.2.2/) |
+| Apple clang 21.0.0 (clang-2100.3.34.2), macOS 26.6.2, nvm, jsvu | named in plain text: there is no pinned source to link for the compiler or macOS, and nvm's and jsvu's own versions weren't recorded |
 
 ## Committed outputs
 

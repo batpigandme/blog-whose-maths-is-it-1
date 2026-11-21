@@ -18,10 +18,10 @@ c: results only for both halves: the NumPy half and the Apple clang half are eac
 
 | What | Recorded |
 | --- | --- |
-| Compiler | Apple clang 21 (the patch version wasn't recorded for this check) |
+| Compiler | Apple clang 21 (the patch version wasn't recorded for this check; there is no pinned source to link) |
 | `sizeof(long double)` | 8 |
 | `LDBL_MANT_DIG` | 53 |
-| NumPy | 2.5.5 |
+| NumPy | [2.5.5](https://github.com/numpy/numpy/releases/tag/v2.5.5) (tag commit [`afcbc6d21a88a7b59c5bfe115198e24ed51b3dae`](https://github.com/numpy/numpy/commit/afcbc6d21a88a7b59c5bfe115198e24ed51b3dae), also on [PyPI](https://pypi.org/project/numpy/2.5.5/)); how it was installed isn't recorded |
 | `np.finfo(np.longdouble)` | reports float64's parameters |
 
 **The post's sentence:** "Apple's clang on arm64 was checked on 18 November 2026: `sizeof(long double)` is 8."

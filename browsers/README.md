@@ -6,6 +6,8 @@ Backs the post's opening, where `Math.tan( 7 )` gives three answers in Chrome, F
 
 The browser runs were measured on macOS arm64. The shell scan the inputs came from was measured on macOS arm64.
 
+What was run: on 2026-11-18, one snippet typed once into the console of each of three browsers on one Mac, printing the raw bits of four answers; and, the same day, a scan that printed the bits of `Math.sin`, `Math.cos`, and `Math.tan` for 6,300 inputs through [d8](https://storage.googleapis.com/chromium-v8/official/canary/v8-mac-arm64-rel-15.8.32.zip) and through two configurations of the [SpiderMonkey shell](https://archive.mozilla.org/pub/firefox/releases/159.0b5/jsshell/jsshell-mac.zip). What the results show: the browsers give three answers for `tan(7)`; each browser's four answers equal one shell configuration's, and across the scan, d8 and the fdlibm path differ on 656 of 18,900 results, all within 1 ULP of the correctly rounded value. The values are recorded in the tables below, so they can be read without running anything.
+
 ## Claim
 
 From the post: same machine, same input, three answers, different in the last digit. The three bit patterns are `3febe2e6e13eea79` (Chrome 158.0.8127.37, V8 15.8.62.31), `3febe2e6e13eea78` (Firefox 160.0.1), and `3febe2e6e13eea7a` (Safari 27.2, 21625.2.8.18.4), three neighboring doubles. The footnote's snippet prints those bits for four inputs, `tan(4)`, `tan(7)`, `sin(18)`, and `cos(29)`, and this folder records all four.
@@ -28,8 +30,8 @@ f=new Float64Array(1),u=new BigUint64Array(f.buffer),[Math.tan(4),Math.tan(7),Ma
 
 | Browser | Version | OS and architecture | Date | `tan(4)` | `tan(7)` | `sin(18)` | `cos(29)` |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Chrome | 158.0.8127.37 (V8 15.8.62.31) | macOS 26.7.3, arm64 | 2026-11-18 | `3ff2866f9be4de13` (1.1578212823495775) | `3febe2e6e13eea79` (0.8714479827243188) | `bfe8081668131e26` (-0.750987246771676) | `bfe7f01658314e47` (-0.7480575296890003) |
-| Firefox | 160.0.1 | macOS 26.7.3, arm64 | 2026-11-18 | `3ff2866f9be4de14` (1.1578212823495777) | `3febe2e6e13eea78` (0.8714479827243187) | `bfe8081668131e27` (-0.7509872467716762) | `bfe7f01658314e48` (-0.7480575296890004) |
+| Chrome | [158.0.8127.37](https://chromium.googlesource.com/chromium/src/+/b8c2be851f62f6a394ec57955d7f31335d7cb6d4) (V8 [15.8.62.31](https://github.com/v8/v8/tree/15.8.62.31)) | macOS 26.7.3, arm64 | 2026-11-18 | `3ff2866f9be4de13` (1.1578212823495775) | `3febe2e6e13eea79` (0.8714479827243188) | `bfe8081668131e26` (-0.750987246771676) | `bfe7f01658314e47` (-0.7480575296890003) |
+| Firefox | [160.0.1](https://github.com/mozilla-firefox/firefox/commit/58fed86b1b6864ad71b83c910a879d6f1a6b678b) | macOS 26.7.3, arm64 | 2026-11-18 | `3ff2866f9be4de14` (1.1578212823495777) | `3febe2e6e13eea78` (0.8714479827243187) | `bfe8081668131e27` (-0.7509872467716762) | `bfe7f01658314e48` (-0.7480575296890004) |
 | Safari | 27.2 (21625.2.8.18.4) | macOS 26.7.3, arm64 | 2026-11-18 | `3ff2866f9be4de13` (1.1578212823495775) | `3febe2e6e13eea7a` (0.8714479827243189) | `bfe8081668131e27` (-0.7509872467716762) | `bfe7f01658314e48` (-0.7480575296890004) |
 
 The rule for counting answers: for each input, the number of distinct bit patterns across the three browsers, read from `results/browser-runs.results.txt`. `tan(7)` has three. The other three inputs have two each: Chrome and Safari agree on `tan(4)`, and Firefox and Safari agree on `sin(18)` and `cos(29)`.
@@ -40,9 +42,9 @@ From the three `shell-scan-*.results.txt` files: for each of 6,300 inputs, the r
 
 | Configuration | What it stands for |
 | --- | --- |
-| d8 (V8) 15.8.32, no flags | V8 as Chrome 158 ships it, to the extent that 15.8.32 and 15.8.62.31 agree |
-| SpiderMonkey shell 159.0b5 with `--use-fdlibm-for-sin-cos-tan` | the fdlibm path Firefox takes by default outside Windows |
-| SpiderMonkey shell 159.0b5, no flags | the shell's own default, which calls the platform's C library |
+| d8 (V8) [15.8.32](https://github.com/v8/v8/tree/15.8.32), no flags | V8 as Chrome 158 ships it, to the extent that 15.8.32 and 15.8.62.31 agree |
+| SpiderMonkey shell [159.0b5](https://github.com/mozilla-firefox/firefox/commit/34ac0671eb25f31f8c56ace36e1c413dd471eb8d) with `--use-fdlibm-for-sin-cos-tan` | the fdlibm path Firefox takes by default outside Windows |
+| SpiderMonkey shell [159.0b5](https://github.com/mozilla-firefox/firefox/commit/34ac0671eb25f31f8c56ace36e1c413dd471eb8d), no flags | the shell's own default, which calls the platform's C library |
 
 The rule for counting: a result differs when the d8 bits and the fdlibm-path bits for that function and input are unequal, counted line by line over the two files. The count is 656 of 18,900 results (6,300 inputs times three functions):
 
@@ -81,8 +83,12 @@ Safari's `tan(7)` is not scored in `shell-scan-scored.results.txt`, which scores
 | Firefox's preference at that commit | [`modules/libpref/init/StaticPrefList.yaml`, lines 10562 to 10567](https://github.com/mozilla-firefox/firefox/blob/58fed86b1b6864ad71b83c910a879d6f1a6b678b/modules/libpref/init/StaticPrefList.yaml#L10562-L10567): `javascript.options.use_fdlibm_for_sin_cos_tan` is `false` on Windows and `true` otherwise |
 | Firefox's use of the preference | [`js/src/builtin/Math.cpp`, lines 57 to 63](https://github.com/mozilla-firefox/firefox/blob/58fed86b1b6864ad71b83c910a879d6f1a6b678b/js/src/builtin/Math.cpp#L57-L63): the fdlibm path is taken when the preference is set or the realm has `alwaysUseFdlibm` |
 | SpiderMonkey 159.0b5 | [`34ac0671eb25f31f8c56ace36e1c413dd471eb8d`](https://github.com/mozilla-firefox/firefox/commit/34ac0671eb25f31f8c56ace36e1c413dd471eb8d), the commit the tags `FIREFOX_159_0b5_BUILD1` and `FIREFOX_159_0b5_RELEASE` point at; the shell's `sin`, `cos`, and `tan` call `fdlibm_*` when that preference is set, and the shell's own default is `false` |
-| Chrome 158.0.8127.37 | revision `b8c2be851f62f6a394ec57955d7f31335d7cb6d4`, as `chrome://version` printed it |
-| d8 15.8.32 and the SpiderMonkey shell 159.0b5 | installed with [jsvu](https://github.com/GoogleChromeLabs/jsvu); the binaries' checksums weren't recorded |
+| Chrome 158.0.8127.37 | Chromium revision [`b8c2be851f62f6a394ec57955d7f31335d7cb6d4`](https://chromium.googlesource.com/chromium/src/+/b8c2be851f62f6a394ec57955d7f31335d7cb6d4), as `chrome://version` printed it; its V8, [15.8.62.31](https://github.com/v8/v8/tree/15.8.62.31) |
+| Firefox 160.0.1, versioned archive | Mozilla's [release archive for 160.0.1](https://archive.mozilla.org/pub/firefox/releases/160.0.1/); how the browser on the Mac was obtained isn't recorded |
+| d8 (V8) 15.8.32 | installed with [jsvu](https://github.com/GoogleChromeLabs/jsvu); V8 tag [15.8.32](https://github.com/v8/v8/tree/15.8.32), commit `e5a1c6353fce563774685e8b6d45262d57f0229b`; the same version's build archive is [`v8-mac-arm64-rel-15.8.32.zip`](https://storage.googleapis.com/chromium-v8/official/canary/v8-mac-arm64-rel-15.8.32.zip); the binary's checksum wasn't recorded |
+| SpiderMonkey shell 159.0b5 | installed with jsvu; the same version's shell archive is [`jsshell-mac.zip`](https://archive.mozilla.org/pub/firefox/releases/159.0b5/jsshell/jsshell-mac.zip) in Mozilla's release archive, and its source is the commit above; the binary's checksum wasn't recorded |
+| jsvu, Safari 27.2, macOS 26.7.3 | named in plain text: jsvu's own version wasn't recorded, and there is no pinned source to link for Safari or macOS |
+| Reference values | the scoring in `shell-scan-scored.results.txt` used mpmath at 300 bits; mpmath's version wasn't recorded |
 
 The Firefox 160.0.1 source lines and tag lookup were read with the GitHub API on 2026-11-18. The commit hashes, and the 159.0b5 tag lookup, were resolved with it on 2026-11-19.
 

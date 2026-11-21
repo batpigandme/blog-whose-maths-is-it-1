@@ -6,6 +6,8 @@ Backs the post's footnotes `[^js10]`, `[^java-math]`, and `[^numpy]`: three clai
 
 The readings were taken from documents, and the one check was made on macOS arm64.
 
+What was read and run: in November 2026, one published figure ([Wirfs-Brock and Eich's history of JavaScript](https://doi.org/10.1145/3386327)), two documentation pages (Oracle's Java SE 25 `java.lang.Math` and `java.lang.StrictMath`), and a check on a Mac of `sizeof(long double)` and `np.finfo(np.longdouble)`, with [NumPy 2.5.5](https://github.com/numpy/numpy/releases/tag/v2.5.5) and Apple clang. What the results show: the figure's 17 functions and 8 constants and its two host-dependence footnotes; Java's own statement that `Math` isn't defined to return the same bits everywhere; and `long double` being 8 bytes on that Mac. Each file holds the recorded text or values, so nothing here needs to be rerun or reopened to be read.
+
 ## Claim
 
 From the post:
@@ -24,7 +26,7 @@ c: results only.
 | --- | --- | --- | --- | --- | --- |
 | `[^js10]` | [`js10.md`](js10.md) | Figure 8 of Wirfs-Brock and Eich's history: its title, 17 `Math` functions and 8 constants, and its footnotes 1 and 2 | recorded reading | 2026-11-18 | not applicable |
 | `[^java-math]` | [`java-math.md`](java-math.md) | `java.lang.Math`'s statements about bit-for-bit results and about calling `StrictMath` | recorded quotation | 2026-11-16 | not applicable |
-| `[^numpy]` | [`numpy-longdouble.md`](numpy-longdouble.md) | NumPy 2.5.5's `np.finfo(np.longdouble)` reporting float64's parameters, with `sizeof(long double)` 8, on macOS arm64 with Apple clang | recorded one-line check | 2026-11-18 | macOS arm64 |
+| `[^numpy]` | [`numpy-longdouble.md`](numpy-longdouble.md) | [NumPy 2.5.5](https://github.com/numpy/numpy/releases/tag/v2.5.5)'s `np.finfo(np.longdouble)` reporting float64's parameters, with `sizeof(long double)` 8, on macOS arm64 with Apple clang | recorded one-line check | 2026-11-18 | macOS arm64 |
 
 The counts in `js10.md` (17 functions, 8 constants) come from the lists it prints, which can be counted against the figure by anyone with the paper.
 

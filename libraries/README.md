@@ -6,6 +6,8 @@ Backs the post's paragraph on the libraries of the lull and its footnotes `[^lib
 
 The outputs are API reads, taken on 2026-11-19 (npm downloads, stars, and last commits); they don't depend on an operating system.
 
+What was read: on 2026-11-19, GitHub's REST API for each of eleven repositories (its stars, archived flag, and default-branch HEAD commit) and npm's download-count and registry endpoints for each package (calendar-year downloads for 2017, 2020, and 2023, and the latest version). What the results show: the table below, one row for each library. The reads are recorded as they came back, so the table can be read without repeating them.
+
 ## Claim
 
 From the post: while `Math` gained no functions, libraries filled the gap. For statistics there was jStat and math.js; for numbers a double can't hold, decimal.js and several others, all picked as widely downloaded on npm. Some were built to be replaced: JSBI, from Google Chrome Labs, was a BigInt "polyfill" that "behaves exactly like the upcoming native BigInts," and BigInteger.js became "a thin wrapper over the native implementation" wherever an engine had one.
@@ -43,19 +45,19 @@ The package names are npm's: the post's "Numeric Javascript" is `numeric`, and "
 
 ## Sources pinned
 
-| What | Pinned to |
-| --- | --- |
-| jStat | [`jstat/jstat` @ `72f367f6dbd45c2d903053ee3f9981489912cad4`](https://github.com/jstat/jstat/tree/72f367f6dbd45c2d903053ee3f9981489912cad4) |
-| math.js | [`josdejong/mathjs` @ `1847c3344a0a63ad4bd5b2f2b97e7f4f05f32566`](https://github.com/josdejong/mathjs/tree/1847c3344a0a63ad4bd5b2f2b97e7f4f05f32566) |
-| bn.js | [`indutny/bn.js` @ `eb2e57c4e50a9b9a1f277a59ef446c13f564dddc`](https://github.com/indutny/bn.js/tree/eb2e57c4e50a9b9a1f277a59ef446c13f564dddc) |
-| BigInteger.js | [`peterolson/BigInteger.js` @ `441f6bd73cef6a5029dd5600f17e3dd79eafeddb`](https://github.com/peterolson/BigInteger.js/tree/441f6bd73cef6a5029dd5600f17e3dd79eafeddb) |
-| bignumber.js | [`MikeMcl/bignumber.js` @ `02109ca2749538d57551cdcc7e38585db111b4bb`](https://github.com/MikeMcl/bignumber.js/tree/02109ca2749538d57551cdcc7e38585db111b4bb) |
-| big.js | [`MikeMcl/big.js` @ `cdbc06f1d5ae9be429b97f433ee884cf9ad28072`](https://github.com/MikeMcl/big.js/tree/cdbc06f1d5ae9be429b97f433ee884cf9ad28072) |
-| decimal.js | [`MikeMcl/decimal.js` @ `b1d1e311eb272b16f5b2ca0e0d1f4c4fa8558edf`](https://github.com/MikeMcl/decimal.js/tree/b1d1e311eb272b16f5b2ca0e0d1f4c4fa8558edf) |
-| JSBI | [`GoogleChromeLabs/jsbi` @ `5382367c7e3199858d36bb620977e1f90605bcb9`](https://github.com/GoogleChromeLabs/jsbi/tree/5382367c7e3199858d36bb620977e1f90605bcb9) |
-| Numeric Javascript | [`sloisel/numeric` @ `656fa1254be540f428710738ca9c1539625777f1`](https://github.com/sloisel/numeric/tree/656fa1254be540f428710738ca9c1539625777f1) |
-| ndarray | [`scijs/ndarray` @ `b735a1472293b0290817225506569866a07bfbf6`](https://github.com/scijs/ndarray/tree/b735a1472293b0290817225506569866a07bfbf6) |
-| Simple Statistics | [`simple-statistics/simple-statistics` @ `551ad9eebea7daa85f145f2cf8fe5e70b847aeb4`](https://github.com/simple-statistics/simple-statistics/tree/551ad9eebea7daa85f145f2cf8fe5e70b847aeb4) |
+| What | Pinned to | Latest npm version read |
+| --- | --- | --- |
+| jStat | [`jstat/jstat` @ `72f367f6dbd45c2d903053ee3f9981489912cad4`](https://github.com/jstat/jstat/tree/72f367f6dbd45c2d903053ee3f9981489912cad4) | [`jstat@1.9.6`](https://www.npmjs.com/package/jstat/v/1.9.6) |
+| math.js | [`josdejong/mathjs` @ `1847c3344a0a63ad4bd5b2f2b97e7f4f05f32566`](https://github.com/josdejong/mathjs/tree/1847c3344a0a63ad4bd5b2f2b97e7f4f05f32566) | [`mathjs@15.2.0`](https://www.npmjs.com/package/mathjs/v/15.2.0) |
+| bn.js | [`indutny/bn.js` @ `eb2e57c4e50a9b9a1f277a59ef446c13f564dddc`](https://github.com/indutny/bn.js/tree/eb2e57c4e50a9b9a1f277a59ef446c13f564dddc) | [`bn.js@5.2.5`](https://www.npmjs.com/package/bn.js/v/5.2.5) |
+| BigInteger.js | [`peterolson/BigInteger.js` @ `441f6bd73cef6a5029dd5600f17e3dd79eafeddb`](https://github.com/peterolson/BigInteger.js/tree/441f6bd73cef6a5029dd5600f17e3dd79eafeddb) | [`big-integer@1.6.52`](https://www.npmjs.com/package/big-integer/v/1.6.52) |
+| bignumber.js | [`MikeMcl/bignumber.js` @ `02109ca2749538d57551cdcc7e38585db111b4bb`](https://github.com/MikeMcl/bignumber.js/tree/02109ca2749538d57551cdcc7e38585db111b4bb) | [`bignumber.js@11.1.5`](https://www.npmjs.com/package/bignumber.js/v/11.1.5) |
+| big.js | [`MikeMcl/big.js` @ `cdbc06f1d5ae9be429b97f433ee884cf9ad28072`](https://github.com/MikeMcl/big.js/tree/cdbc06f1d5ae9be429b97f433ee884cf9ad28072) | [`big.js@7.0.1`](https://www.npmjs.com/package/big.js/v/7.0.1) |
+| decimal.js | [`MikeMcl/decimal.js` @ `b1d1e311eb272b16f5b2ca0e0d1f4c4fa8558edf`](https://github.com/MikeMcl/decimal.js/tree/b1d1e311eb272b16f5b2ca0e0d1f4c4fa8558edf) | [`decimal.js@10.6.0`](https://www.npmjs.com/package/decimal.js/v/10.6.0) |
+| JSBI | [`GoogleChromeLabs/jsbi` @ `5382367c7e3199858d36bb620977e1f90605bcb9`](https://github.com/GoogleChromeLabs/jsbi/tree/5382367c7e3199858d36bb620977e1f90605bcb9) | [`jsbi@4.3.2`](https://www.npmjs.com/package/jsbi/v/4.3.2) |
+| Numeric Javascript | [`sloisel/numeric` @ `656fa1254be540f428710738ca9c1539625777f1`](https://github.com/sloisel/numeric/tree/656fa1254be540f428710738ca9c1539625777f1) | [`numeric@1.2.6`](https://www.npmjs.com/package/numeric/v/1.2.6) |
+| ndarray | [`scijs/ndarray` @ `b735a1472293b0290817225506569866a07bfbf6`](https://github.com/scijs/ndarray/tree/b735a1472293b0290817225506569866a07bfbf6) | [`ndarray@1.1.1`](https://www.npmjs.com/package/ndarray/v/1.1.1) |
+| Simple Statistics | [`simple-statistics/simple-statistics` @ `551ad9eebea7daa85f145f2cf8fe5e70b847aeb4`](https://github.com/simple-statistics/simple-statistics/tree/551ad9eebea7daa85f145f2cf8fe5e70b847aeb4) | [`simple-statistics@8.0.0`](https://www.npmjs.com/package/simple-statistics/v/8.0.0) |
 
 Each of the eleven commits was the default branch's HEAD when read on 2026-11-19.
 

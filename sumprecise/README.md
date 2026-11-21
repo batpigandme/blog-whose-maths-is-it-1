@@ -6,9 +6,11 @@ Backs the post's sentence "As of November 2026, no stable Node.js release has it
 
 The outputs were measured on macOS arm64, and on Linux x86_64 in a Claude Code Cloud VM.
 
+What was run: on 2026-11-17, in a Claude Code Cloud VM, three Node.js versions were each asked for `typeof Math.sumPrecise`, started with `--js-sum-precise`, and (for 26.7.0 with the flag) run against test262's `Math.sumPrecise` files and a hand-check. On 2026-11-18, on a Mac, the same presence check was made on Node.js 26.13.1 and the Node.js 27 alpha, and five inputs went through four runtimes' `Math.sumPrecise`; those two Mac results are recorded values with no transcript. What the results show: only the Node.js 27 alpha has `Math.sumPrecise` without a flag, as the table below counts. Everything here can be read without running anything.
+
 ## Claim
 
-From the post's footnote: Node.js 26.13.1, the newest stable release, carries V8 14.6.202.34 and has no `sumPrecise` without a flag (run 18 November 2026); Node.js 26.7.0 has it behind `--js-sum-precise` (run 17 November 2026); and the Node.js 27 alpha, 27.0.0-alpha.0.1.1, has it unflagged, run on 18 November 2026.
+From the post's footnote: Node.js 26.13.1, the newest stable release, carries V8 [14.6.202.34](https://github.com/v8/v8/tree/14.6.202.34) and has no `sumPrecise` without a flag (run 18 November 2026); Node.js 26.7.0 has it behind `--js-sum-precise` (run 17 November 2026); and the Node.js 27 alpha, 27.0.0-alpha.0.1.1, has it unflagged, run on 18 November 2026.
 
 The folder also holds two records that back the body sentence about stable releases: Node.js 24.19.0 and 22.23.5 reject the flag, and MDN's browser-compat-data lists Node.js as `false` for `sumPrecise` at `9237d95b`.
 
@@ -22,11 +24,11 @@ One row for each Node.js version that appears in a committed output, five in all
 
 | Node.js | V8 (`process.versions.v8`) | Platform | Date | No flag | With `--js-sum-precise` |
 | --- | --- | --- | --- | --- | --- |
-| 22.23.5 | 12.4.254.21-node.57 | Claude Code Cloud, x86_64 VM | 2026-11-17 | `undefined` | rejected: `node: bad option: --js-sum-precise`, exit 9 |
-| 24.19.0 | 13.6.233.17-node.51 | Claude Code Cloud, x86_64 VM | 2026-11-17 | `undefined` | rejected: `node24: bad option: --js-sum-precise`, exit 9 |
-| 26.7.0 | 14.6.202.34-node.28 | Claude Code Cloud, x86_64 VM | 2026-11-17 | `undefined` | `function`; `--v8-options` lists the flag with `default: --no-js-sum-precise` |
-| 26.13.1 | 14.6.202.34-node.40 | macOS arm64 | 2026-11-18 | `undefined` | has it: the five-input probe below ran with the flag |
-| 27.0.0-alpha.0.1.1 | 15.6.75.50-node.14 | macOS arm64 | 2026-11-18 | `function` | not needed |
+| [22.23.5](https://github.com/nodejs/node/releases/tag/v22.23.5) | 12.4.254.21-node.57 | Claude Code Cloud, x86_64 VM | 2026-11-17 | `undefined` | rejected: `node: bad option: --js-sum-precise`, exit 9 |
+| [24.19.0](https://github.com/nodejs/node/releases/tag/v24.19.0) | 13.6.233.17-node.51 | Claude Code Cloud, x86_64 VM | 2026-11-17 | `undefined` | rejected: `node24: bad option: --js-sum-precise`, exit 9 |
+| [26.7.0](https://github.com/nodejs/node/releases/tag/v26.7.0) | 14.6.202.34-node.28 | Claude Code Cloud, x86_64 VM | 2026-11-17 | `undefined` | `function`; `--v8-options` lists the flag with `default: --no-js-sum-precise` |
+| [26.13.1](https://github.com/nodejs/node/releases/tag/v26.13.1) | 14.6.202.34-node.40 | macOS arm64 | 2026-11-18 | `undefined` | has it: the five-input probe below ran with the flag |
+| [27.0.0-alpha.0.1.1](https://github.com/nodejs/node/releases/tag/v27.0.0-alpha.0.1.1) | 15.6.75.50-node.14 | macOS arm64 | 2026-11-18 | `function` | not needed |
 
 By that rule: one of the five has it without a flag (the alpha), two have it behind the flag (26.7.0 and 26.13.1), and two reject the flag (22.23.5 and 24.19.0).
 
@@ -40,7 +42,7 @@ The same file shows the flag's name in Node.js 26.7.0's own help: `--js-sum-prec
 
 ### The five-input probe
 
-A separate result, in `results/five-input-probe.results.txt`: on 2026-11-18 on macOS arm64, five inputs went through the `Math.sumPrecise` each of four runtimes has (the Node.js 27 alpha, Node.js 26.13.1 with `--js-sum-precise`, Deno 2.9.8, and Bun 1.3.14). Both Node.js rows, and Deno's, give `-1` for `[-1]` and `-1.7976931348623157e+308` for `[-Number.MAX_VALUE]`, and all four give `1e-323` for `[5e-324, 5e-324]`. Bun 1.3.14 gives `-1.0000000000000002` and `-Infinity` for the first two. The file records the table as it was written down.
+A separate result, in `results/five-input-probe.results.txt`: on 2026-11-18 on macOS arm64, five inputs went through the `Math.sumPrecise` each of four runtimes has (the Node.js 27 alpha, Node.js 26.13.1 with `--js-sum-precise`, [Deno 2.9.8](https://github.com/denoland/deno/releases/tag/v2.9.8), and [Bun 1.3.14](https://github.com/oven-sh/bun/releases/tag/bun-v1.3.14)). Both Node.js rows, and Deno's, give `-1` for `[-1]` and `-1.7976931348623157e+308` for `[-Number.MAX_VALUE]`, and all four give `1e-323` for `[5e-324, 5e-324]`. Bun 1.3.14 gives `-1.0000000000000002` and `-Infinity` for the first two. The file records the table as it was written down.
 
 ### MDN's record
 
@@ -50,11 +52,14 @@ A separate result, in `results/five-input-probe.results.txt`: on 2026-11-18 on m
 
 | What | Pin |
 | --- | --- |
-| Node.js 22.23.5 | tag `v22.23.5`, [`60553651579ec33ca1aef9e1eedab2c3855f1f7e`](https://github.com/nodejs/node/commit/60553651579ec33ca1aef9e1eedab2c3855f1f7e) |
-| Node.js 24.19.0 | tag `v24.19.0`, [`cdc1b38d40cb567b7ad0b39c86addf830a0af0ae`](https://github.com/nodejs/node/commit/cdc1b38d40cb567b7ad0b39c86addf830a0af0ae) |
-| Node.js 26.7.0 | tag `v26.7.0`, [`b4f23d3619c98bed09af93a21192f6080197a8c6`](https://github.com/nodejs/node/commit/b4f23d3619c98bed09af93a21192f6080197a8c6) |
-| Node.js 26.13.1 | tag `v26.13.1`, [`e9c277643b0249c50f6e6de5413be8a88ea11b6a`](https://github.com/nodejs/node/commit/e9c277643b0249c50f6e6de5413be8a88ea11b6a); its [`deps/v8/include/v8-version.h`](https://github.com/nodejs/node/blob/e9c277643b0249c50f6e6de5413be8a88ea11b6a/deps/v8/include/v8-version.h) is the footnote's V8 14.6.202.34 |
-| Node.js 27.0.0-alpha.0.1.1 | tag `v27.0.0-alpha.0.1.1`, [`6c7c89331d062a47d6fe3d16b3c00e4a3145826d`](https://github.com/nodejs/node/commit/6c7c89331d062a47d6fe3d16b3c00e4a3145826d); its [`deps/v8/include/v8-version.h`](https://github.com/nodejs/node/blob/6c7c89331d062a47d6fe3d16b3c00e4a3145826d/deps/v8/include/v8-version.h); [release page](https://github.com/nodejs/node/releases/tag/v27.0.0-alpha.0.1.1), [Node.js's post for it](https://nodejs.org/en/blog/release/v27.0.0-alpha.0.1.1), [archived](https://archive.is/6X3Ed) |
+| Node.js 22.23.5 | [release `v22.23.5`](https://github.com/nodejs/node/releases/tag/v22.23.5), [`60553651579ec33ca1aef9e1eedab2c3855f1f7e`](https://github.com/nodejs/node/commit/60553651579ec33ca1aef9e1eedab2c3855f1f7e) |
+| Node.js 24.19.0 | [release `v24.19.0`](https://github.com/nodejs/node/releases/tag/v24.19.0), [`cdc1b38d40cb567b7ad0b39c86addf830a0af0ae`](https://github.com/nodejs/node/commit/cdc1b38d40cb567b7ad0b39c86addf830a0af0ae) |
+| Node.js 26.7.0 | [release `v26.7.0`](https://github.com/nodejs/node/releases/tag/v26.7.0), [`b4f23d3619c98bed09af93a21192f6080197a8c6`](https://github.com/nodejs/node/commit/b4f23d3619c98bed09af93a21192f6080197a8c6) |
+| Node.js 26.13.1 | [release `v26.13.1`](https://github.com/nodejs/node/releases/tag/v26.13.1), [`e9c277643b0249c50f6e6de5413be8a88ea11b6a`](https://github.com/nodejs/node/commit/e9c277643b0249c50f6e6de5413be8a88ea11b6a); its [`deps/v8/include/v8-version.h`](https://github.com/nodejs/node/blob/e9c277643b0249c50f6e6de5413be8a88ea11b6a/deps/v8/include/v8-version.h) is the footnote's V8 14.6.202.34 |
+| Node.js 27.0.0-alpha.0.1.1 | [release `v27.0.0-alpha.0.1.1`](https://github.com/nodejs/node/releases/tag/v27.0.0-alpha.0.1.1), [`6c7c89331d062a47d6fe3d16b3c00e4a3145826d`](https://github.com/nodejs/node/commit/6c7c89331d062a47d6fe3d16b3c00e4a3145826d); its [`deps/v8/include/v8-version.h`](https://github.com/nodejs/node/blob/6c7c89331d062a47d6fe3d16b3c00e4a3145826d/deps/v8/include/v8-version.h); [Node.js's post for it](https://nodejs.org/en/blog/release/v27.0.0-alpha.0.1.1), [archived](https://archive.is/6X3Ed) |
+| Deno 2.9.8 and Bun 1.3.14 | [release `v2.9.8`](https://github.com/denoland/deno/releases/tag/v2.9.8) and [release `bun-v1.3.14`](https://github.com/oven-sh/bun/releases/tag/bun-v1.3.14); Bun's JavaScriptCore is WebKit revision [`5488984d20e0dbfe4be2c3ba8fb18eb81a5e0e8b`](https://github.com/WebKit/WebKit/commit/5488984d20e0dbfe4be2c3ba8fb18eb81a5e0e8b), as the probe's header records it; how the two runtimes were obtained isn't recorded |
+| V8 14.6.202.34, the footnote's version | tag [14.6.202.34](https://github.com/v8/v8/tree/14.6.202.34) |
+| Ubuntu 24.04.5 LTS, macOS (the Mac's version), nvm | named in plain text: there is no pinned source to link for the Cloud image or macOS, and the Mac's macOS version and nvm's version weren't recorded |
 | MDN browser-compat-data | [`9237d95b44e0ed02a094c50a0277e228c81b236f`](https://github.com/mdn/browser-compat-data/commit/9237d95b44e0ed02a094c50a0277e228c81b236f); and `290cd74dbb04d539bc252f4e8f44a723947f8f31`, `7171dca74fea50d3fd88eca8e75b2636954a45b8` for the other two reads |
 | test262 | [`2e58f87d8350ad51224617a041c6e041d52f8444`](https://github.com/tc39/test262/tree/2e58f87d8350ad51224617a041c6e041d52f8444/test/built-ins/Math/sumPrecise), `test/built-ins/Math/sumPrecise`, ten files |
 

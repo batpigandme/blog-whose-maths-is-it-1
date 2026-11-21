@@ -2,7 +2,11 @@
 
 Backs the post's footnotes `[^split]` (how the specification splits the `Math` functions), `[^terms]` (the two terms), `[^lull]` (the count of `Math` functions per edition), and `[^es1]` (the 1st edition's wording).
 
-Measured on macOS arm64, with Python 3.15.2 and poppler's `pdftotext` 26.11.0, against fixed editions of ECMA-262.
+Measured on macOS arm64, with [Python 3.15.2](https://www.python.org/downloads/release/python-3152/) and `pdftotext` from [poppler 26.11.0](https://gitlab.freedesktop.org/poppler/poppler/-/tags/poppler-26.11.0), against fixed editions of ECMA-262.
+
+## What was run, and what it shows
+
+Four Python scripts read ECMA-262 itself: the 17th edition (ES2026) as HTML, and the 1st, 2nd, 3rd, 5th, and 5.1 editions as PDFs (the 6th to 16th editions as HTML), each checked against a recorded sha256. `recount-split.py` sorted the 37 function properties of `Math` in the 17th edition by what each clause's own text says: 22 are implementation-approximated, 1 (`random`) is implementation-defined, and 14 are exact (`split.results.txt`). `count-math-functions.py` counted the `Math` function properties in every edition: 18 in the 1st to 5.1 editions, 35 in the 6th to 15th, 36 in the 16th, and 37 in the 17th (`math-function-counts.tsv`). `extract-terms.py` found the string "implementation-approximated" 0 times in the 11th edition and 139 times in the 12th (`terms.results.txt`). `extract-math-wording.py` located the passage that leaves functions open in the 1st edition, with "implementor", and in the 17th, with "implementer" (`math-wording.results.txt`). The sections below give the exact lines.
 
 ## Claim
 
@@ -15,6 +19,8 @@ From the other footnotes: the term "implementation-approximated" first appears i
 a: anywhere. Python 3 with only the standard library. The scripts that read PDFs (`count-math-functions.py`, `extract-math-wording.py`) also need poppler's `pdftotext` on PATH. macOS or Linux.
 
 ## Rerun
+
+`pixi.toml` and `pixi.lock` pin the environment that produced the committed outputs: Python [3.15.2](https://www.python.org/downloads/release/python-3152/) and poppler [26.11.0](https://gitlab.freedesktop.org/poppler/poppler/-/tags/poppler-26.11.0) from conda-forge, for osx-arm64, linux-64, and linux-aarch64. From `spec/`, `pixi run python -I recount-split.py` runs a script inside that environment. The commands below use whatever `python3` and `pdftotext` are on the PATH.
 
 ```bash
 # From the repository root. SPEC_CACHE_DIR is optional and defaults to a

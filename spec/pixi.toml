@@ -1,0 +1,11 @@
+# The Python and poppler versions that produced the committed outputs in this folder.
+# The scripts use only Python's standard library, plus `pdftotext` from poppler.
+
+[workspace]
+name = "whose-maths-spec"
+channels = ["conda-forge"]
+platforms = ["osx-arm64", "linux-64", "linux-aarch64"]
+
+[dependencies]
+python = "==3.15.2"
+poppler = "==26.11.0"
